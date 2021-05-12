@@ -1,0 +1,346 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/schema/coremo/",
+    "polmo":   "https://clipcode.org/base/schema/polmo/"
+  },
+  "@graph": [  
+    {
+      "@id": "polmo:PolicyConcept",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A policy concept",
+      "rdfs:label": "PolicyConcept",
+      "rdfs:subClassOf": {
+        "@id": "coremo:IdentityConcept"
+      }
+    },
+    {
+      "@id": "polmo:PolicyModel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A policy model",
+      "rdfs:label": "Policy Model",
+      "rdfs:subClassOf": [{
+        "@id": "coremo:IdentityModel"
+      },
+      {
+        "@id": "polmo:PolicyConcept"
+      }]
+    },
+    {
+      "@id": "polmo:PolicyDesignSemanticWork",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A policy design",
+      "rdfs:label": "PolicyDesignSemanticWork",
+      "rdfs:subClassOf": [ 
+        {
+          "@id": "coremo:SemanticWork"
+        },
+        {
+          "@id": "coremo:Revisible"
+        },
+        {
+          "@id": "polmo:PolicyConcept"
+        }
+      ]
+    }, 
+    {
+      "@id": "polmo:provenance",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Provenance of this policy design (app, org, ..)",
+      "rdfs:label": "provenance",
+      "schema:domainIncludes": {
+        "@id": "polmo:PolicyDesignSemanticWork"
+      },
+      "schema:rangeIncludes": {
+        "@id": "schema:URL"
+      }
+    },
+    {
+      "@id": "polmo:PolicyItemSetDesign",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A policy item set design",
+      "rdfs:label": "PolicyItemSetDesign",
+      "rdfs:subClassOf": [ 
+      {
+        "@id": "polmo:PolicyConcept"
+      }]
+    },
+    {
+      "@id": "polmo:PolicyItemDesign",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A policy item design",
+      "rdfs:label": "PolicyItemDesign",
+      "rdfs:subClassOf": [ 
+      {
+        "@id": "polmo:PolicyConcept"
+      }]
+    },
+    {
+      "@id": "polmo:PolicyItemKindEnumeration",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "PolicyItemKindEnumeration is an enumeration type representing the policy item types.",
+      "rdfs:label": "PolicyItemKindEnumeration",
+       "rdfs:subClassOf": { 
+        "@id": "schema:Enumeration"
+      }
+    },
+    {
+      "@id": "polmo:TextItemKind",
+      "@type": "polmo:PolicyItemKindEnumeration",
+      "rdfs:comment": "TextItemKind of a policy item.",
+      "rdfs:label": "TextItemKind"
+    },
+    {
+      "@id": "polmo:IntegerItemKind",
+      "@type": "polmo:PolicyItemKindEnumeration",
+      "rdfs:comment": "IntegerItemKind.",
+      "rdfs:label": "IntegerItemKind"
+    },
+    {
+      "@id": "polmo:FloatItemKind",
+      "@type": "polmo:PolicyItemKindEnumeration",
+      "rdfs:comment": "FloatItemKind of a policy item.",
+      "rdfs:label": "FloatItemKind"
+    },
+    {
+      "@id": "polmo:DateItemKind",
+      "@type": "polmo:PolicyItemKindEnumeration",
+      "rdfs:comment": "DateItemKind of a policy item.",
+      "rdfs:label": "DateItemKind"
+    },
+    {
+      "@id": "polmo:BooleanItemKind",
+      "@type": "polmo:PolicyItemKindEnumeration",
+      "rdfs:comment": "BooleanItemKind of a policy item.",
+      "rdfs:label": "BooleanItemKind"
+    },
+    {
+      "@id": "polmo:ChoiceSingleItemKind",
+      "@type": "polmo:PolicyItemKindEnumeration",
+      "rdfs:comment": "ChoiceSingleItemKind of a policy item.",
+      "rdfs:label": "ChoiceSingleItemKind"
+    },
+    {
+      "@id": "polmo:ChoiceMultiItemKind",
+      "@type": "polmo:PolicyItemKindEnumeration",
+      "rdfs:comment": "ChoiceMultiItemKind of a policy item.",
+      "rdfs:label": "ChoiceMultiItemKind"
+    },
+    {
+      "@id": "polmo:policyItemKind",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The kind of policy item.",
+      "rdfs:label": "policyItemKind",
+      "schema:domainIncludes": {
+        "@id": "polmo:PolicyItemDesign"
+      },
+      "schema:rangeIncludes": {
+        "@id": "polmo:PolicyItemKindEnumeration"
+      }
+    },
+    {
+      "@id": "polmo:isRequired",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Whether this item is a required value.",
+      "rdfs:label": "isRequired",
+      "schema:domainIncludes": {
+        "@id": "polmo:PolicyItemDesign"
+      },
+      "schema:rangeIncludes": {
+        "@id": "schema:Boolean"
+      }
+    },
+    {
+      "@id": "polmo:restrictionMinimumNumber",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Minimum numeric value.",
+      "rdfs:label": "restrictionMinimum",
+      "schema:domainIncludes": {
+        "@id": "polmo:PolicyItemDesign"
+      },
+      "schema:rangeIncludes": [
+      {
+        "@id": "schema:Integer"
+      },
+      {
+        "@id": "schema:Float"
+      }
+    ]
+    },
+    {
+      "@id": "polmo:restrictionMaximumNumber",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Maximum numeric value.",
+      "rdfs:label": "restrictionMinimum",
+      "schema:domainIncludes": {
+        "@id": "polmo:PolicyItemDesign"
+      },
+      "schema:rangeIncludes": [
+      {
+        "@id": "schema:Integer"
+      },
+      {
+        "@id": "schema:Float"
+      }
+    ]
+    },
+    {
+      "@id": "polmo:restrictionMinimumStringLength",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Minimum string length.",
+      "rdfs:label": "restrictionMinimumStringLength",
+      "schema:domainIncludes": {
+        "@id": "polmo:PolicyItemDesign"
+      },
+      "schema:rangeIncludes": 
+      {
+        "@id": "schema:Integer"
+      }
+    },
+    {
+      "@id": "polmo:restrictionMaximumStringLength",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Maximum string length.",
+      "rdfs:label": "restrictionMaximumStringLength",
+      "schema:domainIncludes": {
+        "@id": "polmo:PolicyItemDesign"
+      },
+      "schema:rangeIncludes": 
+      {
+        "@id": "schema:Integer"
+      }
+    },
+    {
+      "@id": "polmo:restrictionStringRegEx",
+      "@type": "rdf:Property",
+      "rdfs:comment": "String regular expression.",
+      "rdfs:label": "restrictionStringRegEx",
+      "schema:domainIncludes": {
+        "@id": "polmo:PolicyItemDesign"
+      },
+      "schema:rangeIncludes": 
+      {
+        "@id": "schema:Text"
+      }
+    },
+    {
+      "@id": "polmo:policyItemValue",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Value of this policy item.",
+      "rdfs:label": "policyItemValue",
+      "schema:domainIncludes": [
+        {
+          "@id": "polmo:PolicyItemDesign"
+        },
+        {
+          "@id": "polmo:PolicyItemChoiceOption"
+        },
+        {
+          "@id": "polmo:PolicyItemTransform"
+        },
+        {
+          "@id": "polmo:EffectivePolicyItem"
+        }
+      ],
+      "schema:rangeIncludes": [{
+        "@id": "schema:Text"
+      },
+      {
+        "@id": "schema:Integer"
+      },
+      {
+        "@id": "schema:Float"
+      },
+      {
+        "@id": "schema:Boolean"
+      }]
+    },
+    {
+      "@id": "polmo:PolicyItemChoiceOption",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A policy item choice option",
+      "rdfs:label": "PolicyItemChoiceOption",
+      "rdfs:subClassOf": {
+        "@id": "polmo:PolicyConcept"
+      }
+    },
+    {
+      "@id": "polmo:PolicyTransformSemanticWork",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A policy transform",
+      "rdfs:label": "PolicyTransformSemanticWork",
+      "rdfs:subClassOf": [ 
+      {
+        "@id": "coremo:SemanticWork"
+      },
+      {
+        "@id": "polmo:PolicyConcept"
+      }]
+    },
+    {
+      "@id": "polmo:PolicyItemTransform",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A policy item transform",
+      "rdfs:label": "PolicyItemTransform",
+      "rdfs:subClassOf": [ 
+      {
+        "@id": "polmo:PolicyConcept"
+      }]
+    },
+    {
+      "@id": "polmo:policyItemValueSealed",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Is this value sealed (i.e. cannot be further transformed).",
+      "rdfs:label": "policyItemValueSealed",
+      "schema:domainIncludes": [        
+        {
+          "@id": "polmo:PolicyItemTransform"
+        }
+      ],
+      "schema:rangeIncludes": [
+      {
+        "@id": "schema:Boolean"
+      }]
+    },
+    {
+      "@id": "polmo:EffectivePolicySemanticWork",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "Effective policy",
+      "rdfs:label": "EffectivePolicySemanticWork",
+      "rdfs:subClassOf": [ 
+      {
+        "@id": "coremo:SemanticWork"
+      },
+      {
+        "@id": "polmo:PolicyConcept"
+      }]
+    },
+    {
+      "@id": "polmo:EffectivePolicyItem",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A policy item design",
+      "rdfs:label": "PolicyItemDesign",
+      "rdfs:subClassOf": [ 
+      {
+        "@id": "polmo:PolicyConcept"
+      }]
+    },
+    {
+      "@id": "polmo:CompliancePolicySemanticWork",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "Compliance policy",
+      "rdfs:label": "CompliancePolicySemanticWork",
+      "rdfs:subClassOf": [ 
+      {
+        "@id": "coremo:SemanticWork"
+      },
+      {
+        "@id": "polmo:PolicyConcept"
+      }]
+    }
+  ]
+}

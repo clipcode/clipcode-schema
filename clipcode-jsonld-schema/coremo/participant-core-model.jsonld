@@ -1,0 +1,211 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/schema/coremo/"
+   },
+  "@graph": [
+    {
+      "@id": "coremo:SemanticModel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A semantic model.",
+      "rdfs:label": "SemanticModel",
+      "rdfs:subClassOf":    
+      {
+        "@id": "coremo:Hierarchical"
+      }
+    },
+    {
+      "@id": "coremo:KnowledgeModel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A knowledge model.",
+      "rdfs:label": "KnowledgeModel",
+      "rdfs:subClassOf": {
+        "@id": "coremo:SemanticModel"
+      }
+    },	
+    {
+      "@id": "coremo:CompositeModel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A composite model.",
+      "rdfs:label": "CompositeModel",
+      "rdfs:subClassOf": {
+        "@id": "coremo:SemanticModel"
+      }
+    },
+    {
+      "@id": "coremo:ConstituentModel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A constituent model.",
+      "rdfs:label": "ConstituentModel",
+      "rdfs:subClassOf": {
+        "@id": "coremo:SemanticModel"
+      }
+    },
+    {
+      "@id": "coremo:SemanticWork",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A semantic work that manages a somewhat self-contained representaton of an area of interest.",
+      "rdfs:label": "SemanticWork",
+      "rdfs:subClassOf": {
+        "@id": "schema:CreativeWork"
+      }
+    },
+    {
+      "@id": "coremo:CommunicationModel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A communication model.",
+      "rdfs:label": "CommunicationModel",
+      "rdfs:subClassOf": {
+        "@id": "coremo:ConstituentModel"
+      }
+    },
+    {
+      "@id": "coremo:PipelineModel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A pipeline model.",
+      "rdfs:label": "PipelineModel",
+      "rdfs:subClassOf": {
+        "@id": "coremo:CommunicationModel"
+      }
+    },
+    {
+      "@id": "coremo:CorporateModel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A corporate model.",
+      "rdfs:label": "CorporateModel",
+      "rdfs:subClassOf": {
+        "@id": "coremo:ConstituentModel"
+      }
+    },
+    {
+      "@id": "coremo:ActivityModel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A activity model.",
+      "rdfs:label": "ActivityModel",
+      "rdfs:subClassOf": {
+        "@id": "coremo:CorporateModel"
+      }
+    },
+    {
+      "@id": "coremo:EducationModel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An education model.",
+      "rdfs:label": "EducationModel",
+      "rdfs:subClassOf": {
+        "@id": "coremo:ConstituentModel"
+      }
+    },
+    {
+      "@id": "coremo:MathematicsModel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A mathematics model.",
+      "rdfs:label": "MathematicsModel",
+      "rdfs:subClassOf": {
+        "@id": "coremo:ConstituentModel"
+      }
+    },
+    {
+      "@id": "coremo:AppliedMathematicsModel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An applied mathematics model.",
+      "rdfs:label": "AppliedMathematicsModel",
+      "rdfs:subClassOf": {
+        "@id": "coremo:MathematicsModel"
+      }
+    },
+    {
+      "@id": "coremo:ChangeMathematicsModel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A change mathematics model.",
+      "rdfs:label": "ChangeMathematicsModel",
+      "rdfs:subClassOf": {
+        "@id": "coremo:MathematicsModel"
+      }
+    },
+    {
+      "@id": "coremo:FoundationsMathematicsModel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A foundational mathematics model.",
+      "rdfs:label": "FoundationsMathematicsModel",
+      "rdfs:subClassOf": {
+        "@id": "coremo:MathematicsModel"
+      }
+    },
+    {
+      "@id": "coremo:SpaceMathematicsModel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A space mathematics model.",
+      "rdfs:label": "SpaceMathematicsModel",
+      "rdfs:subClassOf": {
+        "@id": "coremo:MathematicsModel"
+      }
+    },
+    {
+      "@id": "coremo:StructureMathematicsModel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A structure mathematics model.",
+      "rdfs:label": "StructureMathematicsModel",
+      "rdfs:subClassOf": {
+        "@id": "coremo:MathematicsModel"
+      }
+    },
+    {
+      "@id": "coremo:OperationsModel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An operations model.",
+      "rdfs:label": "OperationsModel",
+      "rdfs:subClassOf": {
+        "@id": "coremo:ConstituentModel"
+      }
+    },
+    {
+      "@id": "coremo:IdentityModel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An identity model.",
+      "rdfs:label": "IdentityModel",
+      "rdfs:subClassOf": {
+        "@id": "coremo:OperationsModel"
+      }
+    },
+    {
+      "@id": "coremo:SalesModel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A sales model.",
+      "rdfs:label": "SalesModel",
+      "rdfs:subClassOf": {
+        "@id": "coremo:ConstituentModel"
+      }
+    },
+    {
+      "@id": "coremo:ServicesModel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A services model.",
+      "rdfs:label": "ServicesModel",
+      "rdfs:subClassOf": {
+        "@id": "coremo:ConstituentModel"
+      }
+    },
+    {
+      "@id": "coremo:TechnologyModel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A technology model.",
+      "rdfs:label": "TechnologyModel",
+      "rdfs:subClassOf": {
+        "@id": "coremo:ConstituentModel"
+      }
+    },
+    {
+      "@id": "coremo:DataModel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A data model.",
+      "rdfs:label": "DataModel",
+      "rdfs:subClassOf": {
+        "@id": "coremo:TechnologyModel"
+      }
+    }
+  ]
+}

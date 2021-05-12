@@ -1,0 +1,694 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/schema/coremo/",
+    "appmo":  "https://clipcode.org/base/schema/appmo/"
+  },
+  "@graph": [  
+    {
+      "@id": "appmo:AppConcept",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An app concept",
+      "rdfs:label": "AppConcept",
+      "rdfs:subClassOf": {
+        "@id": "coremo:ActivityConcept"
+      }
+    },
+    {
+      "@id": "appmo:AppModel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An app model",
+      "rdfs:label": "App Model",
+      "rdfs:subClassOf": [
+        {
+          "@id": "coremo:ActivityModel"
+        },
+        {
+          "@id": "appmo:AppConcept"
+        }
+      ]
+    },
+    {
+      "@id": "appmo:AppRealmSemanticWork",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "The hosting realm for one or more microapps.",
+      "rdfs:label": "AppRealmSemanticWork",
+      "rdfs:subClassOf": [
+      {
+        "@id": "appmo:AppConcept"
+      },
+      {
+        "@id": "coremo:SemanticWork"
+      }, 
+      {
+        "@id": "coremo:Iconable"
+      },
+      {
+        "@id": "coremo:Versionable"
+      }
+    ]},  
+    {
+      "@id": "appmo:AppRealmLayout",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "The layout for an app realm.",
+      "rdfs:label": "AppRealmLayout",
+      "rdfs:subClassOf": [  
+      {
+        "@id": "coremo:Derivable"
+      }]
+    },
+    {
+      "@id": "appmo:hasAppRealmLayout",
+      "@type": "rdf:Property",
+      "rdfs:comment": "the app realm layout for an app realm.",
+      "rdfs:label": "hasAppRealmLayout",
+      "schema:domainIncludes": {
+        "@id": "appmo:AppRealmSemanticWork"
+      },
+      "schema:rangeIncludes": {
+        "@id": "appmo:AppRealmLayout"
+      }
+    },
+    {
+      "@id": "appmo:hasAppRealmLayoutSelector",
+      "@type": "rdf:Property",
+      "rdfs:comment": "the app realm layout selector.",
+      "rdfs:label": "hasAppRealmLayoutSelector",
+      "schema:domainIncludes": {
+        "@id": "appmo:AppRealmLayout"
+      },
+      "schema:rangeIncludes": {
+        "@id": "schema:Text"
+      }
+    },
+    {
+      "@id": "appmo:showContentSideNav",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Whether to show the content sidenav.",
+      "rdfs:label": "showContentSideNav",
+      "schema:domainIncludes": {
+        "@id": "appmo:AppRealmLayout"
+      },
+      "schema:rangeIncludes": {
+        "@id": "schema:Boolean"
+      }
+    },
+    {
+      "@id": "appmo:hasThemeColor",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The theme color for this app realm.",
+      "rdfs:label": "hasThemeColor",
+      "schema:domainIncludes": {
+        "@id": "appmo:AppRealmLayout"
+      },
+      "schema:rangeIncludes": {
+        "@id": "schema:Text"
+      }
+    },
+    {
+      "@id": "appmo:hasBackgroundColorDuringLoading",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The background color for this app realm durlng loading (not used afterwards).",
+      "rdfs:label": "hasBackgroundColorDuringLoading",
+      "schema:domainIncludes": {
+        "@id": "appmo:AppRealmLayout"
+      },
+      "schema:rangeIncludes": {
+        "@id": "schema:Text"
+      }
+    },
+    {
+      "@id": "appmo:showToolboxSideNav",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Whether to show the toolbox sidenav.",
+      "rdfs:label": "showToolboxSideNav",
+      "schema:domainIncludes": {
+        "@id": "appmo:AppRealmLayout"
+      },
+      "schema:rangeIncludes": {
+        "@id": "schema:Boolean"
+      }
+    },
+    {
+      "@id": "appmo:showMenubar",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Whether to show the Menubar.",
+      "rdfs:label": "showMenubar",
+      "schema:domainIncludes": {
+        "@id": "appmo:AppRealmLayout"
+      },
+      "schema:rangeIncludes": {
+        "@id": "schema:Boolean"
+      }
+    },
+    {
+      "@id": "appmo:showFilterInMenubar",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Whether to show the filter icon in the Menubar.",
+      "rdfs:label": "showFilterInMenubar",
+      "schema:domainIncludes": {
+        "@id": "appmo:AppRealmLayout"
+      },
+      "schema:rangeIncludes": {
+        "@id": "schema:Boolean"
+      }
+    },
+    {
+      "@id": "appmo:showShareInMenubar",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Whether to show the share icon in the Menubar.",
+      "rdfs:label": "showShareInMenubar",
+      "schema:domainIncludes": {
+        "@id": "appmo:AppRealmLayout"
+      },
+      "schema:rangeIncludes": {
+        "@id": "schema:Boolean"
+      }
+    },
+    {
+      "@id": "appmo:showLoginInMenubar",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Whether to show the login icon in the Menubar.",
+      "rdfs:label": "showLoginInMenubar",
+      "schema:domainIncludes": {
+        "@id": "appmo:AppRealmLayout"
+      },
+      "schema:rangeIncludes": {
+        "@id": "schema:Boolean"
+      }
+    },
+    {
+      "@id": "appmo:AppContentLifecycleEnumeration",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An enumeration type representing how long app content (header  footer) should be displayed.",
+      "rdfs:label": "AppContentLifecycleEnumeration",
+       "rdfs:subClassOf": {
+        "@id": "schema:Enumeration"
+      }
+    },
+    {
+      "@id": "appmo:ShowAlways",
+      "@type": "appmo:AppContentLifecycleEnumeration",
+      "rdfs:comment": "Show this content always.",
+      "rdfs:label": "ShowAlways"
+    },
+    {
+      "@id": "appmo:ShowOnce",
+      "@type": "appmo:AppContentLifecycleEnumeration",
+      "rdfs:comment": "Show this content once.",
+      "rdfs:label": "ShowOnce"
+    },
+    {
+      "@id": "appmo:ShowUntilDismissed",
+      "@type": "appmo:AppContentLifecycleEnumeration",
+      "rdfs:comment": "Show this content until dismissed.",
+      "rdfs:label": "ShowUntilDismissed"
+    },
+    {
+      "@id": "appmo:fromPolicy",
+      "@type": "appmo:AppContentLifecycleEnumeration",
+      "rdfs:comment": "Use policy to decide how long this content ushoould be displayed.",
+      "rdfs:label": "fromPolicy"
+    },
+    {
+      "@id": "appmo:MicroappSemanticWork",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A micro app",
+      "rdfs:label": "MicroappSemanticWork",
+      "rdfs:subClassOf": [       
+      {
+        "@id": "appmo:AppConcept"
+      },
+      {
+        "@id": "coremo:SemanticWork"
+      }, 
+      {
+        "@id": "coremo:HierarchicalParent"
+      }, 
+      {
+        "@id": "coremo:Iconable"
+      }, 
+      {
+        "@id": "coremo:Versionable"
+      }    
+    ]},
+    {
+      "@id": "appmo:AppComposer",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An app composer",
+      "rdfs:label": "AppTabGroup",
+      "rdfs:subClassOf": [            
+      {
+        "@id": "appmo:AppConcept"
+      },     
+      {
+        "@id": "coremo:Hierarchical"
+      } 
+    ]},
+    {
+      "@id": "appmo:AppTabGroupComposer",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An app tab group composer",
+      "rdfs:label": "AppTabGroupComposer",
+      "rdfs:subClassOf": [            
+      {
+        "@id": "appmo:AppComposer"
+      }    
+    ]},
+    {
+      "@id": "appmo:AppPanelComposer",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An app panel composer",
+      "rdfs:label": "AppPanelComposer",
+      "rdfs:subClassOf": [            
+      {
+        "@id": "appmo:AppComposer"
+      }    
+    ]},
+    {
+      "@id": "appmo:AppTabGroup",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An app tab group",
+      "rdfs:label": "AppTabGroup",
+      "rdfs:subClassOf": [            
+      {
+        "@id": "appmo:AppConcept"
+      },
+      {
+        "@id": "coremo:Iconable"
+      }, 
+      {
+        "@id": "coremo:Hierarchical"
+      }     
+    ]},
+    {
+      "@id": "appmo:AppTab",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A apptab",
+      "rdfs:label": "AppTab",
+      "rdfs:subClassOf": [     
+      {
+        "@id": "appmo:AppConcept"
+      },
+      {
+        "@id": "coremo:Hierarchical"
+      }  
+    ]},
+    {
+      "@id": "appmo:AppPanel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An app panel",
+      "rdfs:label": "AppPanel",
+      "rdfs:subClassOf": [     
+      {
+        "@id": "appmo:AppConcept"
+      },       
+      {
+        "@id": "coremo:Hierarchical"
+      }     
+    ]},
+    {
+      "@id": "appmo:appTabForTabGroup",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The tab for this tab group",
+      "rdfs:label": "appTabForTabGroup",
+      "schema:domainIncludes": {
+        "@id": "appmo:AppTab"
+      },
+      "schema:rangeIncludes": {
+        "@id": "appmo:AppTabGroup"
+      }
+    },
+    {
+      "@id": "appmo:appPanelForTab",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The panel for this tab",
+      "rdfs:label": "appPanelForTab",
+      "schema:domainIncludes": {
+        "@id": "appmo:AppPanel"
+      },
+      "schema:rangeIncludes": {
+        "@id": "appmo:AppTab"
+      }
+    },
+    {
+      "@id": "appmo:showTabsIfSingleTab",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Whether to show the list of tabs if there is only one tab",
+      "rdfs:label": "showTabGroupIfSingleTab",
+      "schema:domainIncludes": {
+        "@id": "appmo:AppTabGroup"
+      },
+      "schema:rangeIncludes": {
+        "@id": "schema:Boolean"
+      }
+    },
+    {
+      "@id": "appmo:isDefaultTab",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The default tab for this tab group",
+      "rdfs:label": "isDefaultTab",
+      "schema:domainIncludes": {
+        "@id": "appmo:AppTab"
+      },
+      "schema:rangeIncludes": {
+        "@id": "schema:Boolean"
+      }
+    },
+    {
+      "@id": "appmo:AppEditor",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An app editor (edits a knowledge model)",
+      "rdfs:label": "AppEditor",
+      "rdfs:subClassOf": [     
+      {
+        "@id": "appmo:AppConcept"
+      }  
+    ]},
+    {
+      "@id": "appmo:AppPresenter",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A apptab",
+      "rdfs:label": "AppPresenter",
+      "rdfs:subClassOf": [     
+      {
+        "@id": "appmo:AppConcept"
+      }  
+    ]},
+    {
+      "@id": "appmo:AppPresenterCreate",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A apptab",
+      "rdfs:label": "AppPresenterCreate",
+      "rdfs:subClassOf": [     
+      {
+        "@id": "appmo:AppPresenter"
+      }  
+    ]},
+    {
+      "@id": "appmo:AppPresenterExplore",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A apptab",
+      "rdfs:label": "AppPresenterExplore",
+      "rdfs:subClassOf": [     
+      {
+        "@id": "appmo:AppPresenter"
+      }  
+    ]},
+    {
+      "@id": "appmo:AppPresenterExploreList",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A AppPresenterExploreList",
+      "rdfs:label": "AppPresenterExploreList",
+      "rdfs:subClassOf": [     
+      {
+        "@id": "appmo:AppPresenterExplore"
+      }  
+    ]},
+    {
+      "@id": "appmo:AppPresenterExploreMap",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A AppPresenterExploreMap",
+      "rdfs:label": "AppPresenterExploreMap",
+      "rdfs:subClassOf": [     
+      {
+        "@id": "appmo:AppPresenterExplore"
+      }  
+    ]},
+    {
+      "@id": "appmo:AppPresenterAnalytics",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A apptab",
+      "rdfs:label": "AppPresenterAnalytics",
+      "rdfs:subClassOf": [     
+      {
+        "@id": "appmo:AppPresenter"
+      }  
+    ]},
+    {
+      "@id": "appmo:AppPresenterData",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A apptab",
+      "rdfs:label": "AppPresenterData",
+      "rdfs:subClassOf": [     
+      {
+        "@id": "appmo:AppPresenter"
+      }  
+    ]},
+    {
+      "@id": "appmo:AppPresenterDesign",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A apptab",
+      "rdfs:label": "AppPreAppPresenterDesign",
+      "rdfs:subClassOf": [     
+      {
+        "@id": "appmo:AppPresenter"
+      }  
+    ]},
+    {
+      "@id": "appmo:AppPresenterAdmin",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A apptab",
+      "rdfs:label": "AppPresenterAdmin",
+      "rdfs:subClassOf": [     
+      {
+        "@id": "appmo:AppPresenter"
+      }  
+    ]},
+    {
+      "@id": "appmo:AppContentSemanticWork",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "The app content (sidenav content, header and footer)",
+      "rdfs:label": "AppContent",
+      "rdfs:subClassOf": [     
+      {
+        "@id": "appmo:AppConcept"
+      },
+      {
+        "@id": "coremo:SemanticWork"
+      }   
+    ]},
+    {
+      "@id": "appmo:AppSidenav",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "The app sidenav",
+      "rdfs:label": "AppSidenav",
+      "rdfs:subClassOf": [     
+      {
+        "@id": "appmo:AppConcept"
+      }   
+    ]},
+    {
+      "@id": "appmo:AppHeader",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "The app header",
+      "rdfs:label": "AppHeader",
+      "rdfs:subClassOf": [     
+      {
+        "@id": "appmo:AppConcept"
+      }   
+    ]},
+    {
+      "@id": "appmo:AppFooter",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "the app footer",
+      "rdfs:label": "AppFooter",
+      "rdfs:subClassOf": [            
+      {
+        "@id": "appmo:AppConcept"
+      }   
+    ]},
+    {
+      "@id": "appmo:hasContentModel",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The content model for the resource.",
+      "rdfs:label": "hasContentModel",
+      "schema:domainIncludes": [{
+        "@id": "appmo:AppSidenav"
+      },
+      {
+        "@id": "appmo:AppHeader"
+      },
+      {
+        "@id": "appmo:AppFooter"
+      }],
+      "schema:rangeIncludes": {
+        "@id": "schema:URL"
+      }
+    },
+    {
+      "@id": "appmo:hasAppContent",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The side nav content for this microapp/app realm",
+      "rdfs:label": "hasAppContent",
+      "schema:domainIncludes": 
+      [
+        {
+        "@id": "appmo:MicroappSemanticWork"
+        },
+        {
+          "@id": "appmo:AppRealmSemanticWork"
+        }
+      ],
+      "schema:rangeIncludes": {
+        "@id": "appmo:AppHeader"
+      }
+    },
+    {
+      "@id": "appmo:hasAppHeader",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The app header for this microapp",
+      "rdfs:label": "hasAppHeader",
+      "schema:domainIncludes": 
+      [
+        {
+        "@id": "appmo:MicroappSemanticWork"
+        },
+        {
+          "@id": "appmo:AppRealmSemanticWork"
+        }
+      ],
+      "schema:rangeIncludes": {
+        "@id": "appmo:AppHeader"
+      }
+    },
+    {
+      "@id": "appmo:hasAppFooter",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The app footer for this microapp",
+      "rdfs:label": "hasAppFooter",
+      "schema:domainIncludes": {
+        "@id": "appmo:MicroappSemanticWork"
+      },
+      "schema:rangeIncludes": {
+        "@id": "appmo:AppFooter"
+      }
+    },
+    {
+      "@id": "appmo:contentLifecycleForAppContent",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The content lifecycle setting for the app header",
+      "rdfs:label": "contentLifecycleForAppHeader",
+      "schema:domainIncludes": {
+        "@id": "appmo:AppContentSemanticWork"
+      },
+      "schema:rangeIncludes": {
+        "@id": "appmo:AppContentLifecycleEnumeration"
+      }
+    },  
+    {
+      "@id": "appmo:dismissTextForAppContent",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The text to display when manually dismissing content",
+      "rdfs:label": "dismissTextForAppContent",
+      "schema:domainIncludes": {
+        "@id": "appmo:AppContentSemanticWork"
+      },
+      "schema:rangeIncludes": {
+        "@id": "schema:Text"
+      }
+    }, 
+    {
+      "@id": "appmo:dismissRevisionForAppContent",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The revision number of the dismissal (allows content to be updated, and only selectively decide if new dismissal request needed)",
+      "rdfs:label": "dismissRevisionForAppContent",
+      "schema:domainIncludes": {
+        "@id": "appmo:AppContentSemanticWork"
+      },
+      "schema:rangeIncludes": {
+        "@id": "schema:Text"
+      }
+    },
+    {
+      "@id": "appmo:dismissCrossForAppContent",
+      "@type": "rdf:Property",
+      "rdfs:comment": "whether to dismiss a 'x' symbol to dismiss this app content",
+      "rdfs:label": "dismissCrossForAppContent",
+      "schema:domainIncludes": {
+        "@id": "appmo:AppContentSemanticWork"
+      },
+      "schema:rangeIncludes": {
+        "@id": "schema:Boolean"
+      }
+    }, 
+    {
+      "@id": "appmo:AppPublishingProfileSemanticWork",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An app publishing profile",
+      "rdfs:label": "AppPublishingProfile",
+      "rdfs:subClassOf": [       
+      {
+        "@id": "coremo:SemanticWork"
+      }, 
+      {
+        "@id": "appmo:AppConcept"
+      },       
+      {
+        "@id": "coremo:HierarchicalParent"
+      }     
+    ]},
+    {
+      "@id": "appmo:appPublishingProfileAppliesTo",
+      "@type": "rdf:Property",
+      "rdfs:comment": "This publishing profiles applies to app realms and microapps.",
+      "rdfs:label": "appPublishingProfileAppliesTo",
+      "schema:domainIncludes": 
+      {
+        "@id": "appmo:AppPublishingProfileSemanticWork"
+      },
+      "schema:rangeIncludes":
+      [{
+        "@id": "appmo:AppRealmSemanticWork"
+      },
+      {
+        "@id": "appmo:MicroappSemanticWork"
+      }]
+    },
+    {
+      "@id": "appmo:AppPublishingTargetProfile",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An app publishing target",
+      "rdfs:label": "AppPublishingTargetProfile",
+      "rdfs:subClassOf": [     
+      {
+        "@id": "appmo:AppConcept"
+      },
+      {
+        "@id": "coremo:HierarchicalChild"
+      }     
+    ]},
+    {
+      "@id": "appmo:AppPublisherProfile",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An app profile",
+      "rdfs:label": "AppProfile",
+      "rdfs:subClassOf": [     
+      {
+        "@id": "appmo:AppConcept"
+      },
+      {
+        "@id": "coremo:HierarchicalChild"
+      }     
+    ]},
+    {
+      "@id": "appmo:contentForAppPublishingProfile",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The content for the app publisher profile",
+      "rdfs:label": "contentForAppPublisherProfile",
+      "schema:domainIncludes": [{
+        "@id": "appmo:AppPublisherProfile"
+      },
+      {
+        "@id": "appmo:AppPublishingTargetProfile"
+      }], 
+      "schema:rangeIncludes": {
+        "@id": "schema:URL"
+      }
+    }
+  ]
+}

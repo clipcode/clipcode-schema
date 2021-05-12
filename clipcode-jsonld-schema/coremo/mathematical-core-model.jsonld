@@ -1,0 +1,161 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/schema/coremo/"
+  },
+  "@graph": [
+    {
+      "@id": "coremo:MathematicalCoreConcept",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A characteristic core concept",
+      "rdfs:label": "CharacteristicCoreConcept",
+      "rdfs:subClassOf": {
+        "@id": "coremo:CoreConcept"
+      }
+    },
+    {
+      "@id": "coremo:MathematicalExpression",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A mathematical expression",
+      "rdfs:label": "MathematicalExpression",
+      "rdfs:subClassOf": {
+        "@id": "coremo:MathematicalCoreConcept"
+      }
+    },
+    {
+      "@id": "coremo:MathematicalObject",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A mathematical object",
+      "rdfs:label": "MathematicalObject",
+      "rdfs:subClassOf": {
+        "@id": "coremo:MathematicalCoreConcept"
+      }
+    },
+    {
+      "@id": "coremo:MathematicalFunction",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A mathematical function",
+      "rdfs:label": "MathematicalFunction",
+      "rdfs:subClassOf": {
+        "@id": "coremo:MathematicalObject"
+      }
+    },
+    {
+      "@id": "coremo:MathematicalRelation",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A mathematical relation",
+      "rdfs:label": "MathematicalRelation",
+      "rdfs:subClassOf": {
+      "@id": "coremo:MathematicalObject"
+      }
+    },
+    {
+      "@id": "coremo:MathematicalStructure",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A mathematical structure",
+      "rdfs:label": "MathematicalStructure",
+      "rdfs:subClassOf": {
+        "@id": "coremo:MathematicalObject"
+      }
+    },
+    {
+      "@id": "coremo:MathematicalSequence",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A mathematical sequence",
+      "rdfs:label": "MathematicalSequence",
+      "rdfs:subClassOf": {
+        "@id": "coremo:MathematicalStructure"
+      }
+    },
+    {
+      "@id": "coremo:MathematicalSequenceTerm",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A term in a mathematical sequence",
+      "rdfs:label": "MathematicalSequenceTerm",
+      "rdfs:subClassOf": [
+        {
+          "@id": "coremo:Sequential"
+        },
+        {
+          "@id": "coremo:MathematicalCoreConcept"
+        }
+      ]
+    },
+    {
+      "@id": "coremo:MathematicalSet",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A mathematical set",
+      "rdfs:label": "MathematicalSet",
+      "rdfs:subClassOf": {
+        "@id": "coremo:MathematicalStructure"
+      }
+    },
+    {
+      "@id": "coremo:MathematicalTheorem",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A mathematical theorem",
+      "rdfs:label": "MathematicalTheorem",
+      "rdfs:subClassOf": {
+        "@id": "coremo:MathematicalObject"
+      }
+    },
+    {
+      "@id": "coremo:MathematicalProof",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A mathematical proof",
+      "rdfs:label": "MathematicalProof",
+      "rdfs:subClassOf": {
+        "@id": "coremo:MathematicalObject"
+      }
+    },
+    {
+      "@id": "coremo:MathematicalTheory",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A mathematical theory",
+      "rdfs:label": "MathematicalTheory",
+      "rdfs:subClassOf": {
+        "@id": "coremo:MathematicalObject"
+      }
+    },
+    {
+      "@id": "coremo:MathematicalOperation",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A mathematical operation",
+      "rdfs:label": "MathematicalOperation",
+      "rdfs:subClassOf": {
+        "@id": "coremo:MathematicalCoreConcept"
+      }
+    },
+    {
+      "@id": "coremo:MathematicalProperty",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A mathematical property",
+      "rdfs:label": "MathematicalProperty",
+      "rdfs:subClassOf": {
+        "@id": "coremo:MathematicalCoreConcept"
+      }
+    },
+    {
+      "@id": "coremo:MathematicalVariable",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A mathematical variable",
+      "rdfs:label": "MathematicalVariable",
+      "rdfs:subClassOf": {
+        "@id": "coremo:MathematicalCoreConcept"
+      }
+    },
+    {
+      "@id": "coremo:MathematicalFormula",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A mathematical formula",
+      "rdfs:label": "MathematicalFormula",
+      "rdfs:subClassOf": {
+        "@id": "coremo:MathematicalCoreConcept"
+      }
+    }
+  ]
+}

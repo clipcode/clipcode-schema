@@ -1,0 +1,209 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/schema/coremo/",
+    "polmo":   "https://clipcode.org/base/schema/polmo/",
+    "dirmo": "https://clipcode.org/base/schema/dirmo/",
+    "fomo": "https://clipcode.org/base/schema/fomo/"
+  },
+  "@graph": [
+	  {
+      "@id": "fomo:FormConcept",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A form concept",
+      "rdfs:label": "Form Concept",
+      "rdfs:subClassOf": {
+        "@id": "coremo:PipelineConcept"
+      }
+    },
+	  {
+      "@id": "fomo:FormModel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A form model",
+      "rdfs:label": "Form Model",
+      "rdfs:subClassOf": [
+        {
+          "@id": "coremo:PipelineModel"
+        },
+        {
+          "@id": "fomo:FormConcept"
+        }
+      ]
+    },
+    {
+      "@id": "fomo:FormDesignSemanticWork",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A form design",
+      "rdfs:label": "FormDesign",
+      "rdfs:subClassOf": [
+        {
+          "@id": "coremo:SemanticWork"
+        },
+        {
+          "@id": "fomo:FormConcept"
+      }]
+    },
+    {
+      "@id": "fomo:FormDesignSemanticWorkGroup",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A group of questions within a form",
+      "rdfs:label": "Form Group",
+      "rdfs:subClassOf": {
+        "@id": "fomo:FormConcept"
+      }
+    },
+    {
+      "@id": "fomo:FormDesignSemanticWorkQuestion",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A question on the electronic form",
+      "rdfs:label": "Form Question",
+      "rdfs:subClassOf": {
+        "@id": "fomo:FormConcept"
+      }
+    },
+    {
+      "@id": "fomo:FormDesignSemanticWorkChoice",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A choice that is partr of a one or multi-choice answer",
+      "rdfs:label": "Form Choice",
+      "rdfs:subClassOf": {
+        "@id": "fomo:FormConcept"
+      }
+    },
+    {
+      "@id": "fomo:choiceTitle",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The title of this choice",
+      "rdfs:label": "choiceTitle",
+      "schema:domainIncludes": {
+        "@id": "fomo:FormDesignSemanticWorkChoice"
+      },
+      "schema:rangeIncludes": {
+        "@id": "schema:Text"
+      }
+    },
+    {
+      "@id": "fomo:choiceIndex",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The index of this choice",
+      "rdfs:label": "choiceIndex",
+      "schema:domainIncludes": {
+        "@id": "fomo:FormDesignSemanticWorkChoice"
+      },
+      "schema:rangeIncludes": {
+        "@id": "schema:Text"
+      }
+    },
+    {
+      "@id": "fomo:choiceExtraText",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Extra text for this choice",
+      "rdfs:label": "choiceExtraText",
+      "schema:domainIncludes": {
+        "@id": "fomo:FormDesignSemanticWorkChoice"
+      },
+      "schema:rangeIncludes": {
+        "@id": "schema:Text"
+      }
+    },
+    {
+      "@id": "fomo:ConditionalOperationEnumeration",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "ConditionalOperationEnumeration is an enumeration type representing conitional op.",
+      "rdfs:label": "ConditionalOperationEnumeration",
+       "rdfs:subClassOf": { 
+        "@id": "schema:Enumeration"
+      }
+    },
+    {
+      "@id": "fomo:equalsConditionalOp",
+      "@type": "fomo:ConditionalOperationEnumeration",
+      "rdfs:comment": "equals conditional op.",
+      "rdfs:label": "equalsConditionalOp"
+    },
+    {
+      "@id": "fomo:equalsOrLessConditionalOp",
+      "@type": "fomo:ConditionalOperationEnumeration",
+      "rdfs:comment": "equalsOrLess conditional op.",
+      "rdfs:label": "eualsOrLessConditionalOp"
+    },
+    {
+      "@id": "fomo:equalsOrMoreConditionalOp",
+      "@type": "fomo:ConditionalOperationEnumeration",
+      "rdfs:comment": "equalsOrMore conditional op.",
+      "rdfs:label": "equalsOrMoreConditionalOp"
+    },
+    {
+      "@id": "fomo:notEqualsConditionalOp",
+      "@type": "fomo:ConditionalOperationEnumeration",
+      "rdfs:comment": "notEquals conditional op.",
+      "rdfs:label": "notEqualsConditionalOp"
+    },
+    {
+      "@id": "fomo:moreConditionalOp",
+      "@type": "fomo:ConditionalOperationEnumeration",
+      "rdfs:comment": "more conditional op.",
+      "rdfs:label": "moreConditionalOp"
+    },
+    {
+      "@id": "fomo:lessConditionalOp",
+      "@type": "fomo:ConditionalOperationEnumeration",
+      "rdfs:comment": "less conditional op.",
+      "rdfs:label": "lessConditionalOp"
+    },
+    {
+      "@id": "fomo:AlwaysShowConditionalOp",
+      "@type": "fomo:ConditionalOperationEnumeration",
+      "rdfs:comment": "AlwaysShow conditional op.",
+      "rdfs:label": "AlwaysShowConditionalOp"
+    },
+    {
+      "@id": "fomo:AlwaysHideConditionalOp",
+      "@type": "fomo:ConditionalOperationEnumeration",
+      "rdfs:comment": "AlwaysHide conditional op.",
+      "rdfs:label": "AlwaysHideConditionalOp"
+    },
+    {
+      "@id": "fomo:NotEqualsNotZeroConditionalOp",
+      "@type": "fomo:ConditionalOperationEnumeration",
+      "rdfs:comment": "NotEqualsNotZero conditional op.",
+      "rdfs:label": "NotEqualsNotZeroConditionalOp"
+    },
+    {
+      "@id": "fomo:LogicConditionalOp",
+      "@type": "fomo:ConditionalOperationEnumeration",
+      "rdfs:comment": "Logic conditional op.",
+      "rdfs:label": "LogicConditionalOp"
+    },
+    {
+      "@id": "fomo:FormResponseSemanticWork",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A response to an electronic form",
+      "rdfs:label": "FormResponse",
+      "rdfs:subClassOf": [
+      {
+        "@id": "coremo:SemanticWork"
+      },
+      {
+        "@id": "fomo:FormConcept"
+      }]
+    },
+    {
+      "@id": "fomo:FormAdminSemanticWork",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "Admin settings for a form",
+      "rdfs:label": "FormAdmin",
+      "rdfs:subClassOf": [
+      {
+        "@id": "coremo:SemanticWork"
+      },
+      {
+        "@id": "fomo:FormConcept"
+      }]
+    }
+  ]
+}
