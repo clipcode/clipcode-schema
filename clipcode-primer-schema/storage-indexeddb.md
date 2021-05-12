@@ -1,5 +1,5 @@
 # IndexedDB
-[BACK](semantic-core-model.md) - [NEXT](storage-cache-api.md) - [INTRO](readme.md)
+[BACK](schema-org.md) - [NEXT](storage-cache-api.md) - [INTRO](readme.md)
 
 For most scenarios where modern web apps / PWAs need persisent storage client-side (beyond the lifetime of the current browsing session), IndexedDB is what should be used. The spec is here:
 * [Indexed Database API ](https://www.w3.org/TR/IndexedDB)
@@ -375,4 +375,4 @@ interface IDBIndex {
 }
 ````
 
-[BACK](semantic-core-model.md) - [NEXT](storage-cache-api.md) - [INTRO](readme.md)
+[BACK](schema-org.md) - [NEXT](storage-cache-api.md) - [INTRO](readme.md)
