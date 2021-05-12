@@ -1,6 +1,6 @@
 # clipcode-schema
 Clipcode Schema provides helpful material for constructing semantic models based on 
-[Clipcode Standards](https://clipcode/org/standards)
+[Clipcode Standards](https://clipcode.org/standards)
 
 [Clipode JSONLD Schema](clipcode-jsonld-schema) contains the JSON-LD files reprsenting the schema. 
 
