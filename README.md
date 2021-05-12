@@ -1,0 +1,2 @@
+# clipcode-schema
+ Semantic Models
