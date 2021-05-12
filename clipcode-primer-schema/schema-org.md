@@ -1,6 +1,6 @@
 # Schema.org
 
-[BACK](schema-json-ld.md) - [NEXT](semantic-core-model-primer.md) - [INTRO](readme.md)
+[BACK](schema-json-ld.md) - [NEXT](storage-indexeddb.md) - [INTRO](readme.md)
 
 There is a common set of constructs that are very frequently needed when describing any body of knowledge, such as Person, Organization, CreativeWork (book, film), Place or Product, and rather that each developer team create their own in-compatible representation, it makes a whole lot of sense to come up with a shared representation that everyone uses. schema.org is that shared representation. Schema.org is supported by Google, Microsoft, Pinterest and more. [Even Apple recommends it: ](https://developer.apple.com/library/archive/documentation/General/Conceptual/AppSearch/WebContent.html)
   "use standards-based markup for structured data, such as that defined at Schema.org. "
@@ -134,4 +134,4 @@ Calling `JSON.stringify()` on this produces the following result:
 The Google developer behind Schema-DTS has written a number of very interesting blog posts about it:
 [https://blog.eyas.sh/tag/schema-org/](https://blog.eyas.sh/tag/schema-org/)
 
-[BACK](schema-json-ld.md) - [NEXT](semantic-core-model-primer.md) - [INTRO](readme.md)
+[BACK](schema-json-ld.md) - [NEXT](storage-indexeddb.md) - [INTRO](readme.md)

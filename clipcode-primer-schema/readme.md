@@ -12,11 +12,11 @@ JSON-LD is one (excellent) way of representing an RDF knowledge graph. JSON-LD r
 
 Schema.org is a collection of types for commonly needed constructs (e.g. [Person](https://schema.org/Person), [Organization](https://schema.org/Organization), [Place](https://schema.org/Place), [CreativeWork](https://schema.org/CreativeWork), [Action](https://schema.org/Action)) that most knowledge graphs require and it is sensible to come up with a shared representation of these for all to use, rather than each enterprise designing their own incompatible version. It supports a number of data interchange formats, with the most widely used (and recommended for the future) being JSON-LD. Let's explore each of these more:
 
-[JSON](json.md)
+[JSON](schema-json.md)
 
-[RDF](rdf.md)
+[RDF](schema-rdf.md)
 
-[JSON-LD](json-ld.md)
+[JSON-LD](schema-json-ld.md)
 
 [Schema.org](schema-org.md)
 
