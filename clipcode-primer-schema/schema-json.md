@@ -1,6 +1,6 @@
 # JSON (Just a Simple Object Notation)
 
-[BACK](intro.md) - [NEXT](schema-rdf.md) - [INTRO](readme.md)
+[BACK](readme.md) - [NEXT](schema-rdf.md) - [INTRO](readme.md)
 
 ## Overview
 JSON is a text-based data interchange format. If you wish to share data between two blocks of code (written in the same or different programming languages), whether located on the same machine or distributed half-way across the world, JSON is often your first format choice for a variety of reasons, including:
@@ -340,4 +340,4 @@ null
 ### Notes 
 Note that both TypeScript/JavaScript and JSON support null. However, though TypeScript/JavaScript support undefined, JSON does not. If representing an object in JSON and you have some property that is undefined, simply omit it. When this JSON is loaded into TypeScript/JavaScript, it becomes undefined. If you have an object in TypeScript/JavaScript that has a property with a value of undefined, when this gets serialized to JSON it is represented as null.   
 
-[BACK](intro.md) - [NEXT](schema-rdf.md) - [INTRO](readme.md)
+[BACK](readme.md) - [NEXT](schema-rdf.md) - [INTRO](readme.md)
