@@ -23,7 +23,7 @@ Schema.org is a collection of types for commonly needed constructs (e.g. [Person
 ## Storing Data
 These semantic models need to be stored. Many technologies are used in the cloud for storage and they vary widely depending on the stack in use (e.g. .NET, Node, Java, Go, custom). Often the JSON received in the cloud is transformed into another format (e.g. binary) for faster processing and where server-side optimizations and powerful database server engines may be used. What happens on the client is more standardized. In a modern browser environment (both when dealing with regular websites and with PWAs), there are two recommended standard ways to persist data locally (beyond the lifetime of the current browsing session) - IndexedDB and Cache API: 
 
-[IndexedDB](storage-indexed-db.md)
+[IndexedDB](storage-indexeddb.md)
 
 [Cache API](storage-cache-api.md)
 
