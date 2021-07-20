@@ -5,7 +5,7 @@
     "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
     "schema": "https://schema.org/",
 
-    "coremo": "https://clipcode.org/base/schema/coremo/"
+    "coremo": "https://clipcode.org/base/concept/coremo/"
   },
   "@graph": [
     {

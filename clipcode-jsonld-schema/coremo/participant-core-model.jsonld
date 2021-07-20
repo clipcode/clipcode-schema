@@ -5,7 +5,7 @@
     "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
     "schema": "https://schema.org/",
 
-    "coremo": "https://clipcode.org/base/schema/coremo/"
+    "coremo": "https://clipcode.org/base/concept/coremo/"
    },
   "@graph": [
     {
@@ -23,9 +23,14 @@
       "@type": "rdfs:Class",
       "rdfs:comment": "A knowledge model.",
       "rdfs:label": "KnowledgeModel",
-      "rdfs:subClassOf": {
-        "@id": "coremo:SemanticModel"
-      }
+      "rdfs:subClassOf": [
+        {
+          "@id": "coremo:SemanticModel"
+        },
+        {
+          "@id": "schema:CreativeWork"
+        }
+      ]
     },	
     {
       "@id": "coremo:CompositeModel",
@@ -46,13 +51,13 @@
       }
     },
     {
-      "@id": "coremo:SemanticWork",
+      "@id": "coremo:SemanticPool",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A semantic work that manages a somewhat self-contained representaton of an area of interest.",
-      "rdfs:label": "SemanticWork",
+      "rdfs:comment": "A pool of semantic resources that manages a somewhat self-contained representaton of an area of interest.",
+      "rdfs:label": "SemanticPool",
       "rdfs:subClassOf": {
-        "@id": "schema:CreativeWork"
-      }
+          "@id": "coremo:HierarchicalParent"
+      }      
     },
     {
       "@id": "coremo:CommunicationModel",
@@ -172,6 +177,33 @@
       }
     },
     {
+      "@id": "coremo:CloudModel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A cloud model.",
+      "rdfs:label": "CloudModel",
+      "rdfs:subClassOf": {
+        "@id": "coremo:OperationsModel"
+      }
+    },
+    {
+      "@id": "coremo:DevOpsModel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A DevOps model.",
+      "rdfs:label": "DevOpsModel",
+      "rdfs:subClassOf": {
+        "@id": "coremo:OperationsModel"
+      }
+    },
+    {
+      "@id": "coremo:IntegrationModel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An integration model.",
+      "rdfs:label": "IntegrationModel",
+      "rdfs:subClassOf": {
+        "@id": "coremo:OperationsModel"
+      }
+    },
+    {
       "@id": "coremo:SalesModel",
       "@type": "rdfs:Class",
       "rdfs:comment": "A sales model.",
@@ -199,10 +231,46 @@
       }
     },
     {
-      "@id": "coremo:DataModel",
+      "@id": "coremo:CodeModel",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A data model.",
-      "rdfs:label": "DataModel",
+      "rdfs:comment": "A code model.",
+      "rdfs:label": "CodeModel",
+      "rdfs:subClassOf": {
+        "@id": "coremo:TechnologyModel"
+      }
+    },
+    {
+      "@id": "coremo:ComputeModel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A compute model.",
+      "rdfs:label": "ComputeModel",
+      "rdfs:subClassOf": {
+        "@id": "coremo:TechnologyModel"
+      }
+    },
+    {
+      "@id": "coremo:StorageModel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A storage model.",
+      "rdfs:label": "StorageModel",
+      "rdfs:subClassOf": {
+        "@id": "coremo:TechnologyModel"
+      }
+    },
+    {
+      "@id": "coremo:NetworkingModel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A networking model.",
+      "rdfs:label": "NetworkingModel",
+      "rdfs:subClassOf": {
+        "@id": "coremo:TechnologyModel"
+      }
+    },
+    {
+      "@id": "coremo:UXModel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A UX model.",
+      "rdfs:label": "UXModel",
       "rdfs:subClassOf": {
         "@id": "coremo:TechnologyModel"
       }

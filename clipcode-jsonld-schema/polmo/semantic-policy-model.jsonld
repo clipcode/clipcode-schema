@@ -5,8 +5,8 @@
     "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
     "schema": "https://schema.org/",
 
-    "coremo": "https://clipcode.org/base/schema/coremo/",
-    "polmo":   "https://clipcode.org/base/schema/polmo/"
+    "coremo": "https://clipcode.org/base/concept/coremo/",
+    "polmo":   "https://clipcode.org/base/concept/polmo/"
   },
   "@graph": [  
     {
@@ -31,13 +31,13 @@
       }]
     },
     {
-      "@id": "polmo:PolicyDesignSemanticWork",
+      "@id": "polmo:PolicyDesignSemanticPool",
       "@type": "rdfs:Class",
       "rdfs:comment": "A policy design",
-      "rdfs:label": "PolicyDesignSemanticWork",
+      "rdfs:label": "PolicyDesignSemanticPool",
       "rdfs:subClassOf": [ 
         {
-          "@id": "coremo:SemanticWork"
+          "@id": "coremo:SemanticPool"
         },
         {
           "@id": "coremo:Revisible"
@@ -53,7 +53,7 @@
       "rdfs:comment": "Provenance of this policy design (app, org, ..)",
       "rdfs:label": "provenance",
       "schema:domainIncludes": {
-        "@id": "polmo:PolicyDesignSemanticWork"
+        "@id": "polmo:PolicyDesignSemanticPool"
       },
       "schema:rangeIncludes": {
         "@id": "schema:URL"
@@ -269,13 +269,13 @@
       }
     },
     {
-      "@id": "polmo:PolicyTransformSemanticWork",
+      "@id": "polmo:PolicyTransformSemanticPool",
       "@type": "rdfs:Class",
       "rdfs:comment": "A policy transform",
-      "rdfs:label": "PolicyTransformSemanticWork",
+      "rdfs:label": "PolicyTransformSemanticPool",
       "rdfs:subClassOf": [ 
       {
-        "@id": "coremo:SemanticWork"
+        "@id": "coremo:SemanticPool"
       },
       {
         "@id": "polmo:PolicyConcept"
@@ -307,13 +307,13 @@
       }]
     },
     {
-      "@id": "polmo:EffectivePolicySemanticWork",
+      "@id": "polmo:EffectivePolicySemanticPool",
       "@type": "rdfs:Class",
       "rdfs:comment": "Effective policy",
-      "rdfs:label": "EffectivePolicySemanticWork",
+      "rdfs:label": "EffectivePolicySemanticPool",
       "rdfs:subClassOf": [ 
       {
-        "@id": "coremo:SemanticWork"
+        "@id": "coremo:SemanticPool"
       },
       {
         "@id": "polmo:PolicyConcept"
@@ -330,13 +330,13 @@
       }]
     },
     {
-      "@id": "polmo:CompliancePolicySemanticWork",
+      "@id": "polmo:CompliancePolicySemanticPool",
       "@type": "rdfs:Class",
       "rdfs:comment": "Compliance policy",
-      "rdfs:label": "CompliancePolicySemanticWork",
+      "rdfs:label": "CompliancePolicySemanticPool",
       "rdfs:subClassOf": [ 
       {
-        "@id": "coremo:SemanticWork"
+        "@id": "coremo:SemanticPool"
       },
       {
         "@id": "polmo:PolicyConcept"

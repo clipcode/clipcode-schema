@@ -1,0 +1,102 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/concept/coremo/",
+    "repmo":  "https://clipcode.org/base/concept/repmo/"
+  },
+  "@graph": [  
+    {
+      "@id": "repmo:ReportConcept",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A report concept",
+      "rdfs:label": "ReportConcept",
+      "rdfs:subClassOf": {
+        "@id": "coremo:ActivityConcept"
+      }
+    },
+    {
+      "@id": "repmo:ReportModel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A report model",
+      "rdfs:label": "ReportModel",
+      "rdfs:subClassOf": [
+        {
+          "@id": "coremo:ActivityModel"
+        },
+        {
+          "@id": "repmo:ReportConcept"
+        }
+      ]
+    },
+    {
+      "@id": "repmo:DefinitionReportConcept",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A report definition concept.",
+      "rdfs:label": "DefinitionReportConcept",
+      "rdfs:subClassOf": [
+        {
+          "@id": "coremo:ActivityModel"
+        },
+        {
+          "@id": "repmo:ReportConcept"
+        }
+      ]
+    },
+    {
+      "@id": "repmo:ProductionReportConcept",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A report production concept.",
+      "rdfs:label": "ProductionReportConcept",
+      "rdfs:subClassOf": [
+        {
+          "@id": "coremo:ActivityModel"
+        },
+        {
+          "@id": "repmo:ReportConcept"
+        }
+      ]
+    },    
+    {
+      "@id": "repmo:DefinitionSemanticPool",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A report definition semantic pool",
+      "rdfs:label": "DefinitionSemanticPool",
+      "rdfs:subClassOf": [       
+      {
+        "@id": "repmo:DefinitionReportConcept"
+      },
+      {
+        "@id": "coremo:SemanticPool"
+      }, 
+      {
+        "@id": "coremo:Iconable"
+      }, 
+      {
+        "@id": "coremo:Versionable"
+      }    
+    ]},
+    {      
+      "@id": "repmo:ProductionSemanticPool",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A report production semantic pool",
+      "rdfs:label": "ProductionSemanticPool",
+      "rdfs:subClassOf": [       
+      {
+        "@id": "repmo:ProductionReportConcept"
+      },
+      {
+        "@id": "coremo:SemanticPool"
+      }, 
+      {
+        "@id": "coremo:Iconable"
+      }, 
+      {
+        "@id": "coremo:Versionable"
+      }    
+    ]}
+  ]
+}

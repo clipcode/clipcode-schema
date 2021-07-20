@@ -1,0 +1,199 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/concept/coremo/",
+    "stylemo":  "https://clipcode.org/base/concept/stylemo/"
+  },
+  "@graph": [  
+    {
+      "@id": "stylemo:StyleConcept",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A style concept",
+      "rdfs:label": "StyleConcept",
+      "rdfs:subClassOf": {
+        "@id": "coremo:ActivityConcept"
+      }
+    },
+    {
+      "@id": "stylemo:StyleModel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A style model",
+      "rdfs:label": "StyleModel",
+      "rdfs:subClassOf": [
+        {
+          "@id": "coremo:ActivityModel"
+        },
+        {
+          "@id": "stylemo:StyleConcept"
+        }
+      ]
+    },
+    {
+      "@id": "stylemo:SharedStyleConcept",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A shared style concept.",
+      "rdfs:label": "SharedStyleConcept",
+      "rdfs:subClassOf": [
+        {
+          "@id": "coremo:ActivityModel"
+        },
+        {
+          "@id": "stylemo:StyleConcept"
+        }
+      ]
+    },  {
+      "@id": "stylemo:TextualStyleConcept",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A textual style concept.",
+      "rdfs:label": "TextualStyleConcept",
+      "rdfs:subClassOf": [
+        {
+          "@id": "coremo:ActivityModel"
+        },
+        {
+          "@id": "stylemo:StyleConcept"
+        }
+      ]
+    },  {
+      "@id": "stylemo:LinearStyleConcept",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A linear style concept.",
+      "rdfs:label": "LinearStyleConcept",
+      "rdfs:subClassOf": [
+        {
+          "@id": "coremo:ActivityModel"
+        },
+        {
+          "@id": "stylemo:StyleConcept"
+        }
+      ]
+    },
+    {
+      "@id": "stylemo:PlanarStyleConcept",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A planar (area) style concept.",
+      "rdfs:label": "PlanarStyleConcept",
+      "rdfs:subClassOf": [
+      {
+        "@id": "coremo:ActivityModel"
+      },
+      {
+        "@id": "stylemo:StyleConcept"
+      }
+      ]
+    },
+    {
+      "@id": "stylemo:SpatialStyleConcept",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A spatial style concept.",
+      "rdfs:label": "SpatialStyleConcept",
+      "rdfs:subClassOf": [
+      {
+        "@id": "coremo:ActivityModel"
+      },
+      {
+        "@id": "stylemo:StyleConcept"
+      }
+      ]
+    }, 
+    {
+      "@id": "stylemo:SharedStyleSemanticPool",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A shared style semantic pool",
+      "rdfs:label": "SharedStyleSemanticPool",
+      "rdfs:subClassOf": [       
+      {
+        "@id": "stylemo:SharedStyleConcept"
+      },
+      {
+        "@id": "coremo:SemanticPool"
+      }, 
+      {
+        "@id": "coremo:Iconable"
+      }, 
+      {
+        "@id": "coremo:Versionable"
+      }    
+    ]},
+    {
+      "@id": "stylemo:TextualStyleSemanticPool",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A textual style semantic pool",
+      "rdfs:label": "TextualStyleSemanticPool",
+      "rdfs:subClassOf": [       
+      {
+        "@id": "stylemo:TextualStyleConcept"
+      },
+      {
+        "@id": "coremo:SemanticPool"
+      }, 
+      {
+        "@id": "coremo:Iconable"
+      }, 
+      {
+        "@id": "coremo:Versionable"
+      }    
+    ]},
+    {
+      "@id": "stylemo:LinearStyleSemanticPool",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A linear style semantic pool",
+      "rdfs:label": "LinearStyleSemanticPool",
+      "rdfs:subClassOf": [       
+      {
+        "@id": "stylemo:LinearStyleConcept"
+      },
+      {
+        "@id": "coremo:SemanticPool"
+      }, 
+      {
+        "@id": "coremo:Iconable"
+      }, 
+      {
+        "@id": "coremo:Versionable"
+      }    
+    ]},
+    {
+      "@id": "stylemo:PlanarStyleSemanticPool",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A planar style semantic pool",
+      "rdfs:label": "PlanarStyleSemanticPool",
+      "rdfs:subClassOf": [       
+      {
+        "@id": "stylemo:PlanarStyleConcept"
+      },
+      {
+        "@id": "coremo:SemanticPool"
+      }, 
+      {
+        "@id": "coremo:Iconable"
+      }, 
+      {
+        "@id": "coremo:Versionable"
+      }    
+    ]},
+    {      
+      "@id": "stylemo:SpatialStyleSemanticPool",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A spatial style semantic pool",
+      "rdfs:label": "SpatialStyleSemanticPool",
+      "rdfs:subClassOf": [       
+      {
+        "@id": "stylemo:SpatialStyleConcept"
+      },
+      {
+        "@id": "coremo:SemanticPool"
+      }, 
+      {
+        "@id": "coremo:Iconable"
+      }, 
+      {
+        "@id": "coremo:Versionable"
+      }]
+    }
+  ]
+}

@@ -1,0 +1,256 @@
+{
+  "@context": {
+    "xsd":     "http://www.w3.org/2001/XMLSchema#",
+    "rdf":     "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":    "http://www.w3.org/2000/01/rdf-schema#",
+    "schema":  "https://schema.org/",
+
+    "coremo":  "https://clipcode.org/base/concept/coremo/",
+    "stylemo": "https://clipcode.org/base/concept/stylemo/",
+    "docmo":   "https://clipcode.org/base/concept/docmo/"
+  },
+  "@graph": [    
+    {
+      "@id": "docmo:TextFlow",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A text flow in a document.",
+      "rdfs:label": "TextFlow",
+      "rdfs:subClassOf": [     
+      {
+        "@id": "docmo:TextDocConcept"
+      },
+      {
+        "@id": "coremo:Hierarchical"
+      }     
+    ]},
+    {
+      "@id": "docmo:Section",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A section in a document.",
+      "rdfs:label": "Section",
+      "rdfs:subClassOf": { "@id": "docmo:TextFlow" }     
+    },
+    {
+      "@id": "docmo:Frame",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A section in a document.",
+      "rdfs:label": "Frame",
+      "rdfs:subClassOf": { "@id": "docmo:TextFlow" }     
+    },
+    {
+      "@id": "docmo:TextColumn",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A column in a text flow.",
+      "rdfs:label": "TextColumn",
+      "rdfs:subClassOf": [     
+      {
+        "@id": "docmo:TextDocConcept"
+      },
+      {
+        "@id": "coremo:Hierarchical"
+      }     
+    ]},
+    {
+      "@id": "docmo:TextColumnItem",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An item that can directly appear in a text flow's column in a document.",
+      "rdfs:label": "TextColumnItem",
+      "rdfs:subClassOf": [     
+      {
+        "@id": "docmo:TextDocConcept"
+      },
+      {
+        "@id": "coremo:Hierarchical"
+      }     
+    ]},
+    {
+      "@id": "docmo:Paragraph",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A paragraph in a text document.",
+      "rdfs:label": "Paragraph",
+      "rdfs:subClassOf": { "@id": "docmo:TextColumnItem" }     
+    }, 
+    {
+      "@id": "docmo:Span",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A span of text (all with the same style) within a paragraph.",
+      "rdfs:label": "Span",
+      "rdfs:subClassOf": [     
+      {
+        "@id": "docmo:TextDocConcept"
+      },
+      {
+        "@id": "coremo:HierarchicalChild"
+      }     
+    ]},   
+    {
+      "@id": "docmo:DocTable",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A table in a text document.",
+      "rdfs:label": "Table",
+      "rdfs:subClassOf": { "@id": "docmo:TextColumnItem" }     
+    },
+    {
+      "@id": "docmo:DocTableColumn",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A table column.",
+      "rdfs:label": "TableColumn",
+      "rdfs:subClassOf": [     
+      {
+        "@id": "docmo:TextDocConcept"
+      },
+      {
+        "@id": "coremo:HierarchicalChild"
+      }     
+    ]},
+    {
+      "@id": "docmo:DocTableRow",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A table content row.",
+      "rdfs:label": "DocTableRow",
+      "rdfs:subClassOf": [     
+      {
+        "@id": "docmo:TextDocConcept"
+      },
+      {
+        "@id": "coremo:HierarchicalChild"
+      }     
+    ]},
+    {
+      "@id": "docmo:DocTableCell",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A cell in a table row.",
+      "rdfs:label": "TableCell",
+      "rdfs:subClassOf": [     
+      {
+        "@id": "docmo:TextDocConcept"
+      },
+      {
+        "@id": "coremo:HierarchicalChild"
+      }     
+    ]},
+    {
+      "@id": "docmo:Page",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A page in a document.",
+      "rdfs:label": "Page",
+      "rdfs:subClassOf": [     
+      {
+        "@id": "docmo:TextDocConcept"
+      },
+      {
+        "@id": "coremo:HierarchicalChild"
+      }     
+    ]},
+    {
+      "@id": "docmo:Header",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A header in a document.",
+      "rdfs:label": "Header",
+      "rdfs:subClassOf": [     
+      {
+        "@id": "docmo:TextDocConcept"
+      },
+      {
+        "@id": "coremo:HierarchicalChild"
+      }     
+    ]},
+    {
+      "@id": "docmo:Footer",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A footer in a document.",
+      "rdfs:label": "Footer",
+      "rdfs:subClassOf": [     
+      {
+        "@id": "docmo:TextDocConcept"
+      },
+      {
+        "@id": "coremo:HierarchicalChild"
+      }     
+    ]},
+    {
+      "@id": "docmo:spanText",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The textual content of a span",
+      "rdfs:label": "spanText",
+      "schema:domainIncludes": [{
+        "@id": "docmo:Span"
+      }], 
+      "schema:rangeIncludes": {
+        "@id": "schema:Text"
+      }
+    },
+    {
+      "@id": "docmo:spanStyle",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The style of a span",
+      "rdfs:label": "spanStyle",
+      "schema:domainIncludes": [{
+        "@id": "docmo:Span"
+      }], 
+      "schema:rangeIncludes": {
+        "@id": "stylemo:Style"
+      }
+    },
+    {
+      "@id": "docmo:spanParagraph",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The paragraph which contains a span",
+      "rdfs:label": "spanParagraph",
+      "schema:domainIncludes": [{
+        "@id": "docmo:Span"
+      }], 
+      "schema:rangeIncludes": {
+        "@id": "docmo:Paragraph"
+      }
+    },
+    {
+      "@id": "docmo:paragraphTextColumn",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The text column which contains a paragraph",
+      "rdfs:label": "paragraphTextColumn",
+      "schema:domainIncludes": [{
+        "@id": "docmo:Paragraph"
+      }], 
+      "schema:rangeIncludes": {
+        "@id": "docmo:TextColumn"
+      }
+    },
+    {
+      "@id": "docmo:doctableColumnWidth",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The width of a table column.",
+      "rdfs:label": "tableColumnWidth",
+      "schema:domainIncludes": [{
+        "@id": "docmo:DocTableColumn"
+      }], 
+      "schema:rangeIncludes": {
+        "@id": "schema:Text"
+      }
+    },
+    {
+      "@id": "docmo:doctableCellColumnCount",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The number of columns spanned by a single cell.",
+      "rdfs:label": "tableCellColumnCount",
+      "schema:domainIncludes": [{
+        "@id": "docmo:DocTableCell"
+      }], 
+      "schema:rangeIncludes": {
+        "@id": "schema:Integer"
+      }
+    },
+    {
+      "@id": "docmo:doctableCellRowCount",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The number of rows spanned by a single cell.",
+      "rdfs:label": "tableCellRowCount",
+      "schema:domainIncludes": [{
+        "@id": "docmo:DocTableCell"
+      }], 
+      "schema:rangeIncludes": {
+        "@id": "schema:Integer"
+      }
+    }
+  ]
+}

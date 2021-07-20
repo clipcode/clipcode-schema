@@ -5,7 +5,7 @@
     "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
     "schema": "https://schema.org/",
 
-    "coremo": "https://clipcode.org/base/schema/coremo/"
+    "coremo": "https://clipcode.org/base/concept/coremo/"
  },
   "@graph": [
     {
@@ -27,10 +27,10 @@
       }
     },  
     {
-      "@id": "coremo:Derivable",
+      "@id": "coremo:Inheritable",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A resource which can be derived from another resource of the same type",
-      "rdfs:label": "Derivable",
+      "rdfs:comment": "A resource which can be derived from another resource of the same type (with any property values not specified in child inherited from parent)",
+      "rdfs:label": "Inheritable",
       "rdfs:subClassOf": {
       "@id": "coremo:ModelConcept"
       }
@@ -92,7 +92,7 @@
     {
       "@id": "coremo:Modular",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A resource which is made up of has modules",
+      "rdfs:comment": "A resource which is made up of modules",
       "rdfs:label": "Modular",
       "rdfs:subClassOf": {
         "@id": "coremo:ModelConcept"
@@ -167,6 +167,20 @@
       }
     },
     {
+      "@id": "coremo:inheritFrom",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The parent of a derived resource.",
+      "rdfs:label": "revision",
+      "schema:domainIncludes": [
+        {
+          "@id": "coremo:Inheritable"
+        }
+      ],
+      "schema:rangeIncludes": {
+        "@id": "coremo:ModelConcept"
+      }
+    }, 
+    {
       "@id": "coremo:revision",
       "@type": "rdf:Property",
       "rdfs:comment": "The revision number of this resource revision.",
@@ -219,7 +233,7 @@
         }
       ],
       "schema:rangeIncludes": {
-        "@id": "schema:Thing"
+        "@id": "coremo:HierarchicalChild"
       }
     },
     {
@@ -325,10 +339,10 @@
       }        
     },
     {
-      "@id": "coremo:hasPublishedDate",
+      "@id": "coremo:publishedDate",
       "@type": "rdf:Property",
       "rdfs:comment": "publish date.",
-      "rdfs:label": "hasPublishedDate",
+      "rdfs:label": "publishedDate",
       "schema:domainIncludes": {
         "@id": "coremo:Publishable"
       },
@@ -375,7 +389,7 @@
         }
     },
     {
-      "@id": "coremo:hasIcon",
+      "@id": "coremo:icon",
       "@type": "rdf:Property",
       "rdfs:comment": "The icon for an iconable.",
       "rdfs:label": "version",
@@ -389,10 +403,10 @@
         }
     },
     {
-      "@id": "coremo:hasImageResourceSrc",
+      "@id": "coremo:imageResourceSrc",
       "@type": "rdf:Property",
       "rdfs:comment": "The src for the image.",
-      "rdfs:label": "hasImageResourceSrc",
+      "rdfs:label": "imageResourceSrc",
       "schema:domainIncludes": [
         {
           "@id": "coremo:ImageResource"
@@ -403,10 +417,10 @@
       }
     },
     {
-      "@id": "coremo:hasImageResourceSize",
+      "@id": "coremo:imageResourceSize",
       "@type": "rdf:Property",
       "rdfs:comment": "The size of the image resource.",
-      "rdfs:label": "hasImageResourceSize",
+      "rdfs:label": "imageResourceSize",
       "schema:domainIncludes": [
         {
           "@id": "coremo:ImageResource"
@@ -417,10 +431,10 @@
       }
     },
     {
-      "@id": "coremo:hasImageResourceType",
+      "@id": "coremo:imageResourceType",
       "@type": "rdf:Property",
       "rdfs:comment": "The MIME type of the image resource.",
-      "rdfs:label": "hasImageResourceType",
+      "rdfs:label": "imageResourceType",
       "schema:domainIncludes": [
         {
           "@id": "coremo:ImageResource"
@@ -431,10 +445,10 @@
       }
     },
     {
-      "@id": "coremo:hasImageResourcePurpose",
+      "@id": "coremo:imageResourcePurpose",
       "@type": "rdf:Property",
       "rdfs:comment": "The purpose of this image.",
-      "rdfs:label": "hasImageResourcePurpose",
+      "rdfs:label": "imageResourcePurpose",
       "schema:domainIncludes": [
         {
           "@id": "coremo:ImageResource"
@@ -487,10 +501,10 @@
       }
     },
     {
-      "@id": "coremo:hasModule",
+      "@id": "coremo:module",
       "@type": "rdf:Property",
       "rdfs:comment": "This resource contains this module.",
-      "rdfs:label": "hasModule",
+      "rdfs:label": "module",
       "schema:domainIncludes": [
         {
           "@id": "coremo:Modular"

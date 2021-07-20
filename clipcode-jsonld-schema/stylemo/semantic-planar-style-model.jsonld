@@ -1,0 +1,360 @@
+{
+  "@context": {
+    "xsd":     "http://www.w3.org/2001/XMLSchema#",
+    "rdf":     "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":    "http://www.w3.org/2000/01/rdf-schema#",
+    "schema":  "https://schema.org/",
+
+    "coremo":  "https://clipcode.org/base/concept/coremo/",
+    "stylemo": "https://clipcode.org/base/concept/stylemo/"
+  },
+  "@graph": [    
+    {
+      "@id": "stylemo:Style",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A style to be used in a styling scenario.",
+      "rdfs:label": "Style",
+      "rdfs:subClassOf": [     
+      {
+        "@id": "stylemo:StyleConcept"
+      },
+      {
+        "@id": "coremo:HierarchicalChild"
+      }     
+    ]},
+    {
+      "@id": "stylemo:CharacterStyle",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A character style in a document.",
+      "rdfs:label": "Style",
+      "rdfs:subClassOf":     
+      {
+        "@id": "stylemo:Style"
+      }    
+    },
+    {
+      "@id": "stylemo:ParagraphStyle",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A paragraph style in a document.",
+      "rdfs:label": "Style",
+      "rdfs:subClassOf":     
+      {
+        "@id": "stylemo:Style"
+      }    
+    },
+    {
+      "@id": "stylemo:Border",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A (top/bottom/left/right) border in a style.",
+      "rdfs:label": "Border",
+      "rdfs:subClassOf": [     
+      {
+        "@id": "stylemo:StyleConcept"
+      },
+      {
+        "@id": "coremo:HierarchicalChild"
+      }     
+    ]}, 
+    {
+      "@id": "stylemo:AlignmentEnumeration",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "AlignmentEnumeration is an enumeration type representing alignment",
+      "rdfs:label": "AlignmentEnumeration",
+       "rdfs:subClassOf": { "@id": "schema:Enumeration" }
+    },
+    {
+      "@id": "stylemo:AlignmentLeft",
+      "@type": "stylemo:AlignmentEnumeration",
+      "rdfs:comment": "Left alignment styling",
+      "rdfs:label": "AlignmentLeft"
+    },
+    {
+      "@id": "stylemo:AlignmentCenter",
+      "@type": "stylemo:AlignmentEnumeration",
+      "rdfs:comment": "Center alignment styling",
+      "rdfs:label": "AlignmentCenter"
+    },
+    {
+      "@id": "stylemo:AlignmentRight",
+      "@type": "stylemo:AlignmentEnumeration",
+      "rdfs:comment": "Right alignment styling",
+      "rdfs:label": "AlignmentRight"
+    },
+    {
+      "@id": "stylemo:alignmentStyleSetting",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The alignment styling",
+      "rdfs:label": "alignmentStyleSetting",
+      "schema:domainIncludes": [{
+        "@id": "stylemo:ParagraphStyle"
+      }], 
+      "schema:rangeIncludes": {
+        "@id": "stylemo:AlignmentEnumeration"
+      }
+    },
+    {
+      "@id": "stylemo:padding",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The padding (from border to inner content)",
+      "rdfs:label": "padding",
+      "schema:domainIncludes": [{
+        "@id": "stylemo:ParagraphStyle"
+      }], 
+      "schema:rangeIncludes": {
+        "@id": "schema:Text"
+      }
+    },
+    {
+      "@id": "stylemo:padding",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The padding (from border to inner content)",
+      "rdfs:label": "padding",
+      "schema:domainIncludes": [{
+        "@id": "stylemo:ParagraphStyle"
+      }], 
+      "schema:rangeIncludes": {
+        "@id": "schema:Text"
+      }
+    },
+    {
+      "@id": "stylemo:paddingLeft",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The left padding (from border to inner content)",
+      "rdfs:label": "paddingLeft",
+      "schema:domainIncludes": [{
+        "@id": "stylemo:ParagraphStyle"
+      }], 
+      "schema:rangeIncludes": {
+        "@id": "schema:Text"
+      }
+    },
+    {
+      "@id": "stylemo:paddingRight",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The right padding (from border to inner content)",
+      "rdfs:label": "paddingRight",
+      "schema:domainIncludes": [{
+        "@id": "stylemo:ParagraphStyle"
+      }], 
+      "schema:rangeIncludes": {
+        "@id": "schema:Text"
+      }
+    },
+    {
+      "@id": "stylemo:paddingTop",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The top padding (from border to inner content)",
+      "rdfs:label": "paddingTop",
+      "schema:domainIncludes": [{
+        "@id": "stylemo:ParagraphStyle"
+      }], 
+      "schema:rangeIncludes": {
+        "@id": "schema:Text"
+      }
+    },
+    {
+      "@id": "stylemo:margin",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The margin (from border to outer perimeter)",
+      "rdfs:label": "margin",
+      "schema:domainIncludes": [{
+        "@id": "stylemo:ParagraphStyle"
+      }], 
+      "schema:rangeIncludes": {
+        "@id": "schema:Text"
+      }
+    },
+    {
+      "@id": "stylemo:marginLeft",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The left margin (from border to outer perimeter)",
+      "rdfs:label": "marginLeft",
+      "schema:domainIncludes": [{
+        "@id": "stylemo:ParagraphStyle"
+      }], 
+      "schema:rangeIncludes": {
+        "@id": "schema:Text"
+      }
+    },
+    {
+      "@id": "stylemo:marginRight",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The right margin (from border to outer perimeter)",
+      "rdfs:label": "marginRight",
+      "schema:domainIncludes": [{
+        "@id": "stylemo:ParagraphStyle"
+      }], 
+      "schema:rangeIncludes": {
+        "@id": "schema:Text"
+      }
+    },
+    {
+      "@id": "stylemo:marginTop",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The top margin (from border to outer perimeter)",
+      "rdfs:label": "marginTop",
+      "schema:domainIncludes": [{
+        "@id": "stylemo:ParagraphStyle"
+      }], 
+      "schema:rangeIncludes": {
+        "@id": "schema:Text"
+      }
+    },
+    {
+      "@id": "stylemo:marginBottom",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The bottom margin (from border to outer perimeter)",
+      "rdfs:label": "marginBottom",
+      "schema:domainIncludes": [{
+        "@id": "stylemo:ParagraphStyle"
+      }], 
+      "schema:rangeIncludes": {
+        "@id": "schema:Text"
+      }
+    },
+    {
+      "@id": "stylemo:bold",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The bold styling",
+      "rdfs:label": "bold",
+      "schema:domainIncludes": [{
+        "@id": "stylemo:CharacterStyle"
+      }], 
+      "schema:rangeIncludes": {
+        "@id": "schema:Boolean"
+      }
+    },
+    {
+      "@id": "stylemo:italic",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The italic styling",
+      "rdfs:label": "italic",
+      "schema:domainIncludes": [{
+        "@id": "stylemo:CharacterStyle"
+      }], 
+      "schema:rangeIncludes": {
+        "@id": "schema:Boolean"
+      }
+    },
+    {
+      "@id": "stylemo:underline",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The underline styling",
+      "rdfs:label": "underline",
+      "schema:domainIncludes": [{
+        "@id": "stylemo:CharacterStyle"
+      }], 
+      "schema:rangeIncludes": {
+        "@id": "schema:Boolean"
+      }
+    },
+    {
+      "@id": "stylemo:foregroundColor",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The foreground color.",
+      "rdfs:label": "foregroundColor",
+      "schema:domainIncludes": [{
+        "@id": "stylemo:Style"
+      }], 
+      "schema:rangeIncludes": {
+        "@id": "schema:Text"
+      }
+    },
+    {
+      "@id": "stylemo:backgroundColor",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The background color.",
+      "rdfs:label": "backgroundColor",
+      "schema:domainIncludes": [{
+        "@id": "stylemo:Style"
+      }], 
+      "schema:rangeIncludes": {
+        "@id": "schema:Text"
+      }
+    },
+    {
+      "@id": "stylemo:border",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The border settings.",
+      "rdfs:label": "border",
+      "schema:domainIncludes": [{
+        "@id": "stylemo:Style"
+      }], 
+      "schema:rangeIncludes": {
+        "@id": "stylemo:Border"
+      }
+    },
+    {
+      "@id": "stylemo:borderLeft",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The border settings for left.",
+      "rdfs:label": "borderLeft",
+      "schema:domainIncludes": [{
+        "@id": "stylemo:Style"
+      }], 
+      "schema:rangeIncludes": {
+        "@id": "stylemo:Border"
+      }
+    },
+    {
+      "@id": "stylemo:borderRight",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The border settings for right.",
+      "rdfs:label": "borderRight",
+      "schema:domainIncludes": [{
+        "@id": "stylemo:Style"
+      }], 
+      "schema:rangeIncludes": {
+        "@id": "stylemo:Border"
+      }
+    },
+    {
+      "@id": "stylemo:borderTop",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The border settings for top.",
+      "rdfs:label": "borderTop",
+      "schema:domainIncludes": [{
+        "@id": "stylemo:Style"
+      }], 
+      "schema:rangeIncludes": {
+        "@id": "stylemo:Border"
+      }
+    },
+    {
+      "@id": "stylemo:borderBottom",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The border settings for bottom.",
+      "rdfs:label": "borderBottom",
+      "schema:domainIncludes": [{
+        "@id": "stylemo:Style"
+      }], 
+      "schema:rangeIncludes": {
+        "@id": "stylemo:Border"
+      }
+    },
+    {
+      "@id": "stylemo:borderColor",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The border color.",
+      "rdfs:label": "borderColor",
+      "schema:domainIncludes": [{
+        "@id": "stylemo:Border"
+      }], 
+      "schema:rangeIncludes": {
+        "@id": "schema:Text"
+      }
+    },
+    {
+      "@id": "stylemo:borderThickness",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The border thickness.",
+      "rdfs:label": "borderThickness",
+      "schema:domainIncludes": [{
+        "@id": "stylemo:Border"
+      }], 
+      "schema:rangeIncludes": {
+        "@id": "schema:Text"
+      }
+    }
+  ]
+}

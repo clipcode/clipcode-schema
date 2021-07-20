@@ -1,0 +1,129 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/concept/coremo/",
+    "appmo":  "https://clipcode.org/base/concept/appmo/"
+  },
+  "@graph": [  
+    {
+      "@id": "appmo:AppConcept",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An app concept",
+      "rdfs:label": "AppConcept",
+      "rdfs:subClassOf": {
+        "@id": "coremo:ActivityConcept"
+      }
+    },
+    {
+      "@id": "appmo:AppModel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An app model",
+      "rdfs:label": "App Model",
+      "rdfs:subClassOf": [
+        {
+          "@id": "coremo:ActivityModel"
+        },
+        {
+          "@id": "appmo:AppConcept"
+        }
+      ]
+    },
+    {
+      "@id": "appmo:DesignAppConcept",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A design app concept.",
+      "rdfs:label": "DesignAppConcept",
+      "rdfs:subClassOf": [
+        {
+          "@id": "coremo:ActivityModel"
+        },
+        {
+          "@id": "appmo:AppConcept"
+        }
+      ]
+    },
+    {
+      "@id": "appmo:DeploymentAppConcept",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A deployment app concept.",
+      "rdfs:label": "DeploymentAppConcept",
+      "rdfs:subClassOf": [
+        {
+          "@id": "coremo:ActivityModel"
+        },
+        {
+          "@id": "appmo:AppConcept"
+        }
+      ]
+    },    
+    {
+      "@id": "appmo:AdminAppConcept",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An admin app concept.",
+      "rdfs:label": "AdminAppConcept",
+      "rdfs:subClassOf": [
+        {
+          "@id": "coremo:ActivityModel"
+        },
+        {
+          "@id": "appmo:AppConcept"
+        }
+      ]
+    },
+    {
+      "@id": "appmo:SuperappSemanticPool",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "The host app for one or more microapps.",
+      "rdfs:label": "SuperappSemanticPool",
+      "rdfs:subClassOf": [
+      {
+        "@id": "appmo:DesignAppConcept"
+      },
+      {
+        "@id": "coremo:SemanticPool"
+      }, 
+      {
+        "@id": "coremo:Iconable"
+      },
+      {
+        "@id": "coremo:Versionable"
+      }
+    ]},  
+    {
+      "@id": "appmo:MicroappSemanticPool",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A micro app",
+      "rdfs:label": "MicroappSemanticPool",
+      "rdfs:subClassOf": [       
+      {
+        "@id": "appmo:DesignAppConcept"
+      },
+      {
+        "@id": "coremo:SemanticPool"
+      }, 
+      {
+        "@id": "coremo:Iconable"
+      }, 
+      {
+        "@id": "coremo:Versionable"
+      }    
+    ]},
+    {
+      "@id": "appmo:AppPublishingProfileSemanticPool",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An app publishing profile.",
+      "rdfs:label": "AppPublishingProfile",
+      "rdfs:subClassOf": [       
+      {
+        "@id": "coremo:SemanticPool"
+      }, 
+      {
+        "@id": "appmo:DeploymentAppConcept"
+      }     
+    ]}
+  ]
+}

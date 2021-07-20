@@ -1,0 +1,44 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/concept/coremo/",
+    "repmo":  "https://clipcode.org/base/concept/repmo/"
+  },
+  "@graph": [     
+    {
+      "@id": "repmo:ProductionRun",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "The production run data inputs and instructions.",
+      "rdfs:label": "ProductionRun",
+      "rdfs:subClassOf": 
+      [
+        {
+          "@id": "repmo:ProductionReportConcept"
+        },  
+        {
+        "@id": "coremo:Inheritable"
+        }
+      ]
+    },        
+    {
+      "@id": "repmo:parameterValue",
+      "@type": "rdf:Property",
+      "rdfs:comment": "the value of the parameter.",
+      "rdfs:label": "parameterValue",
+      "schema:domainIncludes": { "@id": "repmo:ReportParameterInstance" },
+      "schema:rangeIncludes":  { "@id": "repmo:ReportParameter" }
+    },
+    {
+      "@id": "repmo:dataItemValue",
+      "@type": "rdf:Property",
+      "rdfs:comment": "the value of a data item.",
+      "rdfs:label": "dataItemValue",
+      "schema:domainIncludes": { "@id": "repmo:ReportDataItem" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    }
+  ]
+}

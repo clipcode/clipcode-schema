@@ -1,0 +1,166 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/concept/coremo/",
+    "docmo":  "https://clipcode.org/base/concept/docmo/"
+  },
+  "@graph": [  
+    {
+      "@id": "docmo:DocConcept",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An doc concept",
+      "rdfs:label": "DocConcept",
+      "rdfs:subClassOf": {
+        "@id": "coremo:ActivityConcept"
+      }
+    },
+    {
+      "@id": "docmo:DocModel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A doc model",
+      "rdfs:label": "Doc Model",
+      "rdfs:subClassOf": [
+        {
+          "@id": "coremo:ActivityModel"
+        },
+        {
+          "@id": "docmo:DocConcept"
+        }
+      ]
+    },
+    {
+      "@id": "docmo:TextDocConcept",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A text doc concept.",
+      "rdfs:label": "TextDocConcept",
+      "rdfs:subClassOf": [
+        {
+          "@id": "coremo:ActivityModel"
+        },
+        {
+          "@id": "docmo:DocConcept"
+        }
+      ]
+    },
+    {
+      "@id": "docmo:SpreadsheetDocConcept",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A spreadsheet doc concept.",
+      "rdfs:label": "SpreadsheetDocConcept",
+      "rdfs:subClassOf": [
+        {
+          "@id": "coremo:ActivityModel"
+        },
+        {
+          "@id": "docmo:DocConcept"
+        }
+      ]
+    },    
+    {
+      "@id": "docmo:PresentationDocConcept",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A spreadsheet doc concept.",
+      "rdfs:label": "PresentationDocConcept",
+      "rdfs:subClassOf": [
+        {
+          "@id": "coremo:ActivityModel"
+        },
+        {
+          "@id": "docmo:DocConcept"
+        }
+      ]
+    },
+    {
+      "@id": "docmo:TextSemanticPool",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A text semantic pool.",
+      "rdfs:label": "TextSemanticPool",
+      "rdfs:subClassOf": [
+      {
+        "@id": "docmo:TextDocConcept"
+      },
+      {
+        "@id": "coremo:SemanticPool"
+      }, 
+      {
+        "@id": "coremo:Iconable"
+      },
+      {
+        "@id": "coremo:Versionable"
+      }
+    ]},  
+    {
+      "@id": "docmo:SpreadsheetSemanticPool",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A spreadsheet semantic pool",
+      "rdfs:label": "SpreadsheetSemanticPool",
+      "rdfs:subClassOf": [       
+      {
+        "@id": "docmo:SpreadsheetDocConcept"
+      },
+      {
+        "@id": "coremo:SemanticPool"
+      }, 
+      {
+        "@id": "coremo:Iconable"
+      }, 
+      {
+        "@id": "coremo:Versionable"
+      }    
+    ]},
+    {      
+      "@id": "docmo:PresentationSemanticPool",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A presentation semantic pool",
+      "rdfs:label": "PresentationSemanticPool",
+      "rdfs:subClassOf": [       
+      {
+        "@id": "docmo:PresentationDocConcept"
+      },
+      {
+        "@id": "coremo:SemanticPool"
+      }, 
+      {
+        "@id": "coremo:Iconable"
+      }, 
+      {
+        "@id": "coremo:Versionable"
+      }    
+    ]},
+    {
+      "@id": "docmo:DocFieldEnumeration",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "DocFieldEnumeration is an enumeration type representing document fields",
+      "rdfs:label": "DocFieldEnumeration",
+       "rdfs:subClassOf": { "@id": "schema:Enumeration" }
+    },
+    {
+      "@id": "docmo:CurrentPageField",
+      "@type": "docmo:DocFieldEnumeration",
+      "rdfs:comment": "Page number for current page.",
+      "rdfs:label": "CurrentPageField"
+    },
+    {
+      "@id": "docmo:TotalPageField",
+      "@type": "docmo:DocFieldEnumeration",
+      "rdfs:comment": "Total number of pages in document.",
+      "rdfs:label": "TotalPageField"
+    },
+    {
+      "@id": "docmo:CreatedDateField",
+      "@type": "docmo:DocFieldEnumeration",
+      "rdfs:comment": "Created date of document.",
+      "rdfs:label": "CreatedDateField"
+    },
+    {
+      "@id": "docmo:LastModifiedDateField",
+      "@type": "docmo:DocFieldEnumeration",
+      "rdfs:comment": "Last modified date of document.",
+      "rdfs:label": "LastModifiedDateField"
+    }
+  ]
+}

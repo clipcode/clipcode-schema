@@ -1,0 +1,105 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/concept/coremo/",
+    "repmo":  "https://clipcode.org/base/concept/repmo/"
+  },
+  "@graph": [  
+    {
+      "@id": "repmo:ReportParameter",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A report parameter.",
+      "rdfs:label": "ReportParameter",
+      "rdfs:subClassOf": 
+      [
+        {
+          "@id": "repmo:DefinitionReportConcept"
+        },  
+        {
+          "@id": "coremo:Inheritable"
+        }
+      ]
+    },
+    {
+      "@id": "repmo:parameterName",
+      "@type": "rdf:Property",
+      "rdfs:comment": "the name of the parameter.",
+      "rdfs:label": "parameterName",
+      "schema:domainIncludes": { "@id": "repmo:ReportParameter" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "repmo:parameterType",
+      "@type": "rdf:Property",
+      "rdfs:comment": "the type of the parameter.",
+      "rdfs:label": "parameterType",
+      "schema:domainIncludes": { "@id": "repmo:ReportParameter" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "repmo:ReportDataTable",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A report data table.",
+      "rdfs:label": "ReportDataTable",
+      "rdfs:subClassOf": 
+      [
+        {
+          "@id": "repmo:DefinitionReportConcept"
+        },  
+        {
+          "@id": "coremo:Inheritable"
+        }
+      ]
+    },
+    {
+      "@id": "repmo:ReportDataRow",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A report data row.",
+      "rdfs:label": "ReportDataRow",
+      "rdfs:subClassOf": 
+      [
+        {
+          "@id": "repmo:DefinitionReportConcept"
+        },  
+        {
+          "@id": "coremo:Inheritable"
+        }
+      ]
+    },
+    {
+      "@id": "repmo:dataRowTable",
+      "@type": "rdf:Property",
+      "rdfs:comment": "the table to whcih this row belongs.",
+      "rdfs:label": "dataRowTable",
+      "schema:domainIncludes": { "@id": "repmo:ReportDataRow" },
+      "schema:rangeIncludes":  { "@id": "repmo:ReportDataTable" }
+    },
+    {
+      "@id": "repmo:ReportDataItem",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A report data item.",
+      "rdfs:label": "ReportDataItem",
+      "rdfs:subClassOf": 
+      [
+        {
+          "@id": "repmo:DefinitionReportConcept"
+        },  
+        {
+          "@id": "coremo:Inheritable"
+        }
+      ]
+    },
+    {
+      "@id": "repmo:dataItemRow",
+      "@type": "rdf:Property",
+      "rdfs:comment": "the row to which this item belongs.",
+      "rdfs:label": "dataItemRow",
+      "schema:domainIncludes": { "@id": "repmo:ReportDataItem" },
+      "schema:rangeIncludes":  { "@id": "repmo:ReportDataRow" }
+    }
+  ]
+}

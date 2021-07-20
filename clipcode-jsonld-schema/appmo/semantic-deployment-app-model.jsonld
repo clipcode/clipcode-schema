@@ -1,0 +1,71 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/concept/coremo/",
+    "appmo":  "https://clipcode.org/base/concept/appmo/"
+  },
+  "@graph": [    
+    {
+      "@id": "appmo:appPublishingProfileAppliesTo",
+      "@type": "rdf:Property",
+      "rdfs:comment": "This publishing profiles applies to superapps and microapps.",
+      "rdfs:label": "appPublishingProfileAppliesTo",
+      "schema:domainIncludes": 
+      {
+        "@id": "appmo:AppPublishingProfileSemanticPool"
+      },
+      "schema:rangeIncludes":
+      [{
+        "@id": "appmo:SuperappSemanticPool"
+      },
+      {
+        "@id": "appmo:MicroappSemanticPool"
+      }]
+    },
+    {
+      "@id": "appmo:AppPublishingTargetProfile",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An app publishing target",
+      "rdfs:label": "AppPublishingTargetProfile",
+      "rdfs:subClassOf": [     
+      {
+        "@id": "appmo:DeploymentAppConcept"
+      },
+      {
+        "@id": "coremo:HierarchicalChild"
+      }     
+    ]},
+    {
+      "@id": "appmo:AppPublisherProfile",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An app profile",
+      "rdfs:label": "AppProfile",
+      "rdfs:subClassOf": [     
+      {
+        "@id": "appmo:DeploymentAppConcept"
+      },
+      {
+        "@id": "coremo:HierarchicalChild"
+      }     
+    ]},
+    {
+      "@id": "appmo:contentForAppPublishingProfile",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The content for the app publisher profile",
+      "rdfs:label": "contentForAppPublisherProfile",
+      "schema:domainIncludes": [{
+        "@id": "appmo:AppPublisherProfile"
+      },
+      {
+        "@id": "appmo:AppPublishingTargetProfile"
+      }], 
+      "schema:rangeIncludes": {
+        "@id": "schema:URL"
+      }
+    }
+  ]
+}
