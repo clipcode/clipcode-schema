@@ -1,0 +1,149 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/concept/coremo/",
+    "dirmo":  "https://clipcode.org/base/concept/dirmo/"
+  },
+  "@graph": [
+    {
+      "@id": "dirmo:RootRegionalDirectoryConcept",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A root concept within a regional directory semantic pool",
+      "rdfs:label": "RootRegionalDirectoryConcept",
+      "rdfs:subClassOf": { "@id": "dirmo:DirectoryConcept" }
+    },
+    {
+      "@id": "dirmo:hasRootRegionalDirectoryConcept",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a root concept to its semantic pool.",
+      "rdfs:label": "hasRootRegionalDirectoryConcept",
+      "schema:domainIncludes": { "@id": "dirmo:RegionalDirectorySemanticPool" },
+      "schema:rangeIncludes":  { "@id": "dirmo:RootRegionalDirectoryConcept" }
+    },
+    {
+      "@id": "dirmo:RegionalTable",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A regional table to which regional settings may be applied.",
+      "rdfs:label": "Region",
+      "rdfs:subClassOf": { "@id": "dirmo:RootRegionalDirectoryConcept" }
+    },
+    {
+      "@id": "dirmo:CurrencyTable",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A regional table to which regional settings may be applied.",
+      "rdfs:label": "Region",
+      "rdfs:subClassOf": { "@id": "dirmo:RootRegionalDirectoryConcept" }
+    },
+    {
+      "@id": "dirmo:hasCurrencyTable",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a currency table to a regional table.",
+      "rdfs:label": "hasRootRegionalDirectoryConcept",
+      "schema:domainIncludes": { "@id": "dirmo:RegionalTable" },
+      "schema:rangeIncludes":  { "@id": "dirmo:CurrencyTable" }
+    },
+    {
+      "@id": "dirmo:inheritsCurrencyTable",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A currency table inherits from another currency table.",
+      "rdfs:label": "inheritsCurrencyTable",
+      "schema:domainIncludes": { "@id": "dirmo:CurrencyTable" },
+      "schema:rangeIncludes":  { "@id": "dirmo:CurrencyTable" }
+    },
+    {
+      "@id": "dirmo:Currency",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A currency.",
+      "rdfs:label": "Currency",
+      "rdfs:subClassOf": { "@id": "dirmo:RegionalDirectoryConcept" }
+    },
+    {
+      "@id": "dirmo:hasCurrency",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a currency to a currency table.",
+      "rdfs:label": "hasCurrency",
+      "schema:domainIncludes": { "@id": "dirmo:CurrencyTable" },
+      "schema:rangeIncludes":  { "@id": "dirmo:Currency" }
+    },
+
+    isoNumber ???
+
+    
+    {
+      "@id": "dirmo:iso4217Code",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The Iso4217Code for this currency (e.g. USD, EUR).",
+      "rdfs:label": "iso4217Code",
+      "schema:domainIncludes": { "@id": "dirmo:Currency" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "dirmo:unitSymbol",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The unit symbol for this currency (e.g. $, €).",
+      "rdfs:label": "unitSymbol",
+      "schema:domainIncludes": { "@id": "dirmo:Currency" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "dirmo:subunitSymbol",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The sub unit symbol for this currency (e.g. ¢, c).",
+      "rdfs:label": "subunitSymbol",
+      "schema:domainIncludes": { "@id": "dirmo:Currency" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "dirmo:subunitCount",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The sub unit count for this currency (e.g. 2).",
+      "rdfs:label": "subunitCount",
+      "schema:domainIncludes": { "@id": "dirmo:Currency" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "dirmo:currencyName",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The name of this currency.",
+      "rdfs:label": "currencyName",
+      "schema:domainIncludes": { "@id": "dirmo:Currency" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "dirmo:singularUnitName",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The singular unit name of this currency.",
+      "rdfs:label": "singularUnitName",
+      "schema:domainIncludes": { "@id": "dirmo:Currency" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "dirmo:pluralUnitName",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The plural unit name of this currency.",
+      "rdfs:label": "pluralUnitName",
+      "schema:domainIncludes": { "@id": "dirmo:Currency" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "dirmo:singularSubunitName",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The singular subunit name of this currency.",
+      "rdfs:label": "singularSubunitName",
+      "schema:domainIncludes": { "@id": "dirmo:Currency" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "dirmo:pluralSubunitName",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The plural subunit name of this currency.",
+      "rdfs:label": "pluralSubunitName",
+      "schema:domainIncludes": { "@id": "dirmo:Currency" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    }
+  ]
+}

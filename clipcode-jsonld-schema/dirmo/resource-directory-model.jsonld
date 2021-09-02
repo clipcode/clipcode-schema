@@ -1,0 +1,92 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/concept/coremo/",
+    "dirmo": "https://clipcode.org/base/concept/dirmo/"
+  },
+  "@graph": [
+    {
+      "@id": "dirmo:DirectoryConcept",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A directory concept",
+      "rdfs:label": "DirectoryConcept",
+      "rdfs:subClassOf": {
+        "@id": "coremo:IdentityConcept"
+      }
+  },
+  {
+    "@id": "dirmo:DirectoryModel",
+    "@type": "rdfs:Class",
+    "rdfs:comment": "A directory model",
+    "rdfs:label": "DirectoryModel",
+    "rdfs:subClassOf": [
+      {
+        "@id": "coremo:IdentityModel"
+      },
+      {
+        "@id": "dirmo:DirectoryConcept"
+      }
+    ]
+  },
+  {
+    "@id": "dirmo:ResourceDirectorySemanticPool",
+    "@type": "rdfs:Class",
+    "rdfs:comment": "A resource directory",
+    "rdfs:label": "ResourceDirectorySemanticPool",
+    "rdfs:subClassOf": [
+      {
+        "@id": "coremo:SemanticPool"
+      },
+      {
+        "@id": "dirmo:DirectoryConcept"
+      }
+    ]
+  },
+  {
+    "@id": "dirmo:RegionalDirectorySemanticPool",
+    "@type": "rdfs:Class",
+    "rdfs:comment": "A regional directory",
+    "rdfs:label": "RegionalDirectorySemanticPool",
+    "rdfs:subClassOf": [
+      {
+        "@id": "coremo:SemanticPool"
+      },
+      {
+        "@id": "dirmo:DirectoryConcept"
+      }
+    ]
+  },
+  {
+    "@id": "dirmo:StakeholderDirectorySemanticPool",
+    "@type": "rdfs:Class",
+    "rdfs:comment": "A stakeholder directory",
+    "rdfs:label": "StakeholderDirectorySemanticPool",
+    "rdfs:subClassOf": [
+      {
+        "@id": "coremo:SemanticPool"
+      },
+      {
+        "@id": "dirmo:DirectoryConcept"
+      }
+    ]
+  },
+  {
+    "@id": "dirmo:NetworkDirectorySemanticPool",
+    "@type": "rdfs:Class",
+    "rdfs:comment": "A network directory",
+    "rdfs:label": "NetworkDirectorySemanticPool",
+    "rdfs:subClassOf": [
+      {
+        "@id": "coremo:SemanticPool"
+      },
+      {
+        "@id": "dirmo:DirectoryConcept"
+      }
+    ]
+  }
+  ]
+}

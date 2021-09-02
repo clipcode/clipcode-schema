@@ -1,0 +1,48 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/concept/coremo/",
+    "dirmo":  "https://clipcode.org/base/concept/dirmo/"
+  },
+  "@graph": [
+    {
+      "@id": "dirmo:OrganizationProfile",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An organization's profile",
+      "rdfs:label": "OrganizationProfile",
+      "rdfs:subClassOf": [
+        { "@id": "dirmo:StakeholderDirectoryConcept" },
+        { "@id": "coremo:Transformable" },
+        { "@id": "coremo:Abstractable" }
+      ]
+    },
+    {
+      "@id": "dirmo:rootOrganizationProfile",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a root organization profile to its semantic pool.",
+      "rdfs:label": "rootOrganizationProfile",
+      "schema:domainIncludes": { "@id": "dirmo:StakeholderDirectorySemanticPool" },
+      "schema:rangeIncludes":  { "@id": "dirmo:OrganizationProfile" }
+    },
+    {
+      "@id": "dirmo:childOrganizationProfile",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A child profile of an OrganizationProfile.",
+      "rdfs:label": "childOrganizationProfile",
+      "schema:domainIncludes": { "@id": "dirmo:OrganizationProfile" },
+      "schema:rangeIncludes":  { "@id": "dirmo:OrganizationProfile" }
+    },
+    {
+      "@id": "dirmo:effectiveOrganization",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The OrganizationProfile's effective organization details.",
+      "rdfs:label": "effectiveOrganization",
+      "schema:domainIncludes": { "@id": "dirmo:OrganizationProfile" },
+      "schema:rangeIncludes":  { "@id": "schema:Organization" }
+    }
+  ]
+}

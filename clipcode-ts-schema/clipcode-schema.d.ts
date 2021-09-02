@@ -1,31 +1,45 @@
-export type WithContext<T extends Thing> = Graph | (T & {
+/** Used at the top-level node to indicate the context for the JSON-LD objects used. The context provided in this type is compatible with the keys and URLs in the rest of this generated file. */
+export type WithContext<T extends Thing> = T & {
     "@context": {
-        "schema": "https://schema.org/";
-        "coremo": "https://clipcode.org/base/schema/coremo/";
-        "polmo": "https://clipcode.org/base/schema/polmo/";
-        "dirmo": "https://clipcode.org/base/schema/dirmo/";
-        "usermo": "https://clipcode.org/base/schema/usermo/";
-        "appmo": "https://clipcode.org/base/schema/appmo/";
-        "fomo": "https://clipcode.org/base/schema/fomo/";
-        "camo": "https://clipcode.org/base/schema/camo/";
+        "schema": "https://schema.org";
+        "coremo": "https://clipcode.org/base/concept/coremo";
+        "catmo": "https://clipcode.org/base/concept/catmo";
+        "dstoremo": "https://clipcode.org/base/concept/dstoremo";
+        "dirmo": "https://clipcode.org/base/concept/dirmo";
+        "polmo": "https://clipcode.org/base/concept/polmo";
+        "usermo": "https://clipcode.org/base/concept/usermo";
+        "fomo": "https://clipcode.org/base/concept/fomo";
+        "como": "https://clipcode.org/base/concept/como";
+        "appmo": "https://clipcode.org/base/concept/appmo";
+        "stylemo": "https://clipcode.org/base/concept/stylemo";
+        "renmo": "https://clipcode.org/base/concept/renmo";
+        "pagemo": "https://clipcode.org/base/concept/pagemo";
+        "docmo": "https://clipcode.org/base/concept/docmo";
+        "repmo": "https://clipcode.org/base/concept/repmo";
+        "camo": "https://clipcode.org/base/concept/camo";
     };
-});
+};
 export interface Graph {
     "@context": {
-        "schema": "https://schema.org/";
-        "coremo": "https://clipcode.org/base/schema/coremo/";
-        "polmo": "https://clipcode.org/base/schema/polmo/";
-        "dirmo": "https://clipcode.org/base/schema/dirmo/";
-        "usermo": "https://clipcode.org/base/schema/usermo/";
-        "appmo": "https://clipcode.org/base/schema/appmo/";
-        "fomo": "https://clipcode.org/base/schema/fomo/";
-        "camo": "https://clipcode.org/base/schema/camo/";
+        "schema": "https://schema.org";
+        "coremo": "https://clipcode.org/base/concept/coremo";
+        "catmo": "https://clipcode.org/base/concept/catmo";
+        "dstoremo": "https://clipcode.org/base/concept/dstoremo";
+        "dirmo": "https://clipcode.org/base/concept/dirmo";
+        "polmo": "https://clipcode.org/base/concept/polmo";
+        "usermo": "https://clipcode.org/base/concept/usermo";
+        "fomo": "https://clipcode.org/base/concept/fomo";
+        "como": "https://clipcode.org/base/concept/como";
+        "appmo": "https://clipcode.org/base/concept/appmo";
+        "stylemo": "https://clipcode.org/base/concept/stylemo";
+        "renmo": "https://clipcode.org/base/concept/renmo";
+        "pagemo": "https://clipcode.org/base/concept/pagemo";
+        "docmo": "https://clipcode.org/base/concept/docmo";
+        "repmo": "https://clipcode.org/base/concept/repmo";
+        "camo": "https://clipcode.org/base/concept/camo";
     };
     "@graph": readonly Thing[];
 }
-
-/** Used at the top-level node to indicate the context for the JSON-LD objects used. The context provided in this type is compatible with the keys and URLs in the rest of this generated file. */
-
 type SchemaValue<T> = T | readonly T[];
 type IdReference = {
     /** IRI identifying the canonical address of this object. */
@@ -48,7 +62,7 @@ export type DateTime = string;
  * - Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
  * - Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
  */
-export type Number = Float | Integer | number;
+export type Number = Float | Integer | number | `${number}`;
 
 /** Data type: Text. */
 export type Text = CssSelectorType | PronounceableText | URL | XPathType | string;
@@ -74,6 +88,16 @@ interface AboutPageLeaf extends WebPageBase {
 }
 /** Web page type: About page. */
 export type AboutPage = AboutPageLeaf;
+
+interface AbstractableBase extends ThingBase {
+    /** Whether this Abstractable is abstract. */
+    "coremo:isAbstract"?: SchemaValue<Boolean>;
+}
+interface AbstractableLeaf extends AbstractableBase {
+    "@type": "coremo:Abstractable";
+}
+/** A resource capable of being marked as abstract (so cannot be used directly; may be used as part of hierarhcy). */
+export type Abstractable = AbstractableLeaf | OrganizationProfile;
 
 interface AcceptActionLeaf extends ActionBase {
     "@type": "schema:AcceptAction";
@@ -232,19 +256,25 @@ interface ActivityConceptLeaf extends ThingBase {
     "@type": "coremo:ActivityConcept";
 }
 /** A corporate activity concept */
-export type ActivityConcept = ActivityConceptLeaf | AppConcept;
+export type ActivityConcept = ActivityConceptLeaf;
 
-interface ActivityModelLeaf extends HierarchicalBase {
-    "@type": "coremo:ActivityModel";
+interface ActivityModelAreaLeaf extends ThingBase {
+    "@type": "coremo:ActivityModelArea";
 }
-/** A activity model. */
-export type ActivityModel = ActivityModelLeaf | AppModel;
+/** A activity model area. */
+export type ActivityModelArea = ActivityModelAreaLeaf;
 
 interface AddActionLeaf extends UpdateActionBase {
     "@type": "schema:AddAction";
 }
 /** The act of editing by adding an object to a collection. */
 export type AddAction = AddActionLeaf | InsertAction;
+
+interface AddTransformLeaf extends TransformBase {
+    "@type": "coremo:AddTransform";
+}
+/** An AddTransform for a Transformable. */
+export type AddTransform = AddTransformLeaf;
 
 interface AdministrativeAreaLeaf extends PlaceBase {
     "@type": "schema:AdministrativeArea";
@@ -502,73 +532,11 @@ interface APIReferenceLeaf extends APIReferenceBase {
 /** Reference documentation for application programming interfaces (APIs). */
 export type APIReference = APIReferenceLeaf;
 
-interface AppComposerBase extends ThingBase, HierarchicalBase {
-}
-interface AppComposerLeaf extends AppComposerBase {
-    "@type": "appmo:AppComposer";
-}
-/** An app composer */
-export type AppComposer = AppComposerLeaf | AppPanelComposer | AppTabGroupComposer;
-
-interface AppConceptLeaf extends ThingBase {
-    "@type": "appmo:AppConcept";
-}
-/** An app concept */
-export type AppConcept = AppConceptLeaf | AppComposer | AppContentSemanticWork | AppEditor | AppFooter | AppHeader | AppModel | AppPanel | AppPresenter | AppPublisherProfile | AppPublishingProfileSemanticWork | AppPublishingTargetProfile | AppRealmSemanticWork | AppSidenav | AppTab | AppTabGroup | MicroappSemanticWork;
-
-interface AppContentLifecycleEnumerationLeaf extends EnumerationBase {
-    "@type": "appmo:AppContentLifecycleEnumeration";
-}
-/** An enumeration type representing how long app content (header footer) should be displayed. */
-export type AppContentLifecycleEnumeration = "appmo:fromPolicy" | "appmo:ShowAlways" | "appmo:ShowOnce" | "appmo:ShowUntilDismissed" | AppContentLifecycleEnumerationLeaf;
-
-interface AppContentSemanticWorkBase extends ThingBase, CreativeWorkBase {
-    /** The content lifecycle setting for the app header */
-    "appmo:contentLifecycleForAppContent"?: SchemaValue<AppContentLifecycleEnumeration | IdReference>;
-    /** whether to dismiss a 'x' symbol to dismiss this app content */
-    "appmo:dismissCrossForAppContent"?: SchemaValue<Boolean>;
-    /** The revision number of the dismissal (allows content to be updated, and only selectively decide if new dismissal request needed) */
-    "appmo:dismissRevisionForAppContent"?: SchemaValue<Text>;
-    /** The text to display when manually dismissing content */
-    "appmo:dismissTextForAppContent"?: SchemaValue<Text>;
-}
-interface AppContentSemanticWorkLeaf extends AppContentSemanticWorkBase {
-    "@type": "appmo:AppContentSemanticWork";
-}
-/** The app content (sidenav content, header and footer) */
-export type AppContentSemanticWork = AppContentSemanticWorkLeaf;
-
-interface AppEditorLeaf extends ThingBase {
-    "@type": "appmo:AppEditor";
-}
-/** An app editor (edits a knowledge model) */
-export type AppEditor = AppEditorLeaf;
-
 interface AppendActionLeaf extends InsertActionBase {
     "@type": "schema:AppendAction";
 }
 /** The act of inserting at the end if an ordered collection. */
 export type AppendAction = AppendActionLeaf;
-
-interface AppFooterBase extends ThingBase {
-    /** The content model for the resource. */
-    "appmo:hasContentModel"?: SchemaValue<URL>;
-}
-interface AppFooterLeaf extends AppFooterBase {
-    "@type": "appmo:AppFooter";
-}
-/** the app footer */
-export type AppFooter = AppFooterLeaf;
-
-interface AppHeaderBase extends ThingBase {
-    /** The content model for the resource. */
-    "appmo:hasContentModel"?: SchemaValue<URL>;
-}
-interface AppHeaderLeaf extends AppHeaderBase {
-    "@type": "appmo:AppHeader";
-}
-/** The app header */
-export type AppHeader = AppHeaderLeaf;
 
 interface AppliedConceptLeaf extends ThingBase {
     "@type": "coremo:AppliedConcept";
@@ -576,11 +544,11 @@ interface AppliedConceptLeaf extends ThingBase {
 /** An applied mathematics concept */
 export type AppliedConcept = AppliedConceptLeaf;
 
-interface AppliedMathematicsModelLeaf extends HierarchicalBase {
-    "@type": "coremo:AppliedMathematicsModel";
+interface AppliedMathematicsModelAreaLeaf extends ThingBase {
+    "@type": "coremo:AppliedMathematicsModelArea";
 }
-/** An applied mathematics model. */
-export type AppliedMathematicsModel = AppliedMathematicsModelLeaf;
+/** An applied mathematics model area. */
+export type AppliedMathematicsModelArea = AppliedMathematicsModelAreaLeaf;
 
 interface ApplyActionLeaf extends ActionBase {
     "@type": "schema:ApplyAction";
@@ -593,197 +561,11 @@ interface ApplyActionLeaf extends ActionBase {
  */
 export type ApplyAction = ApplyActionLeaf;
 
-interface AppModelBase extends ThingBase, HierarchicalBase {
-}
-interface AppModelLeaf extends AppModelBase {
-    "@type": "appmo:AppModel";
-}
-/** An app model */
-export type AppModel = AppModelLeaf;
-
-interface AppPanelBase extends ThingBase, HierarchicalBase {
-    /** The panel for this tab */
-    "appmo:appPanelForTab"?: SchemaValue<AppTab | IdReference>;
-}
-interface AppPanelLeaf extends AppPanelBase {
-    "@type": "appmo:AppPanel";
-}
-/** An app panel */
-export type AppPanel = AppPanelLeaf;
-
-interface AppPanelComposerLeaf extends AppComposerBase {
-    "@type": "appmo:AppPanelComposer";
-}
-/** An app panel composer */
-export type AppPanelComposer = AppPanelComposerLeaf;
-
-interface AppPresenterLeaf extends ThingBase {
-    "@type": "appmo:AppPresenter";
-}
-/** A apptab */
-export type AppPresenter = AppPresenterLeaf | AppPresenterAdmin | AppPresenterAnalytics | AppPresenterCreate | AppPresenterData | AppPresenterDesign | AppPresenterExplore;
-
-interface AppPresenterAdminLeaf extends ThingBase {
-    "@type": "appmo:AppPresenterAdmin";
-}
-/** A apptab */
-export type AppPresenterAdmin = AppPresenterAdminLeaf;
-
-interface AppPresenterAnalyticsLeaf extends ThingBase {
-    "@type": "appmo:AppPresenterAnalytics";
-}
-/** A apptab */
-export type AppPresenterAnalytics = AppPresenterAnalyticsLeaf;
-
-interface AppPresenterCreateLeaf extends ThingBase {
-    "@type": "appmo:AppPresenterCreate";
-}
-/** A apptab */
-export type AppPresenterCreate = AppPresenterCreateLeaf;
-
-interface AppPresenterDataLeaf extends ThingBase {
-    "@type": "appmo:AppPresenterData";
-}
-/** A apptab */
-export type AppPresenterData = AppPresenterDataLeaf;
-
-interface AppPresenterDesignLeaf extends ThingBase {
-    "@type": "appmo:AppPresenterDesign";
-}
-/** A apptab */
-export type AppPresenterDesign = AppPresenterDesignLeaf;
-
-interface AppPresenterExploreLeaf extends ThingBase {
-    "@type": "appmo:AppPresenterExplore";
-}
-/** A apptab */
-export type AppPresenterExplore = AppPresenterExploreLeaf | AppPresenterExploreList | AppPresenterExploreMap;
-
-interface AppPresenterExploreListLeaf extends ThingBase {
-    "@type": "appmo:AppPresenterExploreList";
-}
-/** A AppPresenterExploreList */
-export type AppPresenterExploreList = AppPresenterExploreListLeaf;
-
-interface AppPresenterExploreMapLeaf extends ThingBase {
-    "@type": "appmo:AppPresenterExploreMap";
-}
-/** A AppPresenterExploreMap */
-export type AppPresenterExploreMap = AppPresenterExploreMapLeaf;
-
-interface AppPublisherProfileBase extends ThingBase, HierarchicalChildBase {
-    /** The content for the app publisher profile */
-    "appmo:contentForAppPublishingProfile"?: SchemaValue<URL>;
-}
-interface AppPublisherProfileLeaf extends AppPublisherProfileBase {
-    "@type": "appmo:AppPublisherProfile";
-}
-/** An app profile */
-export type AppPublisherProfile = AppPublisherProfileLeaf;
-
-interface AppPublishingProfileSemanticWorkBase extends ThingBase, HierarchicalParentBase, CreativeWorkBase {
-    /** This publishing profiles applies to app realms and microapps. */
-    "appmo:appPublishingProfileAppliesTo"?: SchemaValue<AppRealmSemanticWork | MicroappSemanticWork | IdReference>;
-}
-interface AppPublishingProfileSemanticWorkLeaf extends AppPublishingProfileSemanticWorkBase {
-    "@type": "appmo:AppPublishingProfileSemanticWork";
-}
-/** An app publishing profile */
-export type AppPublishingProfileSemanticWork = AppPublishingProfileSemanticWorkLeaf;
-
-interface AppPublishingTargetProfileBase extends ThingBase, HierarchicalChildBase {
-    /** The content for the app publisher profile */
-    "appmo:contentForAppPublishingProfile"?: SchemaValue<URL>;
-}
-interface AppPublishingTargetProfileLeaf extends AppPublishingTargetProfileBase {
-    "@type": "appmo:AppPublishingTargetProfile";
-}
-/** An app publishing target */
-export type AppPublishingTargetProfile = AppPublishingTargetProfileLeaf;
-
-interface AppRealmLayoutBase extends ThingBase {
-    /** the app realm layout selector. */
-    "appmo:hasAppRealmLayoutSelector"?: SchemaValue<Text>;
-    /** The background color for this app realm durlng loading (not used afterwards). */
-    "appmo:hasBackgroundColorDuringLoading"?: SchemaValue<Text>;
-    /** The theme color for this app realm. */
-    "appmo:hasThemeColor"?: SchemaValue<Text>;
-    /** Whether to show the content sidenav. */
-    "appmo:showContentSideNav"?: SchemaValue<Boolean>;
-    /** Whether to show the filter icon in the Menubar. */
-    "appmo:showFilterInMenubar"?: SchemaValue<Boolean>;
-    /** Whether to show the login icon in the Menubar. */
-    "appmo:showLoginInMenubar"?: SchemaValue<Boolean>;
-    /** Whether to show the Menubar. */
-    "appmo:showMenubar"?: SchemaValue<Boolean>;
-    /** Whether to show the share icon in the Menubar. */
-    "appmo:showShareInMenubar"?: SchemaValue<Boolean>;
-    /** Whether to show the toolbox sidenav. */
-    "appmo:showToolboxSideNav"?: SchemaValue<Boolean>;
-}
-interface AppRealmLayoutLeaf extends AppRealmLayoutBase {
-    "@type": "appmo:AppRealmLayout";
-}
-/** The layout for an app realm. */
-export type AppRealmLayout = AppRealmLayoutLeaf;
-
-interface AppRealmSemanticWorkBase extends ThingBase, IconableBase, CreativeWorkBase, VersionableBase {
-    /** The side nav content for this microapp/app realm */
-    "appmo:hasAppContent"?: SchemaValue<AppHeader | IdReference>;
-    /** The app header for this microapp */
-    "appmo:hasAppHeader"?: SchemaValue<AppHeader | IdReference>;
-    /** the app realm layout for an app realm. */
-    "appmo:hasAppRealmLayout"?: SchemaValue<AppRealmLayout | IdReference>;
-}
-interface AppRealmSemanticWorkLeaf extends AppRealmSemanticWorkBase {
-    "@type": "appmo:AppRealmSemanticWork";
-}
-/** The hosting realm for one or more microapps. */
-export type AppRealmSemanticWork = AppRealmSemanticWorkLeaf;
-
 interface ApprovedIndicationLeaf extends MedicalEntityBase {
     "@type": "schema:ApprovedIndication";
 }
 /** An indication for a medical therapy that has been formally specified or approved by a regulatory body that regulates use of the therapy; for example, the US FDA approves indications for most drugs in the US. */
 export type ApprovedIndication = ApprovedIndicationLeaf;
-
-interface AppSidenavBase extends ThingBase {
-    /** The content model for the resource. */
-    "appmo:hasContentModel"?: SchemaValue<URL>;
-}
-interface AppSidenavLeaf extends AppSidenavBase {
-    "@type": "appmo:AppSidenav";
-}
-/** The app sidenav */
-export type AppSidenav = AppSidenavLeaf;
-
-interface AppTabBase extends ThingBase, HierarchicalBase {
-    /** The tab for this tab group */
-    "appmo:appTabForTabGroup"?: SchemaValue<AppTabGroup | IdReference>;
-    /** The default tab for this tab group */
-    "appmo:isDefaultTab"?: SchemaValue<Boolean>;
-}
-interface AppTabLeaf extends AppTabBase {
-    "@type": "appmo:AppTab";
-}
-/** A apptab */
-export type AppTab = AppTabLeaf;
-
-interface AppTabGroupBase extends ThingBase, HierarchicalBase, IconableBase {
-    /** Whether to show the list of tabs if there is only one tab */
-    "appmo:showTabsIfSingleTab"?: SchemaValue<Boolean>;
-}
-interface AppTabGroupLeaf extends AppTabGroupBase {
-    "@type": "appmo:AppTabGroup";
-}
-/** An app tab group */
-export type AppTabGroup = AppTabGroupLeaf;
-
-interface AppTabGroupComposerLeaf extends AppComposerBase {
-    "@type": "appmo:AppTabGroupComposer";
-}
-/** An app tab group composer */
-export type AppTabGroupComposer = AppTabGroupComposerLeaf;
 
 interface AquariumLeaf extends CivicStructureBase {
     "@type": "schema:Aquarium";
@@ -916,6 +698,22 @@ interface AtlasLeaf extends CreativeWorkBase {
 /** A collection or bound volume of maps, charts, plates or tables, physical or in media form illustrating any subject. */
 export type Atlas = AtlasLeaf;
 
+interface AttachableBase extends ThingBase {
+    /** The attachment of an attachable. */
+    "coremo:attachedTo"?: SchemaValue<AttachmentEnumeration | IdReference>;
+}
+interface AttachableLeaf extends AttachableBase {
+    "@type": "coremo:Attachable";
+}
+/** A resource which can be attached in various ways to another resource. */
+export type Attachable = AttachableLeaf;
+
+interface AttachmentEnumerationLeaf extends EnumerationBase {
+    "@type": "coremo:AttachmentEnumeration";
+}
+/** AttachmentEnumeration is an enumeration type representing attachments. */
+export type AttachmentEnumeration = "https://clipcode.org/base/concept/coremo/ModelAttached" | "coremo:ModelAttached" | "https://clipcode.org/base/concept/coremo/NetworkAttached" | "coremo:NetworkAttached" | AttachmentEnumerationLeaf;
+
 interface AttorneyLeaf extends LocalBusinessBase {
     "@type": "schema:Attorney";
 }
@@ -938,7 +736,7 @@ interface AudienceLeaf extends AudienceBase {
 /** Intended audience for an item, i.e. the group for whom the item was created. */
 export type Audience = AudienceLeaf | BusinessAudience | EducationalAudience | MedicalAudience | PeopleAudience | Researcher;
 
-interface AudiobookBase extends AudioObjectBase, BookBase {
+interface AudiobookBase extends BookBase, AudioObjectBase {
     /** The duration of the item (movie, audio recording, event, etc.) in {@link http://en.wikipedia.org/wiki/ISO_8601 ISO 8601 date format}. */
     "schema:duration"?: SchemaValue<Duration | IdReference>;
     /** A person who reads (performs) the audiobook. */
@@ -953,6 +751,8 @@ export type Audiobook = AudiobookLeaf;
 interface AudioObjectBase extends MediaObjectBase {
     /** The caption for this object. For downloadable machine formats (closed caption, subtitles etc.) use MediaObject and indicate the {@link https://schema.org/encodingFormat encodingFormat}. */
     "schema:caption"?: SchemaValue<MediaObject | Text | IdReference>;
+    /** Represents textual captioning from a {@link https://schema.org/MediaObject MediaObject}, e.g. text of a 'meme'. */
+    "schema:embeddedTextCaption"?: SchemaValue<Text>;
     /** If this MediaObject is an AudioObject or VideoObject, the transcript of that object. */
     "schema:transcript"?: SchemaValue<Text>;
 }
@@ -960,7 +760,13 @@ interface AudioObjectLeaf extends AudioObjectBase {
     "@type": "schema:AudioObject";
 }
 /** An audio file. */
-export type AudioObject = AudioObjectLeaf | Audiobook;
+export type AudioObject = AudioObjectLeaf | Audiobook | AudioObjectSnapshot;
+
+interface AudioObjectSnapshotLeaf extends AudioObjectBase {
+    "@type": "schema:AudioObjectSnapshot";
+}
+/** A specific and exact (byte-for-byte) version of an {@link https://schema.org/AudioObject AudioObject}. Two byte-for-byte identical files, for the purposes of this type, considered identical. If they have different embedded metadata the files will differ. Different external facts about the files, e.g. creator or dateCreated that aren't represented in their actual content, do not affect this notion of identity. */
+export type AudioObjectSnapshot = AudioObjectSnapshotLeaf;
 
 interface AuthorizeActionBase extends ActionBase {
     /** A sub property of participant. The participant who is at the receiving end of the action. */
@@ -1123,11 +929,43 @@ interface BikeStoreLeaf extends LocalBusinessBase {
 /** A bike store. */
 export type BikeStore = BikeStoreLeaf | string;
 
+interface BioChemEntityBase extends ThingBase {
+    /** Disease associated to this BioChemEntity. Such disease can be a MedicalCondition or a URL. If you want to add an evidence supporting the association, please use PropertyValue. */
+    "schema:associatedDisease"?: SchemaValue<MedicalCondition | PropertyValue | URL | IdReference>;
+    /** A BioChemEntity that is known to interact with this item. */
+    "schema:bioChemInteraction"?: SchemaValue<BioChemEntity | IdReference>;
+    /** A similar BioChemEntity, e.g., obtained by fingerprint similarity algorithms. */
+    "schema:bioChemSimilarity"?: SchemaValue<BioChemEntity | IdReference>;
+    /** A role played by the BioChemEntity within a biological context. */
+    "schema:biologicalRole"?: SchemaValue<DefinedTerm | IdReference>;
+    /** Indicates a BioChemEntity that (in some sense) has this BioChemEntity as a part. */
+    "schema:hasBioChemEntityPart"?: SchemaValue<BioChemEntity | IdReference>;
+    /** Molecular function performed by this BioChemEntity; please use PropertyValue if you want to include any evidence. */
+    "schema:hasMolecularFunction"?: SchemaValue<DefinedTerm | PropertyValue | URL | IdReference>;
+    /** A common representation such as a protein sequence or chemical structure for this entity. For images use schema.org/image. */
+    "schema:hasRepresentation"?: SchemaValue<PropertyValue | Text | URL | IdReference>;
+    /** Another BioChemEntity encoding by this one. */
+    "schema:isEncodedByBioChemEntity"?: SchemaValue<Gene | IdReference>;
+    /** Biological process this BioChemEntity is involved in; please use PropertyValue if you want to include any evidence. */
+    "schema:isInvolvedInBiologicalProcess"?: SchemaValue<DefinedTerm | PropertyValue | URL | IdReference>;
+    /** Subcellular location where this BioChemEntity is located; please use PropertyValue if you want to include any evidence. */
+    "schema:isLocatedInSubcellularLocation"?: SchemaValue<DefinedTerm | PropertyValue | URL | IdReference>;
+    /** Indicates a BioChemEntity that is (in some sense) a part of this BioChemEntity. */
+    "schema:isPartOfBioChemEntity"?: SchemaValue<BioChemEntity | IdReference>;
+    /** The taxonomic grouping of the organism that expresses, encodes, or in someway related to the BioChemEntity. */
+    "schema:taxonomicRange"?: SchemaValue<DefinedTerm | Taxon | Text | URL | IdReference>;
+}
+interface BioChemEntityLeaf extends BioChemEntityBase {
+    "@type": "schema:BioChemEntity";
+}
+/** Any biological, chemical, or biochemical thing. For example: a protein; a gene; a chemical; a synthetic chemical. */
+export type BioChemEntity = BioChemEntityLeaf | ChemicalSubstance | Gene | MolecularEntity | Protein;
+
 interface BlogBase extends CreativeWorkBase {
     /** A posting that is part of this blog. */
     "schema:blogPost"?: SchemaValue<BlogPosting | IdReference>;
     /**
-     * The postings that are part of this blog.
+     * Indicates a post that is part of a {@link https://schema.org/Blog Blog}. Note that historically, what we term a "Blog" was once known as a "weblog", and that what we term a "BlogPosting" is now often colloquially referred to as a "blog".
      *
      * @deprecated Consider using https://schema.org/blogPost instead.
      */
@@ -1138,7 +976,7 @@ interface BlogBase extends CreativeWorkBase {
 interface BlogLeaf extends BlogBase {
     "@type": "schema:Blog";
 }
-/** A blog. */
+/** A {@link https://en.wikipedia.org/wiki/Blog blog}, sometimes known as a "weblog". Note that the individual posts ({@link https://schema.org/BlogPosting BlogPosting}s) in a {@link https://schema.org/Blog Blog} are often colloqually referred to by the same term. */
 export type Blog = BlogLeaf;
 
 interface BlogPostingLeaf extends SocialMediaPostingBase {
@@ -1627,6 +1465,28 @@ interface CasinoLeaf extends LocalBusinessBase {
 /** A casino. */
 export type Casino = CasinoLeaf | string;
 
+interface CategoryBase extends ThingBase, ThingBase {
+    /** A partiicpant in a category. */
+    "catmo:hasCategoryParticipant"?: SchemaValue<CategoryParticipant | IdReference>;
+}
+interface CategoryLeaf extends CategoryBase {
+    "@type": "catmo:Category";
+}
+/** A category. */
+export type Category = CategoryLeaf;
+
+interface CategoryArrowBase extends ThingBase {
+    /** A source of a category arrow. */
+    "catmo:hasArrowSource"?: SchemaValue<CategoryObject | IdReference>;
+    /** A target of a category arrow. */
+    "catmo:hasArrowTarget"?: SchemaValue<CategoryObject | IdReference>;
+}
+interface CategoryArrowLeaf extends CategoryArrowBase {
+    "@type": "catmo:CategoryArrow";
+}
+/** A directed arrow between two category objects. */
+export type CategoryArrow = CategoryArrowLeaf;
+
 interface CategoryCodeBase extends DefinedTermBase {
     /** A short textual code that uniquely identifies the value. */
     "schema:codeValue"?: SchemaValue<Text>;
@@ -1648,6 +1508,48 @@ interface CategoryCodeSetLeaf extends CategoryCodeSetBase {
 }
 /** A set of Category Code values. */
 export type CategoryCodeSet = CategoryCodeSetLeaf;
+
+interface CategoryConceptLeaf extends ThingBase {
+    "@type": "catmo:CategoryConcept";
+}
+/** A category concept */
+export type CategoryConcept = CategoryConceptLeaf | CategoryModel | CategoryParticipant | CategorySemanticPool | RootCategoryConcept;
+
+interface CategoryModelBase extends ThingBase, ThingBase, ThingBase {
+    /** A semantic pool within a category model. */
+    "catmo:hasCategorySemanticPool"?: SchemaValue<CategorySemanticPool | IdReference>;
+}
+interface CategoryModelLeaf extends CategoryModelBase {
+    "@type": "catmo:CategoryModel";
+}
+/** A category model */
+export type CategoryModel = CategoryModelLeaf;
+
+interface CategoryObjectBase extends ThingBase {
+    /** A partiicpant in a category. */
+    "catmo:hasCategoryObjectElement"?: SchemaValue<Thing | IdReference>;
+}
+interface CategoryObjectLeaf extends CategoryObjectBase {
+    "@type": "catmo:CategoryObject";
+}
+/** A category object. */
+export type CategoryObject = CategoryObjectLeaf;
+
+interface CategoryParticipantLeaf extends ThingBase {
+    "@type": "catmo:CategoryParticipant";
+}
+/** A participant in a category. */
+export type CategoryParticipant = CategoryParticipantLeaf | CategoryArrow | CategoryObject;
+
+interface CategorySemanticPoolBase extends ThingBase, SemanticPoolBase {
+    /** An independent category concept within a semantic pool. */
+    "catmo:rootCategoryConcept"?: SchemaValue<RootCategoryConcept | IdReference>;
+}
+interface CategorySemanticPoolLeaf extends CategorySemanticPoolBase {
+    "@type": "catmo:CategorySemanticPool";
+}
+/** A category semantic pool. */
+export type CategorySemanticPool = CategorySemanticPoolLeaf;
 
 interface CatholicChurchLeaf extends CivicStructureBase {
     "@type": "schema:CatholicChurch";
@@ -1709,11 +1611,11 @@ interface ChangeConceptLeaf extends ThingBase {
 /** A change mathematics concept */
 export type ChangeConcept = ChangeConceptLeaf;
 
-interface ChangeMathematicsModelLeaf extends HierarchicalBase {
-    "@type": "coremo:ChangeMathematicsModel";
+interface ChangeMathematicsModelAreaLeaf extends ThingBase {
+    "@type": "coremo:ChangeMathematicsModelArea";
 }
-/** A change mathematics model. */
-export type ChangeMathematicsModel = ChangeMathematicsModelLeaf;
+/** A change mathematics model area. */
+export type ChangeMathematicsModelArea = ChangeMathematicsModelAreaLeaf;
 
 interface ChapterBase extends CreativeWorkBase {
     /** The page on which the work ends; for example "138" or "xvi". */
@@ -1772,6 +1674,20 @@ interface CheckoutPageLeaf extends WebPageBase {
 }
 /** Web page type: Checkout page. */
 export type CheckoutPage = CheckoutPageLeaf;
+
+interface ChemicalSubstanceBase extends BioChemEntityBase {
+    /** The chemical composition describes the identity and relative ratio of the chemical elements that make up the substance. */
+    "schema:chemicalComposition"?: SchemaValue<Text>;
+    /** A role played by the BioChemEntity within a chemical context. */
+    "schema:chemicalRole"?: SchemaValue<DefinedTerm | IdReference>;
+    /** Intended use of the BioChemEntity by humans. */
+    "schema:potentialUse"?: SchemaValue<DefinedTerm | IdReference>;
+}
+interface ChemicalSubstanceLeaf extends ChemicalSubstanceBase {
+    "@type": "schema:ChemicalSubstance";
+}
+/** A chemical substance is 'a portion of matter of constant composition, composed of molecular entities of the same type or of different types' (source: {@link https://www.ebi.ac.uk/chebi/searchId.do?chebiId=59999 ChEBI:59999}). */
+export type ChemicalSubstance = ChemicalSubstanceLeaf;
 
 interface ChildCareLeaf extends LocalBusinessBase {
     "@type": "schema:ChildCare";
@@ -1838,6 +1754,8 @@ export type CivicStructure = CivicStructureLeaf | Airport | Aquarium | Beach | B
 interface ClaimBase extends CreativeWorkBase {
     /** Indicates an occurence of a {@link https://schema.org/Claim Claim} in some {@link https://schema.org/CreativeWork CreativeWork}. */
     "schema:appearance"?: SchemaValue<CreativeWork | IdReference>;
+    /** For a {@link https://schema.org/Claim Claim} interpreted from {@link https://schema.org/MediaObject MediaObject} content sed to indicate a claim contained, implied or refined from the content of a {@link https://schema.org/MediaObject MediaObject}. */
+    "schema:claimInterpreter"?: SchemaValue<Organization | Person | IdReference>;
     /** Indicates the first known occurence of a {@link https://schema.org/Claim Claim} in some {@link https://schema.org/CreativeWork CreativeWork}. */
     "schema:firstAppearance"?: SchemaValue<CreativeWork | IdReference>;
 }
@@ -1872,6 +1790,12 @@ interface ClassLeaf extends ClassBase {
 }
 /** A class, also often called a 'Type'; equivalent to rdfs:Class. */
 export type Class = ClassLeaf;
+
+interface ClearTransformLeaf extends TransformBase {
+    "@type": "coremo:ClearTransform";
+}
+/** A ClearTransform for a Transformable (clears child elements, but does not remove parent element). */
+export type ClearTransform = ClearTransformLeaf;
 
 interface ClipBase extends CreativeWorkBase {
     /** An actor, e.g. in tv, radio, movie, video games etc., or in an event. Actors can be associated with individual items or with a series, episode, clip. */
@@ -1917,6 +1841,12 @@ interface ClothingStoreLeaf extends LocalBusinessBase {
 /** A clothing store. */
 export type ClothingStore = ClothingStoreLeaf | string;
 
+interface CloudModelAreaLeaf extends ThingBase {
+    "@type": "coremo:CloudModelArea";
+}
+/** A cloud model area. */
+export type CloudModelArea = CloudModelAreaLeaf;
+
 interface CodeLeaf extends CreativeWorkBase {
     "@type": "schema:Code";
 }
@@ -1926,6 +1856,18 @@ interface CodeLeaf extends CreativeWorkBase {
  * @deprecated Use SoftwareSourceCode instead.
  */
 export type Code = CodeLeaf;
+
+interface CodeModelAreaLeaf extends ThingBase {
+    "@type": "coremo:CodeModelArea";
+}
+/** A code model area. */
+export type CodeModelArea = CodeModelAreaLeaf;
+
+interface CodeModelsetFoundationsMathematicsModelAreaLeaf extends ThingBase {
+    "@type": "coremo:CodeModelsetFoundationsMathematicsModelArea";
+}
+/** A code modelset foundational mathematics model area. */
+export type CodeModelsetFoundationsMathematicsModelArea = CodeModelsetFoundationsMathematicsModelAreaLeaf;
 
 interface CollectionBase extends CreativeWorkBase {
     /** The number of items in the {@link https://schema.org/Collection Collection}. */
@@ -2037,6 +1979,14 @@ interface CommentActionLeaf extends CommentActionBase {
 /** The act of generating a comment about a subject. */
 export type CommentAction = CommentActionLeaf;
 
+interface CommonModelsetFoundationsMathematicsModelAreaBase extends ThingBase, ThingBase {
+}
+interface CommonModelsetFoundationsMathematicsModelAreaLeaf extends CommonModelsetFoundationsMathematicsModelAreaBase {
+    "@type": "coremo:CommonModelsetFoundationsMathematicsModelArea";
+}
+/** A foundational mathematics model area. */
+export type CommonModelsetFoundationsMathematicsModelArea = CommonModelsetFoundationsMathematicsModelAreaLeaf;
+
 interface CommunicateActionBase extends ActionBase {
     /** The subject matter of the content. */
     "schema:about"?: SchemaValue<Thing | IdReference>;
@@ -2061,13 +2011,13 @@ interface CommunicationConceptLeaf extends ThingBase {
     "@type": "coremo:CommunicationConcept";
 }
 /** A communication concept */
-export type CommunicationConcept = CommunicationConceptLeaf | PipelineConcept;
+export type CommunicationConcept = CommunicationConceptLeaf | ContentConcept | PipelineConcept;
 
-interface CommunicationModelLeaf extends HierarchicalBase {
-    "@type": "coremo:CommunicationModel";
+interface CommunicationModelAreaLeaf extends ThingBase {
+    "@type": "coremo:CommunicationModelArea";
 }
-/** A communication model. */
-export type CommunicationModel = CommunicationModelLeaf | PipelineModel;
+/** A communication model area. */
+export type CommunicationModelArea = CommunicationModelAreaLeaf | ContentModelArea | PipelineModelArea;
 
 interface CommunityConceptLeaf extends ThingBase {
     "@type": "coremo:CommunityConcept";
@@ -2085,20 +2035,6 @@ interface CompleteDataFeedLeaf extends DataFeedBase {
  */
 export type CompleteDataFeed = CompleteDataFeedLeaf;
 
-interface CompliancePolicySemanticWorkBase extends CreativeWorkBase, ThingBase {
-}
-interface CompliancePolicySemanticWorkLeaf extends CompliancePolicySemanticWorkBase {
-    "@type": "polmo:CompliancePolicySemanticWork";
-}
-/** Compliance policy */
-export type CompliancePolicySemanticWork = CompliancePolicySemanticWorkLeaf;
-
-interface CompositeModelLeaf extends HierarchicalBase {
-    "@type": "coremo:CompositeModel";
-}
-/** A composite model. */
-export type CompositeModel = CompositeModelLeaf;
-
 interface CompoundPriceSpecificationBase extends PriceSpecificationBase {
     /** This property links to all {@link https://schema.org/UnitPriceSpecification UnitPriceSpecification} nodes that apply in parallel for the {@link https://schema.org/CompoundPriceSpecification CompoundPriceSpecification} node. */
     "schema:priceComponent"?: SchemaValue<UnitPriceSpecification | IdReference>;
@@ -2111,6 +2047,12 @@ interface CompoundPriceSpecificationLeaf extends CompoundPriceSpecificationBase 
 /** A compound price specification is one that bundles multiple prices that all apply in combination for different dimensions of consumption. Use the name property of the attached unit price specification for indicating the dimension of a price component (e.g. "electricity" or "final cleaning"). */
 export type CompoundPriceSpecification = CompoundPriceSpecificationLeaf;
 
+interface ComputeModelAreaLeaf extends ThingBase {
+    "@type": "coremo:ComputeModelArea";
+}
+/** A compute model area. */
+export type ComputeModelArea = ComputeModelAreaLeaf;
+
 interface ComputerLanguageLeaf extends ThingBase {
     "@type": "schema:ComputerLanguage";
 }
@@ -2122,12 +2064,6 @@ interface ComputerStoreLeaf extends LocalBusinessBase {
 }
 /** A computer store. */
 export type ComputerStore = ComputerStoreLeaf | string;
-
-interface ConditionalOperationEnumerationLeaf extends EnumerationBase {
-    "@type": "fomo:ConditionalOperationEnumeration";
-}
-/** ConditionalOperationEnumeration is an enumeration type representing conitional op. */
-export type ConditionalOperationEnumeration = "fomo:AlwaysHideConditionalOp" | "fomo:AlwaysShowConditionalOp" | "fomo:equalsConditionalOp" | "fomo:equalsOrLessConditionalOp" | "fomo:equalsOrMoreConditionalOp" | "fomo:lessConditionalOp" | "fomo:LogicConditionalOp" | "fomo:moreConditionalOp" | "fomo:notEqualsConditionalOp" | "fomo:NotEqualsNotZeroConditionalOp" | ConditionalOperationEnumerationLeaf;
 
 interface ConfirmActionLeaf extends InformActionBase {
     "@type": "schema:ConfirmAction";
@@ -2145,12 +2081,6 @@ interface ConsortiumLeaf extends OrganizationBase {
 }
 /** A Consortium is a membership {@link https://schema.org/Organization Organization} whose members are typically Organizations. */
 export type Consortium = ConsortiumLeaf | string;
-
-interface ConstituentModelLeaf extends HierarchicalBase {
-    "@type": "coremo:ConstituentModel";
-}
-/** A constituent model. */
-export type ConstituentModel = ConstituentModelLeaf | CommunicationModel | CorporateModel | EducationModel | MathematicsModel | OperationsModel | SalesModel | ServicesModel | TechnologyModel;
 
 interface ConsumeActionBase extends ActionBase {
     /** A set of requirements that a must be fulfilled in order to perform an Action. If more than one value is specied, fulfilling one set of requirements will allow the Action to be performed. */
@@ -2208,6 +2138,18 @@ interface ContactPointOptionLeaf extends EnumerationBase {
 /** Enumerated options related to a ContactPoint. */
 export type ContactPointOption = "https://schema.org/HearingImpairedSupported" | "schema:HearingImpairedSupported" | "https://schema.org/TollFree" | "schema:TollFree" | ContactPointOptionLeaf;
 
+interface ContentConceptLeaf extends ThingBase {
+    "@type": "coremo:ContentConcept";
+}
+/** A content concept */
+export type ContentConcept = ContentConceptLeaf;
+
+interface ContentModelAreaLeaf extends ThingBase {
+    "@type": "coremo:ContentModelArea";
+}
+/** A content model area. */
+export type ContentModelArea = ContentModelAreaLeaf;
+
 interface ContinentLeaf extends PlaceBase {
     "@type": "schema:Continent";
 }
@@ -2258,11 +2200,11 @@ interface CorporateConceptLeaf extends ThingBase {
 /** A corporate concept */
 export type CorporateConcept = CorporateConceptLeaf | ActivityConcept;
 
-interface CorporateModelLeaf extends HierarchicalBase {
-    "@type": "coremo:CorporateModel";
+interface CorporateModelAreaLeaf extends ThingBase {
+    "@type": "coremo:CorporateModelArea";
 }
-/** A corporate model. */
-export type CorporateModel = CorporateModelLeaf | ActivityModel;
+/** A corporate model area. */
+export type CorporateModelArea = CorporateModelAreaLeaf | ActivityModelArea;
 
 interface CorporationBase extends OrganizationBase {
     /** The exchange traded instrument associated with a Corporation object. The tickerSymbol is expressed as an exchange and an instrument name separated by a space character. For the exchange component of the tickerSymbol attribute, we recommend using the controlled vocabulary of Market Identifier Codes (MIC) specified in ISO15022. */
@@ -2371,6 +2313,8 @@ interface CreativeWorkBase extends ThingBase {
     "schema:aggregateRating"?: SchemaValue<AggregateRating | IdReference>;
     /** A secondary title of the CreativeWork. */
     "schema:alternativeHeadline"?: SchemaValue<Text>;
+    /** Indicates a page or other link involved in archival of a {@link https://schema.org/CreativeWork CreativeWork}. In the case of {@link https://schema.org/MediaReview MediaReview}, the items in a {@link https://schema.org/MediaReviewItem MediaReviewItem} may often become inaccessible, but be archived by archival, journalistic, activist, or law enforcement organizations. In such cases, the referenced page may not directly publish the content. */
+    "schema:archivedAt"?: SchemaValue<URL | WebPage | IdReference>;
     /** The item being described is intended to assess the competency or learning outcome defined by the referenced term. */
     "schema:assesses"?: SchemaValue<DefinedTerm | Text | IdReference>;
     /** A media object that encodes this CreativeWork. This property is a synonym for encoding. */
@@ -2419,6 +2363,14 @@ interface CreativeWorkBase extends ThingBase {
     "schema:copyrightYear"?: SchemaValue<Number>;
     /** Indicates a correction to a {@link https://schema.org/CreativeWork CreativeWork}, either via a {@link https://schema.org/CorrectionComment CorrectionComment}, textually or in another document. */
     "schema:correction"?: SchemaValue<CorrectionComment | Text | URL | IdReference>;
+    /**
+     * The country of origin of something, including products as well as creative works such as movie and TV content.
+     *
+     * In the case of TV and movie, this would be the country of the principle offices of the production company or individual responsible for the movie. For other kinds of {@link https://schema.org/CreativeWork CreativeWork} it is difficult to provide fully general guidance, and properties such as {@link https://schema.org/contentLocation contentLocation} and {@link https://schema.org/locationCreated locationCreated} may be more applicable.
+     *
+     * In the case of products, the country of origin of the product. The exact interpretation of this may vary by context and product type, and cannot be fully enumerated here.
+     */
+    "schema:countryOfOrigin"?: SchemaValue<Country | IdReference>;
     /** The status of a creative work in terms of its stage in a lifecycle. Example terms include Incomplete, Draft, Published, Obsolete. Some organizations define a set of terms for the stages of their publication lifecycle. */
     "schema:creativeWorkStatus"?: SchemaValue<DefinedTerm | Text | IdReference>;
     /** The creator/author of this CreativeWork. This is the same as the Author property for CreativeWork. */
@@ -2493,6 +2445,8 @@ interface CreativeWorkBase extends ThingBase {
     "schema:interactionStatistic"?: SchemaValue<InteractionCounter | IdReference>;
     /** The predominant mode of learning supported by the learning resource. Acceptable values are 'active', 'expositive', or 'mixed'. */
     "schema:interactivityType"?: SchemaValue<Text>;
+    /** Used to indicate a specific claim contained, implied, translated or refined from the content of a {@link https://schema.org/MediaObject MediaObject} or other {@link https://schema.org/CreativeWork CreativeWork}. The interpreting party can be indicated using {@link https://schema.org/claimInterpreter claimInterpreter}. */
+    "schema:interpretedAsClaim"?: SchemaValue<Claim | IdReference>;
     /** A flag to signal that the item, event, or place is accessible for free. */
     "schema:isAccessibleForFree"?: SchemaValue<Boolean>;
     /** A resource from which this work is derived or from which it is a modification or adaption. */
@@ -2618,7 +2572,7 @@ interface CreativeWorkLeaf extends CreativeWorkBase {
     "@type": "schema:CreativeWork";
 }
 /** The most generic kind of creative work, including books, movies, photographs, software programs, etc. */
-export type CreativeWork = CreativeWorkLeaf | AmpStory | ArchiveComponent | Article | Atlas | Blog | Book | Chapter | Claim | Clip | Code | Collection | ComicStory | Comment | Conversation | Course | CreativeWorkSeason | CreativeWorkSeries | DataCatalog | Dataset | DefinedTermSet | Diet | DigitalDocument | Drawing | EducationalOccupationalCredential | Episode | ExercisePlan | Game | Guide | HowTo | HowToDirection | HowToSection | HowToStep | HowToTip | HyperToc | HyperTocEntry | LearningResource | Legislation | Manuscript | Map | MathSolver | MediaObject | Menu | MenuSection | Message | Movie | MusicComposition | MusicPlaylist | MusicRecording | Painting | Photograph | Play | Poster | PublicationIssue | PublicationVolume | Quotation | Review | Sculpture | Season | SemanticWork | SheetMusic | ShortStory | SoftwareApplication | SoftwareSourceCode | SpecialAnnouncement | Thesis | TVSeason | TVSeries | VisualArtwork | WebContent | WebPage | WebPageElement | WebSite;
+export type CreativeWork = CreativeWorkLeaf | AmpStory | ArchiveComponent | Article | Atlas | Blog | Book | Chapter | Claim | Clip | Code | Collection | ComicStory | Comment | Conversation | Course | CreativeWorkSeason | CreativeWorkSeries | DataCatalog | Dataset | DefinedTermSet | Diet | DigitalDocument | Drawing | EducationalOccupationalCredential | Episode | ExercisePlan | Game | Guide | HowTo | HowToDirection | HowToSection | HowToStep | HowToTip | HyperToc | HyperTocEntry | LearningResource | Legislation | Manuscript | Map | MathSolver | MediaObject | MediaReviewItem | Menu | MenuSection | Message | Movie | MusicComposition | MusicPlaylist | MusicRecording | Painting | Photograph | Play | Poster | PublicationIssue | PublicationVolume | Quotation | Review | Sculpture | Season | SheetMusic | ShortStory | SoftwareApplication | SoftwareSourceCode | SpecialAnnouncement | Statement | Thesis | TVSeason | TVSeries | VisualArtwork | WebContent | WebPage | WebPageElement | WebSite;
 
 interface CreativeWorkSeasonBase extends CreativeWorkBase {
     /** An actor, e.g. in tv, radio, movie, video games etc., or in an event. Actors can be associated with individual items or with a series, episode, clip. */
@@ -2654,7 +2608,7 @@ interface CreativeWorkSeasonLeaf extends CreativeWorkSeasonBase {
 /** A media season e.g. tv, radio, video game etc. */
 export type CreativeWorkSeason = CreativeWorkSeasonLeaf | PodcastSeason | RadioSeason | TVSeason;
 
-interface CreativeWorkSeriesBase extends ThingBase, CreativeWorkBase {
+interface CreativeWorkSeriesBase extends CreativeWorkBase, ThingBase {
     /** The end date and time of the item (in {@link http://en.wikipedia.org/wiki/ISO_8601 ISO 8601 date format}). */
     "schema:endDate"?: SchemaValue<Date | DateTime>;
     /** The International Standard Serial Number (ISSN) that identifies this serial publication. You can repeat this property to identify different formats of, or the linking ISSN (ISSN-L) for, this serial publication. */
@@ -2725,6 +2679,12 @@ interface DanceGroupLeaf extends OrganizationBase {
 /** A dance group—for example, the Alvin Ailey Dance Theater or Riverdance. */
 export type DanceGroup = DanceGroupLeaf | string;
 
+interface DataBlockKindEnumerationLeaf extends EnumerationBase {
+    "@type": "dstoremo:DataBlockKindEnumeration";
+}
+/** DataBlockKindEnumeration is an enumeration type representing sync status. */
+export type DataBlockKindEnumeration = "https://clipcode.org/base/concept/dstoremo/BinaryBlockKind" | "dstoremo:BinaryBlockKind" | "https://clipcode.org/base/concept/dstoremo/GraphDataBlockKind" | "dstoremo:GraphDataBlockKind" | "https://clipcode.org/base/concept/dstoremo/ObjectDataBlockKind" | "dstoremo:ObjectDataBlockKind" | "https://clipcode.org/base/concept/dstoremo/TextDataBlockKind" | "dstoremo:TextDataBlockKind" | DataBlockKindEnumerationLeaf;
+
 interface DataCatalogBase extends CreativeWorkBase {
     /** A dataset contained in this catalog. */
     "schema:dataset"?: SchemaValue<Dataset | IdReference>;
@@ -2744,12 +2704,6 @@ interface DataCatalogLeaf extends DataCatalogBase {
 }
 /** A collection of datasets. */
 export type DataCatalog = DataCatalogLeaf;
-
-interface DataConceptLeaf extends ThingBase {
-    "@type": "coremo:DataConcept";
-}
-/** A data concept */
-export type DataConcept = DataConceptLeaf;
 
 interface DataDownloadBase extends MediaObjectBase {
     /**
@@ -2795,12 +2749,6 @@ interface DataFeedItemLeaf extends DataFeedItemBase {
 /** A single item within a larger data feed. */
 export type DataFeedItem = DataFeedItemLeaf;
 
-interface DataModelLeaf extends HierarchicalBase {
-    "@type": "coremo:DataModel";
-}
-/** A data model. */
-export type DataModel = DataModelLeaf;
-
 interface DatasetBase extends CreativeWorkBase {
     /**
      * A data catalog which contains this dataset.
@@ -2844,6 +2792,32 @@ interface DatasetLeaf extends DatasetBase {
 }
 /** A body of structured information describing some topic(s) of interest. */
 export type Dataset = DatasetLeaf | DataFeed;
+
+interface DatastoreConceptLeaf extends ThingBase {
+    "@type": "dstoremo:DatastoreConcept";
+}
+/** A datastore concept */
+export type DatastoreConcept = DatastoreConceptLeaf | DatastoreModel | DatastoreSemanticPool | KnowledgeContainer | KnowledgePackage | RootDatastoreConcept;
+
+interface DatastoreModelBase extends ThingBase, ThingBase, ThingBase {
+    /** A semantic pool within a datastore model. */
+    "dstoremo:hasDatastoreSemanticPool"?: SchemaValue<DatastoreSemanticPool | IdReference>;
+}
+interface DatastoreModelLeaf extends DatastoreModelBase {
+    "@type": "dstoremo:DatastoreModel";
+}
+/** A datastore model */
+export type DatastoreModel = DatastoreModelLeaf;
+
+interface DatastoreSemanticPoolBase extends SemanticPoolBase, ThingBase {
+    /** Attaches a root concept to its semantic pool. */
+    "dstoremo:hasRootDatastoreConcept"?: SchemaValue<RootDatastoreConcept | IdReference>;
+}
+interface DatastoreSemanticPoolLeaf extends DatastoreSemanticPoolBase {
+    "@type": "dstoremo:DatastoreSemanticPool";
+}
+/** A datastore semantic pool. */
+export type DatastoreSemanticPool = DatastoreSemanticPoolLeaf;
 
 interface DatedMoneySpecificationBase extends ThingBase {
     /** The amount of money. */
@@ -3092,7 +3066,7 @@ interface DemandBase extends ThingBase {
     "schema:ineligibleRegion"?: SchemaValue<GeoShape | Place | Text | IdReference>;
     /** The current approximate inventory level for the item or items. */
     "schema:inventoryLevel"?: SchemaValue<QuantitativeValue | IdReference>;
-    /** A predefined value from OfferItemCondition or a textual description of the condition of the product or service, or the products or services included in the offer. */
+    /** A predefined value from OfferItemCondition specifying the condition of the product or service, or the products or services included in the offer. Also used for product return policies to specify the condition of products accepted for returns. */
     "schema:itemCondition"?: SchemaValue<OfferItemCondition | IdReference>;
     /** An item being offered (or demanded). The transactional nature of the offer or demand is documented using {@link https://schema.org/businessFunction businessFunction}, e.g. sell, lease etc. While several common expected types are listed explicitly in this definition, others can be used. Using a second type, such as Product or a subtype of Product, can clarify the nature of the offer. */
     "schema:itemOffered"?: SchemaValue<AggregateOffer | CreativeWork | Event | MenuItem | Product | Service | Trip | IdReference>;
@@ -3119,7 +3093,7 @@ interface DemandLeaf extends DemandBase {
 /** A demand entity represents the public, not necessarily binding, not necessarily exclusive, announcement by an organization or person to seek a certain type of goods or services. For describing demand using this type, the very same properties used for Offer apply. */
 export type Demand = DemandLeaf;
 
-interface DentistBase extends LocalBusinessBase, MedicalOrganizationBase, LocalBusinessBase {
+interface DentistBase extends MedicalOrganizationBase, LocalBusinessBase, LocalBusinessBase {
 }
 interface DentistLeaf extends DentistBase {
     "@type": "schema:Dentist";
@@ -3147,11 +3121,11 @@ interface DepositAccountLeaf extends DepositAccountBase {
 /** A type of Bank Account with a main purpose of depositing funds to gain interest or other benefits. */
 export type DepositAccount = DepositAccountLeaf;
 
-interface DerivableLeaf extends ThingBase {
-    "@type": "coremo:Derivable";
+interface DevOpsModelAreaLeaf extends ThingBase {
+    "@type": "coremo:DevOpsModelArea";
 }
-/** A resource which can be derived from another resource of the same type */
-export type Derivable = DerivableLeaf | AppRealmLayout;
+/** A DevOps model area. */
+export type DevOpsModelArea = DevOpsModelAreaLeaf;
 
 interface DiagnosticLabBase extends MedicalOrganizationBase {
     /** A diagnostic test or procedure offered by this lab. */
@@ -3169,7 +3143,7 @@ interface DiagnosticProcedureLeaf extends MedicalProcedureBase {
 /** A medical procedure intended primarily for diagnostic, as opposed to therapeutic, purposes. */
 export type DiagnosticProcedure = DiagnosticProcedureLeaf;
 
-interface DietBase extends MedicalEntityBase, CreativeWorkBase {
+interface DietBase extends CreativeWorkBase, MedicalEntityBase {
     /** Nutritional information specific to the dietary plan. May include dietary recommendations on what foods to avoid, what foods to consume, and specific alterations/deviations from the USDA or other regulatory body's approved dietary guidelines. */
     "schema:dietFeatures"?: SchemaValue<Text>;
     /** People or organizations that endorse the plan. */
@@ -3244,6 +3218,30 @@ interface DigitalDocumentPermissionTypeLeaf extends EnumerationBase {
 }
 /** A type of permission which can be granted for accessing a digital document. */
 export type DigitalDocumentPermissionType = "https://schema.org/CommentPermission" | "schema:CommentPermission" | "https://schema.org/ReadPermission" | "schema:ReadPermission" | "https://schema.org/WritePermission" | "schema:WritePermission" | DigitalDocumentPermissionTypeLeaf;
+
+interface DirectoryConceptLeaf extends ThingBase {
+    "@type": "dirmo:DirectoryConcept";
+}
+/** A directory concept */
+export type DirectoryConcept = DirectoryConceptLeaf | DirectoryModel | DirectorySemanticPool | NetworkDirectoryConcept | RegionalDirectoryConcept | ResourceDirectoryConcept | StakeholderDirectoryConcept;
+
+interface DirectoryModelBase extends ThingBase, ThingBase, ThingBase {
+    /** A semantic pool within a directory model. */
+    "dirmo:hasDirectorySemanticPool"?: SchemaValue<DirectorySemanticPool | IdReference>;
+}
+interface DirectoryModelLeaf extends DirectoryModelBase {
+    "@type": "dirmo:DirectoryModel";
+}
+/** A directory model */
+export type DirectoryModel = DirectoryModelLeaf;
+
+interface DirectorySemanticPoolBase extends SemanticPoolBase, ThingBase {
+}
+interface DirectorySemanticPoolLeaf extends DirectorySemanticPoolBase {
+    "@type": "dirmo:DirectorySemanticPool";
+}
+/** A directory semantic pool. */
+export type DirectorySemanticPool = DirectorySemanticPoolLeaf | NetworkDirectorySemanticPool | RegionalDirectorySemanticPool | ResourceDirectorySemanticPool | StakeholderDirectorySemanticPool;
 
 interface DisagreeActionLeaf extends ActionBase {
     "@type": "schema:DisagreeAction";
@@ -3625,29 +3623,11 @@ interface EducationEventLeaf extends EducationEventBase {
 /** Event type: Education event. */
 export type EducationEvent = EducationEventLeaf;
 
-interface EducationModelLeaf extends HierarchicalBase {
-    "@type": "coremo:EducationModel";
+interface EducationModelAreaLeaf extends ThingBase {
+    "@type": "coremo:EducationModelArea";
 }
-/** An education model. */
-export type EducationModel = EducationModelLeaf;
-
-interface EffectivePolicyItemBase extends ThingBase {
-    /** Value of this policy item. */
-    "polmo:policyItemValue"?: SchemaValue<Boolean | Float | Integer | Text>;
-}
-interface EffectivePolicyItemLeaf extends EffectivePolicyItemBase {
-    "@type": "polmo:EffectivePolicyItem";
-}
-/** A policy item design */
-export type EffectivePolicyItem = EffectivePolicyItemLeaf;
-
-interface EffectivePolicySemanticWorkBase extends CreativeWorkBase, ThingBase {
-}
-interface EffectivePolicySemanticWorkLeaf extends EffectivePolicySemanticWorkBase {
-    "@type": "polmo:EffectivePolicySemanticWork";
-}
-/** Effective policy */
-export type EffectivePolicySemanticWork = EffectivePolicySemanticWorkLeaf;
+/** An education model area. */
+export type EducationModelArea = EducationModelAreaLeaf;
 
 interface ElectricianLeaf extends LocalBusinessBase {
     "@type": "schema:Electrician";
@@ -3767,6 +3747,12 @@ interface EnergyStarEnergyEfficiencyEnumerationLeaf extends EnumerationBase {
 /** Used to indicate whether a product is EnergyStar certified. */
 export type EnergyStarEnergyEfficiencyEnumeration = "https://schema.org/EnergyStarCertified" | "schema:EnergyStarCertified" | EnergyStarEnergyEfficiencyEnumerationLeaf;
 
+interface EngineeringModelsetFoundationsMathematicsModelAreaLeaf extends ThingBase {
+    "@type": "coremo:EngineeringModelsetFoundationsMathematicsModelArea";
+}
+/** An engineering modelset foundational mathematics model area. */
+export type EngineeringModelsetFoundationsMathematicsModelArea = EngineeringModelsetFoundationsMathematicsModelAreaLeaf;
+
 interface EngineSpecificationBase extends ThingBase {
     /**
      * The volume swept by all of the pistons inside the cylinders of an internal combustion engine in a single movement.
@@ -3842,7 +3828,7 @@ interface EnumerationLeaf extends EnumerationBase {
     "@type": "schema:Enumeration";
 }
 /** Lists or enumerations—for example, a list of cuisines or music genres, etc. */
-export type Enumeration = EnumerationLeaf | AppContentLifecycleEnumeration | BoardingPolicyType | BookFormatType | BusinessEntityType | BusinessFunction | CarUsageType | ConditionalOperationEnumeration | ContactPointOption | DayOfWeek | DeliveryMethod | DigitalDocumentPermissionType | EnergyEfficiencyEnumeration | EventAttendanceModeEnumeration | GamePlayMode | GenderType | GovernmentBenefitsType | HealthAspectEnumeration | ItemAvailability | ItemListOrderType | LegalValueLevel | MapCategoryType | MeasurementTypeEnumeration | MediaManipulationRatingEnumeration | MedicalEnumeration | MerchantReturnEnumeration | MusicAlbumProductionType | MusicAlbumReleaseType | MusicReleaseFormatType | NonprofitType | OfferItemCondition | OrientationEnumeration | PaymentMethod | PhysicalActivityCategory | PolicyItemKindEnumeration | PriceComponentTypeEnumeration | PriceTypeEnumeration | PublishableStatusEnumeration | QualitativeValue | RefundTypeEnumeration | RestrictedDiet | ReturnFeesEnumeration | RsvpResponseType | SizeGroupEnumeration | SizeSystemEnumeration | Specialty | StatusEnumeration | WarrantyScope;
+export type Enumeration = EnumerationLeaf | AttachmentEnumeration | BoardingPolicyType | BookFormatType | BusinessEntityType | BusinessFunction | CarUsageType | ContactPointOption | DataBlockKindEnumeration | DayOfWeek | DeliveryMethod | DigitalDocumentPermissionType | EnergyEfficiencyEnumeration | EventAttendanceModeEnumeration | GamePlayMode | GenderType | GovernmentBenefitsType | HealthAspectEnumeration | ItemAvailability | ItemListOrderType | KnowledgeContainerKindEnumeration | LegalValueLevel | MapCategoryType | MeasurementTypeEnumeration | MediaManipulationRatingEnumeration | MedicalEnumeration | MerchantReturnEnumeration | MusicAlbumProductionType | MusicAlbumReleaseType | MusicReleaseFormatType | NameOrderEnumeration | NonprofitType | OfferItemCondition | OrientationEnumeration | PaymentMethod | PhysicalActivityCategory | PriceComponentTypeEnumeration | PriceTypeEnumeration | PublishableStatusEnumeration | QualitativeValue | RefundTypeEnumeration | RestrictedDiet | ReturnFeesEnumeration | ReturnLabelSourceEnumeration | ReturnMethodEnumeration | RsvpResponseType | SizeGroupEnumeration | SizeSystemEnumeration | Specialty | StatusEnumeration | WarrantyScope;
 
 interface EpisodeBase extends CreativeWorkBase {
     /** An actor, e.g. in tv, radio, movie, video games etc., or in an event. Actors can be associated with individual items or with a series, episode, clip. */
@@ -4252,7 +4238,7 @@ interface FlightReservationLeaf extends FlightReservationBase {
 export type FlightReservation = FlightReservationLeaf;
 
 /** Data type: Floating number. */
-export type Float = number;
+export type Float = number | `${number}`;
 
 interface FloorPlanBase extends ThingBase {
     /** An amenity feature (e.g. a characteristic or service) of the Accommodation. This generic property does not make a statement about whether the feature is included in an offer for the main accommodation or available at extra costs. */
@@ -4377,81 +4363,17 @@ interface FoodServiceLeaf extends ServiceBase {
 /** A food service, like breakfast, lunch, or dinner. */
 export type FoodService = FoodServiceLeaf;
 
-interface FormAdminSemanticWorkBase extends CreativeWorkBase, ThingBase {
-}
-interface FormAdminSemanticWorkLeaf extends FormAdminSemanticWorkBase {
-    "@type": "fomo:FormAdminSemanticWork";
-}
-/** Admin settings for a form */
-export type FormAdminSemanticWork = FormAdminSemanticWorkLeaf;
-
-interface FormConceptLeaf extends ThingBase {
-    "@type": "fomo:FormConcept";
-}
-/** A form concept */
-export type FormConcept = FormConceptLeaf | FormAdminSemanticWork | FormDesignSemanticWork | FormDesignSemanticWorkChoice | FormDesignSemanticWorkGroup | FormDesignSemanticWorkQuestion | FormModel | FormResponseSemanticWork;
-
-interface FormDesignSemanticWorkBase extends CreativeWorkBase, ThingBase {
-}
-interface FormDesignSemanticWorkLeaf extends FormDesignSemanticWorkBase {
-    "@type": "fomo:FormDesignSemanticWork";
-}
-/** A form design */
-export type FormDesignSemanticWork = FormDesignSemanticWorkLeaf;
-
-interface FormDesignSemanticWorkChoiceBase extends ThingBase {
-    /** Extra text for this choice */
-    "fomo:choiceExtraText"?: SchemaValue<Text>;
-    /** The index of this choice */
-    "fomo:choiceIndex"?: SchemaValue<Text>;
-    /** The title of this choice */
-    "fomo:choiceTitle"?: SchemaValue<Text>;
-}
-interface FormDesignSemanticWorkChoiceLeaf extends FormDesignSemanticWorkChoiceBase {
-    "@type": "fomo:FormDesignSemanticWorkChoice";
-}
-/** A choice that is partr of a one or multi-choice answer */
-export type FormDesignSemanticWorkChoice = FormDesignSemanticWorkChoiceLeaf;
-
-interface FormDesignSemanticWorkGroupLeaf extends ThingBase {
-    "@type": "fomo:FormDesignSemanticWorkGroup";
-}
-/** A group of questions within a form */
-export type FormDesignSemanticWorkGroup = FormDesignSemanticWorkGroupLeaf;
-
-interface FormDesignSemanticWorkQuestionLeaf extends ThingBase {
-    "@type": "fomo:FormDesignSemanticWorkQuestion";
-}
-/** A question on the electronic form */
-export type FormDesignSemanticWorkQuestion = FormDesignSemanticWorkQuestionLeaf;
-
-interface FormModelBase extends HierarchicalBase, ThingBase {
-}
-interface FormModelLeaf extends FormModelBase {
-    "@type": "fomo:FormModel";
-}
-/** A form model */
-export type FormModel = FormModelLeaf;
-
-interface FormResponseSemanticWorkBase extends CreativeWorkBase, ThingBase {
-}
-interface FormResponseSemanticWorkLeaf extends FormResponseSemanticWorkBase {
-    "@type": "fomo:FormResponseSemanticWork";
-}
-/** A response to an electronic form */
-export type FormResponseSemanticWork = FormResponseSemanticWorkLeaf;
-
 interface FoundationsConceptLeaf extends ThingBase {
     "@type": "coremo:FoundationsConcept";
 }
 /** A foundational mathematics concept */
-export type FoundationsConcept = FoundationsConceptLeaf | CoreConcept;
+export type FoundationsConcept = FoundationsConceptLeaf | CategoryConcept | CoreConcept | ModelsetConcept;
 
-interface FoundationsMathematicsModelLeaf extends HierarchicalBase {
-    "@type": "coremo:FoundationsMathematicsModel";
+interface FoundationsMathematicsModelAreaLeaf extends ThingBase {
+    "@type": "coremo:FoundationsMathematicsModelArea";
 }
-/** A foundational mathematics model. */
-export type FoundationsMathematicsModel = FoundationsMathematicsModelLeaf;
+/** A foundational mathematics model area. */
+export type FoundationsMathematicsModelArea = FoundationsMathematicsModelAreaLeaf | CategoryModel | CodeModelsetFoundationsMathematicsModelArea | CommonModelsetFoundationsMathematicsModelArea | EngineeringModelsetFoundationsMathematicsModelArea | ModelsetFoundationsMathematicsModelArea;
 
 interface FundingAgencyLeaf extends OrganizationBase {
     "@type": "schema:FundingAgency";
@@ -4542,6 +4464,22 @@ interface GenderTypeLeaf extends EnumerationBase {
 }
 /** An enumeration of genders. */
 export type GenderType = "https://schema.org/Female" | "schema:Female" | "https://schema.org/Male" | "schema:Male" | GenderTypeLeaf;
+
+interface GeneBase extends BioChemEntityBase {
+    /** Another gene which is a variation of this one. */
+    "schema:alternativeOf"?: SchemaValue<Gene | IdReference>;
+    /** Another BioChemEntity encoded by this one. */
+    "schema:encodesBioChemEntity"?: SchemaValue<BioChemEntity | IdReference>;
+    /** Tissue, organ, biological sample, etc in which activity of this gene has been observed experimentally. For example brain, digestive system. */
+    "schema:expressedIn"?: SchemaValue<AnatomicalStructure | AnatomicalSystem | BioChemEntity | DefinedTerm | IdReference>;
+    /** A symbolic representation of a BioChemEnity. For example, a nucleotide sequence of a Gene or an amino acid sequence of a Protein. */
+    "schema:hasBioPolymerSequence"?: SchemaValue<Text>;
+}
+interface GeneLeaf extends GeneBase {
+    "@type": "schema:Gene";
+}
+/** A discrete unit of inheritance which affects one or more biological traits (Source: {@link https://en.wikipedia.org/wiki/Gene https://en.wikipedia.org/wiki/Gene}). Examples include FOXP2 (Forkhead box protein P2), SCARNA21 (small Cajal body-specific RNA 21), A- (agouti genotype). */
+export type Gene = GeneLeaf;
 
 interface GeneralContractorLeaf extends LocalBusinessBase {
     "@type": "schema:GeneralContractor";
@@ -4867,7 +4805,7 @@ interface HierarchicalLeaf extends HierarchicalBase {
     "@type": "coremo:Hierarchical";
 }
 /** A resource that can be a member of a tree */
-export type Hierarchical = HierarchicalLeaf | AppComposer | AppPanel | AppTab | AppTabGroup | SemanticModel;
+export type Hierarchical = HierarchicalLeaf;
 
 interface HierarchicalChildBase extends SequentialBase {
     /** The child of a hierarchical resource. */
@@ -4877,7 +4815,7 @@ interface HierarchicalChildLeaf extends HierarchicalChildBase {
     "@type": "coremo:HierarchicalChild";
 }
 /** A resource that can be a child member of a tree */
-export type HierarchicalChild = HierarchicalChildLeaf | AppPublisherProfile | AppPublishingTargetProfile | Hierarchical;
+export type HierarchicalChild = HierarchicalChildLeaf | Hierarchical;
 
 interface HierarchicalParentBase extends SequentialBase {
     /** The parent of a hierarchical resource. */
@@ -4887,7 +4825,7 @@ interface HierarchicalParentLeaf extends HierarchicalParentBase {
     "@type": "coremo:HierarchicalParent";
 }
 /** A resource that can be a parent member of a tree */
-export type HierarchicalParent = HierarchicalParentLeaf | AppPublishingProfileSemanticWork | Hierarchical | MicroappSemanticWork;
+export type HierarchicalParent = HierarchicalParentLeaf | Hierarchical;
 
 interface HighSchoolLeaf extends EducationalOrganizationBase {
     "@type": "schema:HighSchool";
@@ -4925,7 +4863,7 @@ interface HomeGoodsStoreLeaf extends LocalBusinessBase {
 /** A home goods store. */
 export type HomeGoodsStore = HomeGoodsStoreLeaf | string;
 
-interface HospitalBase extends MedicalOrganizationBase, LocalBusinessBase, CivicStructureBase {
+interface HospitalBase extends CivicStructureBase, MedicalOrganizationBase, LocalBusinessBase {
     /** A medical service available from this provider. */
     "schema:availableService"?: SchemaValue<MedicalProcedure | MedicalTest | MedicalTherapy | IdReference>;
     /** Indicates data describing a hospital, e.g. a CDC {@link https://schema.org/CDCPMDRecord CDCPMDRecord} or as some kind of {@link https://schema.org/Dataset Dataset}. */
@@ -5055,7 +4993,7 @@ interface HowToItemLeaf extends HowToItemBase {
 /** An item used as either a tool or supply when performing the instructions for how to to achieve a result. */
 export type HowToItem = HowToItemLeaf | HowToSupply | HowToTool;
 
-interface HowToSectionBase extends ItemListBase, ListItemBase, CreativeWorkBase {
+interface HowToSectionBase extends ListItemBase, CreativeWorkBase, ItemListBase {
     /**
      * A single step item (as HowToStep, text, document, video, etc.) or a HowToSection (originally misnamed 'steps'; 'step' is preferred).
      *
@@ -5069,7 +5007,7 @@ interface HowToSectionLeaf extends HowToSectionBase {
 /** A sub-grouping of steps in the instructions for how to achieve a result (e.g. steps for making a pie crust within a pie recipe). */
 export type HowToSection = HowToSectionLeaf;
 
-interface HowToStepBase extends ListItemBase, ItemListBase, CreativeWorkBase {
+interface HowToStepBase extends CreativeWorkBase, ListItemBase, ItemListBase {
 }
 interface HowToStepLeaf extends HowToStepBase {
     "@type": "schema:HowToStep";
@@ -5087,7 +5025,7 @@ interface HowToSupplyLeaf extends HowToSupplyBase {
 /** A supply consumed when performing the instructions for how to achieve a result. */
 export type HowToSupply = HowToSupplyLeaf;
 
-interface HowToTipBase extends CreativeWorkBase, ListItemBase {
+interface HowToTipBase extends ListItemBase, CreativeWorkBase {
 }
 interface HowToTipLeaf extends HowToTipBase {
     "@type": "schema:HowToTip";
@@ -5141,25 +5079,25 @@ export type IceCreamShop = IceCreamShopLeaf | string;
 
 interface IconableBase extends ThingBase {
     /** The icon for an iconable. */
-    "coremo:hasIcon"?: SchemaValue<ImageResource | IdReference>;
+    "coremo:icon"?: SchemaValue<ImageResource | IdReference>;
 }
 interface IconableLeaf extends IconableBase {
     "@type": "coremo:Iconable";
 }
 /** A concept that may be represented by an icon */
-export type Iconable = IconableLeaf | AppRealmSemanticWork | AppTabGroup | MicroappSemanticWork;
+export type Iconable = IconableLeaf;
 
 interface IdentityConceptLeaf extends ThingBase {
     "@type": "coremo:IdentityConcept";
 }
 /** An identity concept */
-export type IdentityConcept = IdentityConceptLeaf | PolicyConcept;
+export type IdentityConcept = IdentityConceptLeaf | DirectoryConcept;
 
-interface IdentityModelLeaf extends HierarchicalBase {
-    "@type": "coremo:IdentityModel";
+interface IdentityModelAreaLeaf extends ThingBase {
+    "@type": "coremo:IdentityModelArea";
 }
-/** An identity model. */
-export type IdentityModel = IdentityModelLeaf | PolicyModel;
+/** An identity model area. */
+export type IdentityModelArea = IdentityModelAreaLeaf | DirectoryModel;
 
 interface IgnoreActionLeaf extends ActionBase {
     "@type": "schema:IgnoreAction";
@@ -5176,6 +5114,8 @@ export type ImageGallery = ImageGalleryLeaf;
 interface ImageObjectBase extends MediaObjectBase {
     /** The caption for this object. For downloadable machine formats (closed caption, subtitles etc.) use MediaObject and indicate the {@link https://schema.org/encodingFormat encodingFormat}. */
     "schema:caption"?: SchemaValue<MediaObject | Text | IdReference>;
+    /** Represents textual captioning from a {@link https://schema.org/MediaObject MediaObject}, e.g. text of a 'meme'. */
+    "schema:embeddedTextCaption"?: SchemaValue<Text>;
     /** exif data for this object. */
     "schema:exifData"?: SchemaValue<PropertyValue | Text | IdReference>;
     /** Indicates whether this image is representative of the content of the page. */
@@ -5187,17 +5127,23 @@ interface ImageObjectLeaf extends ImageObjectBase {
     "@type": "schema:ImageObject";
 }
 /** An image file. */
-export type ImageObject = ImageObjectLeaf | Barcode;
+export type ImageObject = ImageObjectLeaf | Barcode | ImageObjectSnapshot;
+
+interface ImageObjectSnapshotLeaf extends ImageObjectBase {
+    "@type": "schema:ImageObjectSnapshot";
+}
+/** A specific and exact (byte-for-byte) version of an {@link https://schema.org/ImageObject ImageObject}. Two byte-for-byte identical files, for the purposes of this type, considered identical. If they have different embedded metadata (e.g. XMP, EXIF) the files will differ. Different external facts about the files, e.g. creator or dateCreated that aren't represented in their actual content, do not affect this notion of identity. */
+export type ImageObjectSnapshot = ImageObjectSnapshotLeaf;
 
 interface ImageResourceBase extends ThingBase {
     /** The purpose of this image. */
-    "coremo:hasImageResourcePurpose"?: SchemaValue<Text>;
+    "coremo:imageResourcePurpose"?: SchemaValue<Text>;
     /** The size of the image resource. */
-    "coremo:hasImageResourceSize"?: SchemaValue<Text>;
+    "coremo:imageResourceSize"?: SchemaValue<Text>;
     /** The src for the image. */
-    "coremo:hasImageResourceSrc"?: SchemaValue<URL>;
+    "coremo:imageResourceSrc"?: SchemaValue<URL>;
     /** The MIME type of the image resource. */
-    "coremo:hasImageResourceType"?: SchemaValue<Text>;
+    "coremo:imageResourceType"?: SchemaValue<Text>;
 }
 interface ImageResourceLeaf extends ImageResourceBase {
     "@type": "coremo:ImageResource";
@@ -5255,6 +5201,16 @@ interface InformActionLeaf extends InformActionBase {
 /** The act of notifying someone of information pertinent to them, with no expectation of a response. */
 export type InformAction = InformActionLeaf | ConfirmAction | RsvpAction;
 
+interface InheritableBase extends ThingBase {
+    /** The parent of a derived resource. */
+    "coremo:inheritFrom"?: SchemaValue<ModelConcept | IdReference>;
+}
+interface InheritableLeaf extends InheritableBase {
+    "@type": "coremo:Inheritable";
+}
+/** A resource which can be derived from another resource of the same type (with any property values not specified in child inherited from parent) */
+export type Inheritable = InheritableLeaf;
+
 interface InsertActionBase extends UpdateActionBase {
     /** A sub property of location. The final location of the object or the agent after the action. */
     "schema:toLocation"?: SchemaValue<Place | IdReference>;
@@ -5281,10 +5237,22 @@ interface IntangibleLeaf extends ThingBase {
     "@type": "schema:Intangible";
 }
 /** A utility class that serves as the umbrella for a number of 'intangible' things such as quantities, structured values, etc. */
-export type Intangible = IntangibleLeaf | ActionAccessSpecification | AlignmentObject | Audience | BedDetails | Brand | BroadcastChannel | BroadcastFrequencySpecification | Class | ComputerLanguage | DataFeedItem | DefinedTerm | Demand | DigitalDocumentPermission | EducationalOccupationalProgram | EnergyConsumptionDetails | EntryPoint | Enumeration | FloorPlan | GameServer | GeospatialGeometry | Grant | HealthInsurancePlan | HealthPlanCostSharingSpecification | HealthPlanFormulary | HealthPlanNetwork | Invoice | ItemList | JobPosting | Language | ListItem | MediaSubscription | MenuItem | MerchantReturnPolicy | Observation | Occupation | OccupationalExperienceRequirements | Offer | Order | OrderItem | ParcelDelivery | Permit | ProgramMembership | Property | PropertyValueSpecification | Quantity | Rating | Reservation | Role | Schedule | Seat | Series | Service | ServiceChannel | SpeakableSpecification | StatisticalPopulation | StructuredValue | Ticket | Trip | VirtualLocation;
+export type Intangible = IntangibleLeaf | ActionAccessSpecification | AlignmentObject | Audience | BedDetails | Brand | BroadcastChannel | BroadcastFrequencySpecification | Class | ComputerLanguage | DataFeedItem | DefinedTerm | Demand | DigitalDocumentPermission | EducationalOccupationalProgram | EnergyConsumptionDetails | EntryPoint | Enumeration | FloorPlan | GameServer | GeospatialGeometry | Grant | HealthInsurancePlan | HealthPlanCostSharingSpecification | HealthPlanFormulary | HealthPlanNetwork | Invoice | ItemList | JobPosting | Language | ListItem | MediaSubscription | MenuItem | MerchantReturnPolicy | MerchantReturnPolicySeasonalOverride | Observation | Occupation | OccupationalExperienceRequirements | Offer | Order | OrderItem | ParcelDelivery | Permit | ProgramMembership | Property | PropertyValueSpecification | Quantity | Rating | Reservation | Role | Schedule | Seat | Series | Service | ServiceChannel | SpeakableSpecification | StatisticalPopulation | StructuredValue | Ticket | Trip | VirtualLocation;
 
 /** Data type: Integer. */
-export type Integer = number;
+export type Integer = NaturalNumber | number | `${number}`;
+
+interface IntegrationModelAreaLeaf extends ThingBase {
+    "@type": "coremo:IntegrationModelArea";
+}
+/** An integration model area. */
+export type IntegrationModelArea = IntegrationModelAreaLeaf;
+
+interface IntelligenceModelAreaLeaf extends ThingBase {
+    "@type": "coremo:IntelligenceModelArea";
+}
+/** An intelligence model area. */
+export type IntelligenceModelArea = IntelligenceModelAreaLeaf;
 
 interface InteractActionLeaf extends ActionBase {
     "@type": "schema:InteractAction";
@@ -5293,10 +5261,24 @@ interface InteractActionLeaf extends ActionBase {
 export type InteractAction = InteractActionLeaf | BefriendAction | CommunicateAction | FollowAction | JoinAction | LeaveAction | MarryAction | RegisterAction | SubscribeAction | UnRegisterAction;
 
 interface InteractionCounterBase extends ThingBase {
+    /**
+     * The endTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to end. For actions that span a period of time, when the action was performed. e.g. John wrote a book from January to _December_. For media, including audio and video, it's the time offset of the end of a clip within a larger file.
+     *
+     * Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
+     */
+    "schema:endTime"?: SchemaValue<DateTime | Time>;
     /** The WebSite or SoftwareApplication where the interactions took place. */
     "schema:interactionService"?: SchemaValue<SoftwareApplication | WebSite | IdReference>;
     /** The Action representing the type of interaction. For up votes, +1s, etc. use {@link https://schema.org/LikeAction LikeAction}. For down votes use {@link https://schema.org/DislikeAction DislikeAction}. Otherwise, use the most specific Action. */
     "schema:interactionType"?: SchemaValue<Action | IdReference>;
+    /** The location of, for example, where an event is happening, where an organization is located, or where an action takes place. */
+    "schema:location"?: SchemaValue<Place | PostalAddress | Text | VirtualLocation | IdReference>;
+    /**
+     * The startTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to start. For actions that span a period of time, when the action was performed. e.g. John wrote a book from _January_ to December. For media, including audio and video, it's the time offset of the start of a clip within a larger file.
+     *
+     * Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
+     */
+    "schema:startTime"?: SchemaValue<DateTime | Time>;
     /** The number of interactions for the CreativeWork using the WebSite or SoftwareApplication. */
     "schema:userInteractionCount"?: SchemaValue<Integer>;
 }
@@ -5441,6 +5423,8 @@ interface JobPostingBase extends ThingBase {
     "schema:benefits"?: SchemaValue<Text>;
     /** Publication date of an online listing. */
     "schema:datePosted"?: SchemaValue<Date | DateTime>;
+    /** Indicates whether an {@link https://schema.org/url url} that is associated with a {@link https://schema.org/JobPosting JobPosting} enables direct application for the job, via the posting website. A job posting is considered to have directApply of {@link https://schema.org/True True} if an application process for the specified job can be directly initiated via the url(s) given (noting that e.g. multiple internet domains might nevertheless be involved at an implementation level). A value of {@link https://schema.org/False False} is appropriate if there is no clear path to applying directly online for the specified job, navigating directly from the JobPosting url(s) supplied. */
+    "schema:directApply"?: SchemaValue<Boolean>;
     /** Educational background needed for the position or Occupation. */
     "schema:educationRequirements"?: SchemaValue<EducationalOccupationalCredential | Text | IdReference>;
     /** The legal requirements such as citizenship, visa and other documentation required for an applicant to this job. */
@@ -5549,11 +5533,95 @@ interface JointLeaf extends JointBase {
 /** The anatomical location at which two or more bones make contact. */
 export type Joint = JointLeaf;
 
-interface KnowledgeModelLeaf extends HierarchicalBase {
-    "@type": "coremo:KnowledgeModel";
+interface KnowledgeContainerBase extends ThingBase {
+    /** A unique URL identifier for a knowledge container. */
+    "dstoremo:knowledgeContainerIdentifier"?: SchemaValue<URL>;
+    /** A key uniquely identifying a knowledge container. */
+    "dstoremo:knowledgeContainerKey"?: SchemaValue<Integer>;
+    /** The kind of knowledge container. */
+    "dstoremo:knowledgeContainerKind"?: SchemaValue<KnowledgeContainerKindEnumeration | IdReference>;
+    /** A key uniquely identifying a knowledge container's parent. */
+    "dstoremo:parentKnowledgeContainerKey"?: SchemaValue<Integer>;
 }
-/** A knowledge model. */
-export type KnowledgeModel = KnowledgeModelLeaf;
+interface KnowledgeContainerLeaf extends KnowledgeContainerBase {
+    "@type": "dstoremo:KnowledgeContainer";
+}
+/** A knowledge container in a datastore */
+export type KnowledgeContainer = KnowledgeContainerLeaf;
+
+interface KnowledgeContainerKindEnumerationLeaf extends EnumerationBase {
+    "@type": "dstoremo:KnowledgeContainerKindEnumeration";
+}
+/** KnowledgeContainerKindEnumeration is an enumeration type representing conitional op. */
+export type KnowledgeContainerKindEnumeration = "https://clipcode.org/base/concept/dstoremo/CollectionIdentifierKind" | "dstoremo:CollectionIdentifierKind" | "https://clipcode.org/base/concept/dstoremo/DatasetIdentifierKind" | "dstoremo:DatasetIdentifierKind" | "https://clipcode.org/base/concept/dstoremo/KnowledgePartitionIdentifierKind" | "dstoremo:KnowledgePartitionIdentifierKind" | "https://clipcode.org/base/concept/dstoremo/NetworkIdentifierKind" | "dstoremo:NetworkIdentifierKind" | "https://clipcode.org/base/concept/dstoremo/OrgIdentifierKind" | "dstoremo:OrgIdentifierKind" | "https://clipcode.org/base/concept/dstoremo/RealmIdentifierKind" | "dstoremo:RealmIdentifierKind" | KnowledgeContainerKindEnumerationLeaf;
+
+interface KnowledgeContainerListBase extends ThingBase {
+    /** A knowledge container in a data container list. */
+    "dstoremo:hasKnowledgeContainer"?: SchemaValue<KnowledgeContainer | IdReference>;
+}
+interface KnowledgeContainerListLeaf extends KnowledgeContainerListBase {
+    "@type": "dstoremo:KnowledgeContainerList";
+}
+/** A list of knowledge containers */
+export type KnowledgeContainerList = KnowledgeContainerListLeaf;
+
+interface KnowledgeGraphBase extends ThingBase {
+    /** A semantic model that is contained within a knowledge graph. */
+    "coremo:hasSemanticModel"?: SchemaValue<SemanticModel | IdReference>;
+}
+interface KnowledgeGraphLeaf extends KnowledgeGraphBase {
+    "@type": "coremo:KnowledgeGraph";
+}
+/** A knowledge graph (which acts as a data container for one or more related semantic models). */
+export type KnowledgeGraph = KnowledgeGraphLeaf;
+
+interface KnowledgePackageBase extends ThingBase {
+    /** The checkpoint for this knowledge package. */
+    "dstoremo:checkpoint"?: SchemaValue<NaturalNumber>;
+    /** The datablockEncoding for this knowledge package (json for object, jsonld for graph). */
+    "dstoremo:datablockEncoding"?: SchemaValue<Text>;
+    /** The datablockKey for this knowledge package. */
+    "dstoremo:datablockKey"?: SchemaValue<NaturalNumber>;
+    /** The datablockKind for this knowledge package. */
+    "dstoremo:datablockKind"?: SchemaValue<DataBlockKindEnumeration | IdReference>;
+    /** The generation for this knowledge package. */
+    "dstoremo:generation"?: SchemaValue<Text>;
+    /** Whether this knowledge package is archived. */
+    "dstoremo:isArchived"?: SchemaValue<Boolean>;
+    /** The isPublished of this knowledge package. */
+    "dstoremo:isPublished"?: SchemaValue<Boolean>;
+    /** The mimetype for this knowledge package. */
+    "dstoremo:mimetype"?: SchemaValue<Text>;
+    /** The mostRecentCloudVersion for this knowledge package. */
+    "dstoremo:mostRecentCloudVersion"?: SchemaValue<NaturalNumber>;
+    /** A key uniquely identifying a knowledge package. */
+    "dstoremo:packageKey"?: SchemaValue<Integer>;
+    /** A unique URL identifier for a knowledge package. */
+    "dstoremo:packagelIdentifier"?: SchemaValue<URL>;
+    /** A key uniquely identifying a knowledge package's parent. */
+    "dstoremo:packageParentKey"?: SchemaValue<Integer>;
+    /** The primary semantic model kind (if any) within this knowledge package. */
+    "dstoremo:primarySemanticModelKind"?: SchemaValue<Text>;
+    /** The revision for this knowledge package. */
+    "dstoremo:revision"?: SchemaValue<NaturalNumber>;
+    /** The savepoint for this knowledge package. */
+    "dstoremo:savepoint"?: SchemaValue<NaturalNumber>;
+}
+interface KnowledgePackageLeaf extends KnowledgePackageBase {
+    "@type": "dstoremo:KnowledgePackage";
+}
+/** A knowledge package a package. */
+export type KnowledgePackage = KnowledgePackageLeaf;
+
+interface KnowledgePackageListBase extends ThingBase {
+    /** A knowledge package within a knowledge list. */
+    "dstoremo:hasKnowledgePackage"?: SchemaValue<KnowledgePackage | IdReference>;
+}
+interface KnowledgePackageListLeaf extends KnowledgePackageListBase {
+    "@type": "dstoremo:KnowledgePackageList";
+}
+/** A list of metadata for knowledge packages. */
+export type KnowledgePackageList = KnowledgePackageListLeaf;
 
 interface LakeBodyOfWaterLeaf extends PlaceBase {
     "@type": "schema:LakeBodyOfWater";
@@ -5801,7 +5869,7 @@ interface LiveBlogPostingBase extends SocialMediaPostingBase {
 interface LiveBlogPostingLeaf extends LiveBlogPostingBase {
     "@type": "schema:LiveBlogPosting";
 }
-/** A blog post intended to provide a rolling textual coverage of an ongoing event through continuous updates. */
+/** A {@link https://schema.org/LiveBlogPosting LiveBlogPosting} is a {@link https://schema.org/BlogPosting BlogPosting} intended to provide a rolling textual coverage of an ongoing event through continuous updates. */
 export type LiveBlogPosting = LiveBlogPostingLeaf;
 
 interface LoanOrCreditBase extends FinancialProductBase {
@@ -6020,7 +6088,7 @@ interface MathematicalObjectLeaf extends ThingBase {
     "@type": "coremo:MathematicalObject";
 }
 /** A mathematical object */
-export type MathematicalObject = MathematicalObjectLeaf | MathematicalFunction | MathematicalProof | MathematicalRelation | MathematicalStructure | MathematicalTheorem | MathematicalTheory;
+export type MathematicalObject = MathematicalObjectLeaf | Category | MathematicalFunction | MathematicalProof | MathematicalRelation | MathematicalStructure | MathematicalTheorem | MathematicalTheory;
 
 interface MathematicalOperationLeaf extends ThingBase {
     "@type": "coremo:MathematicalOperation";
@@ -6096,11 +6164,11 @@ interface MathematicsConceptLeaf extends ThingBase {
 /** A mathematics concept */
 export type MathematicsConcept = MathematicsConceptLeaf | AppliedConcept | ChangeConcept | FoundationsConcept | SpaceConcept | StructureConcept;
 
-interface MathematicsModelLeaf extends HierarchicalBase {
-    "@type": "coremo:MathematicsModel";
+interface MathematicsModelAreaLeaf extends ThingBase {
+    "@type": "coremo:MathematicsModelArea";
 }
-/** A mathematics model. */
-export type MathematicsModel = MathematicsModelLeaf | AppliedMathematicsModel | ChangeMathematicsModel | FoundationsMathematicsModel | SpaceMathematicsModel | StructureMathematicsModel;
+/** A mathematics model area. */
+export type MathematicsModelArea = MathematicsModelAreaLeaf | AppliedMathematicsModelArea | ChangeMathematicsModelArea | FoundationsMathematicsModelArea | SpaceMathematicsModelArea | StructureMathematicsModelArea;
 
 interface MathSolverBase extends CreativeWorkBase {
     /** A mathematical expression (e.g. 'x^2-3x=0') that may be solved for a specific variable, simplified, or transformed. This can take many formats, e.g. LaTeX, Ascii-Math, or math as you would write with a keyboard. */
@@ -6173,6 +6241,8 @@ interface MediaObjectBase extends CreativeWorkBase {
      * See also {@link https://schema.org/eligibleRegion eligibleRegion}.
      */
     "schema:ineligibleRegion"?: SchemaValue<GeoShape | Place | Text | IdReference>;
+    /** Used to indicate a specific claim contained, implied, translated or refined from the content of a {@link https://schema.org/MediaObject MediaObject} or other {@link https://schema.org/CreativeWork CreativeWork}. The interpreting party can be indicated using {@link https://schema.org/claimInterpreter claimInterpreter}. */
+    "schema:interpretedAsClaim"?: SchemaValue<Claim | IdReference>;
     /** Player type required—for example, Flash or Silverlight. */
     "schema:playerType"?: SchemaValue<Text>;
     /** The production company or studio responsible for the item e.g. series, video game, episode etc. */
@@ -6181,6 +6251,8 @@ interface MediaObjectBase extends CreativeWorkBase {
     "schema:regionsAllowed"?: SchemaValue<Place | IdReference>;
     /** Indicates if use of the media require a subscription (either paid or free). Allowed values are `true` or `false` (note that an earlier version had 'yes', 'no'). */
     "schema:requiresSubscription"?: SchemaValue<Boolean | MediaSubscription | IdReference>;
+    /** The {@link https://en.wikipedia.org/wiki/SHA-2 SHA-2} SHA256 hash of the content of the item. For example, a zero-length input has value 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855' */
+    "schema:sha256"?: SchemaValue<Text>;
     /**
      * The startTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to start. For actions that span a period of time, when the action was performed. e.g. John wrote a book from _January_ to December. For media, including audio and video, it's the time offset of the start of a clip within a larger file.
      *
@@ -6201,12 +6273,26 @@ export type MediaObject = MediaObjectLeaf | _3DModel | AudioObject | DataDownloa
 interface MediaReviewBase extends ReviewBase {
     /** Indicates a MediaManipulationRatingEnumeration classification of a media object (in the context of how it was published or shared). */
     "schema:mediaAuthenticityCategory"?: SchemaValue<MediaManipulationRatingEnumeration | IdReference>;
+    /** Describes, in a {@link https://schema.org/MediaReview MediaReview} when dealing with {@link https://schema.org/DecontextualizedContent DecontextualizedContent}, background information that can contribute to better interpretation of the {@link https://schema.org/MediaObject MediaObject}. */
+    "schema:originalMediaContextDescription"?: SchemaValue<Text>;
+    /** Link to the page containing an original version of the content, or directly to an online copy of the original {@link https://schema.org/MediaObject MediaObject} content, e.g. video file. */
+    "schema:originalMediaLink"?: SchemaValue<MediaObject | URL | WebPage | IdReference>;
 }
 interface MediaReviewLeaf extends MediaReviewBase {
     "@type": "schema:MediaReview";
 }
 /** A {@link https://schema.org/MediaReview MediaReview} is a more specialized form of Review dedicated to the evaluation of media content online, typically in the context of fact-checking and misinformation. For more general reviews of media in the broader sense, use {@link https://schema.org/UserReview UserReview}, {@link https://schema.org/CriticReview CriticReview} or other {@link https://schema.org/Review Review} types. This definition is a work in progress. While the {@link https://schema.org/MediaManipulationRatingEnumeration MediaManipulationRatingEnumeration} list reflects significant community review amongst fact-checkers and others working to combat misinformation, the specific structures for representing media objects, their versions and publication context, is still evolving. Similarly, best practices for the relationship between {@link https://schema.org/MediaReview MediaReview} and {@link https://schema.org/ClaimReview ClaimReview} markup has not yet been finalized. */
 export type MediaReview = MediaReviewLeaf;
+
+interface MediaReviewItemBase extends CreativeWorkBase {
+    /** In the context of a {@link https://schema.org/MediaReview MediaReview}, indicates specific media item(s) that are grouped using a {@link https://schema.org/MediaReviewItem MediaReviewItem}. */
+    "schema:mediaItemAppearance"?: SchemaValue<MediaObject | IdReference>;
+}
+interface MediaReviewItemLeaf extends MediaReviewItemBase {
+    "@type": "schema:MediaReviewItem";
+}
+/** Represents an item or group of closely related items treated as a unit for the sake of evaluation in a {@link https://schema.org/MediaReview MediaReview}. Authorship etc. apply to the items rather than to the curation/grouping or reviewing party. */
+export type MediaReviewItem = MediaReviewItemLeaf;
 
 interface MediaSubscriptionBase extends ThingBase {
     /** The Organization responsible for authenticating the user's subscription. For example, many media apps require a cable/satellite provider to authenticate your subscription before playing media. */
@@ -6220,7 +6306,7 @@ interface MediaSubscriptionLeaf extends MediaSubscriptionBase {
 /** A subscription which allows a user to access media including audio, video, books, etc. */
 export type MediaSubscription = MediaSubscriptionLeaf;
 
-interface MedicalAudienceBase extends PeopleAudienceBase, AudienceBase {
+interface MedicalAudienceBase extends AudienceBase, PeopleAudienceBase {
 }
 interface MedicalAudienceLeaf extends MedicalAudienceBase {
     "@type": "schema:MedicalAudience";
@@ -6250,7 +6336,7 @@ interface MedicalCauseLeaf extends MedicalCauseBase {
 /** The causative agent(s) that are responsible for the pathophysiologic process that eventually results in a medical condition, symptom or sign. In this schema, unless otherwise specified this is meant to be the proximate cause of the medical condition, symptom or sign. The proximate cause is defined as the causative agent that most directly results in the medical condition, symptom or sign. For example, the HIV virus could be considered a cause of AIDS. Or in a diagnostic context, if a patient fell and sustained a hip fracture and two days later sustained a pulmonary embolism which eventuated in a cardiac arrest, the cause of the cardiac arrest (the proximate cause) would be the pulmonary embolism and not the fall. Medical causes can include cardiovascular, chemical, dermatologic, endocrine, environmental, gastroenterologic, genetic, hematologic, gynecologic, iatrogenic, infectious, musculoskeletal, neurologic, nutritional, obstetric, oncologic, otolaryngologic, pharmacologic, psychiatric, pulmonary, renal, rheumatologic, toxic, traumatic, or urologic causes; medical conditions can be causes as well. */
 export type MedicalCause = MedicalCauseLeaf;
 
-interface MedicalClinicBase extends LocalBusinessBase, MedicalOrganizationBase {
+interface MedicalClinicBase extends MedicalOrganizationBase, LocalBusinessBase {
     /** A medical service available from this provider. */
     "schema:availableService"?: SchemaValue<MedicalProcedure | MedicalTest | MedicalTherapy | IdReference>;
     /** A medical specialty of the provider. */
@@ -6262,7 +6348,7 @@ interface MedicalClinicLeaf extends MedicalClinicBase {
 /** A facility, often associated with a hospital or medical school, that is devoted to the specific diagnosis and/or healthcare. Previously limited to outpatients but with evolution it may be open to inpatients as well. */
 export type MedicalClinic = MedicalClinicLeaf | CovidTestingFacility | string;
 
-interface MedicalCodeBase extends MedicalEntityBase, CategoryCodeBase {
+interface MedicalCodeBase extends CategoryCodeBase, MedicalEntityBase {
     /** A short textual code that uniquely identifies the value. */
     "schema:codeValue"?: SchemaValue<Text>;
     /** The coding system, e.g. 'ICD-10'. */
@@ -6745,28 +6831,76 @@ export type MenuSection = MenuSectionLeaf;
 interface MerchantReturnEnumerationLeaf extends EnumerationBase {
     "@type": "schema:MerchantReturnEnumeration";
 }
-/** MerchantReturnEnumeration enumerates several kinds of product return policy. Note that this structure may not capture all aspects of the policy. */
+/** Enumerates several kinds of product return policies. */
 export type MerchantReturnEnumeration = "https://schema.org/MerchantReturnFiniteReturnWindow" | "schema:MerchantReturnFiniteReturnWindow" | "https://schema.org/MerchantReturnNotPermitted" | "schema:MerchantReturnNotPermitted" | "https://schema.org/MerchantReturnUnlimitedWindow" | "schema:MerchantReturnUnlimitedWindow" | "https://schema.org/MerchantReturnUnspecified" | "schema:MerchantReturnUnspecified" | MerchantReturnEnumerationLeaf;
 
 interface MerchantReturnPolicyBase extends ThingBase {
-    /** Are in-store returns offered? */
+    /**
+     * A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org.
+     *
+     * Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. https://schema.org/width, https://schema.org/color, https://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
+     */
+    "schema:additionalProperty"?: SchemaValue<PropertyValue | IdReference>;
+    /** The type of return fees if the product is returned due to customer remorse. */
+    "schema:customerRemorseReturnFees"?: SchemaValue<ReturnFeesEnumeration | IdReference>;
+    /** The method (from an enumeration) by which the customer obtains a return shipping label for a product returned due to customer remorse. */
+    "schema:customerRemorseReturnLabelSource"?: SchemaValue<ReturnLabelSourceEnumeration | IdReference>;
+    /** The amount of shipping costs if a product is returned due to customer remorse. Applicable when property {@link https://schema.org/customerRemorseReturnFees customerRemorseReturnFees} equals {@link https://schema.org/ReturnShippingFees ReturnShippingFees}. */
+    "schema:customerRemorseReturnShippingFeesAmount"?: SchemaValue<MonetaryAmount | IdReference>;
+    /** Are in-store returns offered? (for more advanced return methods use the {@link https://schema.org/returnMethod returnMethod} property) */
     "schema:inStoreReturnsOffered"?: SchemaValue<Boolean>;
-    /** The merchantReturnDays property indicates the number of days (from purchase) within which relevant merchant return policy is applicable. */
-    "schema:merchantReturnDays"?: SchemaValue<Integer>;
-    /** Indicates a Web page or service by URL, for product return. */
+    /** A predefined value from OfferItemCondition specifying the condition of the product or service, or the products or services included in the offer. Also used for product return policies to specify the condition of products accepted for returns. */
+    "schema:itemCondition"?: SchemaValue<OfferItemCondition | IdReference>;
+    /** The type of return fees for returns of defect products. */
+    "schema:itemDefectReturnFees"?: SchemaValue<ReturnFeesEnumeration | IdReference>;
+    /** The method (from an enumeration) by which the customer obtains a return shipping label for a defect product. */
+    "schema:itemDefectReturnLabelSource"?: SchemaValue<ReturnLabelSourceEnumeration | IdReference>;
+    /** Amount of shipping costs for defect product returns. Applicable when property {@link https://schema.org/itemDefectReturnFees itemDefectReturnFees} equals {@link https://schema.org/ReturnShippingFees ReturnShippingFees}. */
+    "schema:itemDefectReturnShippingFeesAmount"?: SchemaValue<MonetaryAmount | IdReference>;
+    /** Specifies either a fixed return date or the number of days (from the delivery date) that a product can be returned. Used when the {@link https://schema.org/returnPolicyCategory returnPolicyCategory} property is specified as {@link https://schema.org/MerchantReturnFiniteReturnWindow MerchantReturnFiniteReturnWindow}. */
+    "schema:merchantReturnDays"?: SchemaValue<Date | DateTime | Integer>;
+    /** Specifies a Web page or service by URL, for product returns. */
     "schema:merchantReturnLink"?: SchemaValue<URL>;
-    /** A refundType, from an enumerated list. */
+    /** A refund type, from an enumerated list. */
     "schema:refundType"?: SchemaValue<RefundTypeEnumeration | IdReference>;
-    /** Indicates (via enumerated options) the return fees policy for a MerchantReturnPolicy */
+    /** Use {@link https://schema.org/MonetaryAmount MonetaryAmount} to specify a fixed restocking fee for product returns, or use {@link https://schema.org/Number Number} to specify a percentage of the product price paid by the customer. */
+    "schema:restockingFee"?: SchemaValue<MonetaryAmount | Number | IdReference>;
+    /** The type of return fees for purchased products (for any return reason) */
     "schema:returnFees"?: SchemaValue<ReturnFeesEnumeration | IdReference>;
-    /** A returnPolicyCategory expresses at most one of several enumerated kinds of return. */
+    /** The method (from an enumeration) by which the customer obtains a return shipping label for a product returned for any reason. */
+    "schema:returnLabelSource"?: SchemaValue<ReturnLabelSourceEnumeration | IdReference>;
+    /** The type of return method offered, specified from an enumeration. */
+    "schema:returnMethod"?: SchemaValue<ReturnMethodEnumeration | IdReference>;
+    /** Specifies an applicable return policy (from an enumeration). */
     "schema:returnPolicyCategory"?: SchemaValue<MerchantReturnEnumeration | IdReference>;
+    /** The country where the product has to be sent to for returns, for example "Ireland" using the {@link https://schema.org/name name} property of {@link https://schema.org/Country Country}. You can also provide the two-letter {@link http://en.wikipedia.org/wiki/ISO_3166-1 ISO 3166-1 alpha-2 country code}. Note that this can be different from the country where the product was originally shipped from or sent too. */
+    "schema:returnPolicyCountry"?: SchemaValue<Country | Text | IdReference>;
+    /** Seasonal override of a return policy. */
+    "schema:returnPolicySeasonalOverride"?: SchemaValue<MerchantReturnPolicySeasonalOverride | IdReference>;
+    /** Amount of shipping costs for product returns (for any reason). Applicable when property {@link https://schema.org/returnFees returnFees} equals {@link https://schema.org/ReturnShippingFees ReturnShippingFees}. */
+    "schema:returnShippingFeesAmount"?: SchemaValue<MonetaryAmount | IdReference>;
 }
 interface MerchantReturnPolicyLeaf extends MerchantReturnPolicyBase {
     "@type": "schema:MerchantReturnPolicy";
 }
-/** A MerchantReturnPolicy provides information about product return policies associated with an {@link https://schema.org/Organization Organization} or {@link https://schema.org/Product Product}. */
+/** A MerchantReturnPolicy provides information about product return policies associated with an {@link https://schema.org/Organization Organization}, {@link https://schema.org/Product Product}, or {@link https://schema.org/Offer Offer}. */
 export type MerchantReturnPolicy = MerchantReturnPolicyLeaf;
+
+interface MerchantReturnPolicySeasonalOverrideBase extends ThingBase {
+    /** The end date and time of the item (in {@link http://en.wikipedia.org/wiki/ISO_8601 ISO 8601 date format}). */
+    "schema:endDate"?: SchemaValue<Date | DateTime>;
+    /** Specifies either a fixed return date or the number of days (from the delivery date) that a product can be returned. Used when the {@link https://schema.org/returnPolicyCategory returnPolicyCategory} property is specified as {@link https://schema.org/MerchantReturnFiniteReturnWindow MerchantReturnFiniteReturnWindow}. */
+    "schema:merchantReturnDays"?: SchemaValue<Date | DateTime | Integer>;
+    /** Specifies an applicable return policy (from an enumeration). */
+    "schema:returnPolicyCategory"?: SchemaValue<MerchantReturnEnumeration | IdReference>;
+    /** The start date and time of the item (in {@link http://en.wikipedia.org/wiki/ISO_8601 ISO 8601 date format}). */
+    "schema:startDate"?: SchemaValue<Date | DateTime>;
+}
+interface MerchantReturnPolicySeasonalOverrideLeaf extends MerchantReturnPolicySeasonalOverrideBase {
+    "@type": "schema:MerchantReturnPolicySeasonalOverride";
+}
+/** A seasonal override of a return policy, for example used for holidays. */
+export type MerchantReturnPolicySeasonalOverride = MerchantReturnPolicySeasonalOverrideLeaf;
 
 interface MessageBase extends CreativeWorkBase {
     /** A sub property of recipient. The recipient blind copied on a message. */
@@ -6794,20 +6928,6 @@ interface MessageLeaf extends MessageBase {
 /** A single message from a sender to one or more organizations or people. */
 export type Message = MessageLeaf | EmailMessage;
 
-interface MicroappSemanticWorkBase extends ThingBase, HierarchicalParentBase, IconableBase, CreativeWorkBase, VersionableBase {
-    /** The side nav content for this microapp/app realm */
-    "appmo:hasAppContent"?: SchemaValue<AppHeader | IdReference>;
-    /** The app footer for this microapp */
-    "appmo:hasAppFooter"?: SchemaValue<AppFooter | IdReference>;
-    /** The app header for this microapp */
-    "appmo:hasAppHeader"?: SchemaValue<AppHeader | IdReference>;
-}
-interface MicroappSemanticWorkLeaf extends MicroappSemanticWorkBase {
-    "@type": "appmo:MicroappSemanticWork";
-}
-/** A micro app */
-export type MicroappSemanticWork = MicroappSemanticWorkLeaf;
-
 interface MiddleSchoolLeaf extends EducationalOrganizationBase {
     "@type": "schema:MiddleSchool";
 }
@@ -6834,17 +6954,55 @@ interface ModelConceptLeaf extends ThingBase {
     "@type": "coremo:ModelConcept";
 }
 /** A concept that appears in a semantic model */
-export type ModelConcept = ModelConceptLeaf | CommunicationConcept | CommunityConcept | CorporateConcept | Derivable | EducationConcept | Generational | Iconable | MathematicsConcept | Modular | OperationsConcept | Orientable | Prioritizable | Publishable | ResponsibleFor | Revisible | SalesConcept | Sequential | ServicesConcept | TechnologyConcept | Templatable | Versionable;
+export type ModelConcept = ModelConceptLeaf | Abstractable | Attachable | CommunicationConcept | CommunityConcept | CorporateConcept | EducationConcept | Generational | Iconable | Inheritable | KnowledgeGraph | MathematicsConcept | Modular | OperationsConcept | Orientable | Panel | PanelHost | Prioritizable | Publishable | ResponsibleFor | Revisible | SalesConcept | SemanticModel | SemanticModelArea | SemanticPool | Sequential | ServicesConcept | TechnologyConcept | Templatable | Transform | Transformable | Versionable;
+
+interface ModelsetConceptLeaf extends ThingBase {
+    "@type": "coremo:ModelsetConcept";
+}
+/** A modelset concept */
+export type ModelsetConcept = ModelsetConceptLeaf;
+
+interface ModelsetFoundationsMathematicsModelAreaLeaf extends ThingBase {
+    "@type": "coremo:ModelsetFoundationsMathematicsModelArea";
+}
+/** A modelset foundational mathematics model area. */
+export type ModelsetFoundationsMathematicsModelArea = ModelsetFoundationsMathematicsModelAreaLeaf | CommonModelsetFoundationsMathematicsModelArea;
 
 interface ModularBase extends ThingBase {
     /** This resource contains this module. */
-    "coremo:hasModule"?: SchemaValue<Thing | IdReference>;
+    "coremo:module"?: SchemaValue<Thing | IdReference>;
 }
 interface ModularLeaf extends ModularBase {
     "@type": "coremo:Modular";
 }
-/** A resource which is made up of has modules */
+/** A resource which is made up of modules */
 export type Modular = ModularLeaf;
+
+interface MolecularEntityBase extends BioChemEntityBase {
+    /** A role played by the BioChemEntity within a chemical context. */
+    "schema:chemicalRole"?: SchemaValue<DefinedTerm | IdReference>;
+    /** Non-proprietary identifier for molecular entity that can be used in printed and electronic data sources thus enabling easier linking of diverse data compilations. */
+    "schema:inChI"?: SchemaValue<Text>;
+    /** InChIKey is a hashed version of the full InChI (using the SHA-256 algorithm). */
+    "schema:inChIKey"?: SchemaValue<Text>;
+    /** Systematic method of naming chemical compounds as recommended by the International Union of Pure and Applied Chemistry (IUPAC). */
+    "schema:iupacName"?: SchemaValue<Text>;
+    /** The empirical formula is the simplest whole number ratio of all the atoms in a molecule. */
+    "schema:molecularFormula"?: SchemaValue<Text>;
+    /** This is the molecular weight of the entity being described, not of the parent. Units should be included in the form '<Number> <unit>', for example '12 amu' or as '<QuantitativeValue>. */
+    "schema:molecularWeight"?: SchemaValue<QuantitativeValue | Text | IdReference>;
+    /** The monoisotopic mass is the sum of the masses of the atoms in a molecule using the unbound, ground-state, rest mass of the principal (most abundant) isotope for each element instead of the isotopic average mass. Please include the units the form '<Number> <unit>', for example '770.230488 g/mol' or as '<QuantitativeValue>. */
+    "schema:monoisotopicMolecularWeight"?: SchemaValue<QuantitativeValue | Text | IdReference>;
+    /** Intended use of the BioChemEntity by humans. */
+    "schema:potentialUse"?: SchemaValue<DefinedTerm | IdReference>;
+    /** A specification in form of a line notation for describing the structure of chemical species using short ASCII strings. Double bond stereochemistry \ indicators may need to be escaped in the string in formats where the backslash is an escape character. */
+    "schema:smiles"?: SchemaValue<Text>;
+}
+interface MolecularEntityLeaf extends MolecularEntityBase {
+    "@type": "schema:MolecularEntity";
+}
+/** Any constitutionally or isotopically distinct atom, molecule, ion, ion pair, radical, radical ion, complex, conformer etc., identifiable as a separately distinguishable entity. */
+export type MolecularEntity = MolecularEntityLeaf;
 
 interface MonetaryAmountBase extends ThingBase {
     /**
@@ -6998,7 +7156,13 @@ interface MovieBase extends CreativeWorkBase {
      * @deprecated Consider using https://schema.org/actor instead.
      */
     "schema:actors"?: SchemaValue<Person | IdReference>;
-    /** The country of the principal offices of the production company or individual responsible for the movie or program. */
+    /**
+     * The country of origin of something, including products as well as creative works such as movie and TV content.
+     *
+     * In the case of TV and movie, this would be the country of the principle offices of the production company or individual responsible for the movie. For other kinds of {@link https://schema.org/CreativeWork CreativeWork} it is difficult to provide fully general guidance, and properties such as {@link https://schema.org/contentLocation contentLocation} and {@link https://schema.org/locationCreated locationCreated} may be more applicable.
+     *
+     * In the case of products, the country of origin of the product. The exact interpretation of this may vary by context and product type, and cannot be fully enumerated here.
+     */
     "schema:countryOfOrigin"?: SchemaValue<Country | IdReference>;
     /** A director of e.g. tv, radio, movie, video gaming etc. content, or of an event. Directors can be associated with individual items or with a series, episode, clip. */
     "schema:director"?: SchemaValue<Person | IdReference>;
@@ -7075,7 +7239,7 @@ interface MovieSeriesLeaf extends MovieSeriesBase {
 /** A series of movies. Included movies can be indicated with the hasPart property. */
 export type MovieSeries = MovieSeriesLeaf;
 
-interface MovieTheaterBase extends CivicStructureBase, LocalBusinessBase {
+interface MovieTheaterBase extends LocalBusinessBase, CivicStructureBase {
     /** The number of screens in the movie theater. */
     "schema:screenCount"?: SchemaValue<Number>;
 }
@@ -7297,6 +7461,15 @@ interface NailSalonLeaf extends LocalBusinessBase {
 /** A nail salon. */
 export type NailSalon = NailSalonLeaf | string;
 
+interface NameOrderEnumerationLeaf extends EnumerationBase {
+    "@type": "coremo:NameOrderEnumeration";
+}
+/** NameOrderEnumeration is an enumeration name ordering. */
+export type NameOrderEnumeration = "https://clipcode.org/base/concept/coremo/EasternNameOrder" | "coremo:EasternNameOrder" | "https://clipcode.org/base/concept/coremo/WesternNameOrder" | "coremo:WesternNameOrder" | NameOrderEnumerationLeaf;
+
+/** A numeric representation of 0, 1 or more (i.e. the non-negative integers). */
+export type NaturalNumber = number | `${number}`;
+
 interface NerveBase extends AnatomicalStructureBase {
     /**
      * The branches that delineate from the nerve bundle. Not to be confused with {@link https://schema.org/branchOf branchOf}.
@@ -7316,6 +7489,24 @@ interface NerveLeaf extends NerveBase {
 }
 /** A common pathway for the electrochemical nerve impulses that are transmitted along each of the axons. */
 export type Nerve = NerveLeaf;
+
+interface NetworkDirectoryConceptLeaf extends ThingBase {
+    "@type": "dirmo:NetworkDirectoryConcept";
+}
+/** A network directory concept */
+export type NetworkDirectoryConcept = NetworkDirectoryConceptLeaf;
+
+interface NetworkDirectorySemanticPoolLeaf extends DirectorySemanticPoolBase {
+    "@type": "dirmo:NetworkDirectorySemanticPool";
+}
+/** A network directory */
+export type NetworkDirectorySemanticPool = NetworkDirectorySemanticPoolLeaf;
+
+interface NetworkingModelAreaLeaf extends ThingBase {
+    "@type": "coremo:NetworkingModelArea";
+}
+/** A networking model area. */
+export type NetworkingModelArea = NetworkingModelAreaLeaf;
 
 interface NewsArticleBase extends ArticleBase {
     /**
@@ -7570,6 +7761,8 @@ interface OfferBase extends ThingBase {
     "schema:gtin8"?: SchemaValue<Text>;
     /** A product measurement, for example the inseam of pants, the wheel size of a bicycle, or the gauge of a screw. Usually an exact measurement, but can also be a range of measurements for adjustable products, for example belts and ski bindings. */
     "schema:hasMeasurement"?: SchemaValue<QuantitativeValue | IdReference>;
+    /** Specifies a MerchantReturnPolicy that may be applicable. */
+    "schema:hasMerchantReturnPolicy"?: SchemaValue<MerchantReturnPolicy | IdReference>;
     /** This links to a node or nodes indicating the exact quantity of the products included in an {@link https://schema.org/Offer Offer} or {@link https://schema.org/ProductCollection ProductCollection}. */
     "schema:includesObject"?: SchemaValue<TypeAndQuantityNode | IdReference>;
     /**
@@ -7580,7 +7773,7 @@ interface OfferBase extends ThingBase {
     "schema:ineligibleRegion"?: SchemaValue<GeoShape | Place | Text | IdReference>;
     /** The current approximate inventory level for the item or items. */
     "schema:inventoryLevel"?: SchemaValue<QuantitativeValue | IdReference>;
-    /** A predefined value from OfferItemCondition or a textual description of the condition of the product or service, or the products or services included in the offer. */
+    /** A predefined value from OfferItemCondition specifying the condition of the product or service, or the products or services included in the offer. Also used for product return policies to specify the condition of products accepted for returns. */
     "schema:itemCondition"?: SchemaValue<OfferItemCondition | IdReference>;
     /** An item being offered (or demanded). The transactional nature of the offer or demand is documented using {@link https://schema.org/businessFunction businessFunction}, e.g. sell, lease etc. While several common expected types are listed explicitly in this definition, others can be used. Using a second type, such as Product or a subtype of Product, can clarify the nature of the offer. */
     "schema:itemOffered"?: SchemaValue<AggregateOffer | CreativeWork | Event | MenuItem | Product | Service | Trip | IdReference>;
@@ -7745,11 +7938,11 @@ interface OperationsConceptLeaf extends ThingBase {
 /** An operations concept */
 export type OperationsConcept = OperationsConceptLeaf | IdentityConcept;
 
-interface OperationsModelLeaf extends HierarchicalBase {
-    "@type": "coremo:OperationsModel";
+interface OperationsModelAreaLeaf extends ThingBase {
+    "@type": "coremo:OperationsModelArea";
 }
-/** An operations model. */
-export type OperationsModel = OperationsModelLeaf | IdentityModel;
+/** An operations model area. */
+export type OperationsModelArea = OperationsModelAreaLeaf | CloudModelArea | DevOpsModelArea | IdentityModelArea | IntegrationModelArea;
 
 interface OpinionNewsArticleLeaf extends NewsArticleBase {
     "@type": "schema:OpinionNewsArticle";
@@ -7942,7 +8135,7 @@ interface OrganizationBase extends ThingBase {
     "schema:globalLocationNumber"?: SchemaValue<Text>;
     /** A credential awarded to the Person or Organization. */
     "schema:hasCredential"?: SchemaValue<EducationalOccupationalCredential | IdReference>;
-    /** Indicates a MerchantReturnPolicy that may be applicable. */
+    /** Specifies a MerchantReturnPolicy that may be applicable. */
     "schema:hasMerchantReturnPolicy"?: SchemaValue<MerchantReturnPolicy | IdReference>;
     /** Indicates an OfferCatalog listing for this Organization, Person, or Service. */
     "schema:hasOfferCatalog"?: SchemaValue<OfferCatalog | IdReference>;
@@ -8029,7 +8222,19 @@ interface OrganizationLeaf extends OrganizationBase {
     "@type": "schema:Organization";
 }
 /** An organization such as a school, NGO, corporation, club, etc. */
-export type Organization = OrganizationLeaf | Airline | Consortium | Corporation | EducationalOrganization | FundingScheme | GovernmentOrganization | LibrarySystem | LocalBusiness | MedicalOrganization | NewsMediaOrganization | NGO | PerformingGroup | Project | SportsOrganization | WorkersUnion | string;
+export type Organization = OrganizationLeaf | Airline | Consortium | Corporation | EducationalOrganization | FundingScheme | GovernmentOrganization | LibrarySystem | LocalBusiness | MedicalOrganization | NewsMediaOrganization | NGO | PerformingGroup | Project | ResearchOrganization | SportsOrganization | WorkersUnion | string;
+
+interface OrganizationProfileBase extends AbstractableBase, TransformableBase, ThingBase {
+    /** A child profile of an OrganizationProfile. */
+    "dirmo:childOrganizationProfile"?: SchemaValue<OrganizationProfile | IdReference>;
+    /** The OrganizationProfile's effective organization details. */
+    "dirmo:effectiveOrganization"?: SchemaValue<Organization | IdReference>;
+}
+interface OrganizationProfileLeaf extends OrganizationProfileBase {
+    "@type": "dirmo:OrganizationProfile";
+}
+/** An organization's profile */
+export type OrganizationProfile = OrganizationProfileLeaf;
 
 interface OrganizationRoleBase extends RoleBase {
     /** A number associated with a role in an organization, for example, the number on an athlete's jersey. */
@@ -8061,7 +8266,7 @@ interface OrientationEnumerationLeaf extends EnumerationBase {
     "@type": "coremo:OrientationEnumeration";
 }
 /** OrientationEnumeration is an enumeration type representing orientation. */
-export type OrientationEnumeration = "coremo:HorizontalOrientation" | "coremo:VerticialOrientation" | OrientationEnumerationLeaf;
+export type OrientationEnumeration = "https://clipcode.org/base/concept/coremo/HorizontalOrientation" | "coremo:HorizontalOrientation" | "https://clipcode.org/base/concept/coremo/VerticialOrientation" | "coremo:VerticialOrientation" | OrientationEnumerationLeaf;
 
 interface OutletStoreLeaf extends LocalBusinessBase {
     "@type": "schema:OutletStore";
@@ -8097,13 +8302,33 @@ interface PaintingLeaf extends CreativeWorkBase {
 /** A painting. */
 export type Painting = PaintingLeaf;
 
-interface PalliativeProcedureBase extends MedicalProcedureBase, MedicalTherapyBase {
+interface PalliativeProcedureBase extends MedicalTherapyBase, MedicalProcedureBase {
 }
 interface PalliativeProcedureLeaf extends PalliativeProcedureBase {
     "@type": "schema:PalliativeProcedure";
 }
 /** A medical procedure intended primarily for palliative purposes, aimed at relieving the symptoms of an underlying health condition. */
 export type PalliativeProcedure = PalliativeProcedureLeaf;
+
+interface PanelLeaf extends ThingBase {
+    "@type": "coremo:Panel";
+}
+/** A panel that can be composed. */
+export type Panel = PanelLeaf;
+
+interface PanelHostBase extends ThingBase {
+    /** The panel hosted by this PanelHost. */
+    "coremo:hostedPanel"?: SchemaValue<Panel | IdReference>;
+    /** The X origin for this panel host. */
+    "coremo:hostedPanelOriginX"?: SchemaValue<Integer>;
+    /** The Y origin for this panel host. */
+    "coremo:hostedPanelOriginY"?: SchemaValue<Integer>;
+}
+interface PanelHostLeaf extends PanelHostBase {
+    "@type": "coremo:PanelHost";
+}
+/** A host for a single panel. */
+export type PanelHost = PanelHostLeaf;
 
 interface ParcelDeliveryBase extends ThingBase {
     /**
@@ -8205,7 +8430,7 @@ interface PayActionLeaf extends PayActionBase {
 /** An agent pays a price to a participant. */
 export type PayAction = PayActionLeaf;
 
-interface PaymentCardBase extends EnumerationBase, FinancialProductBase {
+interface PaymentCardBase extends FinancialProductBase, EnumerationBase {
     /** A cardholder benefit that pays the cardholder a small percentage of their net expenditures. */
     "schema:cashBack"?: SchemaValue<Boolean | Number>;
     /** A secure method for consumers to purchase products or services via debit, credit or smartcards by using RFID or NFC technology. */
@@ -8453,6 +8678,8 @@ interface PersonBase extends ThingBase {
     "schema:memberOf"?: SchemaValue<Organization | ProgramMembership | IdReference>;
     /** The North American Industry Classification System (NAICS) code for a particular organization or business person. */
     "schema:naics"?: SchemaValue<Text>;
+    /** The ordering of given/family names for a person. */
+    "coremo:nameOrder"?: SchemaValue<NameOrderEnumeration | IdReference>;
     /** Nationality of the person. */
     "schema:nationality"?: SchemaValue<Country | IdReference>;
     /** The total financial value of the person as calculated by subtracting assets from liabilities. */
@@ -8516,7 +8743,7 @@ interface PetStoreLeaf extends LocalBusinessBase {
 /** A pet store. */
 export type PetStore = PetStoreLeaf | string;
 
-interface PharmacyBase extends LocalBusinessBase, MedicalOrganizationBase {
+interface PharmacyBase extends MedicalOrganizationBase, LocalBusinessBase {
 }
 interface PharmacyLeaf extends PharmacyBase {
     "@type": "schema:Pharmacy";
@@ -8572,7 +8799,7 @@ interface PhysicalTherapyLeaf extends MedicalTherapyBase {
 /** A process of progressive physical care and rehabilitation aimed at improving a health condition. */
 export type PhysicalTherapy = PhysicalTherapyLeaf;
 
-interface PhysicianBase extends LocalBusinessBase, MedicalOrganizationBase {
+interface PhysicianBase extends MedicalOrganizationBase, LocalBusinessBase {
     /** A medical service available from this provider. */
     "schema:availableService"?: SchemaValue<MedicalProcedure | MedicalTest | MedicalTherapy | IdReference>;
     /** A hospital with which the physician or office is affiliated. */
@@ -8590,13 +8817,13 @@ interface PipelineConceptLeaf extends ThingBase {
     "@type": "coremo:PipelineConcept";
 }
 /** A pipeline concept */
-export type PipelineConcept = PipelineConceptLeaf | FormConcept;
+export type PipelineConcept = PipelineConceptLeaf;
 
-interface PipelineModelLeaf extends HierarchicalBase {
-    "@type": "coremo:PipelineModel";
+interface PipelineModelAreaLeaf extends ThingBase {
+    "@type": "coremo:PipelineModelArea";
 }
-/** A pipeline model. */
-export type PipelineModel = PipelineModelLeaf | FormModel;
+/** A pipeline model area. */
+export type PipelineModelArea = PipelineModelAreaLeaf;
 
 interface PlaceBase extends ThingBase {
     /**
@@ -8749,7 +8976,7 @@ export type PlanAction = PlanActionLeaf | CancelAction | ReserveAction | Schedul
 interface PlayLeaf extends CreativeWorkBase {
     "@type": "schema:Play";
 }
-/** A play is a form of literature, usually consisting of dialogue between characters, intended for theatrical performance rather than just reading. Note the peformance of a Play would be a {@link https://schema.org/TheaterEvent TheaterEvent} - the _Play_ being the {@link https://schema.org/workPerformed workPerformed}. */
+/** A play is a form of literature, usually consisting of dialogue between characters, intended for theatrical performance rather than just reading. Note: A performance of a Play would be a {@link https://schema.org/TheaterEvent TheaterEvent} or {@link https://schema.org/BroadcastEvent BroadcastEvent} - the _Play_ being the {@link https://schema.org/workPerformed workPerformed}. */
 export type Play = PlayLeaf;
 
 interface PlayActionBase extends ActionBase {
@@ -8795,6 +9022,8 @@ interface PodcastSeasonLeaf extends CreativeWorkSeasonBase {
 export type PodcastSeason = PodcastSeasonLeaf;
 
 interface PodcastSeriesBase extends CreativeWorkSeriesBase {
+    /** An actor, e.g. in tv, radio, movie, video games etc., or in an event. Actors can be associated with individual items or with a series, episode, clip. */
+    "schema:actor"?: SchemaValue<Person | IdReference>;
     /** The URL for a feed, e.g. associated with a podcast series, blog, or series of date-stamped updates. This is usually RSS or Atom. */
     "schema:webFeed"?: SchemaValue<DataFeed | URL | IdReference>;
 }
@@ -8811,96 +9040,6 @@ interface PoliceStationLeaf extends PoliceStationBase {
 }
 /** A police station. */
 export type PoliceStation = PoliceStationLeaf | string;
-
-interface PolicyConceptLeaf extends ThingBase {
-    "@type": "polmo:PolicyConcept";
-}
-/** A policy concept */
-export type PolicyConcept = PolicyConceptLeaf | CompliancePolicySemanticWork | EffectivePolicyItem | EffectivePolicySemanticWork | PolicyDesignSemanticWork | PolicyItemChoiceOption | PolicyItemDesign | PolicyItemSetDesign | PolicyItemTransform | PolicyModel | PolicyTransformSemanticWork;
-
-interface PolicyDesignSemanticWorkBase extends RevisibleBase, CreativeWorkBase, ThingBase {
-    /** Provenance of this policy design (app, org, ..) */
-    "polmo:provenance"?: SchemaValue<URL>;
-}
-interface PolicyDesignSemanticWorkLeaf extends PolicyDesignSemanticWorkBase {
-    "@type": "polmo:PolicyDesignSemanticWork";
-}
-/** A policy design */
-export type PolicyDesignSemanticWork = PolicyDesignSemanticWorkLeaf;
-
-interface PolicyItemChoiceOptionBase extends ThingBase {
-    /** Value of this policy item. */
-    "polmo:policyItemValue"?: SchemaValue<Boolean | Float | Integer | Text>;
-}
-interface PolicyItemChoiceOptionLeaf extends PolicyItemChoiceOptionBase {
-    "@type": "polmo:PolicyItemChoiceOption";
-}
-/** A policy item choice option */
-export type PolicyItemChoiceOption = PolicyItemChoiceOptionLeaf;
-
-interface PolicyItemDesignBase extends ThingBase {
-    /** Whether this item is a required value. */
-    "polmo:isRequired"?: SchemaValue<Boolean>;
-    /** The kind of policy item. */
-    "polmo:policyItemKind"?: SchemaValue<PolicyItemKindEnumeration | IdReference>;
-    /** Value of this policy item. */
-    "polmo:policyItemValue"?: SchemaValue<Boolean | Float | Integer | Text>;
-    /** Maximum numeric value. */
-    "polmo:restrictionMaximumNumber"?: SchemaValue<Float | Integer>;
-    /** Maximum string length. */
-    "polmo:restrictionMaximumStringLength"?: SchemaValue<Integer>;
-    /** Minimum numeric value. */
-    "polmo:restrictionMinimumNumber"?: SchemaValue<Float | Integer>;
-    /** Minimum string length. */
-    "polmo:restrictionMinimumStringLength"?: SchemaValue<Integer>;
-    /** String regular expression. */
-    "polmo:restrictionStringRegEx"?: SchemaValue<Text>;
-}
-interface PolicyItemDesignLeaf extends PolicyItemDesignBase {
-    "@type": "polmo:PolicyItemDesign";
-}
-/** A policy item design */
-export type PolicyItemDesign = PolicyItemDesignLeaf;
-
-interface PolicyItemKindEnumerationLeaf extends EnumerationBase {
-    "@type": "polmo:PolicyItemKindEnumeration";
-}
-/** PolicyItemKindEnumeration is an enumeration type representing the policy item types. */
-export type PolicyItemKindEnumeration = "polmo:BooleanItemKind" | "polmo:ChoiceMultiItemKind" | "polmo:ChoiceSingleItemKind" | "polmo:DateItemKind" | "polmo:FloatItemKind" | "polmo:IntegerItemKind" | "polmo:TextItemKind" | PolicyItemKindEnumerationLeaf;
-
-interface PolicyItemSetDesignLeaf extends ThingBase {
-    "@type": "polmo:PolicyItemSetDesign";
-}
-/** A policy item set design */
-export type PolicyItemSetDesign = PolicyItemSetDesignLeaf;
-
-interface PolicyItemTransformBase extends ThingBase {
-    /** Value of this policy item. */
-    "polmo:policyItemValue"?: SchemaValue<Boolean | Float | Integer | Text>;
-    /** Is this value sealed (i.e. cannot be further transformed). */
-    "polmo:policyItemValueSealed"?: SchemaValue<Boolean>;
-}
-interface PolicyItemTransformLeaf extends PolicyItemTransformBase {
-    "@type": "polmo:PolicyItemTransform";
-}
-/** A policy item transform */
-export type PolicyItemTransform = PolicyItemTransformLeaf;
-
-interface PolicyModelBase extends HierarchicalBase, ThingBase {
-}
-interface PolicyModelLeaf extends PolicyModelBase {
-    "@type": "polmo:PolicyModel";
-}
-/** A policy model */
-export type PolicyModel = PolicyModelLeaf;
-
-interface PolicyTransformSemanticWorkBase extends CreativeWorkBase, ThingBase {
-}
-interface PolicyTransformSemanticWorkLeaf extends PolicyTransformSemanticWorkBase {
-    "@type": "polmo:PolicyTransformSemanticWork";
-}
-/** A policy transform */
-export type PolicyTransformSemanticWork = PolicyTransformSemanticWorkLeaf;
 
 interface PondLeaf extends PlaceBase {
     "@type": "schema:Pond";
@@ -9067,6 +9206,18 @@ interface ProductBase extends ThingBase {
     "schema:category"?: SchemaValue<PhysicalActivityCategory | Text | Thing | URL | IdReference>;
     /** The color of the product. */
     "schema:color"?: SchemaValue<Text>;
+    /** The place where the product was assembled. */
+    "schema:countryOfAssembly"?: SchemaValue<Text>;
+    /** The place where the item (typically {@link https://schema.org/Product Product}) was last processed and tested before importation. */
+    "schema:countryOfLastProcessing"?: SchemaValue<Text>;
+    /**
+     * The country of origin of something, including products as well as creative works such as movie and TV content.
+     *
+     * In the case of TV and movie, this would be the country of the principle offices of the production company or individual responsible for the movie. For other kinds of {@link https://schema.org/CreativeWork CreativeWork} it is difficult to provide fully general guidance, and properties such as {@link https://schema.org/contentLocation contentLocation} and {@link https://schema.org/locationCreated locationCreated} may be more applicable.
+     *
+     * In the case of products, the country of origin of the product. The exact interpretation of this may vary by context and product type, and cannot be fully enumerated here.
+     */
+    "schema:countryOfOrigin"?: SchemaValue<Country | IdReference>;
     /** The depth of the item. */
     "schema:depth"?: SchemaValue<Distance | QuantitativeValue | IdReference>;
     /** A Global Trade Item Number ({@link https://www.gs1.org/standards/id-keys/gtin GTIN}). GTINs identify trade items, including products and services, using numeric identification codes. The {@link https://schema.org/gtin gtin} property generalizes the earlier {@link https://schema.org/gtin8 gtin8}, {@link https://schema.org/gtin12 gtin12}, {@link https://schema.org/gtin13 gtin13}, and {@link https://schema.org/gtin14 gtin14} properties. The GS1 {@link https://www.gs1.org/standards/Digital-Link/ digital link specifications} express GTINs as URLs. A correct {@link https://schema.org/gtin gtin} value should be a valid GTIN, which means that it should be an all-numeric string of either 8, 12, 13 or 14 digits, or a "GS1 Digital Link" URL based on such a string. The numeric component should also have a {@link https://www.gs1.org/services/check-digit-calculator valid GS1 check digit} and meet the other rules for valid GTINs. See also {@link http://www.gs1.org/barcodes/technical/idkeys/gtin GS1's GTIN Summary} and {@link https://en.wikipedia.org/wiki/Global_Trade_Item_Number Wikipedia} for more details. Left-padding of the gtin values is not required or encouraged. */
@@ -9083,7 +9234,7 @@ interface ProductBase extends ThingBase {
     "schema:hasEnergyConsumptionDetails"?: SchemaValue<EnergyConsumptionDetails | IdReference>;
     /** A product measurement, for example the inseam of pants, the wheel size of a bicycle, or the gauge of a screw. Usually an exact measurement, but can also be a range of measurements for adjustable products, for example belts and ski bindings. */
     "schema:hasMeasurement"?: SchemaValue<QuantitativeValue | IdReference>;
-    /** Indicates a MerchantReturnPolicy that may be applicable. */
+    /** Specifies a MerchantReturnPolicy that may be applicable. */
     "schema:hasMerchantReturnPolicy"?: SchemaValue<MerchantReturnPolicy | IdReference>;
     /** The height of the item. */
     "schema:height"?: SchemaValue<Distance | QuantitativeValue | IdReference>;
@@ -9099,7 +9250,7 @@ interface ProductBase extends ThingBase {
     "schema:isSimilarTo"?: SchemaValue<Product | Service | IdReference>;
     /** Indicates the kind of product that this is a variant of. In the case of {@link https://schema.org/ProductModel ProductModel}, this is a pointer (from a ProductModel) to a base product from which this product is a variant. It is safe to infer that the variant inherits all product features from the base model, unless defined locally. This is not transitive. In the case of a {@link https://schema.org/ProductGroup ProductGroup}, the group description also serves as a template, representing a set of Products that vary on explicitly defined, specific dimensions only (so it defines both a set of variants, as well as which values distinguish amongst those variants). When used with {@link https://schema.org/ProductGroup ProductGroup}, this property can apply to any {@link https://schema.org/Product Product} included in the group. */
     "schema:isVariantOf"?: SchemaValue<ProductGroup | ProductModel | IdReference>;
-    /** A predefined value from OfferItemCondition or a textual description of the condition of the product or service, or the products or services included in the offer. */
+    /** A predefined value from OfferItemCondition specifying the condition of the product or service, or the products or services included in the offer. Also used for product return policies to specify the condition of products accepted for returns. */
     "schema:itemCondition"?: SchemaValue<OfferItemCondition | IdReference>;
     /** An associated logo. */
     "schema:logo"?: SchemaValue<ImageObject | URL | IdReference>;
@@ -9342,6 +9493,16 @@ interface PropertyValueSpecificationLeaf extends PropertyValueSpecificationBase 
 /** A Property value specification. */
 export type PropertyValueSpecification = PropertyValueSpecificationLeaf;
 
+interface ProteinBase extends BioChemEntityBase {
+    /** A symbolic representation of a BioChemEnity. For example, a nucleotide sequence of a Gene or an amino acid sequence of a Protein. */
+    "schema:hasBioPolymerSequence"?: SchemaValue<Text>;
+}
+interface ProteinLeaf extends ProteinBase {
+    "@type": "schema:Protein";
+}
+/** Protein is here used in its widest possible definition, as classes of amino acid based molecules. Amyloid-beta Protein in human (UniProt P05067), eukaryota (e.g. an OrthoDB group) or even a single molecule that one can point to are all of type schema:Protein. A protein can thus be a subclass of another protein, e.g. schema:Protein as a UniProt record can have multiple isoforms inside it which would also be schema:Protein. They can be imagined, synthetic, hypothetical or naturally occurring. */
+export type Protein = ProteinLeaf;
+
 interface PsychologicalTreatmentLeaf extends TherapeuticProcedureBase {
     "@type": "schema:PsychologicalTreatment";
 }
@@ -9420,7 +9581,7 @@ export type PublicToilet = PublicToiletLeaf | string;
 
 interface PublishableBase extends ThingBase {
     /** publish date. */
-    "coremo:hasPublishedDate"?: SchemaValue<Date>;
+    "coremo:publishedDate"?: SchemaValue<Date>;
     /** The publish status of this resource. */
     "coremo:publishStatus"?: SchemaValue<PublishableStatusEnumeration | IdReference>;
 }
@@ -9434,7 +9595,7 @@ interface PublishableStatusEnumerationLeaf extends EnumerationBase {
     "@type": "coremo:PublishableStatusEnumeration";
 }
 /** PublishableStatusEnumeration is an enumeration type representing the publishable status of a resource. */
-export type PublishableStatusEnumeration = "coremo:ArchivedStatus" | "coremo:DraftStatus" | "coremo:PublishedStatus" | "coremo:PublishRequestedStatus" | "coremo:RescindedStatus" | PublishableStatusEnumerationLeaf;
+export type PublishableStatusEnumeration = "https://clipcode.org/base/concept/coremo/ArchivedStatus" | "coremo:ArchivedStatus" | "https://clipcode.org/base/concept/coremo/DraftStatus" | "coremo:DraftStatus" | "https://clipcode.org/base/concept/coremo/PublishedStatus" | "coremo:PublishedStatus" | "https://clipcode.org/base/concept/coremo/PublishRequestedStatus" | "coremo:PublishRequestedStatus" | "https://clipcode.org/base/concept/coremo/RescindedStatus" | "coremo:RescindedStatus" | PublishableStatusEnumerationLeaf;
 
 interface QAPageLeaf extends WebPageBase {
     "@type": "schema:QAPage";
@@ -9795,8 +9956,20 @@ export type RecyclingCenter = RecyclingCenterLeaf | string;
 interface RefundTypeEnumerationLeaf extends EnumerationBase {
     "@type": "schema:RefundTypeEnumeration";
 }
-/** RefundTypeEnumeration enumerates several kinds of product return refund types. */
+/** Enumerates several kinds of product return refund types. */
 export type RefundTypeEnumeration = "https://schema.org/ExchangeRefund" | "schema:ExchangeRefund" | "https://schema.org/FullRefund" | "schema:FullRefund" | "https://schema.org/StoreCreditRefund" | "schema:StoreCreditRefund" | RefundTypeEnumerationLeaf;
+
+interface RegionalDirectoryConceptLeaf extends ThingBase {
+    "@type": "dirmo:RegionalDirectoryConcept";
+}
+/** A regional directory concept */
+export type RegionalDirectoryConcept = RegionalDirectoryConceptLeaf;
+
+interface RegionalDirectorySemanticPoolLeaf extends DirectorySemanticPoolBase {
+    "@type": "dirmo:RegionalDirectorySemanticPool";
+}
+/** A regional directory */
+export type RegionalDirectorySemanticPool = RegionalDirectorySemanticPoolLeaf;
 
 interface RegisterActionLeaf extends ActionBase {
     "@type": "schema:RegisterAction";
@@ -9821,6 +9994,12 @@ interface RejectActionLeaf extends ActionBase {
  * - {@link https://schema.org/AcceptAction AcceptAction}: The antonym of RejectAction.
  */
 export type RejectAction = RejectActionLeaf;
+
+interface RemoveTransformLeaf extends TransformBase {
+    "@type": "coremo:RemoveTransform";
+}
+/** A RemoveTransform for a Transformable. */
+export type RemoveTransform = RemoveTransformLeaf;
 
 interface RentActionBase extends TradeActionBase {
     /** A sub property of participant. The owner of the real estate property. */
@@ -9935,6 +10114,12 @@ interface ResearcherLeaf extends AudienceBase {
 /** Researchers. */
 export type Researcher = ResearcherLeaf;
 
+interface ResearchOrganizationLeaf extends OrganizationBase {
+    "@type": "schema:ResearchOrganization";
+}
+/** A Research Organization (e.g. scientific institute, research company). */
+export type ResearchOrganization = ResearchOrganizationLeaf | string;
+
 interface ResearchProjectLeaf extends OrganizationBase {
     "@type": "schema:ResearchProject";
 }
@@ -10046,6 +10231,18 @@ interface ResortLeaf extends LodgingBusinessBase {
  */
 export type Resort = ResortLeaf | SkiResort | string;
 
+interface ResourceDirectoryConceptLeaf extends ThingBase {
+    "@type": "dirmo:ResourceDirectoryConcept";
+}
+/** A resource directory concept */
+export type ResourceDirectoryConcept = ResourceDirectoryConceptLeaf;
+
+interface ResourceDirectorySemanticPoolLeaf extends DirectorySemanticPoolBase {
+    "@type": "dirmo:ResourceDirectorySemanticPool";
+}
+/** A resource directory */
+export type ResourceDirectorySemanticPool = ResourceDirectorySemanticPoolLeaf;
+
 interface ResponsibleForLeaf extends ThingBase {
     "@type": "coremo:ResponsibleFor";
 }
@@ -10083,12 +10280,34 @@ export type ReturnAction = ReturnActionLeaf;
 interface ReturnFeesEnumerationLeaf extends EnumerationBase {
     "@type": "schema:ReturnFeesEnumeration";
 }
-/** ReturnFeesEnumeration expresses policies for return fees. */
-export type ReturnFeesEnumeration = "https://schema.org/OriginalShippingFees" | "schema:OriginalShippingFees" | "https://schema.org/RestockingFees" | "schema:RestockingFees" | "https://schema.org/ReturnShippingFees" | "schema:ReturnShippingFees" | ReturnFeesEnumerationLeaf;
+/** Enumerates several kinds of policies for product return fees. */
+export type ReturnFeesEnumeration = "https://schema.org/FreeReturn" | "schema:FreeReturn" | "https://schema.org/OriginalShippingFees" | "schema:OriginalShippingFees" | "https://schema.org/RestockingFees" | "schema:RestockingFees" | "https://schema.org/ReturnFeesCustomerResponsibility" | "schema:ReturnFeesCustomerResponsibility" | "https://schema.org/ReturnShippingFees" | "schema:ReturnShippingFees" | ReturnFeesEnumerationLeaf;
+
+interface ReturnLabelSourceEnumerationLeaf extends EnumerationBase {
+    "@type": "schema:ReturnLabelSourceEnumeration";
+}
+/** Enumerates several types of return labels for product returns. */
+export type ReturnLabelSourceEnumeration = "https://schema.org/ReturnLabelCustomerResponsibility" | "schema:ReturnLabelCustomerResponsibility" | "https://schema.org/ReturnLabelDownloadAndPrint" | "schema:ReturnLabelDownloadAndPrint" | "https://schema.org/ReturnLabelInBox" | "schema:ReturnLabelInBox" | ReturnLabelSourceEnumerationLeaf;
+
+interface ReturnMethodEnumerationLeaf extends EnumerationBase {
+    "@type": "schema:ReturnMethodEnumeration";
+}
+/** Enumerates several types of product return methods. */
+export type ReturnMethodEnumeration = "https://schema.org/ReturnAtKiosk" | "schema:ReturnAtKiosk" | "https://schema.org/ReturnByMail" | "schema:ReturnByMail" | "https://schema.org/ReturnInStore" | "schema:ReturnInStore" | ReturnMethodEnumerationLeaf;
 
 interface ReviewBase extends CreativeWorkBase {
+    /** An associated {@link https://schema.org/ClaimReview ClaimReview}, related by specific common content, topic or claim. The expectation is that this property would be most typically used in cases where a single activity is conducting both claim reviews and media reviews, in which case {@link https://schema.org/relatedMediaReview relatedMediaReview} would commonly be used on a {@link https://schema.org/ClaimReview ClaimReview}, while {@link https://schema.org/relatedClaimReview relatedClaimReview} would be used on {@link https://schema.org/MediaReview MediaReview}. */
+    "schema:associatedClaimReview"?: SchemaValue<Review | IdReference>;
+    /** An associated {@link https://schema.org/MediaReview MediaReview}, related by specific common content, topic or claim. The expectation is that this property would be most typically used in cases where a single activity is conducting both claim reviews and media reviews, in which case {@link https://schema.org/relatedMediaReview relatedMediaReview} would commonly be used on a {@link https://schema.org/ClaimReview ClaimReview}, while {@link https://schema.org/relatedClaimReview relatedClaimReview} would be used on {@link https://schema.org/MediaReview MediaReview}. */
+    "schema:associatedMediaReview"?: SchemaValue<Review | IdReference>;
+    /** An associated {@link https://schema.org/Review Review}. */
+    "schema:associatedReview"?: SchemaValue<Review | IdReference>;
     /** The item that is being reviewed/rated. */
     "schema:itemReviewed"?: SchemaValue<Thing | IdReference>;
+    /** Indicates, in the context of a {@link https://schema.org/Review Review} (e.g. framed as 'pro' vs 'con' considerations), negative considerations - either as unstructured text, or a list. */
+    "schema:negativeNotes"?: SchemaValue<ItemList | ListItem | Text | WebContent | IdReference>;
+    /** Indicates, in the context of a {@link https://schema.org/Review Review} (e.g. framed as 'pro' vs 'con' considerations), positive considerations - either as unstructured text, or a list. */
+    "schema:positiveNotes"?: SchemaValue<ItemList | ListItem | Text | WebContent | IdReference>;
     /** This Review or Rating is relevant to this part or facet of the itemReviewed. */
     "schema:reviewAspect"?: SchemaValue<Text>;
     /** The actual body of the review. */
@@ -10112,7 +10331,7 @@ interface ReviewActionLeaf extends ReviewActionBase {
 /** The act of producing a balanced opinion about the object for an audience. An agent reviews an object with participants resulting in a review. */
 export type ReviewAction = ReviewActionLeaf;
 
-interface ReviewNewsArticleBase extends NewsArticleBase, ReviewBase {
+interface ReviewNewsArticleBase extends ReviewBase, NewsArticleBase {
 }
 interface ReviewNewsArticleLeaf extends ReviewNewsArticleBase {
     "@type": "schema:ReviewNewsArticle";
@@ -10128,7 +10347,7 @@ interface RevisibleLeaf extends RevisibleBase {
     "@type": "coremo:Revisible";
 }
 /** A resource which can have many revisions */
-export type Revisible = RevisibleLeaf | PolicyDesignSemanticWork;
+export type Revisible = RevisibleLeaf;
 
 interface RiverBodyOfWaterLeaf extends PlaceBase {
     "@type": "schema:RiverBodyOfWater";
@@ -10176,6 +10395,18 @@ interface RoomLeaf extends AccommodationBase {
  */
 export type Room = RoomLeaf | HotelRoom | MeetingRoom | string;
 
+interface RootCategoryConceptLeaf extends ThingBase {
+    "@type": "catmo:RootCategoryConcept";
+}
+/** A root category concept (that can be a direct child of a category semantic pool). */
+export type RootCategoryConcept = RootCategoryConceptLeaf | Category;
+
+interface RootDatastoreConceptLeaf extends ThingBase {
+    "@type": "dstoremo:RootDatastoreConcept";
+}
+/** A root concept within a datastore semantic pool */
+export type RootDatastoreConcept = RootDatastoreConceptLeaf | KnowledgeContainerList | KnowledgePackageList;
+
 interface RsvpActionBase extends InformActionBase {
     /** If responding yes, the number of guests who will attend in addition to the invitee. */
     "schema:additionalNumberOfGuests"?: SchemaValue<Number>;
@@ -10214,11 +10445,11 @@ interface SalesConceptLeaf extends ThingBase {
 /** A sales concept */
 export type SalesConcept = SalesConceptLeaf;
 
-interface SalesModelLeaf extends HierarchicalBase {
-    "@type": "coremo:SalesModel";
+interface SalesModelAreaLeaf extends ThingBase {
+    "@type": "coremo:SalesModelArea";
 }
-/** A sales model. */
-export type SalesModel = SalesModelLeaf;
+/** A sales model area. */
+export type SalesModelArea = SalesModelAreaLeaf;
 
 interface SatiricalArticleLeaf extends ArticleBase {
     "@type": "schema:SatiricalArticle";
@@ -10370,7 +10601,11 @@ interface SeatLeaf extends SeatBase {
 /** Used to describe a seat, such as a reserved seat in an event reservation. */
 export type Seat = SeatLeaf;
 
-interface SeekToActionLeaf extends ActionBase {
+interface SeekToActionBase extends ActionBase {
+    /** The start time of the clip expressed as the number of seconds from the beginning of the work. */
+    "schema:startOffset"?: SchemaValue<HyperTocEntry | Number | IdReference>;
+}
+interface SeekToActionLeaf extends SeekToActionBase {
     "@type": "schema:SeekToAction";
 }
 /** This is the {@link https://schema.org/Action Action} of navigating to a specific {@link https://schema.org/startOffset startOffset} timestamp within a {@link https://schema.org/VideoObject VideoObject}, typically represented with a URL template structure. */
@@ -10384,7 +10619,7 @@ export type SelfStorage = SelfStorageLeaf | string;
 
 interface SellActionBase extends TradeActionBase {
     /** A sub property of participant. The participant/person/organization that bought the object. */
-    "schema:buyer"?: SchemaValue<Person | IdReference>;
+    "schema:buyer"?: SchemaValue<Organization | Person | IdReference>;
     /**
      * The warranty promise(s) included in the offer.
      *
@@ -10398,17 +10633,29 @@ interface SellActionLeaf extends SellActionBase {
 /** The act of taking money from a buyer in exchange for goods or services rendered. An agent sells an object, product, or service to a buyer for a price. Reciprocal of BuyAction. */
 export type SellAction = SellActionLeaf;
 
-interface SemanticModelLeaf extends HierarchicalBase {
+interface SemanticModelLeaf extends ThingBase {
     "@type": "coremo:SemanticModel";
 }
 /** A semantic model. */
-export type SemanticModel = SemanticModelLeaf | CompositeModel | ConstituentModel | KnowledgeModel;
+export type SemanticModel = SemanticModelLeaf | CategoryModel | DatastoreModel | DirectoryModel;
 
-interface SemanticWorkLeaf extends CreativeWorkBase {
-    "@type": "coremo:SemanticWork";
+interface SemanticModelAreaLeaf extends ThingBase {
+    "@type": "coremo:SemanticModelArea";
 }
-/** A semantic work that manages a somewhat self-contained representaton of an area of interest. */
-export type SemanticWork = SemanticWorkLeaf | AppContentSemanticWork | AppPublishingProfileSemanticWork | AppRealmSemanticWork | CompliancePolicySemanticWork | EffectivePolicySemanticWork | FormAdminSemanticWork | FormDesignSemanticWork | FormResponseSemanticWork | MicroappSemanticWork | PolicyDesignSemanticWork | PolicyTransformSemanticWork;
+/** A semantic model area (which may contain more specialist semantic model areas and semantic models). */
+export type SemanticModelArea = SemanticModelAreaLeaf | CommunicationModelArea | CorporateModelArea | EducationModelArea | MathematicsModelArea | OperationsModelArea | SalesModelArea | ServicesModelArea | TechnologyModelArea;
+
+interface SemanticPoolBase extends ThingBase {
+    /** This pool is consider primary (at a knowledge graph level). */
+    "coremo:isPrimarySemanticPool"?: SchemaValue<Boolean>;
+    /** This metadata is associated with this semantic pool. */
+    "coremo:metadataPrimarySemanticPool"?: SchemaValue<URL>;
+}
+interface SemanticPoolLeaf extends SemanticPoolBase {
+    "@type": "coremo:SemanticPool";
+}
+/** A pool of semantic resources that manages a somewhat self-contained representation of an area of interest. */
+export type SemanticPool = SemanticPoolLeaf | CategorySemanticPool | DatastoreSemanticPool | DirectorySemanticPool;
 
 interface SendActionBase extends TransferActionBase {
     /** A sub property of instrument. The method of delivery. */
@@ -10428,11 +10675,11 @@ export type SendAction = SendActionLeaf;
 
 interface SequentialBase extends ThingBase {
     /** This resource comes after the specified property value. */
-    "coremo:sequentialAfter"?: SchemaValue<Thing | IdReference>;
+    "coremo:sequentialAfter"?: SchemaValue<NaturalNumber>;
     /** This resource comes before the specified property value. */
-    "coremo:sequentialBefore"?: SchemaValue<Thing | IdReference>;
+    "coremo:sequentialBefore"?: SchemaValue<NaturalNumber>;
     /** The sequential rank (index) of this sequential. */
-    "coremo:sequentialRank"?: SchemaValue<Thing | IdReference>;
+    "coremo:sequentialRank"?: SchemaValue<NaturalNumber>;
 }
 interface SequentialLeaf extends SequentialBase {
     "@type": "coremo:Sequential";
@@ -10544,11 +10791,11 @@ interface ServicesConceptLeaf extends ThingBase {
 /** A services concept */
 export type ServicesConcept = ServicesConceptLeaf;
 
-interface ServicesModelLeaf extends HierarchicalBase {
-    "@type": "coremo:ServicesModel";
+interface ServicesModelAreaLeaf extends ThingBase {
+    "@type": "coremo:ServicesModelArea";
 }
-/** A services model. */
-export type ServicesModel = ServicesModelLeaf;
+/** A services model area. */
+export type ServicesModelArea = ServicesModelAreaLeaf;
 
 interface ShareActionLeaf extends CommunicateActionBase {
     "@type": "schema:ShareAction";
@@ -10810,11 +11057,11 @@ interface SpaceConceptLeaf extends ThingBase {
 /** A mathematical space concept */
 export type SpaceConcept = SpaceConceptLeaf;
 
-interface SpaceMathematicsModelLeaf extends HierarchicalBase {
-    "@type": "coremo:SpaceMathematicsModel";
+interface SpaceMathematicsModelAreaLeaf extends ThingBase {
+    "@type": "coremo:SpaceMathematicsModelArea";
 }
-/** A space mathematics model. */
-export type SpaceMathematicsModel = SpaceMathematicsModelLeaf;
+/** A space mathematics model area. */
+export type SpaceMathematicsModelArea = SpaceMathematicsModelAreaLeaf;
 
 interface SpeakableSpecificationBase extends ThingBase {
     /** A CSS selector, e.g. of a {@link https://schema.org/SpeakableSpecification SpeakableSpecification} or {@link https://schema.org/WebPageElement WebPageElement}. In the latter case, multiple matches within a page can constitute a single conceptual "Web page element". */
@@ -10962,11 +11209,33 @@ interface StadiumOrArenaLeaf extends StadiumOrArenaBase {
 /** A stadium. */
 export type StadiumOrArena = StadiumOrArenaLeaf | string;
 
+interface StakeholderDirectoryConceptLeaf extends ThingBase {
+    "@type": "dirmo:StakeholderDirectoryConcept";
+}
+/** A stakeholder directory concept */
+export type StakeholderDirectoryConcept = StakeholderDirectoryConceptLeaf | OrganizationProfile;
+
+interface StakeholderDirectorySemanticPoolBase extends DirectorySemanticPoolBase {
+    /** Attaches a root organization profile to its semantic pool. */
+    "dirmo:rootOrganizationProfile"?: SchemaValue<OrganizationProfile | IdReference>;
+}
+interface StakeholderDirectorySemanticPoolLeaf extends StakeholderDirectorySemanticPoolBase {
+    "@type": "dirmo:StakeholderDirectorySemanticPool";
+}
+/** A stakeholder directory */
+export type StakeholderDirectorySemanticPool = StakeholderDirectorySemanticPoolLeaf;
+
 interface StateLeaf extends PlaceBase {
     "@type": "schema:State";
 }
 /** A state or province of a country. */
 export type State = StateLeaf | string;
+
+interface StatementLeaf extends CreativeWorkBase {
+    "@type": "schema:Statement";
+}
+/** A statement about something, for example a fun or interesting fact. If known, the main entity this statement is about, can be indicated using mainEntity. For more formal claims (e.g. in Fact Checking), consider using {@link https://schema.org/Claim Claim} instead. Use the {@link https://schema.org/text text} property to capture the text of the statement. */
+export type Statement = StatementLeaf;
 
 interface StatisticalPopulationBase extends ThingBase {
     /** Indicates a property used as a constraint to define a {@link https://schema.org/StatisticalPopulation StatisticalPopulation} with respect to the set of entities corresponding to an indicated type (via {@link https://schema.org/populationType populationType}). */
@@ -10994,6 +11263,18 @@ interface SteeringPositionValueLeaf extends QualitativeValueBase {
 /** A value indicating a steering position. */
 export type SteeringPositionValue = "https://schema.org/LeftHandDriving" | "schema:LeftHandDriving" | "https://schema.org/RightHandDriving" | "schema:RightHandDriving" | SteeringPositionValueLeaf;
 
+interface StorageConceptLeaf extends ThingBase {
+    "@type": "coremo:StorageConcept";
+}
+/** A storage concept */
+export type StorageConcept = StorageConceptLeaf | DatastoreConcept;
+
+interface StorageModelAreaLeaf extends ThingBase {
+    "@type": "coremo:StorageModelArea";
+}
+/** A storage model area. */
+export type StorageModelArea = StorageModelAreaLeaf | DatastoreModel;
+
 interface StoreLeaf extends LocalBusinessBase {
     "@type": "schema:Store";
 }
@@ -11012,11 +11293,11 @@ interface StructuredValueLeaf extends ThingBase {
 /** Structured values are used when the value of a property has a more complex structure than simply being a textual value or a reference to another thing. */
 export type StructuredValue = StructuredValueLeaf | CDCPMDRecord | ContactPoint | DatedMoneySpecification | DefinedRegion | DeliveryTimeSettings | EngineSpecification | ExchangeRateSpecification | GeoCoordinates | GeoShape | InteractionCounter | MonetaryAmount | NutritionInformation | OfferShippingDetails | OpeningHoursSpecification | OwnershipInfo | PostalCodeRangeSpecification | PriceSpecification | PropertyValue | QuantitativeValue | QuantitativeValueDistribution | RepaymentSpecification | ShippingDeliveryTime | ShippingRateSettings | TypeAndQuantityNode | WarrantyPromise;
 
-interface StructureMathematicsModelLeaf extends HierarchicalBase {
-    "@type": "coremo:StructureMathematicsModel";
+interface StructureMathematicsModelAreaLeaf extends ThingBase {
+    "@type": "coremo:StructureMathematicsModelArea";
 }
-/** A structure mathematics model. */
-export type StructureMathematicsModel = StructureMathematicsModelLeaf;
+/** A structure mathematics model area. */
+export type StructureMathematicsModelArea = StructureMathematicsModelAreaLeaf;
 
 interface SubscribeActionLeaf extends ActionBase {
     "@type": "schema:SubscribeAction";
@@ -11167,6 +11448,22 @@ interface TaxiStandLeaf extends CivicStructureBase {
 /** A taxi stand. */
 export type TaxiStand = TaxiStandLeaf | string;
 
+interface TaxonBase extends ThingBase {
+    /** Closest child taxa of the taxon in question. */
+    "schema:childTaxon"?: SchemaValue<Taxon | Text | URL | IdReference>;
+    /** A Defined Term contained in this term set. */
+    "schema:hasDefinedTerm"?: SchemaValue<DefinedTerm | IdReference>;
+    /** Closest parent taxon of the taxon in question. */
+    "schema:parentTaxon"?: SchemaValue<Taxon | Text | URL | IdReference>;
+    /** The taxonomic rank of this taxon given preferably as a URI from a controlled vocabulary \u2013 (typically the ranks from TDWG TaxonRank ontology or equivalent Wikidata URIs). */
+    "schema:taxonRank"?: SchemaValue<PropertyValue | Text | URL | IdReference>;
+}
+interface TaxonLeaf extends TaxonBase {
+    "@type": "schema:Taxon";
+}
+/** A set of organisms asserted to represent a natural cohesive biological unit. */
+export type Taxon = TaxonLeaf;
+
 interface TechArticleBase extends ArticleBase {
     /** Prerequisites needed to fulfill steps in article. */
     "schema:dependencies"?: SchemaValue<Text>;
@@ -11183,13 +11480,13 @@ interface TechnologyConceptLeaf extends ThingBase {
     "@type": "coremo:TechnologyConcept";
 }
 /** A technology concept */
-export type TechnologyConcept = TechnologyConceptLeaf | DataConcept;
+export type TechnologyConcept = TechnologyConceptLeaf | StorageConcept;
 
-interface TechnologyModelLeaf extends HierarchicalBase {
-    "@type": "coremo:TechnologyModel";
+interface TechnologyModelAreaLeaf extends ThingBase {
+    "@type": "coremo:TechnologyModelArea";
 }
-/** A technology model. */
-export type TechnologyModel = TechnologyModelLeaf | DataModel;
+/** A technology model area. */
+export type TechnologyModelArea = TechnologyModelAreaLeaf | CodeModelArea | ComputeModelArea | IntelligenceModelArea | NetworkingModelArea | StorageModelArea;
 
 interface TelevisionChannelLeaf extends BroadcastChannelBase {
     "@type": "schema:TelevisionChannel";
@@ -11293,7 +11590,7 @@ interface ThingLeaf extends ThingBase {
     "@type": "schema:Thing";
 }
 /** The most generic type of item. */
-export type Thing = ThingLeaf | Action | CreativeWork | Event | Intangible | MedicalEntity | ModelConcept | Organization | Person | Place | Product;
+export type Thing = ThingLeaf | Action | BioChemEntity | CreativeWork | Event | Intangible | MedicalEntity | ModelConcept | Organization | Person | Place | Product | Taxon;
 
 interface TicketBase extends ThingBase {
     /** The date the ticket was issued. */
@@ -11487,6 +11784,28 @@ interface TransferActionLeaf extends TransferActionBase {
 /** The act of transferring/moving (abstract or concrete) animate or inanimate objects from one place to another. */
 export type TransferAction = TransferActionLeaf | BorrowAction | DownloadAction | GiveAction | LendAction | MoneyTransfer | ReceiveAction | ReturnAction | SendAction | TakeAction;
 
+interface TransformBase extends ThingBase {
+    /** The thing to use as input to the transform. */
+    "coremo:transformInput"?: SchemaValue<Thing | IdReference>;
+    /** The Transformable property to be changed. */
+    "coremo:transformProperty"?: SchemaValue<URL>;
+}
+interface TransformLeaf extends TransformBase {
+    "@type": "coremo:Transform";
+}
+/** A transform for a Transformable. */
+export type Transform = TransformLeaf | AddTransform | ClearTransform | RemoveTransform;
+
+interface TransformableBase extends ThingBase {
+    /** Attaches a transform to a Transformable. */
+    "coremo:hasTransform"?: SchemaValue<Transform | IdReference>;
+}
+interface TransformableLeaf extends TransformableBase {
+    "@type": "coremo:Transformable";
+}
+/** A resource whose properties can be transformed via add/remove/clear transforms. */
+export type Transformable = TransformableLeaf | OrganizationProfile;
+
 interface TravelActionBase extends MoveActionBase {
     /** The distance travelled, e.g. exercising or travelling. */
     "schema:distance"?: SchemaValue<Distance | IdReference>;
@@ -11546,7 +11865,13 @@ interface TVClipLeaf extends TVClipBase {
 export type TVClip = TVClipLeaf;
 
 interface TVEpisodeBase extends EpisodeBase {
-    /** The country of the principal offices of the production company or individual responsible for the movie or program. */
+    /**
+     * The country of origin of something, including products as well as creative works such as movie and TV content.
+     *
+     * In the case of TV and movie, this would be the country of the principle offices of the production company or individual responsible for the movie. For other kinds of {@link https://schema.org/CreativeWork CreativeWork} it is difficult to provide fully general guidance, and properties such as {@link https://schema.org/contentLocation contentLocation} and {@link https://schema.org/locationCreated locationCreated} may be more applicable.
+     *
+     * In the case of products, the country of origin of the product. The exact interpretation of this may vary by context and product type, and cannot be fully enumerated here.
+     */
     "schema:countryOfOrigin"?: SchemaValue<Country | IdReference>;
     /**
      * The TV series to which this episode or season belongs.
@@ -11572,7 +11897,13 @@ interface TVEpisodeLeaf extends TVEpisodeBase {
 export type TVEpisode = TVEpisodeLeaf;
 
 interface TVSeasonBase extends CreativeWorkSeasonBase, CreativeWorkBase {
-    /** The country of the principal offices of the production company or individual responsible for the movie or program. */
+    /**
+     * The country of origin of something, including products as well as creative works such as movie and TV content.
+     *
+     * In the case of TV and movie, this would be the country of the principle offices of the production company or individual responsible for the movie. For other kinds of {@link https://schema.org/CreativeWork CreativeWork} it is difficult to provide fully general guidance, and properties such as {@link https://schema.org/contentLocation contentLocation} and {@link https://schema.org/locationCreated locationCreated} may be more applicable.
+     *
+     * In the case of products, the country of origin of the product. The exact interpretation of this may vary by context and product type, and cannot be fully enumerated here.
+     */
     "schema:countryOfOrigin"?: SchemaValue<Country | IdReference>;
     /**
      * The TV series to which this episode or season belongs.
@@ -11598,7 +11929,13 @@ interface TVSeriesBase extends CreativeWorkSeriesBase, CreativeWorkBase {
     "schema:actors"?: SchemaValue<Person | IdReference>;
     /** A season that is part of the media series. */
     "schema:containsSeason"?: SchemaValue<CreativeWorkSeason | IdReference>;
-    /** The country of the principal offices of the production company or individual responsible for the movie or program. */
+    /**
+     * The country of origin of something, including products as well as creative works such as movie and TV content.
+     *
+     * In the case of TV and movie, this would be the country of the principle offices of the production company or individual responsible for the movie. For other kinds of {@link https://schema.org/CreativeWork CreativeWork} it is difficult to provide fully general guidance, and properties such as {@link https://schema.org/contentLocation contentLocation} and {@link https://schema.org/locationCreated locationCreated} may be more applicable.
+     *
+     * In the case of products, the country of origin of the product. The exact interpretation of this may vary by context and product type, and cannot be fully enumerated here.
+     */
     "schema:countryOfOrigin"?: SchemaValue<Country | IdReference>;
     /** A director of e.g. tv, radio, movie, video gaming etc. content, or of an event. Directors can be associated with individual items or with a series, episode, clip. */
     "schema:director"?: SchemaValue<Person | IdReference>;
@@ -12055,7 +12392,7 @@ interface VersionableLeaf extends VersionableBase {
     "@type": "coremo:Versionable";
 }
 /** A concept which may be versioned */
-export type Versionable = VersionableLeaf | AppRealmSemanticWork | MicroappSemanticWork;
+export type Versionable = VersionableLeaf;
 
 interface VesselLeaf extends AnatomicalStructureBase {
     "@type": "schema:Vessel";
@@ -12210,6 +12547,8 @@ interface VideoObjectBase extends MediaObjectBase {
      * @deprecated Consider using https://schema.org/director instead.
      */
     "schema:directors"?: SchemaValue<Person | IdReference>;
+    /** Represents textual captioning from a {@link https://schema.org/MediaObject MediaObject}, e.g. text of a 'meme'. */
+    "schema:embeddedTextCaption"?: SchemaValue<Text>;
     /** The composer of the soundtrack. */
     "schema:musicBy"?: SchemaValue<MusicGroup | Person | IdReference>;
     /** Thumbnail image for an image or video. */
@@ -12225,7 +12564,13 @@ interface VideoObjectLeaf extends VideoObjectBase {
     "@type": "schema:VideoObject";
 }
 /** A video file. */
-export type VideoObject = VideoObjectLeaf;
+export type VideoObject = VideoObjectLeaf | VideoObjectSnapshot;
+
+interface VideoObjectSnapshotLeaf extends VideoObjectBase {
+    "@type": "schema:VideoObjectSnapshot";
+}
+/** A specific and exact (byte-for-byte) version of a {@link https://schema.org/VideoObject VideoObject}. Two byte-for-byte identical files, for the purposes of this type, considered identical. If they have different embedded metadata the files will differ. Different external facts about the files, e.g. creator or dateCreated that aren't represented in their actual content, do not affect this notion of identity. */
+export type VideoObjectSnapshot = VideoObjectSnapshotLeaf;
 
 interface ViewActionLeaf extends ConsumeActionBase {
     "@type": "schema:ViewAction";

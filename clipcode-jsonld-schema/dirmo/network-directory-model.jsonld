@@ -1,0 +1,57 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/concept/coremo/",
+    "dirmo":  "https://clipcode.org/base/concept/dirmo/"
+  },
+  "@graph": [
+  {
+    "@id": "dirmo:KnowledgeNetwork",
+    "@type": "rdfs:Class",
+    "rdfs:comment": "A knowledge network",
+    "rdfs:label": "KnowledgeNetwork",
+    "rdfs:subClassOf": [
+      {
+        "@id": "dirmo:NetworkDirectoryConcept"
+      }
+    ]
+  },
+  {
+    "@id": "dirmo:KnowledgeRealm",
+    "@type": "rdfs:Class",
+    "rdfs:comment": "A knowledge realm",
+    "rdfs:label": "KnowledgeRealm",
+    "rdfs:subClassOf": [
+      {
+        "@id": "dirmo:NetworkDirectoryConcept"
+      }
+    ]
+  },
+  {
+    "@id": "dirmo:KnowledgeOrganization",
+    "@type": "rdfs:Class",
+    "rdfs:comment": "A knowledge organization",
+    "rdfs:label": "KnowledgeOrganization",
+    "rdfs:subClassOf": [
+      {
+        "@id": "dirmo:NetworkDirectoryConcept"
+      }
+    ]
+  },
+  {
+    "@id": "dirmo:KnowledgeMetaverse",
+    "@type": "rdfs:Class",
+    "rdfs:comment": "A knowledge metaverse",
+    "rdfs:label": "KnowledgeMetaverse",
+    "rdfs:subClassOf": [
+      {
+        "@id": "dirmo:NetworkDirectoryConcept"
+      }
+    ]
+  }
+  ]
+}
