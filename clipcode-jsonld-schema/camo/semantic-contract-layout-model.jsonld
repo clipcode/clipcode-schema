@@ -1,0 +1,704 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/schema/coremo/",
+    "camo":   "https://clipcode.org/base/schema/camo/"
+  },
+  "@graph": [
+    {
+      "@id": "camo:ContractLayoutTable",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A contract layout table.",
+      "rdfs:label": "ContractLayoutTable",
+      "rdfs:subClassOf": { "@id": "camo:LayoutContractConcept" }
+    },
+    {
+      "@id": "camo:hasContractLayoutTable",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a root concept to its semantic pool.",
+      "rdfs:label": "hasContractLayoutTable",
+      "schema:domainIncludes": { "@id": "camo:LayoutContractSemanticPool" },
+      "schema:rangeIncludes":  { "@id": "camo:ContractLayoutTable" }
+    },
+    {
+      "@id": "camo:CertificateLayoutTable",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A certificate layout table.",
+      "rdfs:label": "CertificateLayoutTable",
+      "rdfs:subClassOf": { "@id": "camo:LayoutContractConcept" }
+    },
+    {
+      "@id": "camo:hasCertificateLayoutTable ",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a CertificateLayoutTable to its ContractLayoutTable.",
+      "rdfs:label": "hasCertificateLayoutTable",
+      "schema:domainIncludes": { "@id": "camo:ContractLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "camo:CertificateLayoutTable" }
+    },
+    {
+      "@id": "camo:enableAdvancePaymentCertificate",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Enables usage of advance payment certificates.",
+      "rdfs:label": "enableAdvancePaymentCertificate",
+      "schema:domainIncludes": { "@id": "camo:CertificateLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Boolean" }
+    },
+    {
+      "@id": "camo:enableInterimPaymentCertificate",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Enables usage of interim payment certificates.",
+      "rdfs:label": "enableInterimPaymentCertificate",
+      "schema:domainIncludes": { "@id": "camo:CertificateLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Boolean" }
+    },
+    {
+      "@id": "camo:enableTakingOverPaymentCertificate",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Enables usage of taking-over payment certificates.",
+      "rdfs:label": "enableTakingOverPaymentCertificate",
+      "schema:domainIncludes": { "@id": "camo:CertificateLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Boolean" }
+    },
+    {
+      "@id": "camo:enableFinalPaymentCertificate",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Enables usage of final payment certificates.",
+      "rdfs:label": "enableFinalPaymentCertificate",
+      "schema:domainIncludes": { "@id": "camo:CertificateLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Boolean" }
+    },
+
+    {
+      "@id": "camo:enableCAndIDutiesPaymentCertificate",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Enables usage of C&I Duties payment certificates.",
+      "rdfs:label": "enableCAndIDutiesPaymentCertificate",
+      "schema:domainIncludes": { "@id": "camo:CertificateLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Boolean" }
+    },
+    {
+      "@id": "camo:enablePerformanceCertificate",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Enables usage of perfromance certificates.",
+      "rdfs:label": "enablePerformanceCertificate",
+      "schema:domainIncludes": { "@id": "camo:CertificateLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Boolean" }
+    },
+    {
+      "@id": "camo:enableTakingOverCertificate",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Enables usage of taking over certificates.",
+      "rdfs:label": "enableTakingOverCertificate",
+      "schema:domainIncludes": { "@id": "camo:CertificateLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Boolean" }
+    },
+    {
+      "@id": "camo:enableMilestoneCertificate",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Enables usage of milestone certificates.",
+      "rdfs:label": "enableMilestoneCertificate",
+      "schema:domainIncludes": { "@id": "camo:CertificateLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Boolean" }
+    },
+    {
+      "@id": "camo:defaultPreambleForAdvancePaymentCertificate",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Default preamble for advance payment certificates.",
+      "rdfs:label": "defaultPreambleForAdvancePaymentCertificate",
+      "schema:domainIncludes": { "@id": "camo:CertificateLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:defaultPreambleForInterimPaymentCertificate",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Default preamble for interim payment certificates.",
+      "rdfs:label": "defaultPreambleForInterimPaymentCertificate",
+      "schema:domainIncludes": { "@id": "camo:CertificateLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:defaultPreambleForTakingOverPaymentCertificate",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Default preamble for taking-over payment certificates.",
+      "rdfs:label": "defaultPreambleForTakingOverPaymentCertificate",
+      "schema:domainIncludes": { "@id": "camo:CertificateLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:defaultPreambleForFinalPaymentCertificate",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Default preamble for final payment certificates.",
+      "rdfs:label": "defaultPreambleForFinalPaymentCertificate",
+      "schema:domainIncludes": { "@id": "camo:CertificateLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:defaultPreambleForCAndIDutiesPaymentCertificate",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Default preamble for C&I Duties payment certificates.",
+      "rdfs:label": "defaultPreambleForCAndIDutiesPaymentCertificate",
+      "schema:domainIncludes": { "@id": "camo:CertificateLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:defaultPreambleForPerformanceCertificate",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Default preamble for perfromance certificates.",
+      "rdfs:label": "defaultPreambleForPerformanceCertificate",
+      "schema:domainIncludes": { "@id": "camo:CertificateLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:defaultPreambleForTakingOverCertificate",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Default preamble for taking over certificates.",
+      "rdfs:label": "defaultPreambleForTakingOverCertificate",
+      "schema:domainIncludes": { "@id": "camo:CertificateLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:defaultPreambleForMilestoneCertificate",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Default preamble for milestone certificates.",
+      "rdfs:label": "defaultPreambleForMilestoneCertificate",
+      "schema:domainIncludes": { "@id": "camo:CertificateLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:CustomCertificateLayout",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A custom certificate.",
+      "rdfs:label": "CustomCertificate",
+      "rdfs:subClassOf": { "@id": "camo:LayoutContractConcept" }
+    },
+    {
+      "@id": "camo:hasCustomCertificateLayout",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a CustomCertificateLayout to a CertificateLayoutTable.",
+      "rdfs:label": "hasCustomCertificateLayout",
+      "schema:domainIncludes": { "@id": "camo:CertificateLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "camo:CustomCertificateLayout" }
+    },
+    {
+      "@id": "camo:defaultPreambleForCustomCertificateLayout",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Default preamble for a custom certificate layout.",
+      "rdfs:label": "defaultPreambleForCustomCertificateLayout",
+      "schema:domainIncludes": { "@id": "camo:CustomCertificateLayout" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:customCertificateBasedOn",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Which certificate type This custom certificate is based upon.",
+      "rdfs:label": "customCertificatebasedOn",
+      "schema:domainIncludes": { "@id": "camo:CustomCertificateLayout" },
+      "schema:rangeIncludes":  { "@id": "schema:URL" }
+    },    
+    {
+      "@id": "camo:NumberingLayoutTable",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A numbering layout table.",
+      "rdfs:label": "NumberingLayoutTable",
+      "rdfs:subClassOf": { "@id": "camo:LayoutContractConcept" }
+    },
+    {
+      "@id": "camo:hasNumberingLayoutTable",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a NumberingLayoutTable to a ContractLayoutTable.",
+      "rdfs:label": "hasNumberingLayoutTable",
+      "schema:domainIncludes": { "@id": "camo:ContractLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "camo:NumberingLayoutTable" }
+    },
+    {
+      "@id": "camo:hasContractNumberLayout",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Defines the regex that a contract number must match.",
+      "rdfs:label": "hasContractNumberLayout",
+      "schema:domainIncludes": { "@id": "camo:NumberingLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:hasContractLotNumberLayout",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Defines the regex that a contract number lot must match.",
+      "rdfs:label": "hasContractNumberLayout",
+      "schema:domainIncludes": { "@id": "camo:NumberingLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:hasContractNumberLotTerm",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Defines the regex that a contract number structure must match.",
+      "rdfs:label": "hasContractNumberLayoutWithoutLots",
+      "schema:domainIncludes": { "@id": "camo:NumberingLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:hasSectionNumberLayout",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Defines the regex that a contract number structure must match.",
+      "rdfs:label": "hasSectionNumberLayout",
+      "schema:domainIncludes": { "@id": "camo:NumberingLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:hasVariationNumberLayout",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Defines the regex that a contract number structure must match.",
+      "rdfs:label": "hasVariationNumberLayout",
+      "schema:domainIncludes": { "@id": "camo:NumberingLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:hasCertificateNumberLayout",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Defines the regex that a contract number structure must match.",
+      "rdfs:label": "hasCertificateNumberLayout",
+      "schema:domainIncludes": { "@id": "camo:NumberingLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:RetentionMoneyTable",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A table representing retention money settings.",
+      "rdfs:label": "RetentionMoneyTable",
+      "rdfs:subClassOf": { "@id": "camo:LayoutContractConcept" }
+    },
+    {
+      "@id": "camo:hasRetentionMoneyTable",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a RetentionMoneyTable to a ContractLayoutTable.",
+      "rdfs:label": "RetentionMoneyTable",
+      "schema:domainIncludes": { "@id": "camo:ContractLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "camo:RetentionMoneyTable" }
+    },
+    {
+      "@id": "camo:limitOfRetentionMoney",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The percentage of the limit of retention money.",
+      "rdfs:label": "limitOfRetentionMoney",
+      "schema:domainIncludes": { "@id": "camo:RetentionMoneyTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Number" }
+    },
+    {
+      "@id": "camo:retentionMoneyPercentage",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The full retention money percentage (required prior to taking-over).",
+      "rdfs:label": "percentageOfTakingOverRetentionMoney",
+      "schema:domainIncludes": { "@id": "camo:RetentionMoneyTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Number" }
+    },
+    {
+      "@id": "camo:retentionMoneyAfterTakingOverPercentage",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The retention money percentage required after taking-over.",
+      "rdfs:label": "retentionMoneyAfterTakingOverPercentage",
+      "schema:domainIncludes": { "@id": "camo:RetentionMoneyTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Number" }
+    },
+
+
+    {
+      "@id": "camo:allowReleaseOfRetentionMoney",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Allow release of retention money after receiving RetentionMoneyGuarantee.",
+      "rdfs:label": "allowReleaseOfRetentionMoney",
+      "schema:domainIncludes": { "@id": "camo:RetentionMoneyTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Boolean" }
+    },
+
+    {
+      "@id": "camo:percentageofLimitNeededBeforeReleaseOfRetentionMoney",
+      "@type": "rdf:Property",
+      "rdfs:comment": "After this retention limit is reached, allow release of retention money.",
+      "rdfs:label": "percentageofLimitNeededBeforeReleaseOfRetentionMoney",
+      "schema:domainIncludes": { "@id": "camo:RetentionMoneyTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Number" }
+    },
+    {
+      "@id": "camo:portionOfRetentionAmountToRelease",
+      "@type": "rdf:Property",
+      "rdfs:comment": "What percentage of the retention money to release.",
+      "rdfs:label": "portionOfRetentionAmountToRelease",
+      "schema:domainIncludes": { "@id": "camo:RetentionMoneyTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Number" }
+    },
+    {
+      "@id": "camo:AdvancePaymentLayoutTable",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "Advance payment layout table.",
+      "rdfs:label": "AdvancePaymentLayoutTable",
+      "rdfs:subClassOf": { "@id": "camo:LayoutContractConcept" }
+    },
+    {
+      "@id": "camo:hasAdvancePaymentLayoutTable",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a AdvancePaymentLayoutTable to a ContractLayoutTable.",
+      "rdfs:label": "hasAdvancePaymentLayoutTable",
+      "schema:domainIncludes": { "@id": "camo:ContractLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "camo:AdvancePaymentLayoutTable" }
+    },
+    {
+      "@id": "camo:advancePaymentPercentage",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Defines the advance percentage to be used.",
+      "rdfs:label": "advancePaymentPercentage",
+      "schema:domainIncludes": { "@id": "camo:AdvancePaymentLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Number" }
+    },
+    {
+      "@id": "camo:PlantAndMaterialsLayoutTable",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "PlantAndMaterialsLayoutTable.",
+      "rdfs:label": "PlantAndMaterialsLayoutTable",
+      "rdfs:subClassOf": { "@id": "camo:LayoutContractConcept" }
+    },
+    {
+      "@id": "camo:hasPlantAndMaterialsLayoutTable",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a PlantAndMaterialsLayoutTable to a ContractLayoutTable.",
+      "rdfs:label": "hasPlantAndMaterialsLayoutTable",
+      "schema:domainIncludes": { "@id": "camo:ContractLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "camo:PlantAndMaterialsLayoutTable" }
+    },
+    {
+      "@id": "camo:allowPlantAndMaterialsShippedInSections",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Allow the specifying in a section of whether payment can be made when a Plant and Materials item is shipped.",
+      "rdfs:label": "allowPlantAndMaterialsShippedInSections",
+      "schema:domainIncludes": { "@id": "camo:PlantAndMaterialsLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Boolean" }
+    },
+    {
+      "@id": "camo:allowPlantAndMaterialsDeliveredInSections",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Allow the specifying in a section of whether payment can be made when a Plant and Materials item is delivered on site.",
+      "rdfs:label": "allowPlantAndMaterialsDeliveredInSections",
+      "schema:domainIncludes": { "@id": "camo:PlantAndMaterialsLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Boolean" }
+    },
+    {
+      "@id": "camo:allowPlantAndMaterialsShippedInSubsections",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Allow the specifying in a subsection of whether payment can be made when a Plant and Materials item is shipped.",
+      "rdfs:label": "allowPlantAndMaterialsShippedInSubsections",
+      "schema:domainIncludes": { "@id": "camo:PlantAndMaterialsLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Boolean" }
+    },
+    {
+      "@id": "camo:allowPlantAndMaterialsDeliveredInSubsections",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Allow the specifying in a subsection of whether payment can be made when a Plant and Materials item is delivered on site.",
+      "rdfs:label": "allowPlantAndMaterialsShippedInSections",
+      "schema:domainIncludes": { "@id": "camo:PlantAndMaterialsLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Boolean" }
+    },
+    {
+      "@id": "camo:allowPlantAndMaterialsShippedInSeparateList",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Allow the specifying in a separate list of whether payment can be made when a Plant and Materials item is shipped.",
+      "rdfs:label": "allowPlantAndMaterialsShippedInSeparateList",
+      "schema:domainIncludes": { "@id": "camo:PlantAndMaterialsLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Boolean" }
+    },
+    {
+      "@id": "camo:allowPlantAndMaterialsDeliveredInSeparateList",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Allow the specifying in a separate list of whether payment can be made when a Plant and Materials item is delivered on site.",
+      "rdfs:label": "allowPlantAndMaterialsDeliveredInSeparateList",
+      "schema:domainIncludes": { "@id": "camo:PlantAndMaterialsLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Boolean" }
+    },
+    {
+      "@id": "camo:SyntheticCurrency",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A synthetic currency (a custom currency based on regular currency).",
+      "rdfs:label": "SyntheticCurrency",
+      "rdfs:subClassOf": { "@id": "camo:LayoutContractConcept" }
+    },
+    {
+      "@id": "camo:hasSyntheticCurrencyName",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The name of a synthetic currency.",
+      "rdfs:label": "hasSyntheticCurrencyName",
+      "schema:domainIncludes": { "@id": "camo:SyntheticCurrency" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:basedOnRegularCurrency",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The regular currency upon which a synthetic currency is based.",
+      "rdfs:label": "basedOnRegularCurrency",
+      "schema:domainIncludes": { "@id": "camo:SyntheticCurrency" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:CurrencyLayoutTable",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A currency layout table.",
+      "rdfs:label": "CurrencyLayoutTable",
+      "rdfs:subClassOf": { "@id": "camo:LayoutContractConcept" }
+    },
+    {
+      "@id": "camo:hasCurrencyLayoutTable",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a CurrencyLayoutTable to a ContractLayout.",
+      "rdfs:label": "hasCurrencyLayoutTable",
+      "schema:domainIncludes": { "@id": "camo:ContractLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "camo:CurrencyLayoutTable" }
+    },
+    {
+      "@id": "camo:hasLocalCurrency",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Defines a local currency.",
+      "rdfs:label": "hasLocalCurrency",
+      "schema:domainIncludes": { "@id": "camo:CurrencyLayoutTable" },
+      "schema:rangeIncludes":  [
+        { "@id": "schema:Text" },
+        { "@id": "camo:SyntheticCurrency" }
+      ]
+    },
+    {
+      "@id": "camo:hasForeignCurrency",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Defines the foreign currency.",
+      "rdfs:label": "hasForeignCurrency",
+      "schema:domainIncludes": { "@id": "camo:CurrencyLayoutTable" },
+      "schema:rangeIncludes":  [
+        { "@id": "schema:Text" },
+        { "@id": "camo:SyntheticCurrency" }
+      ]   
+    },
+    {
+      "@id": "camo:certificatePaymentSummaryUsesUnmergedRegularCurrencies",
+      "@type": "rdf:Property",
+      "rdfs:comment": "For a certificate that uses synthetic currencies, on payment summary, use regular currencies only, but do not merge them.",
+      "rdfs:label": "certificatePaymentSummaryUsesUnmergedRegularCurrencies",
+      "schema:domainIncludes": { "@id": "camo:CurrencyLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Boolean" }
+    }, 
+    {
+      "@id": "camo:certificatePaymentSummaryUsesMergedRegularCurrencies",
+      "@type": "rdf:Property",
+      "rdfs:comment": "For a certificate that uses synthetic currencies, on payment summary, use regular currencies only and merge them with same currency.",
+      "rdfs:label": "certificatePaymentSummaryUsesMergedRegularCurrencies",
+      "schema:domainIncludes": { "@id": "camo:CurrencyLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Boolean" }
+    },   
+    {
+      "@id": "camo:MilestoneLayoutTable",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A milestone layout table.",
+      "rdfs:label": "MilestoneLayoutTable",
+      "rdfs:subClassOf": { "@id": "camo:LayoutContractConcept" }
+    },
+    {
+      "@id": "camo:hasMilestoneLayoutTable",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a MilestoneLayoutTable to a ContractLayout.",
+      "rdfs:label": "hasMilestoneLayoutTable",
+      "schema:domainIncludes": { "@id": "camo:ContractLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "camo:MilestoneLayoutTable" }
+    },
+    {
+      "@id": "camo:milestonesApplyToEntireWorks",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Milestone applies to entire works (if false, applies to a part or a section).",
+      "rdfs:label": "hasForeignCurrency",
+      "schema:domainIncludes": { "@id": "camo:MilestoneLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Boolean" }
+    },    
+    {
+      "@id": "camo:Milestone",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A milestone.",
+      "rdfs:label": "Milestone",
+      "rdfs:subClassOf": { "@id": "camo:LayoutContractConcept" }
+    },
+    {
+      "@id": "camo:hasMilestone",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A milestone within a MilestoneLayoutTable.",
+      "rdfs:label": "hasMilestone",
+      "schema:domainIncludes": { "@id": "camo:MilestoneLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "camo:Milestone" }
+    },
+    {
+      "@id": "camo:hasMilestonePercentage",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A milestone percentage.",
+      "rdfs:label": "hasForeignCurrency",
+      "schema:domainIncludes": { "@id": "camo:Milestone" },
+      "schema:rangeIncludes":  { "@id": "schema:Number" }
+    },
+    {
+      "@id": "camo:NoticeLayoutTable",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A Notice layout table.",
+      "rdfs:label": "NoticeLayoutTable",
+      "rdfs:subClassOf": { "@id": "camo:LayoutContractConcept" }
+    },
+    {
+      "@id": "camo:hasNoticeLayoutTable",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a NoticeLayoutTable to a ContractLayoutTable.",
+      "rdfs:label": "hasNoticeLayoutTable",
+      "schema:domainIncludes": { "@id": "camo:ContractLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "camo:NoticeLayoutTable" }
+    },   
+    {
+      "@id": "camo:NoticeLayout",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A NoticeLayout, on which an actual notice will be based.",
+      "rdfs:label": "NoticeLayout",
+      "rdfs:subClassOf": { "@id": "camo:LayoutContractConcept" }
+    },
+    {
+      "@id": "camo:hasNoticeLayout",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A NoticeLayout within a NoticeLayoutTable.",
+      "rdfs:label": "hasNotice",
+      "schema:domainIncludes": { "@id": "camo:NoticeLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "camo:NoticeLayout" }
+    },
+    {
+      "@id": "camo:noticeBasedOnFormLayout",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A Notice is to be constructed from thisform layout.",
+      "rdfs:label": "noticeBasedOnFormLayout",
+      "schema:domainIncludes": { "@id": "camo:NoticeLayout" },
+      "schema:rangeIncludes":  { "@id": "schema:URL" }
+    },
+    {
+      "@id": "camo:FileNamingLayoutTable",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A file naming layout table.",
+      "rdfs:label": "FileNamingLayoutTable",
+      "rdfs:subClassOf": { "@id": "camo:LayoutContractConcept" }
+    },
+    {
+      "@id": "camo:hasFileNamingLayoutTable",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The segment name to use for a variaton attachment file.",
+      "rdfs:label": "hasFileNamingLayoutTable",
+      "schema:domainIncludes": { "@id": "camo:ContractLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "camo:FileNamingLayoutTable" }
+    },
+    {
+      "@id": "camo:variationAttachmentFileSegment",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The segment name to use for a variaton attachment file.",
+      "rdfs:label": "variationAttachmentFileSegment",
+      "schema:domainIncludes": { "@id": "camo:FileNamingLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:certificateFileSegment",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The segment name to use for a certificate file.",
+      "rdfs:label": "certificateFileSegment",
+      "schema:domainIncludes": { "@id": "camo:FileNamingLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:certificateAttachmentFileSegment",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The segment name to use for a certificate attachment file.",
+      "rdfs:label": "certificateAttachmentFileSegment",
+      "schema:domainIncludes": { "@id": "camo:FileNamingLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:certificateCAndIAttachmentFileSegment",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The segment name to use for a C&I Duties attachment file.",
+      "rdfs:label": "certificateCAndIAttachmentFileSegment",
+      "schema:domainIncludes": { "@id": "camo:FileNamingLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:certificateDamagesAttachmentFileSegment",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The segment name to use for a certificate damages attachment file.",
+      "rdfs:label": "CertificateDamagesAttachmentFileSegment",
+      "schema:domainIncludes": { "@id": "camo:FileNamingLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:certificateAPGAttachmentFileSegment",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The segment name to use for the APG attachment file.",
+      "rdfs:label": "certificateAPGAttachmentFileSegment",
+      "schema:domainIncludes": { "@id": "camo:FileNamingLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:monthlyVariationProgressReportFileSegment",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The segment name to use for the monthly variation progress report file.",
+      "rdfs:label": "monthlyVariationProgressReportFileSegment",
+      "schema:domainIncludes": { "@id": "camo:FileNamingLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:monthlyCertificateProgressReportFileSegment",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The segment name to use for the monthly certificate progress report file.",
+      "rdfs:label": "monthlyCertificateProgressReportFileSegment",
+      "schema:domainIncludes": { "@id": "camo:FileNamingLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:ContractTerminologyLayoutTable",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "Terminology for contract terms.",
+      "rdfs:label": "ContractTerminologyLayoutTable",
+      "rdfs:subClassOf": { "@id": "camo:LayoutContractConcept" }
+    },
+    {
+      "@id": "camo:hasContractTerminologyLayoutTable",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The segment name to use for a variaton attachment file.",
+      "rdfs:label": "hasFileNamingLayoutTable",
+      "schema:domainIncludes": { "@id": "camo:ContractLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "camo:ContractTerminologyLayoutTable" }
+    },
+    {
+      "@id": "camo:variationAttachmentTopRightCorner",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The text to use in the top right corner for a variation attachment.",
+      "rdfs:label": "variationAttachmentTopRightCorner",
+      "schema:domainIncludes": { "@id": "camo:ContractTerminologyLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:certificateAttachmentTopRightCorner",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The text to use in the top right corner for a certficate attachment.",
+      "rdfs:label": "certificateAttachmentTopRightCorner",
+      "schema:domainIncludes": { "@id": "camo:ContractTerminologyLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:certificateAttachmentSectionFooter",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The text to use in footer of a certificate attachment (section view).",
+      "rdfs:label": "certificateAttachmentSectionFooter",
+      "schema:domainIncludes": { "@id": "camo:ContractTerminologyLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:certificateAttachmentSubsectionFooter",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The text to use in footer of a certificate attachment (subsection view).",
+      "rdfs:label": "variationAttachmentTopRightCorner",
+      "schema:domainIncludes": { "@id": "camo:ContractTerminologyLayoutTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    }
+  ]
+}

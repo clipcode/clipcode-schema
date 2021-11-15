@@ -1,0 +1,567 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/schema/coremo/",
+    "camo":   "https://clipcode.org/base/schema/camo/"
+  },
+  "@graph": [
+    {
+      "@id": "camo:ContractPaymentDescription",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A contract payment description.",
+      "rdfs:label": "ContractPaymentDescription",
+      "rdfs:subClassOf": { "@id": "camo:SharedContractConcept" } 
+    },
+    {
+      "@id": "camo:ContractPaymentDescriptionPart",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A contract payment description part.",
+      "rdfs:label": "ContractPaymentDescriptionPart",
+      "rdfs:subClassOf": { "@id": "camo:SharedContractConcept" } 
+    },
+    {
+      "@id": "camo:hasContractPaymentDescriptionPart",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a section payment description to its contract payment description.",
+      "rdfs:label": "hasContractPaymentDescriptionPart",
+      "schema:domainIncludes": { "@id": "camo:ContractPaymentDescription" },
+      "schema:rangeIncludes":  { "@id": "camo:ContractPaymentDescriptionPart" }
+    },
+    {
+      "@id": "camo:SectionPaymentDescription",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A payment that is directly related to a specific section of a contract payment description.",
+      "rdfs:label": "SectionPaymentDescription",
+      "rdfs:subClassOf": { "@id": "camo:ContractPaymentDescriptionPart" } 
+    },
+    {
+      "@id": "camo:PlantAndMaterialsShippedDeliveredPaymentDescription",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A payment related to Plant and Materials Shipped and/or Delivered.",
+      "rdfs:label": "PlantAndMaterialsShippedDeliveredPaymentDescription",
+      "rdfs:subClassOf": { "@id": "camo:ContractPaymentDescriptionPart" } 
+    },
+    {
+      "@id": "camo:GeneralPaymentDescription",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A general payment description that is part of a contract payment description.",
+      "rdfs:label": "GeneralPaymentDescription",
+      "rdfs:subClassOf": { "@id": "camo:ContractPaymentDescriptionPart" } 
+    },
+    {
+      "@id": "camo:hasGeneralPaymentDescriptionAmount",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The amount property for a GeneralPaymentDescription.",
+      "rdfs:label": "hasGeneralPaymentDescriptionAmount",
+      "schema:domainIncludes": { "@id": "camo:GeneralPaymentDescription" },
+      "schema:rangeIncludes":  { "@id": "schema:MonetaryAmount" }
+    },
+    {
+      "@id": "camo:CrossCurrencyPairPaymentDescription",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A payment in one currency in lieu of a payment in a different currency (represented as a positive payment in one currency and negative payment in the other)", 
+      "rdfs:label": "GeneralPaymentDescription",
+      "rdfs:subClassOf": { "@id": "camo:ContractPaymentDescriptionPart" } 
+    },
+    {
+      "@id": "camo:CrossCurrencyPairPaymentDescription",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A payment in one currency in lieu of a payment in a different currency (represented as a positive payment in one currency and negative payment in the other)", 
+      "rdfs:label": "GeneralPaymentDescription",
+      "rdfs:subClassOf": { "@id": "camo:ContractPaymentDescriptionPart" } 
+    },
+    {
+      "@id": "camo:positivePaymentCurrency",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The positivePaymentCurrencyy for a CrossCurrencyPairPaymentDescription.",
+      "rdfs:label": "positivePaymentCurrency",
+      "schema:domainIncludes": { "@id": "camo:CrossCurrencyPairPaymentDescription" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:hasPositivePaymentAmount",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The positive payment property for a CrossCurrencyPairPaymentDescription.",
+      "rdfs:label": "hasPositivePaymentAmount",
+      "schema:domainIncludes": { "@id": "camo:CrossCurrencyPairPaymentDescription" },
+      "schema:rangeIncludes":  { "@id": "schema:MonetaryAmount" }
+    },
+    {
+      "@id": "camo:negativePaymentCurrency",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The negativePaymentCurrency for a CrossCurrencyPairPaymentDescription.",
+      "rdfs:label": "negativePaymentCurrency",
+      "schema:domainIncludes": { "@id": "camo:CrossCurrencyPairPaymentDescription" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:hasNegativePaymentAmount",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The negative payment property for a CrossCurrencyPairPaymentDescription.",
+      "rdfs:label": "hasNegativePaymentAmount",
+      "schema:domainIncludes": { "@id": "camo:CrossCurrencyPairPaymentDescription" },
+      "schema:rangeIncludes":  { "@id": "schema:MonetaryAmount" }
+    },
+    {
+      "@id": "camo:exchangeRateForCrossCurrencyPairPaymentDescription",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The exchangeRate for CrossCurrencyPairPaymentDescription.",
+      "rdfs:label": "exchangeRateForCrossCurrencyPairPaymentDescription",
+      "schema:domainIncludes": { "@id": "camo:CrossCurrencyPairPaymentDescription" },
+      "schema:rangeIncludes":  { "@id": "schema:Number" }
+    },
+    {
+      "@id": "camo:AdditionsPaymentDescription",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A additions payment that is part of a contract payment description.",
+      "rdfs:label": "AdditionsPaymentDescription",
+      "rdfs:subClassOf": { "@id": "camo:GeneralPaymentDescription" } 
+    },
+    {
+      "@id": "camo:DeductionsAppliedAndCollectedPaymentDescription",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A payment that is both applied and collected as part of a contract payment description.",
+      "rdfs:label": "DeductionsAppliedAndCollectedPaymentDescription",
+      "rdfs:subClassOf": { "@id": "camo:GeneralPaymentDescription" } 
+    },
+    {
+      "@id": "camo:DeductionsAppliedPaymentDescription",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A payment that is applied (but not collected here) as part of a contract payment description.",
+      "rdfs:label": "DeductionsAppliedPaymentDescription",
+      "rdfs:subClassOf": { "@id": "camo:GeneralPaymentDescription" } 
+    },
+    {
+      "@id": "camo:DeductionsCollectedPaymentDescription",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A deduction payment that is collected as part of a contract payment description.",
+      "rdfs:label": "DeductionsCollectedPaymentDescription",
+      "rdfs:subClassOf": { "@id": "camo:GeneralPaymentDescription" } 
+    },
+    {
+      "@id": "camo:PlantMaterialShippedDeliveredPrePaymentDescription",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A prepayment description that is part of a contract payment description.",
+      "rdfs:label": "PlantMaterialShippedDeliveredPrePaymentDescription",
+      "rdfs:subClassOf": { "@id": "camo:GeneralPaymentDescription" } 
+    },
+    {
+      "@id": "camo:AdvanceSectionPaymentDescription",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An advance payment that is part of a contract payment description.",
+      "rdfs:label": "AdvanceSectionPaymentDescription",
+      "rdfs:subClassOf": { "@id": "camo:SectionPaymentDescription" } 
+    },
+    {
+      "@id": "camo:InterimSectionPaymentDescription",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An interim payment that is part of a contract payment description.",
+      "rdfs:label": "AdvanceSectionPaymentDescription",
+      "rdfs:subClassOf": { "@id": "camo:SectionPaymentDescription" } 
+    },
+    {
+      "@id": "camo:TakingOverSectionPaymentDescription",
+      "@type": "rdfs:Class",
+      "rdfs:comment": " taking over payment that is part of a contract payment description.",
+      "rdfs:label": "AdvanceSectionPaymentDescription",
+      "rdfs:subClassOf": { "@id": "camo:SectionPaymentDescription" } 
+    },
+    {
+      "@id": "camo:FinalSectionPaymentDescription",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A final payment that is part of a contract payment description.",
+      "rdfs:label": "AdvanceSectionPaymentDescription",
+      "rdfs:subClassOf": { "@id": "camo:SectionPaymentDescription" } 
+    },
+    {
+      "@id": "camo:CustomsandImportDutiesSectionPaymentDescription",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A C&I Duties payment that is part of a contract payment description.",
+      "rdfs:label": "CustomsandImportDutiesSectionPaymentDescription",
+      "rdfs:subClassOf": { "@id": "camo:SectionPaymentDescription" } 
+    },
+    {
+      "@id": "camo:RecoveryOfExcessAdvancePaymentSectionPaymentDescription",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A recovery of advance payment that is part of a contract payment description.",
+      "rdfs:label": "RecoveryOfExcessAdvancePaymentSectionPaymentDescription",
+      "rdfs:subClassOf": { "@id": "camo:SectionPaymentDescription" } 
+    },
+    {
+      "@id": "camo:RecoveryOfExcessRegularPaymentSectionPaymentDescription",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A (non-advance) recovery payment that is part of a contract payment description.",
+      "rdfs:label": "RecoveryOfExcessRegularPaymentSectionPaymentDescription",
+      "rdfs:subClassOf": { "@id": "camo:SectionPaymentDescription" } 
+    },
+    {
+      "@id": "camo:PlantAndMaterialsShippedSectionPaymentDescription",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "PlantAndMaterialsShippedSectionPaymentDescription.",
+      "rdfs:label": "PlantAndMaterialsShippedSectionPaymentDescription",
+      "rdfs:subClassOf": { "@id": "camo:SectionPaymentDescription" } 
+    },
+    {
+      "@id": "camo:PlantAndMaterialsDeliveredSectionPaymentDescription",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "PlantAndMaterialsDeliveredSectionPaymentDescription.",
+      "rdfs:label": "PlantAndMaterialsDeliveredSectionPaymentDescription",
+      "rdfs:subClassOf": { "@id": "camo:SectionPaymentDescription" } 
+    },
+    {
+      "@id": "camo:DiversionSectionPaymentDescription",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A diversion payment that is part of a contract payment description.",
+      "rdfs:label": "DiversionSectionPaymentDescription",
+      "rdfs:subClassOf": { "@id": "camo:SectionPaymentDescription" } 
+    },
+    {
+      "@id": "camo:ApplyAndCollectDamagesSectionPaymentDescription",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "Apply and collect damages SectionPaymentDescription that is part of a contract payment description.",
+      "rdfs:label": "ApplyAndCollectDamagesSectionPaymentDescription",
+      "rdfs:subClassOf": { "@id": "camo:SectionPaymentDescription" } 
+    },
+    {
+      "@id": "camo:ApplyDamagesSectionPaymentDescription",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "Apply damages SectionPaymentDescription that is part of a contract payment description.",
+      "rdfs:label": "ApplyAndCollectDamagesSectionPaymentDescription",
+      "rdfs:subClassOf": { "@id": "camo:SectionPaymentDescription" } 
+    },
+    {
+      "@id": "camo:CollectDamagesSectionPaymentDescription",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "Collect damages SectionPaymentDescription that is part of a contract payment description.",
+      "rdfs:label": "CollectDamagesSectionPaymentDescription",
+      "rdfs:subClassOf": { "@id": "camo:SectionPaymentDescription" } 
+    },
+    {
+      "@id": "camo:sectionPaymentDescriptionKind",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Identifies what kind of SectionPaymentDescription this is (useful for specialist SectionPaymentDescription, maps to layout in Contract Layout).",
+      "rdfs:label": "SectionPaymentDescriptionKind",
+      "schema:domainIncludes": { "@id": "camo:SectionPaymentDescription" },
+      "schema:rangeIncludes":  { "@id": "schema:URL" }
+    },
+    {
+      "@id": "camo:sectionNumber",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The section number related to a payment.",
+      "rdfs:label": "SectionNumber",
+      "schema:domainIncludes": { "@id": "camo:SectionPaymentDescription" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    }, 
+    {
+      "@id": "camo:SubsectionPaymentDescriptionDescription",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A subsection payment description description that is part of a SectionPaymentDescription",
+      "rdfs:label": "SubsectionPaymentDescriptionDescription",
+      "rdfs:subClassOf": { "@id": "camo:SharedContractConcept" } 
+    },
+    {
+      "@id": "camo:paymentPercentage",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The payment percentage, can be attached to a SectionPaymentDescription or a SubsectionPaymentDescriptionDescription).",
+      "rdfs:label": "paymentPercentage",
+      "schema:domainIncludes": [
+        { "@id": "camo:SectionPaymentDescription" },
+        { "@id": "camo:SubsectionPaymentDescriptionDescription" }
+      ],
+      "schema:rangeIncludes": { "@id": "schema:Number" } 
+    }, 
+    {
+      "@id": "camo:hasSubsectionPaymentDescriptionDescription",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a subsection payment description description to its section payment description.",
+      "rdfs:label": "hasSubsectionPaymentDescriptionDescription",
+      "schema:domainIncludes": { "@id": "camo:SectionPaymentDescription" },
+      "schema:rangeIncludes":  { "@id": "camo:SubsectionPaymentDescriptionDescription" }
+    }, 
+    {
+      "@id": "camo:SubsectionNumber",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The subsection number.",
+      "rdfs:label": "SubsectionNumber",
+      "schema:domainIncludes": { "@id": "camo:SubsectionPaymentDescriptionDescription" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },     
+    {
+      "@id": "camo:PaymentCurrency",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The currency symbol for this payment.",
+      "rdfs:label": "PaymentCurrency",
+      "schema:domainIncludes": { "@id": "camo:SubsectionPaymentDescriptionDescription" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },    
+    {
+      "@id": "camo:SubsectionWorkCompleted",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The work completed for a subsection.",
+      "rdfs:label": "SubsectionWorkCompleted",
+      "schema:domainIncludes": { "@id": "camo:SubsectionPaymentDescriptionDescription" },
+      "schema:rangeIncludes":  { "@id": "schema:Number" }
+    }, 
+    {
+      "@id": "camo:SubsectionPaymentDescriptionDescriptionDue",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The payment due for a subsection.",
+      "rdfs:label": "SubsectionPaymentDescriptionDescriptionDue",
+      "schema:domainIncludes": { "@id": "camo:SubsectionPaymentDescriptionDescription" },
+      "schema:rangeIncludes":  { "@id": "schema:Number" }
+    },     
+    {
+      "@id": "camo:CustomsAndImportDutiesTable",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A CustomsAndImportDutiesTable attached to a SectionPaymentDescription",
+      "rdfs:label": "CustomsAndImportDutiesTable",
+      "rdfs:subClassOf": { "@id": "camo:SharedContractConcept" } 
+    },
+    {
+      "@id": "camo:hasCustomsAndImportDutiesTable",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a CustomsAndImportDutiesTable to its section payment description.",
+      "rdfs:label": "hasSubsectionPaymentDescriptionDescription",
+      "schema:domainIncludes": { "@id": "camo:SectionPaymentDescription" },
+      "schema:rangeIncludes":  { "@id": "camo:CustomsAndImportDutiesTable" }
+    }, 
+    {
+      "@id": "camo:CustomsAndImportDutiesEntry",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A CustomsAndImportDutiesEntry attached to a CustomsAndImportDutiesTable",
+      "rdfs:label": "CustomsAndImportDutiesEntry",
+      "rdfs:subClassOf": { "@id": "camo:SharedContractConcept" } 
+    },
+    {
+      "@id": "camo:hasCustomsAndImportDutiesEntry",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a CustomsAndImportDutiesEntry to its CustomsAndImportDutiesTable.",
+      "rdfs:label": "hasCustomsAndImportDutiesEntry",
+      "schema:domainIncludes": { "@id": "camo:CustomsAndImportDutiesTable" },
+      "schema:rangeIncludes":  { "@id": "camo:CustomsAndImportDutiesEntry" }
+    },
+    {
+      "@id": "camo:hasCAndICashReceiptNumber",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The hasCAndICashReceiptNumber property for a CustomsAndImportDutiesEntry.",
+      "rdfs:label": "hasCAndICashReceiptNumber",
+      "schema:domainIncludes": { "@id": "camo:CustomsAndImportDutiesEntry" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:hasCAndIDeclarationNumber",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The hasCAndIDeclarationNumber property for a CustomsAndImportDutiesEntry.",
+      "rdfs:label": "hasCAndIDeclarationNumber",
+      "schema:domainIncludes": { "@id": "camo:CustomsAndImportDutiesEntry" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:hasCAndIReceiptDate",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The hasCAndIReceiptDate property for a CustomsAndImportDutiesEntry.",
+      "rdfs:label": "hasCAndIReceiptDate",
+      "schema:domainIncludes": { "@id": "camo:CustomsAndImportDutiesEntry" },
+      "schema:rangeIncludes":  { "@id": "schema:Date" }
+    },
+    {
+      "@id": "camo:hasCAndITotalAmount",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The hasCAndITotalAmount property for a CustomsAndImportDutiesEntry.",
+      "rdfs:label": "hasCAndITotalAmount",
+      "schema:domainIncludes": { "@id": "camo:CustomsAndImportDutiesEntry" },
+      "schema:rangeIncludes":  { "@id": "schema:MonetaryAmount" }
+    },
+    {
+      "@id": "camo:hasCAndIDeductions",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The hasCAndIDeductions property for a CustomsAndImportDutiesEntry.",
+      "rdfs:label": "hasCAndIDeductions",
+      "schema:domainIncludes": { "@id": "camo:CustomsAndImportDutiesEntry" },
+      "schema:rangeIncludes":  { "@id": "schema:MonetaryAmount" }
+    },
+    {
+      "@id": "camo:hasCAndIAmountReimbursable",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The hasCAndIAmountReimbursable property for a CustomsAndImportDutiesEntry.",
+      "rdfs:label": "hasCAndIAmountReimbursable",
+      "schema:domainIncludes": { "@id": "camo:CustomsAndImportDutiesEntry" },
+      "schema:rangeIncludes":  { "@id": "schema:MonetaryAmount" }
+    },
+    {
+      "@id": "camo:hasCAndIComments",
+      "@type": "rdf:Property",
+      "rdfs:comment": "An optional comment field which may be added to a CustomsAndImportDutiesEntry.",
+      "rdfs:label": "hasCAndIComments",
+      "schema:domainIncludes": { "@id": "camo:CustomsAndImportDutiesEntry" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:AdditionsPaymentDescriptionTable",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An AdditionsPaymentDescriptionTable attached to an AdditionsPaymentDescription.",
+      "rdfs:label": "ContractPaymentDescriptionAdditionsTable",
+      "rdfs:subClassOf": { "@id": "camo:SharedContractConcept" } 
+    },
+    {
+      "@id": "camo:hasAdditionContractPaymentDescriptionTable",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches an AdditionsPaymentDescriptionTable to its AdditionsPaymentDescription.",
+      "rdfs:label": "hasAdditionContractPaymentDescriptionTable",
+      "schema:domainIncludes": { "@id": "camo:AdditionsPaymentDescription" },
+      "schema:rangeIncludes":  { "@id": "camo:AdditionsPaymentDescriptionTable" }
+    },  
+    {
+      "@id": "camo:AdditionContractPaymentDescriptionItem",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An addition to be added to an AdditionsPaymentDescriptionTable.",
+      "rdfs:label": "AdditionContractPaymentDescriptionItem",
+      "rdfs:subClassOf": { "@id": "camo:SharedContractConcept" } 
+    },
+    {
+      "@id": "camo:hasAdditionContractPaymentDescriptionItem",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a AdditionContractPaymentDescriptionItem to a AdditionsPaymentDescriptionTable.",
+      "rdfs:label": "hasAdditionContractPaymentDescriptionItem",
+      "schema:domainIncludes": { "@id": "camo:AdditionsPaymentDescriptionTable" },
+      "schema:rangeIncludes":  { "@id": "camo:AdditionContractPaymentDescriptionItem" }
+    },
+    {
+      "@id": "camo:contractPaymentDescriptionAdditionKind",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Identifies what kind of AdditionPayment this is.",
+      "rdfs:label": "contractPaymentDescriptionAdditionKind",
+      "schema:domainIncludes": { "@id": "camo:AdditionContractPaymentDescriptionItem" },
+      "schema:rangeIncludes":  { "@id": "schema:URL" }
+    },
+    {
+      "@id": "camo:contractPaymentDescriptionAdditionItemDetails",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Explanation for this Addition Payment.",
+      "rdfs:label": "contractPaymentDescriptionAdditionItemDetails",
+      "schema:domainIncludes": { "@id": "camo:AdditionContractPaymentDescriptionItem" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:additionContractPaymentDescriptionAmount",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The amount property for a GeneralPaymentDescription.",
+      "rdfs:label": "additionContractPaymentDescriptionAmount",
+      "schema:domainIncludes": { "@id": "camo:AdditionContractPaymentDescriptionItem" },
+      "schema:rangeIncludes":  { "@id": "schema:MonetaryAmount" }
+    },
+    {
+      "@id": "camo:AdditionContractPaymentDescriptionDueToContractorPaidEmployerDAABFee",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An addition to be added to a contract payment description.",
+      "rdfs:label": "AdditionContractPaymentDescriptionDueToContractorPaidEmployerDAABFee",
+      "rdfs:subClassOf": { "@id": "camo:AdditionContractPaymentDescriptionItem" } 
+    },
+    {
+      "@id": "camo:AdditionContractPaymentDescriptionDueToEarlyCompletion",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An addition to be added to a contract payment description.",
+      "rdfs:label": "AdditionContractPaymentDescriptionDueToEarlyCompletion",
+      "rdfs:subClassOf": { "@id": "camo:AdditionContractPaymentDescriptionItem" } 
+    },
+    {
+      "@id": "camo:AdditionContractPaymentDescriptionDueToBenefitSharingOfValueEngineering",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An addition to be added to a contract payment description.",
+      "rdfs:label": "AdditionContractPaymentDescriptionDueToBenefitSharingOfValueEngineering",
+      "rdfs:subClassOf": { "@id": "camo:AdditionContractPaymentDescriptionItem" } 
+    },
+    {
+      "@id": "camo:DeductionsPaymentDescriptionTable",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A DeductionsPaymentDescriptionTable attached to one of the DeductionsPaymentDescription types.",
+      "rdfs:label": "DeductionsPaymentDescriptionTable",
+      "rdfs:subClassOf": { "@id": "camo:SharedContractConcept" } 
+    },
+    {
+      "@id": "camo:hasDeductionsPaymentDescriptionTable",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a DeductionsPaymentDescriptionTable to one of the DeductionsPaymentDescription types.",
+      "rdfs:label": "DeductionsPaymentDescriptionTable",
+      "schema:domainIncludes": [
+        { "@id":             "camo:DeductionsAppliedPaymentDescription" },
+        { "@id":           "camo:DeductionsCollectedPaymentDescription" },
+        { "@id": "camo:DeductionsAppliedAndCollectedPaymentDescription" }
+      ],
+      "schema:rangeIncludes":  { "@id": "camo:DeductionsPaymentDescriptionTable" }
+    },  
+    {
+      "@id": "camo:DeductionPaymentDescriptionItem",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A Deduction to be added to a DeductionsPaymentDescriptionTable.",
+      "rdfs:label": "DeductionPaymentDescriptionItem",
+      "rdfs:subClassOf": { "@id": "camo:SharedContractConcept" } 
+    },
+    {
+      "@id": "camo:hasDeductionPaymentDescriptionItem",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a DeductionPaymentDescriptionItem to a DeductionsPaymentDescriptionTable.",
+      "rdfs:label": "hasDeductionPaymentDescriptionItem",
+      "schema:domainIncludes": { "@id": "camo:DeductionsPaymentDescriptionTable" },
+      "schema:rangeIncludes":  { "@id": "camo:DeductionPaymentDescriptionItem" }
+    },
+    {
+      "@id": "camo:deductionPaymentDescriptionItemKind",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Identifies what kind of DeductionPaymentDescriptionItem this is.",
+      "rdfs:label": "deductionPaymentDescriptionItemKind",
+      "schema:domainIncludes": { "@id": "camo:DeductionPaymentDescriptionItem" },
+      "schema:rangeIncludes":  { "@id": "schema:URL" }
+    },
+    {
+      "@id": "camo:deductionPaymentDescriptionItemDetails",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Explanation for this Deduction Payment.",
+      "rdfs:label": "deductionPaymentDescriptionItemDetails",
+      "schema:domainIncludes": { "@id": "camo:DeductionPaymentDescriptionItem" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:deductionPaymentDescriptionItemAmount",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The amount property for a DeductionPaymentDescriptionItem.",
+      "rdfs:label": "deductionPaymentDescriptionItemAmount",
+      "schema:domainIncludes": { "@id": "camo:DeductionPaymentDescriptionItem" },
+      "schema:rangeIncludes":  { "@id": "schema:MonetaryAmount" }
+    },
+    {
+      "@id": "camo:DeductionPaymentDescriptionDueToEmployerPaidContractorDAABFee",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A deduction to be added to a contract payment description.",
+      "rdfs:label": "DeductionPaymentDescriptionDueToEmployerPaidContractorDAABFee",
+      "rdfs:subClassOf": { "@id": "camo:DeductionPaymentDescriptionItem" } 
+    },
+    {
+      "@id": "camo:DeductionPaymentDescriptionDueEmployerDirectlyPayingNominatedSubcontractor",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A deduction to be added to a contract payment description.",
+      "rdfs:label": "DeductionPaymentDescriptionDueEmployerDirectlyPayingNominatedSubcontractor",
+      "rdfs:subClassOf": { "@id": "camo:DeductionPaymentDescriptionItem" } 
+    },  
+    {
+      "@id": "camo:hasPlantAndMaterialsShippedDeliveredItem",
+      "@type": "rdf:Property",
+      "rdfs:comment": "hasPlantAndMaterialsShippedDeliveredItem.",
+      "rdfs:label": "hasPlantAndMaterialsShippedDeliveredItem",
+      "schema:domainIncludes": { "@id": "camo:PlantAndMaterialsShippedDeliveredPaymentDescription" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:hasPlantAndMaterialsShippedDeliveredAmount",
+      "@type": "rdf:Property",
+      "rdfs:comment": "hasPlantAndMaterialsShippedDeliveredAmount.",
+      "rdfs:label": "hasPlantAndMaterialsShippedDeliveredAmount",
+      "schema:domainIncludes": { "@id": "camo:PlantAndMaterialsShippedDeliveredPaymentDescription" },
+      "schema:rangeIncludes":  { "@id": "schema:MonetaryAmount" }
+    }
+  ]
+}

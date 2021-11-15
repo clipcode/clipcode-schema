@@ -1,0 +1,107 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/schema/coremo/",
+    "camo":   "https://clipcode.org/base/schema/camo/"
+  },
+  "@graph": [
+    {
+      "@id": "camo:PaymentCertificate",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A payment certificate for a contract.",
+      "rdfs:label": "PaymentCertificate",
+      "rdfs:subClassOf": [
+        { "@id": "camo:CertificateContractConcept" },
+        { "@id": "coremo:Numbered" },
+        { "@id": "camo:ContractCommunication" }
+      ]
+    },
+    {
+      "@id": "camo:hasPaymentCertificate",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a payment certificate to its semantic pool.",
+      "rdfs:label": "hasPaymentCertificate",
+      "schema:domainIncludes": { "@id": "camo:PaymentCertificateContractSemanticPool" },
+      "schema:rangeIncludes":  { "@id": "camo:PaymentCertificate" }
+    },
+    {
+      "@id": "camo:AdvancePaymentCertificate",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An advance payment certificate.",
+      "rdfs:label": "AdvancePaymentCertificate",
+      "rdfs:subClassOf": { "@id": "camo:PaymentCertificate" }
+    },
+    {
+      "@id": "camo:InterimPaymentCertificate",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An interim payment certificate.",
+      "rdfs:label": "InterimPaymentCertificate",
+      "rdfs:subClassOf": { "@id": "camo:PaymentCertificate" }
+    },
+    {
+      "@id": "camo:FinalPaymentCertificate",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A final payment certificate.",
+      "rdfs:label": "FinalPaymentCertificate",
+      "rdfs:subClassOf": { "@id": "camo:PaymentCertificate" }
+    },
+    {
+      "@id": "camo:TakingOverPaymentCertificate",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A taking-over payment certificate (specifically for payment of the taking-over portion of the retention money)).",
+      "rdfs:label": "TakingOverPaymentCertificate",
+      "rdfs:subClassOf": { "@id": "camo:PaymentCertificate" }
+    },
+    {
+      "@id": "camo:CustomsAndImportDutiesPaymentCertificate",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A customs and import duties payment certificate.",
+      "rdfs:label": "CustomsAndImportDutiesPaymentCertificate",
+      "rdfs:subClassOf": { "@id": "camo:PaymentCertificate" }
+    },
+    {
+      "@id": "camo:paymentCertificateKind",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Identifies what kind of payment certificate this is).",
+      "rdfs:label": "paymentCertificateKind",
+      "schema:domainIncludes": { "@id": "camo:ContractCertificate" },
+      "schema:rangeIncludes":  { "@id": "schema:URL" }
+    },
+    {
+      "@id": "camo:paymentCertificateBasedOnContractDataRevision",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Most recent core contract data revision.",
+      "rdfs:label": "paymentCertificateBasedOnContractDataRevision",
+      "schema:domainIncludes": { "@id": "camo:ContractCertificate" },
+      "schema:rangeIncludes":  { "@id": "schema:Integer" }
+    },
+    {
+      "@id": "camo:takingOverPaymentCertificateBasedOnTakingOverCertificate",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The taking over cert this is based upon (to discover withheld amounts).",
+      "rdfs:label": "takingOverPaymentCertificateBasedOnTakingOverCertificate",
+      "schema:domainIncludes": { "@id": "camo:TakingOverPaymentCertificate" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:takingOverPaymentCertificateBasedOnTakingOverRevision",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The revision of the taking over cert to use.",
+      "rdfs:label": "takingOverPaymentCertificateBasedOnTakingOverRevision",
+      "schema:domainIncludes": { "@id": "camo:TakingOverPaymentCertificate" },
+      "schema:rangeIncludes":  { "@id": "schema:Integer" }
+    },
+    {
+      "@id": "camo:contractPaymentToUse",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Contract payment to use.",
+      "rdfs:label": "contractPaymentToUse",
+      "schema:domainIncludes": { "@id": "camo:PaymentCertificate" },
+      "schema:rangeIncludes":  { "@id": "schema:URL" }
+    }
+  ]
+}

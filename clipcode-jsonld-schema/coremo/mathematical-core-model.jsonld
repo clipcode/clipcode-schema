@@ -5,25 +5,16 @@
     "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
     "schema": "https://schema.org/",
 
-    "coremo": "https://clipcode.org/base/concept/coremo/"
+    "coremo": "https://clipcode.org/base/schema/coremo/"
   },
   "@graph": [
-    {
-      "@id": "coremo:MathematicalCoreConcept",
-      "@type": "rdfs:Class",
-      "rdfs:comment": "A characteristic core concept",
-      "rdfs:label": "CharacteristicCoreConcept",
-      "rdfs:subClassOf": {
-        "@id": "coremo:CoreConcept"
-      }
-    },
     {
       "@id": "coremo:MathematicalExpression",
       "@type": "rdfs:Class",
       "rdfs:comment": "A mathematical expression",
       "rdfs:label": "MathematicalExpression",
       "rdfs:subClassOf": {
-        "@id": "coremo:MathematicalCoreConcept"
+        "@id": "coremo:CoreConcept"
       }
     },
     {
@@ -32,7 +23,7 @@
       "rdfs:comment": "A mathematical object",
       "rdfs:label": "MathematicalObject",
       "rdfs:subClassOf": {
-        "@id": "coremo:MathematicalCoreConcept"
+        "@id": "coremo:CoreConcept"
       }
     },
     {
@@ -81,7 +72,7 @@
           "@id": "coremo:Sequential"
         },
         {
-          "@id": "coremo:MathematicalCoreConcept"
+          "@id": "coremo:CoreConcept"
         }
       ]
     },
@@ -127,7 +118,7 @@
       "rdfs:comment": "A mathematical operation",
       "rdfs:label": "MathematicalOperation",
       "rdfs:subClassOf": {
-        "@id": "coremo:MathematicalCoreConcept"
+        "@id": "coremo:CoreConcept"
       }
     },
     {
@@ -136,7 +127,7 @@
       "rdfs:comment": "A mathematical property",
       "rdfs:label": "MathematicalProperty",
       "rdfs:subClassOf": {
-        "@id": "coremo:MathematicalCoreConcept"
+        "@id": "coremo:CoreConcept"
       }
     },
     {
@@ -145,7 +136,7 @@
       "rdfs:comment": "A mathematical variable",
       "rdfs:label": "MathematicalVariable",
       "rdfs:subClassOf": {
-        "@id": "coremo:MathematicalCoreConcept"
+        "@id": "coremo:CoreConcept"
       }
     },
     {
@@ -154,7 +145,7 @@
       "rdfs:comment": "A mathematical formula",
       "rdfs:label": "MathematicalFormula",
       "rdfs:subClassOf": {
-        "@id": "coremo:MathematicalCoreConcept"
+        "@id": "coremo:CoreConcept"
       }
     }
   ]

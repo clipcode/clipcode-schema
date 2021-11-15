@@ -5,17 +5,114 @@
     "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
     "schema": "https://schema.org/",
 
-    "coremo": "https://clipcode.org/base/concept/coremo/"
+    "coremo": "https://clipcode.org/base/schema/coremo/"
  },
   "@graph": [
     {
-      "@id": "coremo:CharacteristicCoreConcept",
+      "@id": "coremo:Explainable",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A characteristic core concept",
-      "rdfs:label": "CharacteristicCoreConcept",
+      "rdfs:comment": "A resource to which an explanation can be attached.",
+      "rdfs:label": "Explainable",
       "rdfs:subClassOf": {
-        "@id": "coremo:CoreConcept"
+      "@id": "coremo:ModelConcept"
       }
+    },
+    {
+      "@id": "coremo:explanation",
+      "@type": "rdf:Property",
+      "rdfs:comment": "An explanation for a Explainable.",
+      "rdfs:label": "explanation",
+      "schema:domainIncludes": { "@id": "coremo:Explainable" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }        
+    },
+    {
+      "@id": "coremo:Describeable",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A resource that can have a description attached.",
+      "rdfs:label": "Describeable",
+      "rdfs:subClassOf": {
+      "@id": "coremo:ModelConcept"
+      }
+    },
+    {
+      "@id": "coremo:description",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A description for a describeable.",
+      "rdfs:label": "description",
+      "schema:domainIncludes": { "@id": "coremo:Describeable" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }        
+    },
+    {
+      "@id": "coremo:Commentable",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A resource that can have a comment attached.",
+      "rdfs:label": "Commentable",
+      "rdfs:subClassOf": {
+      "@id": "coremo:ModelConcept"
+      }
+    },
+    {
+      "@id": "coremo:comment",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A comment for a Commentable.",
+      "rdfs:label": "comment",
+      "schema:domainIncludes": { "@id": "coremo:Commentable" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }        
+    },
+    {
+      "@id": "coremo:Abstractable",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A resource capable of being marked as abstract (so cannot be used directly; may be used as part of hierarhcy).",
+      "rdfs:label": "Abstractable",
+      "rdfs:subClassOf": {
+      "@id": "coremo:ModelConcept"
+      }
+    },
+    {
+      "@id": "coremo:isAbstract",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Whether this Abstractable is abstract.",
+      "rdfs:label": "isAbstract",
+      "schema:domainIncludes": { "@id": "coremo:Abstractable" },
+      "schema:rangeIncludes":  { "@id": "schema:Boolean" }        
+    },
+    {
+      "@id": "coremo:Attachable",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A resource which can be attached in various ways to another resource.",
+      "rdfs:label": "Attachable",
+      "rdfs:subClassOf": {
+      "@id": "coremo:ModelConcept"
+      }
+    },
+    {
+      "@id": "coremo:AttachmentEnumeration",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "AttachmentEnumeration is an enumeration type representing attachments.",
+      "rdfs:label": "AttachmentEnumeration",
+       "rdfs:subClassOf": {
+        "@id": "schema:Enumeration"
+      }
+    },
+    {
+      "@id": "coremo:GraphAttached",
+      "@type": "coremo:AttachmentEnumeration",
+      "rdfs:comment": "Attaches to a knowledge graph (goes where the graph goes).",
+      "rdfs:label": "GraphAttached"
+    },
+    {
+      "@id": "coremo:NetworkAttached",
+      "@type": "coremo:AttachmentEnumeration",
+      "rdfs:comment": "Attaches to the knowledge network (stays within the knowledge network, regardless of where the knowledge graph goes).",
+      "rdfs:label": "NetworkAttached"
+    },
+    {
+      "@id": "coremo:attachedTo",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The attachment of an attachable.",
+      "rdfs:label": "attachedTo",
+      "schema:domainIncludes": { "@id": "coremo:Attachable" },
+      "schema:rangeIncludes":  { "@id": "coremo:AttachmentEnumeration" }        
     },
     {
       "@id": "coremo:Sequential",
@@ -99,6 +196,66 @@
       }
     },
     {
+      "@id": "coremo:PanelHost",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A host for a single panel.",
+      "rdfs:label": "PanelHost",
+      "rdfs:subClassOf": {
+        "@id": "coremo:ModelConcept"
+      }
+    },
+    {
+      "@id": "coremo:Panel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A panel that can be composed.",
+      "rdfs:label": "Panel",
+      "rdfs:subClassOf": {
+        "@id": "coremo:ModelConcept"
+      }
+    },    
+    {
+      "@id": "coremo:hostedPanel",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The panel hosted by this PanelHost.",
+      "rdfs:label": "hostedPanel",
+      "schema:domainIncludes": [
+        {
+          "@id": "coremo:PanelHost"
+        }
+      ],
+      "schema:rangeIncludes": {
+        "@id": "coremo:Panel"
+      }
+    }, 
+    {
+      "@id": "coremo:hostedPanelOriginX",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The X origin for this panel host.",
+      "rdfs:label": "hostedPanelOriginX",
+      "schema:domainIncludes": [
+        {
+          "@id": "coremo:PanelHost"
+        }
+      ],
+      "schema:rangeIncludes": {
+        "@id": "schema:Integer"
+      }
+    }, 
+    {
+      "@id": "coremo:hostedPanelOriginY",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The Y origin for this panel host.",
+      "rdfs:label": "hostedPanelOriginY",
+      "schema:domainIncludes": [
+        {
+          "@id": "coremo:PanelHost"
+        }
+      ],
+      "schema:rangeIncludes": {
+        "@id": "schema:Integer"
+      }
+    }, 
+    {
       "@id": "coremo:HierarchicalParent",
       "@type": "rdfs:Class",
       "rdfs:comment": "A resource that can be a parent member of a tree",
@@ -145,7 +302,7 @@
       "rdfs:comment": "An ImageResource",
       "rdfs:label": "ImageResource",
       "rdfs:subClassOf": {
-        "@id": "coremo:CharacteristicCoreConcept"
+        "@id": "coremo:CoreConcept"
       }
     },
     {
@@ -171,28 +328,16 @@
       "@type": "rdf:Property",
       "rdfs:comment": "The parent of a derived resource.",
       "rdfs:label": "revision",
-      "schema:domainIncludes": [
-        {
-          "@id": "coremo:Inheritable"
-        }
-      ],
-      "schema:rangeIncludes": {
-        "@id": "coremo:ModelConcept"
-      }
+      "schema:domainIncludes": { "@id": "coremo:Inheritable" },
+      "schema:rangeIncludes":  { "@id": "coremo:ModelConcept" }
     }, 
     {
       "@id": "coremo:revision",
       "@type": "rdf:Property",
       "rdfs:comment": "The revision number of this resource revision.",
       "rdfs:label": "revision",
-      "schema:domainIncludes": [
-        {
-          "@id": "coremo:Revisible"
-        }
-      ],
-      "schema:rangeIncludes": {
-        "@id": "schema:Number"
-      }
+      "schema:domainIncludes": { "@id": "coremo:Revisible" },
+      "schema:rangeIncludes":  { "@id": "schema:Number" }
     }, 
     {
       "@id": "coremo:generation",
@@ -233,7 +378,7 @@
         }
       ],
       "schema:rangeIncludes": {
-        "@id": "coremo:HierarchicalChild"
+        "@id": "schema:Thing"
       }
     },
     {
@@ -284,6 +429,35 @@
       "schema:rangeIncludes": {
         "@id": "coremo:OrientationEnumeration"
       }        
+    },
+    {
+      "@id": "coremo:NameOrderEnumeration",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "NameOrderEnumeration is an enumeration name ordering.",
+      "rdfs:label": "NameOrderEnumeration",
+       "rdfs:subClassOf": {
+        "@id": "schema:Enumeration"
+      }
+    },
+    {
+      "@id": "coremo:WesternNameOrder",
+      "@type": "coremo:NameOrderEnumeration",
+      "rdfs:comment": "given-name/family-name name ordering.",
+      "rdfs:label": "WesternNameOrder"
+    },
+    {
+      "@id": "coremo:EasternNameOrder",
+      "@type": "coremo:NameOrderEnumeration",
+      "rdfs:comment": "family-name/given-name name ordering.",
+      "rdfs:label": "EasternNameOrder"
+    },
+    {
+      "@id": "coremo:nameOrder",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The ordering of given/family names for a person.",
+      "rdfs:label": "nameOrder",
+      "schema:domainIncludes": { "@id": "schema:Person" },
+      "schema:rangeIncludes":  { "@id": "coremo:NameOrderEnumeration" }        
     },
     {
       "@id": "coremo:PublishableStatusEnumeration",
@@ -458,6 +632,7 @@
         "@id": "schema:Text"
       }
     },
+
     {
       "@id": "coremo:sequentialRank",
       "@type": "rdf:Property",
@@ -469,7 +644,7 @@
         }
       ],
       "schema:rangeIncludes": {
-        "@id": "schema:Thing"
+        "@id": "schema:Integer"
       }
     },
     {
@@ -483,7 +658,7 @@
         }
       ],
       "schema:rangeIncludes": {
-        "@id": "schema:Thing"
+        "@id": "schema:Integer"
       }
     },
     {
@@ -497,9 +672,34 @@
         }
       ],
       "schema:rangeIncludes": {
-        "@id": "schema:Thing"
+        "@id": "schema:Integer"
       }
     },
+
+
+    {
+      "@id": "coremo:Ordered",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A resource that can be ordered among an assortmnet of similar resources based on an ordered index (and matchign order indicies are alphabetically sorted)",
+      "rdfs:label": "Ordered",
+      "rdfs:subClassOf": {
+        "@id": "coremo:ModelConcept"
+      }
+    }, 
+    {
+      "@id": "coremo:orderedIndex",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The ordered index of this orderable.",
+      "rdfs:label": "orderedIndex",
+      "schema:domainIncludes": [
+        {
+          "@id": "coremo:Ordered"
+        }
+      ],
+      "schema:rangeIncludes": {
+        "@id": "schema:Integer"
+      }
+    },    
     {
       "@id": "coremo:module",
       "@type": "rdf:Property",
@@ -513,6 +713,44 @@
       "schema:rangeIncludes": {
         "@id": "schema:Thing"
       }
+    },
+    {
+      "@id": "coremo:Numbered",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An ordered alphanumeric value attached to a resource",
+      "rdfs:label": "Numbered",
+      "rdfs:subClassOf": { "@id": "coremo:Ordered" }
+    },
+    {
+      "@id": "coremo:alphanumericValue",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The alphanumeric value of this resource.",
+      "rdfs:label": "alphanumericValue",
+      "schema:domainIncludes": { "@id": "coremo:Numbered" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "coremo:DateRange",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A data range start and end date)",
+      "rdfs:label": "DateRange",
+      "rdfs:subClassOf": { "@id": "coremo:ModelConcept" }
+    },
+    {
+      "@id": "coremo:startDate",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The start date of this DateRange.",
+      "rdfs:label": "startDate",
+      "schema:domainIncludes": { "@id": "coremo:DateRange" },
+      "schema:rangeIncludes":  { "@id": "schema:Date" }
+    },
+    {
+      "@id": "coremo:endDate",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The end date of this DateRange.",
+      "rdfs:label": "endDate",
+      "schema:domainIncludes": { "@id": "coremo:DateRange" },
+      "schema:rangeIncludes":  { "@id": "schema:Date" }
     }
   ]
 }

@@ -1,0 +1,65 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/schema/coremo/",
+    "camo":   "https://clipcode.org/base/schema/camo/"
+  },
+  "@graph": [ 
+    {
+      "@id": "camo:ContractConfiguration",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "Configuraiton of a contract.",
+      "rdfs:label": "ContractConfiguration",
+      "rdfs:subClassOf": [       
+        { "@id": "coremo:Describeable" },   
+        { "@id": "coremo:Templatable" },
+        { "@id": "coremo:Numbered"    },     
+        { "@id": "camo:ConfigurationContractConcept" }   
+    ]}, 
+    {
+      "@id": "camo:hasContractConfiguration",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a root concept to its semantic pool.",
+      "rdfs:label": "hasContractConfiguration",
+      "schema:domainIncludes": { "@id": "camo:Data ConfigurationContractSemanticPool" },
+      "schema:rangeIncludes":  { "@id": "camo:ContractConfiguration" }
+    },
+
+    {
+      "@id": "camo:memberOfDevelopment",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The development to which this contract belongs.",
+      "rdfs:label": "memberOfDevelopment",
+      "schema:domainIncludes": { "@id": "camo:ContractConfiguration" },
+      "schema:rangeIncludes":  { "@id": "schema:URL" }
+    },
+    {
+      "@id": "camo:hasPolicyTable",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The policy table associated with this ContractConfiguration.",
+      "rdfs:label": "hasPolicyTable",
+      "schema:domainIncludes": { "@id": "camo:ContractConfiguration" },
+      "schema:rangeIncludes":  { "@id": "schema:URL" }
+    },
+    {
+      "@id": "camo:hasRegionalTable",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The regional table associated with this ContractConfiguration.",
+      "rdfs:label": "hasRegionalTable",
+      "schema:domainIncludes": { "@id": "camo:ContractConfiguration" },
+      "schema:rangeIncludes":  { "@id": "schema:URL" }
+    },
+    {
+      "@id": "camo:hasContractLayoutTable",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The layout table associated with this ContractConfiguration.",
+      "rdfs:label": "hasContractDesignTable",
+      "schema:domainIncludes": { "@id": "camo:ContractConfiguration" },
+      "schema:rangeIncludes":  { "@id": "schema:URL" }
+    }
+  ]
+}

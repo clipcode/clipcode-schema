@@ -1,0 +1,56 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/schema/coremo/",
+    "camo":   "https://clipcode.org/base/schema/camo/"
+  },
+  "@graph": [
+    {
+      "@id": "camo:Dispute",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A dispute between the parties.",
+      "rdfs:label": "Dispute",
+      "rdfs:subClassOf": { "@id": "camo:DisputeContractConcept" }
+    },
+    {
+      "@id": "camo:hasDispute",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a root concept to its semantic pool.",
+      "rdfs:label": "hasVariation",
+      "schema:domainIncludes": { "@id": "camo:DisputeContractSemanticPool" },
+      "schema:rangeIncludes":  { "@id": "camo:Dispute" }
+    },  
+    {
+      "@id": "camo:DisputeNotification",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A notification relates to the DAAB.",
+      "rdfs:label": "DisputeBNotification",
+      "rdfs:subClassOf": { "@id": "camo:DisputeContractConcept" }
+    },
+    {
+      "@id": "camo:DisputeReferral",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A referral of a dispute to the DAAB or other dispute body.",
+      "rdfs:label": "DAABReferral",
+      "rdfs:subClassOf": { "@id": "camo:DisputeNotification" }
+    },
+    {
+      "@id": "camo:DisputeDecision",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A decision of the DAAB or other dispute body.",
+      "rdfs:label": "DisputeDecision",
+      "rdfs:subClassOf": { "@id": "camo:DisputeNotification" }
+    },
+    {
+      "@id": "camo:ContractDAAB",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "The Dispute Avoidance / Adjudication Board for a contract.",
+      "rdfs:label": "ContractDAAB",
+      "rdfs:subClassOf": { "@id": "camo:DisputeContractConcept" }
+    }    
+  ]
+}

@@ -1,0 +1,376 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/schema/coremo/",
+    "camo":   "https://clipcode.org/base/schema/camo/"
+  },
+  "@graph": [ 
+    {
+      "@id": "camo:ContractData",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "Represents contract data, such as stakeholders, timing data and sections).",
+      "rdfs:label": "ContractData",
+      "rdfs:subClassOf": [       
+        { "@id": "coremo:Describeable" },   
+        { "@id": "coremo:Templatable" },
+        { "@id": "coremo:Numbered"    },     
+        { "@id": "camo:ComponentContractConcept" }   
+    ]}, 
+    {
+      "@id": "camo:hasContractData",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a root concept to its semantic pool.",
+      "rdfs:label": "hasContractData",
+      "schema:domainIncludes": { "@id": "camo:Data DataContractSemanticPool" },
+      "schema:rangeIncludes":  { "@id": "camo:ContractData" }
+    },
+    {
+      "@id": "camo:hasStakeholderTable",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The stableholder table associated with this primary contract data.",
+      "rdfs:label": "hasStakeholderTable",
+      "schema:domainIncludes": { "@id": "camo:ContractData" },
+      "schema:rangeIncludes":  { "@id": "schema:URL" }
+    },
+    {
+      "@id": "camo:ContractDateTable",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "Assortment of dates relate tot a contract.",
+      "rdfs:label": "ContractDateTable",
+      "rdfs:subClassOf": { "@id": "camo:Data ExtractContractConcept" }   
+    }, 
+    {
+      "@id": "camo:hasContractDateTable",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The policy table associated with this primary contract data.",
+      "rdfs:label": "hasPolicyTable",
+      "schema:domainIncludes": { "@id": "camo:ContractData" },
+      "schema:rangeIncludes":  { "@id": "camo:ContractDateTable" }
+    },
+    {
+      "@id": "camo:contractBaseDate",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The Base Date of this contract [See data extract in FIDIC 1.1].",
+      "rdfs:label": "contractBaseDate",
+      "schema:domainIncludes": { "@id": "camo:ContractDateTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Date" }
+    },
+    {
+      "@id": "camo:contractCommencementDate",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The Commencement Date of this contract [See data extract in FIDIC 1.1].",
+      "rdfs:label": "contractCommencementDate",
+      "schema:domainIncludes": { "@id": "camo:ContractDateTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Date" }
+    },
+    {
+      "@id": "camo:contractDateOfCompletion",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The Date Of Completion of this contract [See data extract in FIDIC 1.1].",
+      "rdfs:label": "contractDateOfCompletion",
+      "schema:domainIncludes": { "@id": "camo:ContractDateTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Date" }
+    },
+    {
+      "@id": "camo:defectsNotificationPeriod",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The Defects Notification Period (DNP) of this contract, measured in days [See data extract in FIDIC 1.1].",
+      "rdfs:label": "delayNotificationPeriod",
+      "schema:domainIncludes": { "@id": "camo:ContractDateTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Integer" }
+    },
+    {
+      "@id": "camo:contractTimeForCompletion",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The Time For Completion of this contract, measured in days [See data extract in FIDIC 1.1].",
+      "rdfs:label": "contractTimeForCompletion",
+      "schema:domainIncludes": { "@id": "camo:ContractDateTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Integer" }
+    },     
+    {
+      "@id": "camo:ContractPartTable",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "Represents a contract part.",
+      "rdfs:label": "ContractPartTable",
+      "rdfs:subClassOf": { "@id": "camo:ComponentContractConcept" }
+    },
+    {
+      "@id": "camo:hasContractPartTable",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a root concept to its semantic pool.",
+      "rdfs:label": "hasContractPartTable",
+      "schema:domainIncludes": { "@id": "camo:ContractData" },
+      "schema:rangeIncludes":  { "@id": "camo:ContractPartTable" }
+    },
+    {
+      "@id": "camo:ContractPart",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A part of a contract's Works or Section(s), as defined in FIDIC 1.1.",
+      "rdfs:label": "ContractPart",
+      "rdfs:subClassOf": [
+        { "@id": "camo:ComponentContractConcept" }
+      ]
+    },
+    {
+      "@id": "camo:hasContractPart",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a contract part to its contract part table.",
+      "rdfs:label": "hasContractPartTable",
+      "schema:domainIncludes": { "@id": "camo:ContractPartTable" },
+      "schema:rangeIncludes":  { "@id": "camo:ContractPart" }
+    },    
+    {
+      "@id": "camo:SectionTable",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "Represents section contract data.",
+      "rdfs:label": "SectionTable",
+      "rdfs:subClassOf": { "@id": "camo:ComponentContractConcept" }
+    },
+    {
+      "@id": "camo:hasSectionTable",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a root concept to its semantic pool.",
+      "rdfs:label": "hasSectionTable",
+      "schema:domainIncludes": { "@id": "camo:ContractData" },
+      "schema:rangeIncludes":  { "@id": "camo:SectionTable" }
+    },
+    {
+      "@id": "camo:SectionTableBasedOnPrimaryRevision",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Most recent core contract data revision.",
+      "rdfs:label": "SectionTableBasedOnCoreRevision",
+      "schema:domainIncludes": { "@id": "camo:SectionTable" },
+      "schema:rangeIncludes":  { "@id": "schema:Integer" }
+    },
+    {
+      "@id": "camo:Section",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A section within a contract.",
+      "rdfs:label": "Section",
+      "rdfs:subClassOf": [
+        { "@id": "camo:ComponentContractConcept" }
+      ]
+    }, 
+    {
+      "@id": "camo:hasSection",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A section that is part of a contract.",
+      "rdfs:label": "hasSection",
+      "schema:domainIncludes": { "@id": "camo:SectionTable" },
+      "schema:rangeIncludes":  { "@id": "camo:Section" }
+    },
+    {
+      "@id": "camo:CommittedSumSection",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A committed sum section within a contract.",
+      "rdfs:label": "CommittedSumSection",
+      "rdfs:subClassOf": { "@id": "camo:Section" }
+    }, 
+    {
+      "@id": "camo:SectionOfWorks",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A section of works.",
+      "rdfs:label": "SectionOfWorks",
+      "rdfs:subClassOf": [
+        { "@id": "camo:CommittedSumSection" },
+        { "@id": "coremo:Numbered" }
+      ]
+    },  
+    {
+      "@id": "camo:sectionOfWorksTimeForCompletion",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The number of days for time for completion for this section works.",
+      "rdfs:label": "hasSection",
+      "schema:domainIncludes": { "@id": "camo:SectionOfWorks" },
+      "schema:rangeIncludes":  { "@id": "schema:Number" }
+    },
+    {
+      "@id": "camo:sectionOfWorksDelayDamagesPercentage",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The delay damages percenages for this section of works.",
+      "rdfs:label": "hasSection",
+      "schema:domainIncludes": { "@id": "camo:SectionOfWorks" },
+      "schema:rangeIncludes":  { "@id": "schema:Number" }
+    },
+    {
+      "@id": "camo:ProvisionalSumSection",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A provisional sum section within a contract.",
+      "rdfs:label": "ProvisionalSumSection",
+      "rdfs:subClassOf": { "@id": "camo:Section" }
+    }, 
+    {
+      "@id": "camo:OtherSection",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An other section representing other kinds of payments (example: 21.2 [last paragraph]).",
+      "rdfs:label": "OtherSection",
+      "rdfs:subClassOf": { "@id": "camo:CommittedSumSection" }
+    },
+    {
+      "@id": "camo:Subsection",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A Subsection",
+      "rdfs:label": "Subsection",
+      "rdfs:subClassOf": [
+        { "@id": "camo:ComponentContractConcept" },
+        { "@id": "coremo:Numbered" }       
+      ]
+    },
+    {
+      "@id": "camo:includedInContractPart",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Defines a contract part this section/subsection is included within (for a section, applies to all of its subsubsections which themselves do not have this property defined).",
+      "rdfs:label": "includedInContractPart",
+      "schema:domainIncludes": [
+        { "@id": "camo:Section" },
+        { "@id": "camo:Subsection" }
+      ],
+      "schema:rangeIncludes":  { "@id": "camo:ContractPart" }
+    },
+    {
+      "@id": "camo:hasSubsection",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A subsection that is part of a section.",
+      "rdfs:label": "hasSubsection",
+      "schema:domainIncludes": { "@id": "camo:Section" },
+      "schema:rangeIncludes":  { "@id": "camo:Subsection" }
+    },
+    {
+      "@id": "camo:addedInVariation",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The variation in which this (sub)section was added (0 for original contract).",
+      "rdfs:label": "addedInVariation",
+      "schema:domainIncludes": [
+        { "@id": "camo:Section" },
+        { "@id": "camo:Subsection" }    
+      ],
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    }, 
+    {
+      "@id": "camo:removedInVariation",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The variation in which this (sub)section was removed.",
+      "rdfs:label": "removedInVariation",
+      "schema:domainIncludes": [
+        { "@id": "camo:Section" },
+        { "@id": "camo:Subsection" }    
+      ],
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    }, 
+    {
+      "@id": "camo:PercentagePriceSpecification",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A percentage price specification.",
+      "rdfs:label": "PercentagePriceSpecification",
+      "rdfs:subClassOf": { "@id": "camo:ComponentContractConcept" }        
+    },
+    {
+      "@id": "camo:hasPercentagePriceSpecification",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The PercentagePriceSpecification associated with a subsection.",
+      "rdfs:label": "hasPercentagePriceSpecification",
+      "schema:domainIncludes": { "@id": "camo:Subsection" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },  
+    {
+      "@id": "camo:percentagePrice",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A percentage price.",
+      "rdfs:label": "percentagePrice",
+      "schema:domainIncludes": { "@id": "camo:PercentagePriceSpecification" },
+      "schema:rangeIncludes":  { "@id": "schema:Number" }
+    },
+    {
+      "@id": "camo:percentagePriceCurrency",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A percentage price currency.",
+      "rdfs:label": "percentagePriceCurrency",
+      "schema:domainIncludes": { "@id": "camo:PercentagePriceSpecification" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:subsectionPrice",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The amount and currency for this Contract Price.",
+      "rdfs:label": "subsectionPrice",
+      "schema:domainIncludes": { "@id": "camo:Subsection" },
+      "schema:rangeIncludes":  [
+        { "@id": "schema:PriceSpecification" },
+        { "@id": "camo:PercentagePriceSpecification" }
+      ]
+    },
+    {
+      "@id": "camo:PlantAndMaterialsTable",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "Represents a PlantAndMaterialsTable.",
+      "rdfs:label": "PlantAndMaterialsTable",
+      "rdfs:subClassOf": { "@id": "camo:ComponentContractConcept" }
+    },
+    {
+      "@id": "camo:hasPlantAndMaterialsTable",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a root concept to its semantic pool.",
+      "rdfs:label": "hasPlantAndMaterialsTable",
+      "schema:domainIncludes": { "@id": "camo:ContractData" },
+      "schema:rangeIncludes":  { "@id": "camo:PlantAndMaterialsTable" }
+    },
+    {
+      "@id": "camo:PlantMaterialsItem",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A PlantMaterialsItem.",
+      "rdfs:label": "PlantMaterialsItem",
+      "rdfs:subClassOf": [
+        { "@id": "camo:ComponentContractConcept" },
+        { "@id": "coremo:Numbered"    },
+        { "@id": "coremo:Describeable" }
+      ]
+    },
+    {
+      "@id": "camo:hasPlantMaterialsItem",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A plant and materials item that is part of a PlantAndMaterialsTable.",
+      "rdfs:label": "hasPlantMaterialsItem",
+      "schema:domainIncludes": { "@id": "camo:PlantAndMaterialsTable" },
+      "schema:rangeIncludes":  { "@id": "camo:PlantMaterialsItem" }
+    },
+    {
+      "@id": "camo:plantAndMaterialsPaymentWhenShipped",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Whether to allow plant and materials payment when shipped.",
+      "rdfs:label": "plantAndMaterialsPaymentWhenShipped",
+      "schema:domainIncludes": [
+        { "@id": "camo:Section" },
+        { "@id": "camo:Subsection" },
+        { "@id": "camo:PlantMaterialsItem" }
+        
+      ],
+      "schema:rangeIncludes":  { "@id": "schema:Boolean" }
+    },  
+    {
+      "@id": "camo:plantAndMaterialsPaymentWhenDelivered",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Whether to allow plant and materials payment when delivered.",
+      "rdfs:label": "plantAndMaterialsPaymentWhenDelivered",
+      "schema:domainIncludes": [
+        { "@id": "camo:Section" },
+        { "@id": "camo:Subsection" },
+        { "@id": "camo:PlantMaterialsItem" }
+      ],      
+      "schema:rangeIncludes":  { "@id": "schema:Boolean" }
+    }, 
+    {
+      "@id": "camo:plantAndMaterialsItemPrice",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The amount and currency for this plantAndMaterialsItem.",
+      "rdfs:label": "plantAndMaterialsItemPrice",
+      "schema:domainIncludes": { "@id": "camo:Subsection" },
+      "schema:rangeIncludes":  [
+        { "@id": "schema:PriceSpecification" }
+      ]
+    }      
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/schema/coremo/"
+  },
+  "@graph": [  
+    {
+      "@id": "coremo:Transformable",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A resource whose properties can be transformed via add/remove/clear transforms.",
+      "rdfs:label": "Transformable",
+      "rdfs:subClassOf": {
+        "@id": "coremo:ModelConcept"
+      }
+    },  
+    {
+      "@id": "coremo:Transform",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A transform for a Transformable.",
+      "rdfs:label": "Transform",
+      "rdfs:subClassOf": { "@id": "coremo:ModelConcept" }      
+    },
+    {
+      "@id": "coremo:hasTransform",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a transform to a Transformable.",
+      "rdfs:label": "hasTransform",
+      "schema:domainIncludes": { "@id": "coremo:Transformable" },
+      "schema:rangeIncludes":  { "@id": "coremo:Transform" }
+    },
+    {
+      "@id": "coremo:transformProperty",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The Transformable property to be changed.",
+      "rdfs:label": "transformProperty",
+      "schema:domainIncludes": { "@id": "coremo:Transform" },
+      "schema:rangeIncludes":  { "@id": "schema:URL" }
+    },
+    {
+      "@id": "coremo:transformInput",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The thing to use as input to the transform.",
+      "rdfs:label": "transformInput",
+      "schema:domainIncludes": { "@id": "coremo:Transform" },
+      "schema:rangeIncludes":  { "@id": "schema:Thing" }
+    },
+    {
+      "@id": "coremo:AddTransform",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An AddTransform for a Transformable.",
+      "rdfs:label": "AddTransform",
+      "rdfs:subClassOf": { "@id": "coremo:Transform" }
+    },
+    {
+      "@id": "coremo:RemoveTransform",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A RemoveTransform for a Transformable.",
+      "rdfs:label": "RemoveTransform",
+      "rdfs:subClassOf": { "@id": "coremo:Transform" }
+    },
+    {
+      "@id": "coremo:ClearTransform",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A ClearTransform for a Transformable (clears child elements, but does not remove parent element).",
+      "rdfs:label": "ClearTransform",
+      "rdfs:subClassOf": { "@id": "coremo:Transform" }
+    }
+  ]
+}

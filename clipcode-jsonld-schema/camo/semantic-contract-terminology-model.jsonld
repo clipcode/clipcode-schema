@@ -1,0 +1,137 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/schema/coremo/",
+    "camo":   "https://clipcode.org/base/schema/camo/"
+  },
+  "@graph": [
+    {
+      "@id": "camo:ExtensionOfTime",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An Extension Of Time (EOT).",
+      "rdfs:label": "ExtensionOfTime",
+      "rdfs:subClassOf": { "@id": "camo:TerminologyContractConcept" }
+    },
+    {
+      "@id": "camo:ExceptionalEvent",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An Exceptional Event.",
+      "rdfs:label": "ExceptionalEvent",
+      "rdfs:subClassOf": { "@id": "camo:TerminologyContractConcept" }
+    },
+    
+    {
+      "@id": "camo:ContractDocument",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A document that forms part of the contract.",
+      "rdfs:label": "ContractDocument",
+      "rdfs:subClassOf": { "@id": "camo:TerminologyContractConcept" }
+    },
+
+   
+    {
+      "@id": "camo:ContractDrawings",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "The contract drawings.",
+      "rdfs:label": "ContractDrawings",
+      "rdfs:subClassOf": { "@id": "camo:ContractDocument" }
+    },
+ 
+  
+    {
+      "@id": "camo:ContractTests",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "The contract tests.",
+      "rdfs:label": "ContractTests",
+      "rdfs:subClassOf": { "@id": "camo:ContractDocument" }
+    },
+    {
+      "@id": "camo:ContractTestsOnCompletion",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "The contract tests on completion.",
+      "rdfs:label": "ContractTestsOnCompletion",
+      "rdfs:subClassOf": { "@id": "camo:ContractTests" }
+    },
+    {
+      "@id": "camo:ContractTestsAfterCompletion",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "The contract tests after completion.",
+      "rdfs:label": "ContractTestsAfterCompletion",
+      "rdfs:subClassOf": { "@id": "camo:ContractTests" }
+    },
+    {
+      "@id": "camo:ComplianceVerificationSystem",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "The ComplianceVerificationSystem.",
+      "rdfs:label": "ComplianceVerificationSystem",
+      "rdfs:subClassOf": { "@id": "camo:TerminologyContractConcept" }
+    },
+    {
+      "@id": "camo:QualityManagementSystem",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "The QualityManagementSystem.",
+      "rdfs:label": "QualityManagementSystem",
+      "rdfs:subClassOf": { "@id": "camo:TerminologyContractConcept" }
+    },
+    {
+      "@id": "camo:PerformanceDamages",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "The Performance Damages.",
+      "rdfs:label": "PerformanceDamages",
+      "rdfs:subClassOf": { "@id": "camo:TerminologyContractConcept" }
+    },
+    {
+      "@id": "camo:DelayDamages",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "The Delay Damages.",
+      "rdfs:label": "DelayDamages",
+      "rdfs:subClassOf": { "@id": "camo:TerminologyContractConcept" }
+    },
+    {
+      "@id": "camo:ContractWorks",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "The Works.",
+      "rdfs:label": "ContractWorks",
+      "rdfs:subClassOf": { "@id": "camo:TerminologyContractConcept" }
+    },
+    {
+      "@id": "camo:PermanentWorks",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "The PermanentWorks.",
+      "rdfs:label": "PermanentWorks",
+      "rdfs:subClassOf": { "@id": "camo:ContractWorks" }
+    },
+    {
+      "@id": "camo:TemporaryWorks",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "The Temporary Works.",
+      "rdfs:label": "TemporaryWorks",
+      "rdfs:subClassOf": { "@id": "camo:ContractWorks" }
+    },
+    {
+      "@id": "camo:ContractCommunication",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A contract communication.",
+      "rdfs:label": "ContractCommunication",
+      "rdfs:subClassOf": { "@id": "camo:TerminologyContractConcept" }
+    },
+    {
+      "@id": "camo:ContractProgramme",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A contract programme.",
+      "rdfs:label": "ContractProgramme",
+      "rdfs:subClassOf": { "@id": "camo:ContractCommunication" }
+    },
+    {
+      "@id": "camo:ContractReview",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A review.",
+      "rdfs:label": "ContractReview",
+      "rdfs:subClassOf": { "@id": "camo:ContractCommunication" }
+    }
+  ]
+}

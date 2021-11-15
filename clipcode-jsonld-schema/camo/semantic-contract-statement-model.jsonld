@@ -1,0 +1,131 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/schema/coremo/",
+    "camo":   "https://clipcode.org/base/schema/camo/"
+  },
+  "@graph": [
+    {
+      "@id": "camo:ContractStatement",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A Statement to be sent by the conteactor to the engineer (Red/Yellow Book) or employer's representative (Silver Book).",
+      "rdfs:label": "Statement",
+      "rdfs:subClassOf": [
+        { "@id": "camo:StatementContractConcept" },
+        { "@id": "coremo:Numbered" },
+        { "@id": "camo:ContractCommunication" }
+      ]
+    },
+    {
+      "@id": "camo:ContractFinalStatement",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A Contract Final Statement.",
+      "rdfs:label": "ContractFinalStatement",
+      "rdfs:subClassOf": { "@id": "camo:ContractStatement" }
+    },
+
+    {
+      "@id": "camo:hasRootStatementContractConcept",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a Statement and contract payment to its semantic pool.",
+      "rdfs:label": "hasRootCertificateContractConcept",
+      "schema:domainIncludes": { "@id": "camo:StatementContractSemanticPool" },
+      "schema:rangeIncludes":  { "@id": "camo:ContractStatement" }
+    },
+    {
+      "@id": "camo:AdvanceStatement",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An advance statement.",
+      "rdfs:label": "AdvanceStatement",
+      "rdfs:subClassOf": { "@id": "camo:ContractStatement" }
+    },
+    {
+      "@id": "camo:InterimStatement",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An interim statement.",
+      "rdfs:label": "InterimStatement",
+      "rdfs:subClassOf": { "@id": "camo:ContractStatement" }
+    },
+    {
+      "@id": "camo:FinalStatement",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A final statement.",
+      "rdfs:label": "FinalStatement",
+      "rdfs:subClassOf": { "@id": "camo:ContractStatement" }
+    },
+    {
+      "@id": "camo:TakingOverStatement",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A taking-over statement (specifically for payment of the taking-over portion of the retention money)).",
+      "rdfs:label": "TakingOverStatement",
+      "rdfs:subClassOf": { "@id": "camo:ContractStatement" }
+    },
+    {
+      "@id": "camo:CustomsAndImportDutiesStatement",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A customs and import duties statement.",
+      "rdfs:label": "CustomsAndImportDutiesStatement",
+      "rdfs:subClassOf": { "@id": "camo:ContractStatement" }
+    },
+    {
+      "@id": "camo:contractstatementKind",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Identifies what kind of statement this is (useful for specialist statements with custom names, maps to statement layout in Contract Layout).",
+      "rdfs:label": "statementKind",
+      "schema:domainIncludes": { "@id": "camo:ContractStatement" },
+      "schema:rangeIncludes":  { "@id": "schema:URL" }
+    },
+    {
+      "@id": "camo:contractstatementBasedOnCoreContractDataRevision",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Most recent core contract data revision.",
+      "rdfs:label": "statementBasedOnCoreContractDataRevision",
+      "schema:domainIncludes": { "@id": "camo:ContractStatement" },
+      "schema:rangeIncludes":  { "@id": "schema:Integer" }
+    },
+    {
+      "@id": "camo:contractstatementBasedOnVaryingContractData",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Most recent varying contract data (Variation).",
+      "rdfs:label": "statementBasedOnVaryingContractData",
+      "schema:domainIncludes": { "@id": "camo:ContractStatement" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:contractstatementBasedOnVaryingContractDataRevision",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The revision of most recent varying contract data (Variation).",
+      "rdfs:label": "statementBasedOnVaryingContractDataRevision",
+      "schema:domainIncludes": { "@id": "camo:ContractStatement" },
+      "schema:rangeIncludes":  { "@id": "schema:Integer" }
+    },
+    {
+      "@id": "camo:takingOverStatementBasedOnTakingOverCertificate",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The taking over cert this is based upon (to discover withheld amounts).",
+      "rdfs:label": "takingOverStatementBasedOnTakingOverCertificate",
+      "schema:domainIncludes": { "@id": "camo:TakingOverStatement" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:takingOverStatementBasedOnTakingOverCertificateRevision",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The revision of the taking over cert to use.",
+      "rdfs:label": "takingOverStatementBasedOnTakingOverCertificateRevision",
+      "schema:domainIncludes": { "@id": "camo:TakingOverStatement" },
+      "schema:rangeIncludes":  { "@id": "schema:Integer" }
+    },
+    {
+      "@id": "camo:contractPaymentToUse",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Contract payment to use.",
+      "rdfs:label": "contractPaymentToUse",
+      "schema:domainIncludes": { "@id": "camo:ContractStatement" },
+      "schema:rangeIncludes":  { "@id": "schema:Integer" }
+    }
+  ]
+}

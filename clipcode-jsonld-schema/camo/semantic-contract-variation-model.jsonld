@@ -1,0 +1,48 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/schema/coremo/",
+    "camo":   "https://clipcode.org/base/schema/camo/"
+  },
+  "@graph": [    
+    {
+      "@id": "camo:Variation",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A variation.",
+      "rdfs:label": "Variation",
+      "rdfs:subClassOf": [
+        { "@id": "camo:VariationContractConcept" },
+        { "@id": "coremo:Numbered" },
+        { "@id": "camo:ContractCommunication" }       
+      ] 
+    }, 
+    {
+      "@id": "camo:hasVariation",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a root concept to its semantic pool.",
+      "rdfs:label": "hasVariation",
+      "schema:domainIncludes": { "@id": "camo:VariationContractConcept" },
+      "schema:rangeIncludes":  { "@id": "camo:Variation" }
+    },
+    {
+      "@id": "camo:variationTopic",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A topic (textual explanation) for this variation.",
+      "rdfs:label": "variationTopic",
+      "schema:domainIncludes": { "@id": "camo:Variation" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    }, 
+    {
+      "@id": "camo:hasContractPrice",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The amount and currency for the Contract Price, updated for this Variation.",
+      "rdfs:label": "hasContractPrice",
+      "schema:domainIncludes": { "@id": "camo:Variation" },
+      "schema:rangeIncludes":  { "@id": "schema:PriceSpecification" }
+    }   
+  ]
+}

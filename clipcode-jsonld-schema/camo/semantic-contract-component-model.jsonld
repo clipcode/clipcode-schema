@@ -1,0 +1,123 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/schema/coremo/",
+    "camo":   "https://clipcode.org/base/schema/camo/"
+  },
+  "@graph": [ 
+    {
+      "@id": "camo:Contract",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "The contract.",
+      "rdfs:label": "Contract",
+      "rdfs:subClassOf": [       
+        { "@id": "coremo:Describeable" },   
+        { "@id": "coremo:Templatable" },
+        { "@id": "coremo:Numbered"    },     
+        { "@id": "camo:ComponentContractConcept" }   
+    ]}, 
+    {
+      "@id": "camo:ContractComponent",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A component of the contract (such as contract agreement or schedules).",
+      "rdfs:label": "ContractComponent",
+      "rdfs:subClassOf": { "@id": "camo:ComponentContractConcept" }
+    },
+    {
+      "@id": "camo:ContractParties",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "The Contract Parties.",
+      "rdfs:label": "ContractParties",
+      "rdfs:subClassOf": { "@id": "camo:ComponentContractConcept" }
+    },
+    {
+      "@id": "camo:ContractParty",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A Contract Party.",
+      "rdfs:label": "ContractParty",
+      "rdfs:subClassOf": { "@id": "camo:ComponentContractConcept" }
+    },
+    {
+      "@id": "camo:JVUndertaking",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "The joint venture undertaking.",
+      "rdfs:label": "JVUndertaking",
+      "rdfs:subClassOf": { "@id": "camo:ComponentContractConcept" }
+    },
+    {
+      "@id": "camo:LetterOfAcceptance",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "The Letter Of Acceptance.",
+      "rdfs:label": "LetterOfAcceptance",
+      "rdfs:subClassOf": { "@id": "camo:ComponentContractConcept" }
+    },
+    {
+      "@id": "camo:LetterOfTender",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "The Letter Of Tender.",
+      "rdfs:label": "LetterOfTender",
+      "rdfs:subClassOf": { "@id": "camo:ComponentContractConcept" }
+    },
+    {
+      "@id": "camo:acceptedContractAmount",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The Accepted Contract Amount of this contract.",
+      "rdfs:label": "acceptedContractAmount",
+      "schema:domainIncludes": { "@id": "camo:LetterOfAcceptance" },
+      "schema:rangeIncludes":  { "@id": "schema:PriceSpecification" }
+    },
+    {
+      "@id": "camo:ContractAgreement",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "The contract aggreement.",
+      "rdfs:label": "ContractAgreement",
+      "rdfs:subClassOf": { "@id": "camo:ComponentContractConcept" }
+    },
+    {
+      "@id": "camo:ContractConditions",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "The contract conditions.",
+      "rdfs:label": "ContractConditions",
+      "rdfs:subClassOf": { "@id": "camo:ComponentContractConcept" }
+    },
+    {
+      "@id": "camo:DAABAgreement",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "The DAAB agreement.",
+      "rdfs:label": "DAABAgreement",
+      "rdfs:subClassOf": { "@id": "camo:ComponentContractConcept" }
+    },
+    {
+      "@id": "camo:ContractSchedule",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "The Schedules.",
+      "rdfs:label": "ContractSchedule",
+      "rdfs:subClassOf": { "@id": "camo:ComponentContractConcept" }
+    },
+    {
+      "@id": "camo:BillOfQuantities",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "The Bill Of Quantities schedule.",
+      "rdfs:label": "BillOfQuantities",
+      "rdfs:subClassOf": { "@id": "camo:ComponentContractConcept" }
+    },
+    {
+      "@id": "camo:ContractSpecification",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "The contract specification.",
+      "rdfs:label": "ContractSpecification",
+      "rdfs:subClassOf": { "@id": "camo:ComponentContractConcept" }
+    },
+    {
+      "@id": "camo:ContractTender",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "The contract tender.",
+      "rdfs:label": "ContractTender",
+      "rdfs:subClassOf": { "@id": "camo:ComponentContractConcept" }
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/schema/coremo/",
+    "camo":   "https://clipcode.org/base/schema/camo/"
+  },
+  "@graph": [    
+    {
+      "@id": "camo:Development",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A development.",
+      "rdfs:label": "Development",
+      "rdfs:subClassOf": [
+        { "@id": "camo:DevelopmentContractConcept" },             
+        { "@id": "coremo:Describeable" }             
+      ] 
+    }, 
+    {
+      "@id": "camo:hasDevelopment",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a root concept to its semantic pool.",
+      "rdfs:label": "hasDevelopment",
+      "schema:domainIncludes": { "@id": "camo:DevelopmentContractSemanticPool" },
+      "schema:rangeIncludes":  { "@id": "camo:Development" }
+    },
+    {
+      "@id": "camo:developmentMandatoryEmployer",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The mandatory for this development.",
+      "rdfs:label": "developmentTopic",
+      "schema:domainIncludes": { "@id": "camo:Development" },
+      "schema:rangeIncludes":  { "@id": "schema:URL" }
+    }    
+  ]
+}

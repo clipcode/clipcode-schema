@@ -1,0 +1,146 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/schema/coremo/",
+    "camo":   "https://clipcode.org/base/schema/camo/"
+  },
+  "@graph": [
+    {
+      "@id": "camo:ContractNotice",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A contract notice.",
+      "rdfs:label": "ContractNotice",
+      "rdfs:subClassOf": [
+        { "@id": "camo:NoticeContractConcept" },
+        { "@id": "coremo:Numbered" },
+        { "@id": "camo:ContractCommunication" }
+      ]
+    },
+    {
+      "@id": "camo:hasContractNotice",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a root concept to its semantic pool.",
+      "rdfs:label": "hasContractNotice",
+      "schema:domainIncludes": { "@id": "camo:NoticeContractSemanticPool" },
+      "schema:rangeIncludes":  { "@id": "camo:ContractNotice" }
+    },
+    {
+      "@id": "camo:NoticeOfDissastification",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A notice of dissastification.",
+      "rdfs:label": "ContractNotice",
+      "rdfs:subClassOf": { "@id": "camo:ContractNotice" }
+    },
+    {
+      "@id": "camo:NoticeOfNoObjection",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A notice of no objection.",
+      "rdfs:label": "NoticeOfNoObjection",
+      "rdfs:subClassOf": { "@id": "camo:ContractNotice" }
+    },
+    {
+      "@id": "camo:contractNoticeKind",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The kind of this notice (see Contract Design).",
+      "rdfs:label": "contractNoticeKind",
+      "schema:domainIncludes": { "@id": "camo:ContractNotice" },
+      "schema:rangeIncludes":  { "@id": "schema:URL" }
+    },
+    {
+      "@id": "camo:refersToContractClauseSubclause",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The relevant clause/subclause from the contract. ",
+      "rdfs:label": "refersToContractClauseSubclause",
+      "schema:domainIncludes": { "@id": "camo:ContractNotice" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:refersToSection",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The relevant section.",
+      "rdfs:label": "refersToSection",
+      "schema:domainIncludes": { "@id": "camo:ContractNotice" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:refersToPart",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The relevant part.",
+      "rdfs:label": "refersToPart",
+      "schema:domainIncludes": { "@id": "camo:ContractNotice" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "camo:noticeRefersToDate",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The relevant date / date range.",
+      "rdfs:label": "noticeRefersToDate",
+      "schema:domainIncludes": { "@id": "camo:ContractNotice" },
+      "schema:rangeIncludes":  [
+        { "@id": "schema:Date" },
+        { "@id": "coremo:DateRange" }        
+      ]
+    },
+    {
+      "@id": "camo:noticeRefersToLocation",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The location relevant to this notice.",
+      "rdfs:label": "noticeRefersToLocation",
+      "rdfs:subPropertyOf": { "@id": "schema:location" },
+      "schema:domainIncludes": { "@id": "camo:ContractNotice" },
+      "schema:rangeIncludes": [
+        { "@id": "schema:Place" },
+        { "@id": "schema:PostalAddress" },
+        { "@id": "schema:Text" },
+        { "@id": "schema:VirtualLocation" }
+      ]
+    },
+    {
+      "@id": "camo:noticeFromStakeholder",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The stakeholder sending the notice.",
+      "rdfs:label": "noticeFromStakeholder",
+      "schema:domainIncludes": { "@id": "camo:ContractNotice" },
+      "schema:rangeIncludes":  { "@id": "schema:URL" }
+    },
+    {
+      "@id": "camo:noticeToStakeholder",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The stakeholder to which the notice is destined for.",
+      "rdfs:label": "noticeToStakeholder",
+      "schema:domainIncludes": { "@id": "camo:ContractNotice" },
+      "schema:rangeIncludes":  { "@id": "schema:URL" }
+    },
+    {
+      "@id": "camo:noticeCopyToStakeholder",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The stakeholder to which a copy of the notice is destined for.",
+      "rdfs:label": "noticeCopyToStakeholder",
+      "schema:domainIncludes": { "@id": "camo:ContractNotice" },
+      "schema:rangeIncludes":  { "@id": "schema:URL" }
+    },
+    {
+      "@id": "camo:noticeBodyData",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The data behind the notice body.",
+      "rdfs:label": "noticeBodyData",
+      "schema:domainIncludes": { "@id": "camo:ContractNotice" },
+      "schema:rangeIncludes":  { "@id": "schema:URL" }
+    },
+    {
+      "@id": "camo:noticeBodyContent",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The body text of the notice.",
+      "rdfs:label": "noticeBodyContent",
+      "schema:domainIncludes": { "@id": "camo:ContractNotice" },
+      "schema:rangeIncludes":  [
+        { "@id": "schema:Text" },
+        { "@id": "schema:URL" }
+      ]
+    }
+  ]
+}
