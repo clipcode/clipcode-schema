@@ -113,10 +113,10 @@
       "rdfs:subClassOf": { "@id": "camo:ContractWorks" }
     },
     {
-      "@id": "camo:ContractCommunication",
+      "@id": "camo:TerminologyContractConcept",
       "@type": "rdfs:Class",
       "rdfs:comment": "A contract communication.",
-      "rdfs:label": "ContractCommunication",
+      "rdfs:label": "TerminologyContractConcept",
       "rdfs:subClassOf": { "@id": "camo:TerminologyContractConcept" }
     },
     {
@@ -124,14 +124,37 @@
       "@type": "rdfs:Class",
       "rdfs:comment": "A contract programme.",
       "rdfs:label": "ContractProgramme",
-      "rdfs:subClassOf": { "@id": "camo:ContractCommunication" }
+      "rdfs:subClassOf": { "@id": "camo:TerminologyContractConcept" }
     },
     {
       "@id": "camo:ContractReview",
       "@type": "rdfs:Class",
       "rdfs:comment": "A review.",
       "rdfs:label": "ContractReview",
-      "rdfs:subClassOf": { "@id": "camo:ContractCommunication" }
+      "rdfs:subClassOf": { "@id": "camo:TerminologyContractConcept" }
+    },
+    {
+      "@id": "camo:ContractClaim",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A ContractClaim.",
+      "rdfs:label": "ContractClaim",
+      "rdfs:subClassOf": [
+        { "@id": "camo:TerminologyContractConcept" }       
+      ] 
+    }, 
+    {
+      "@id": "camo:AdvancePaymentGuarantee",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An Advance Payment Guarantee.",
+      "rdfs:label": "AdvancePaymentGuarantee",
+      "rdfs:subClassOf": { "@id": "camo:TerminologyContractConcept" }
+    },
+    {
+      "@id": "camo:PerformanceSecurity",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A Performance Security.",
+      "rdfs:label": "PerformanceSecurity",
+      "rdfs:subClassOf": { "@id": "camo:TerminologyContractConcept" }
     }
   ]
 }

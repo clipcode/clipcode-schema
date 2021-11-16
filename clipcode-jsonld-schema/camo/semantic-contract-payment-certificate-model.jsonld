@@ -68,7 +68,7 @@
       "@type": "rdf:Property",
       "rdfs:comment": "Identifies what kind of payment certificate this is).",
       "rdfs:label": "paymentCertificateKind",
-      "schema:domainIncludes": { "@id": "camo:ContractCertificate" },
+      "schema:domainIncludes": { "@id": "camo:PaymentCertificate" },
       "schema:rangeIncludes":  { "@id": "schema:URL" }
     },
     {
@@ -76,7 +76,7 @@
       "@type": "rdf:Property",
       "rdfs:comment": "Most recent core contract data revision.",
       "rdfs:label": "paymentCertificateBasedOnContractDataRevision",
-      "schema:domainIncludes": { "@id": "camo:ContractCertificate" },
+      "schema:domainIncludes": { "@id": "camo:PaymentCertificate" },
       "schema:rangeIncludes":  { "@id": "schema:Integer" }
     },
     {
@@ -96,12 +96,12 @@
       "schema:rangeIncludes":  { "@id": "schema:Integer" }
     },
     {
-      "@id": "camo:contractPaymentToUse",
+      "@id": "camo:contractPaymentDescriptionToUse",
       "@type": "rdf:Property",
-      "rdfs:comment": "Contract payment to use.",
-      "rdfs:label": "contractPaymentToUse",
+      "rdfs:comment": "Contract payment description to use.",
+      "rdfs:label": "contractPaymentDescriptionToUse",
       "schema:domainIncludes": { "@id": "camo:PaymentCertificate" },
-      "schema:rangeIncludes":  { "@id": "schema:URL" }
+      "schema:rangeIncludes":  { "@id": "camo:ContractPaymentDescription" }
     }
   ]
 }

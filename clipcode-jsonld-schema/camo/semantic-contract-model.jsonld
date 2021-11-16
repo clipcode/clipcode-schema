@@ -92,28 +92,10 @@
       }
     },
     {
-      "@id": "camo:SecuritiesContractConcept",
-      "@type": "rdfs:Class",
-      "rdfs:comment": "A securitites contract concept",
-      "rdfs:label": "SecuritiesContractConcept",
-      "rdfs:subClassOf": {
-        "@id": "camo:ContractConcept"
-      }
-    },
-    {
       "@id": "camo:VariationContractConcept",
       "@type": "rdfs:Class",
       "rdfs:comment": "A Variation contract concept",
       "rdfs:label": "VariationContractConcept",
-      "rdfs:subClassOf": {
-        "@id": "camo:ContractConcept"
-      }
-    },
-    {
-      "@id": "camo:CertificateContractConcept",
-      "@type": "rdfs:Class",
-      "rdfs:comment": "A certificate contract concept",
-      "rdfs:label": "CertificateContractConcept",
       "rdfs:subClassOf": {
         "@id": "camo:ContractConcept"
       }
@@ -141,6 +123,15 @@
       "@type": "rdfs:Class",
       "rdfs:comment": "A notified payment contract concept",
       "rdfs:label": "PaymentExplanationContractConcept",
+      "rdfs:subClassOf": {
+        "@id": "camo:ContractConcept"
+      }
+    },
+    {
+      "@id": "camo:RegularCertificateContractConcept",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A regular certificate contract concept",
+      "rdfs:label": "",
       "rdfs:subClassOf": {
         "@id": "camo:ContractConcept"
       }
@@ -225,20 +216,6 @@
       "rdfs:subClassOf": { "@id": "camo:ContractSemanticPool" }
     },
     {
-      "@id": "camo:SecuritiesContractSemanticPool",
-      "@type": "rdfs:Class",
-      "rdfs:comment": "A securities contract semantic pool.",
-      "rdfs:label": "SecuritiesContractSemanticPool",
-      "rdfs:subClassOf": { "@id": "camo:ContractSemanticPool" }
-    },
-    {
-      "@id": "camo:CertificateContractSemanticPool",
-      "@type": "rdfs:Class",
-      "rdfs:comment": "A certificate contract semantic pool.",
-      "rdfs:label": "CertificateContractSemanticPool",
-      "rdfs:subClassOf": { "@id": "camo:ContractSemanticPool" }
-    },
-    {
       "@id": "camo:VariationContractSemanticPool",
       "@type": "rdfs:Class",
       "rdfs:comment": "A variation contract semantic pool.",
@@ -264,6 +241,13 @@
       "@type": "rdfs:Class",
       "rdfs:comment": "A notified payment contract semantic pool.",
       "rdfs:label": "PaymentExplanationContractSemanticPool",
+      "rdfs:subClassOf": { "@id": "camo:ContractSemanticPool" }
+    },
+    {
+      "@id": "camo:RegularCertificateContractSemanticPool",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A regular certificate contract semantic pool.",
+      "rdfs:label": "RegularCertificateContractSemanticPool",
       "rdfs:subClassOf": { "@id": "camo:ContractSemanticPool" }
     },
     {
