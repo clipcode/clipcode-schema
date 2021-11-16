@@ -2,41 +2,41 @@
 export type WithContext<T extends Thing> = T & {
     "@context": {
         "schema": "https://schema.org";
-        "coremo": "https://clipcode.org/base/concept/coremo";
-        "catmo": "https://clipcode.org/base/concept/catmo";
-        "dstoremo": "https://clipcode.org/base/concept/dstoremo";
-        "dirmo": "https://clipcode.org/base/concept/dirmo";
-        "polmo": "https://clipcode.org/base/concept/polmo";
-        "usermo": "https://clipcode.org/base/concept/usermo";
-        "fomo": "https://clipcode.org/base/concept/fomo";
-        "como": "https://clipcode.org/base/concept/como";
-        "appmo": "https://clipcode.org/base/concept/appmo";
-        "stylemo": "https://clipcode.org/base/concept/stylemo";
-        "renmo": "https://clipcode.org/base/concept/renmo";
-        "pagemo": "https://clipcode.org/base/concept/pagemo";
-        "docmo": "https://clipcode.org/base/concept/docmo";
-        "repmo": "https://clipcode.org/base/concept/repmo";
-        "camo": "https://clipcode.org/base/concept/camo";
+        "coremo": "https://clipcode.org/base/schema/coremo";
+        "catmo": "https://clipcode.org/base/schema/catmo";
+        "dstoremo": "https://clipcode.org/base/schema/dstoremo";
+        "dirmo": "https://clipcode.org/base/schema/dirmo";
+        "polmo": "https://clipcode.org/base/schema/polmo";
+        "usermo": "https://clipcode.org/base/schema/usermo";
+        "fomo": "https://clipcode.org/base/schema/fomo";
+        "como": "https://clipcode.org/base/schema/como";
+        "appmo": "https://clipcode.org/base/schema/appmo";
+        "stylemo": "https://clipcode.org/base/schema/stylemo";
+        "renmo": "https://clipcode.org/base/schema/renmo";
+        "pagemo": "https://clipcode.org/base/schema/pagemo";
+        "docmo": "https://clipcode.org/base/schema/docmo";
+        "repmo": "https://clipcode.org/base/schema/repmo";
+        "camo": "https://clipcode.org/base/schema/camo";
     };
 };
 export interface Graph {
     "@context": {
         "schema": "https://schema.org";
-        "coremo": "https://clipcode.org/base/concept/coremo";
-        "catmo": "https://clipcode.org/base/concept/catmo";
-        "dstoremo": "https://clipcode.org/base/concept/dstoremo";
-        "dirmo": "https://clipcode.org/base/concept/dirmo";
-        "polmo": "https://clipcode.org/base/concept/polmo";
-        "usermo": "https://clipcode.org/base/concept/usermo";
-        "fomo": "https://clipcode.org/base/concept/fomo";
-        "como": "https://clipcode.org/base/concept/como";
-        "appmo": "https://clipcode.org/base/concept/appmo";
-        "stylemo": "https://clipcode.org/base/concept/stylemo";
-        "renmo": "https://clipcode.org/base/concept/renmo";
-        "pagemo": "https://clipcode.org/base/concept/pagemo";
-        "docmo": "https://clipcode.org/base/concept/docmo";
-        "repmo": "https://clipcode.org/base/concept/repmo";
-        "camo": "https://clipcode.org/base/concept/camo";
+        "coremo": "https://clipcode.org/base/schema/coremo";
+        "catmo": "https://clipcode.org/base/schema/catmo";
+        "dstoremo": "https://clipcode.org/base/schema/dstoremo";
+        "dirmo": "https://clipcode.org/base/schema/dirmo";
+        "polmo": "https://clipcode.org/base/schema/polmo";
+        "usermo": "https://clipcode.org/base/schema/usermo";
+        "fomo": "https://clipcode.org/base/schema/fomo";
+        "como": "https://clipcode.org/base/schema/como";
+        "appmo": "https://clipcode.org/base/schema/appmo";
+        "stylemo": "https://clipcode.org/base/schema/stylemo";
+        "renmo": "https://clipcode.org/base/schema/renmo";
+        "pagemo": "https://clipcode.org/base/schema/pagemo";
+        "docmo": "https://clipcode.org/base/schema/docmo";
+        "repmo": "https://clipcode.org/base/schema/repmo";
+        "camo": "https://clipcode.org/base/schema/camo";
     };
     "@graph": readonly Thing[];
 }
@@ -262,13 +262,65 @@ interface ActivityModelAreaLeaf extends ThingBase {
     "@type": "coremo:ActivityModelArea";
 }
 /** A activity model area. */
-export type ActivityModelArea = ActivityModelAreaLeaf;
+export type ActivityModelArea = ActivityModelAreaLeaf | ContractConcept;
 
 interface AddActionLeaf extends UpdateActionBase {
     "@type": "schema:AddAction";
 }
 /** The act of editing by adding an object to a collection. */
 export type AddAction = AddActionLeaf | InsertAction;
+
+interface AdditionContractPaymentDescriptionDueToBenefitSharingOfValueEngineeringLeaf extends AdditionContractPaymentDescriptionItemBase {
+    "@type": "camo:AdditionContractPaymentDescriptionDueToBenefitSharingOfValueEngineering";
+}
+/** An addition to be added to a contract payment description. */
+export type AdditionContractPaymentDescriptionDueToBenefitSharingOfValueEngineering = AdditionContractPaymentDescriptionDueToBenefitSharingOfValueEngineeringLeaf;
+
+interface AdditionContractPaymentDescriptionDueToContractorPaidEmployerDAABFeeLeaf extends AdditionContractPaymentDescriptionItemBase {
+    "@type": "camo:AdditionContractPaymentDescriptionDueToContractorPaidEmployerDAABFee";
+}
+/** An addition to be added to a contract payment description. */
+export type AdditionContractPaymentDescriptionDueToContractorPaidEmployerDAABFee = AdditionContractPaymentDescriptionDueToContractorPaidEmployerDAABFeeLeaf;
+
+interface AdditionContractPaymentDescriptionDueToEarlyCompletionLeaf extends AdditionContractPaymentDescriptionItemBase {
+    "@type": "camo:AdditionContractPaymentDescriptionDueToEarlyCompletion";
+}
+/** An addition to be added to a contract payment description. */
+export type AdditionContractPaymentDescriptionDueToEarlyCompletion = AdditionContractPaymentDescriptionDueToEarlyCompletionLeaf;
+
+interface AdditionContractPaymentDescriptionItemBase extends ThingBase {
+    /** The amount property for a GeneralPaymentDescription. */
+    "camo:additionContractPaymentDescriptionAmount"?: SchemaValue<MonetaryAmount | IdReference>;
+    /** Explanation for this Addition Payment. */
+    "camo:contractPaymentDescriptionAdditionItemDetails"?: SchemaValue<Text>;
+    /** Identifies what kind of AdditionPayment this is. */
+    "camo:contractPaymentDescriptionAdditionKind"?: SchemaValue<URL>;
+}
+interface AdditionContractPaymentDescriptionItemLeaf extends AdditionContractPaymentDescriptionItemBase {
+    "@type": "camo:AdditionContractPaymentDescriptionItem";
+}
+/** An addition to be added to an AdditionsPaymentDescriptionTable. */
+export type AdditionContractPaymentDescriptionItem = AdditionContractPaymentDescriptionItemLeaf | AdditionContractPaymentDescriptionDueToBenefitSharingOfValueEngineering | AdditionContractPaymentDescriptionDueToContractorPaidEmployerDAABFee | AdditionContractPaymentDescriptionDueToEarlyCompletion;
+
+interface AdditionsPaymentDescriptionBase extends GeneralPaymentDescriptionBase {
+    /** Attaches an AdditionsPaymentDescriptionTable to its AdditionsPaymentDescription. */
+    "camo:hasAdditionContractPaymentDescriptionTable"?: SchemaValue<AdditionsPaymentDescriptionTable | IdReference>;
+}
+interface AdditionsPaymentDescriptionLeaf extends AdditionsPaymentDescriptionBase {
+    "@type": "camo:AdditionsPaymentDescription";
+}
+/** A additions payment that is part of a contract payment description. */
+export type AdditionsPaymentDescription = AdditionsPaymentDescriptionLeaf;
+
+interface AdditionsPaymentDescriptionTableBase extends ThingBase {
+    /** Attaches a AdditionContractPaymentDescriptionItem to a AdditionsPaymentDescriptionTable. */
+    "camo:hasAdditionContractPaymentDescriptionItem"?: SchemaValue<AdditionContractPaymentDescriptionItem | IdReference>;
+}
+interface AdditionsPaymentDescriptionTableLeaf extends AdditionsPaymentDescriptionTableBase {
+    "@type": "camo:AdditionsPaymentDescriptionTable";
+}
+/** An AdditionsPaymentDescriptionTable attached to an AdditionsPaymentDescription. */
+export type AdditionsPaymentDescriptionTable = AdditionsPaymentDescriptionTableLeaf;
 
 interface AddTransformLeaf extends TransformBase {
     "@type": "coremo:AddTransform";
@@ -287,6 +339,46 @@ interface AdultEntertainmentLeaf extends LocalBusinessBase {
 }
 /** An adult entertainment establishment. */
 export type AdultEntertainment = AdultEntertainmentLeaf | string;
+
+interface AdvancePaymentCertificateLeaf extends PaymentCertificateBase {
+    "@type": "camo:AdvancePaymentCertificate";
+}
+/** An advance payment certificate. */
+export type AdvancePaymentCertificate = AdvancePaymentCertificateLeaf;
+
+interface AdvancePaymentGuaranteeLeaf extends ThingBase {
+    "@type": "camo:AdvancePaymentGuarantee";
+}
+/** An Advance Payment Guarantee. */
+export type AdvancePaymentGuarantee = AdvancePaymentGuaranteeLeaf;
+
+interface AdvancePaymentLayoutTableBase extends ThingBase {
+    /** Defines the advance percentage to be used. */
+    "camo:advancePaymentPercentage"?: SchemaValue<Number>;
+}
+interface AdvancePaymentLayoutTableLeaf extends AdvancePaymentLayoutTableBase {
+    "@type": "camo:AdvancePaymentLayoutTable";
+}
+/** Advance payment layout table. */
+export type AdvancePaymentLayoutTable = AdvancePaymentLayoutTableLeaf;
+
+interface AdvancePaymentNotificationLeaf extends PaymentNotificationBase {
+    "@type": "camo:AdvancePaymentNotification";
+}
+/** An advance payment notification. */
+export type AdvancePaymentNotification = AdvancePaymentNotificationLeaf;
+
+interface AdvanceSectionPaymentDescriptionLeaf extends SectionPaymentDescriptionBase {
+    "@type": "camo:AdvanceSectionPaymentDescription";
+}
+/** An advance payment that is part of a contract payment description. */
+export type AdvanceSectionPaymentDescription = AdvanceSectionPaymentDescriptionLeaf;
+
+interface AdvanceStatementLeaf extends ContractStatementBase {
+    "@type": "camo:AdvanceStatement";
+}
+/** An advance statement. */
+export type AdvanceStatement = AdvanceStatementLeaf;
 
 interface AdvertiserContentArticleLeaf extends ArticleBase {
     "@type": "schema:AdvertiserContentArticle";
@@ -532,6 +624,18 @@ interface APIReferenceLeaf extends APIReferenceBase {
 /** Reference documentation for application programming interfaces (APIs). */
 export type APIReference = APIReferenceLeaf;
 
+interface AppDirectoryConceptLeaf extends ThingBase {
+    "@type": "dirmo:AppDirectoryConcept";
+}
+/** An app directory concept */
+export type AppDirectoryConcept = AppDirectoryConceptLeaf;
+
+interface AppDirectorySemanticPoolLeaf extends DirectorySemanticPoolBase {
+    "@type": "dirmo:AppDirectorySemanticPool";
+}
+/** An app directory */
+export type AppDirectorySemanticPool = AppDirectorySemanticPoolLeaf;
+
 interface AppendActionLeaf extends InsertActionBase {
     "@type": "schema:AppendAction";
 }
@@ -560,6 +664,18 @@ interface ApplyActionLeaf extends ActionBase {
  * - {@link https://schema.org/RegisterAction RegisterAction}: Unlike RegisterAction, ApplyAction has no guarantees that the application will be accepted.
  */
 export type ApplyAction = ApplyActionLeaf;
+
+interface ApplyAndCollectDamagesSectionPaymentDescriptionLeaf extends SectionPaymentDescriptionBase {
+    "@type": "camo:ApplyAndCollectDamagesSectionPaymentDescription";
+}
+/** Apply and collect damages SectionPaymentDescription that is part of a contract payment description. */
+export type ApplyAndCollectDamagesSectionPaymentDescription = ApplyAndCollectDamagesSectionPaymentDescriptionLeaf;
+
+interface ApplyDamagesSectionPaymentDescriptionLeaf extends SectionPaymentDescriptionBase {
+    "@type": "camo:ApplyDamagesSectionPaymentDescription";
+}
+/** Apply damages SectionPaymentDescription that is part of a contract payment description. */
+export type ApplyDamagesSectionPaymentDescription = ApplyDamagesSectionPaymentDescriptionLeaf;
 
 interface ApprovedIndicationLeaf extends MedicalEntityBase {
     "@type": "schema:ApprovedIndication";
@@ -712,7 +828,7 @@ interface AttachmentEnumerationLeaf extends EnumerationBase {
     "@type": "coremo:AttachmentEnumeration";
 }
 /** AttachmentEnumeration is an enumeration type representing attachments. */
-export type AttachmentEnumeration = "https://clipcode.org/base/concept/coremo/ModelAttached" | "coremo:ModelAttached" | "https://clipcode.org/base/concept/coremo/NetworkAttached" | "coremo:NetworkAttached" | AttachmentEnumerationLeaf;
+export type AttachmentEnumeration = "https://clipcode.org/base/schema/coremo/GraphAttached" | "coremo:GraphAttached" | "https://clipcode.org/base/schema/coremo/NetworkAttached" | "coremo:NetworkAttached" | AttachmentEnumerationLeaf;
 
 interface AttorneyLeaf extends LocalBusinessBase {
     "@type": "schema:Attorney";
@@ -840,6 +956,12 @@ interface BakeryLeaf extends FoodEstablishmentBase {
 /** A bakery. */
 export type Bakery = BakeryLeaf | string;
 
+interface BankLeaf extends ThingBase {
+    "@type": "dirmo:Bank";
+}
+/** A bank. */
+export type Bank = BankLeaf;
+
 interface BankAccountBase extends FinancialProductBase {
     /** A minimum amount that has to be paid in every month. */
     "schema:accountMinimumInflow"?: SchemaValue<MonetaryAmount | IdReference>;
@@ -928,6 +1050,12 @@ interface BikeStoreLeaf extends LocalBusinessBase {
 }
 /** A bike store. */
 export type BikeStore = BikeStoreLeaf | string;
+
+interface BillOfQuantitiesLeaf extends ThingBase {
+    "@type": "camo:BillOfQuantities";
+}
+/** The Bill Of Quantities schedule. */
+export type BillOfQuantities = BillOfQuantitiesLeaf;
 
 interface BioChemEntityBase extends ThingBase {
     /** Disease associated to this BioChemEntity. Such disease can be a MedicalCondition or a URL. If you want to add an evidence supporting the association, please use PropertyValue. */
@@ -1465,28 +1593,6 @@ interface CasinoLeaf extends LocalBusinessBase {
 /** A casino. */
 export type Casino = CasinoLeaf | string;
 
-interface CategoryBase extends ThingBase, ThingBase {
-    /** A partiicpant in a category. */
-    "catmo:hasCategoryParticipant"?: SchemaValue<CategoryParticipant | IdReference>;
-}
-interface CategoryLeaf extends CategoryBase {
-    "@type": "catmo:Category";
-}
-/** A category. */
-export type Category = CategoryLeaf;
-
-interface CategoryArrowBase extends ThingBase {
-    /** A source of a category arrow. */
-    "catmo:hasArrowSource"?: SchemaValue<CategoryObject | IdReference>;
-    /** A target of a category arrow. */
-    "catmo:hasArrowTarget"?: SchemaValue<CategoryObject | IdReference>;
-}
-interface CategoryArrowLeaf extends CategoryArrowBase {
-    "@type": "catmo:CategoryArrow";
-}
-/** A directed arrow between two category objects. */
-export type CategoryArrow = CategoryArrowLeaf;
-
 interface CategoryCodeBase extends DefinedTermBase {
     /** A short textual code that uniquely identifies the value. */
     "schema:codeValue"?: SchemaValue<Text>;
@@ -1508,48 +1614,6 @@ interface CategoryCodeSetLeaf extends CategoryCodeSetBase {
 }
 /** A set of Category Code values. */
 export type CategoryCodeSet = CategoryCodeSetLeaf;
-
-interface CategoryConceptLeaf extends ThingBase {
-    "@type": "catmo:CategoryConcept";
-}
-/** A category concept */
-export type CategoryConcept = CategoryConceptLeaf | CategoryModel | CategoryParticipant | CategorySemanticPool | RootCategoryConcept;
-
-interface CategoryModelBase extends ThingBase, ThingBase, ThingBase {
-    /** A semantic pool within a category model. */
-    "catmo:hasCategorySemanticPool"?: SchemaValue<CategorySemanticPool | IdReference>;
-}
-interface CategoryModelLeaf extends CategoryModelBase {
-    "@type": "catmo:CategoryModel";
-}
-/** A category model */
-export type CategoryModel = CategoryModelLeaf;
-
-interface CategoryObjectBase extends ThingBase {
-    /** A partiicpant in a category. */
-    "catmo:hasCategoryObjectElement"?: SchemaValue<Thing | IdReference>;
-}
-interface CategoryObjectLeaf extends CategoryObjectBase {
-    "@type": "catmo:CategoryObject";
-}
-/** A category object. */
-export type CategoryObject = CategoryObjectLeaf;
-
-interface CategoryParticipantLeaf extends ThingBase {
-    "@type": "catmo:CategoryParticipant";
-}
-/** A participant in a category. */
-export type CategoryParticipant = CategoryParticipantLeaf | CategoryArrow | CategoryObject;
-
-interface CategorySemanticPoolBase extends ThingBase, SemanticPoolBase {
-    /** An independent category concept within a semantic pool. */
-    "catmo:rootCategoryConcept"?: SchemaValue<RootCategoryConcept | IdReference>;
-}
-interface CategorySemanticPoolLeaf extends CategorySemanticPoolBase {
-    "@type": "catmo:CategorySemanticPool";
-}
-/** A category semantic pool. */
-export type CategorySemanticPool = CategorySemanticPoolLeaf;
 
 interface CatholicChurchLeaf extends CivicStructureBase {
     "@type": "schema:CatholicChurch";
@@ -1605,6 +1669,60 @@ interface CemeteryLeaf extends CivicStructureBase {
 /** A graveyard. */
 export type Cemetery = CemeteryLeaf | string;
 
+interface CertificateContractConceptLeaf extends ThingBase {
+    "@type": "camo:CertificateContractConcept";
+}
+/** A certificate contract concept */
+export type CertificateContractConcept = CertificateContractConceptLeaf | PaymentCertificate;
+
+interface CertificateContractSemanticPoolLeaf extends ContractSemanticPoolBase {
+    "@type": "camo:CertificateContractSemanticPool";
+}
+/** A certificate contract semantic pool. */
+export type CertificateContractSemanticPool = CertificateContractSemanticPoolLeaf;
+
+interface CertificateLayoutTableBase extends ThingBase {
+    /** Default preamble for advance payment certificates. */
+    "camo:defaultPreambleForAdvancePaymentCertificate"?: SchemaValue<Text>;
+    /** Default preamble for C&I Duties payment certificates. */
+    "camo:defaultPreambleForCAndIDutiesPaymentCertificate"?: SchemaValue<Text>;
+    /** Default preamble for final payment certificates. */
+    "camo:defaultPreambleForFinalPaymentCertificate"?: SchemaValue<Text>;
+    /** Default preamble for interim payment certificates. */
+    "camo:defaultPreambleForInterimPaymentCertificate"?: SchemaValue<Text>;
+    /** Default preamble for milestone certificates. */
+    "camo:defaultPreambleForMilestoneCertificate"?: SchemaValue<Text>;
+    /** Default preamble for perfromance certificates. */
+    "camo:defaultPreambleForPerformanceCertificate"?: SchemaValue<Text>;
+    /** Default preamble for taking over certificates. */
+    "camo:defaultPreambleForTakingOverCertificate"?: SchemaValue<Text>;
+    /** Default preamble for taking-over payment certificates. */
+    "camo:defaultPreambleForTakingOverPaymentCertificate"?: SchemaValue<Text>;
+    /** Enables usage of advance payment certificates. */
+    "camo:enableAdvancePaymentCertificate"?: SchemaValue<Boolean>;
+    /** Enables usage of C&I Duties payment certificates. */
+    "camo:enableCAndIDutiesPaymentCertificate"?: SchemaValue<Boolean>;
+    /** Enables usage of final payment certificates. */
+    "camo:enableFinalPaymentCertificate"?: SchemaValue<Boolean>;
+    /** Enables usage of interim payment certificates. */
+    "camo:enableInterimPaymentCertificate"?: SchemaValue<Boolean>;
+    /** Enables usage of milestone certificates. */
+    "camo:enableMilestoneCertificate"?: SchemaValue<Boolean>;
+    /** Enables usage of perfromance certificates. */
+    "camo:enablePerformanceCertificate"?: SchemaValue<Boolean>;
+    /** Enables usage of taking over certificates. */
+    "camo:enableTakingOverCertificate"?: SchemaValue<Boolean>;
+    /** Enables usage of taking-over payment certificates. */
+    "camo:enableTakingOverPaymentCertificate"?: SchemaValue<Boolean>;
+    /** Attaches a CustomCertificateLayout to a CertificateLayoutTable. */
+    "camo:hasCustomCertificateLayout"?: SchemaValue<CustomCertificateLayout | IdReference>;
+}
+interface CertificateLayoutTableLeaf extends CertificateLayoutTableBase {
+    "@type": "camo:CertificateLayoutTable";
+}
+/** A certificate layout table. */
+export type CertificateLayoutTable = CertificateLayoutTableLeaf;
+
 interface ChangeConceptLeaf extends ThingBase {
     "@type": "coremo:ChangeConcept";
 }
@@ -1630,12 +1748,6 @@ interface ChapterLeaf extends ChapterBase {
 }
 /** One of the sections into which a book is divided. A chapter usually has a section number or a name. */
 export type Chapter = ChapterLeaf;
-
-interface CharacteristicCoreConceptLeaf extends ThingBase {
-    "@type": "coremo:CharacteristicCoreConcept";
-}
-/** A characteristic core concept */
-export type CharacteristicCoreConcept = CharacteristicCoreConceptLeaf | ImageResource;
 
 interface CheckActionLeaf extends ActionBase {
     "@type": "schema:CheckAction";
@@ -1771,6 +1883,22 @@ interface ClaimLeaf extends ClaimBase {
  */
 export type Claim = ClaimLeaf;
 
+interface ClaimContractConceptLeaf extends ThingBase {
+    "@type": "camo:ClaimContractConcept";
+}
+/** A claim contract concept */
+export type ClaimContractConcept = ClaimContractConceptLeaf | ContractClaim;
+
+interface ClaimContractSemanticPoolBase extends ContractSemanticPoolBase {
+    /** Attaches a root concept to its semantic pool. */
+    "camo:hasClaim"?: SchemaValue<ContractClaim | IdReference>;
+}
+interface ClaimContractSemanticPoolLeaf extends ClaimContractSemanticPoolBase {
+    "@type": "camo:ClaimContractSemanticPool";
+}
+/** A claim contract semantic pool. */
+export type ClaimContractSemanticPool = ClaimContractSemanticPoolLeaf;
+
 interface ClaimReviewBase extends ReviewBase {
     /** A short summary of the specific claims reviewed in a ClaimReview. */
     "schema:claimReviewed"?: SchemaValue<Text>;
@@ -1868,6 +1996,12 @@ interface CodeModelsetFoundationsMathematicsModelAreaLeaf extends ThingBase {
 }
 /** A code modelset foundational mathematics model area. */
 export type CodeModelsetFoundationsMathematicsModelArea = CodeModelsetFoundationsMathematicsModelAreaLeaf;
+
+interface CollectDamagesSectionPaymentDescriptionLeaf extends SectionPaymentDescriptionBase {
+    "@type": "camo:CollectDamagesSectionPaymentDescription";
+}
+/** Collect damages SectionPaymentDescription that is part of a contract payment description. */
+export type CollectDamagesSectionPaymentDescription = CollectDamagesSectionPaymentDescriptionLeaf;
 
 interface CollectionBase extends CreativeWorkBase {
     /** The number of items in the {@link https://schema.org/Collection Collection}. */
@@ -1969,6 +2103,16 @@ interface CommentLeaf extends CommentBase {
 /** A comment on an item - for example, a comment on a blog post. The comment's content is expressed via the {@link https://schema.org/text text} property, and its topic via {@link https://schema.org/about about}, properties shared with all CreativeWorks. */
 export type Comment = CommentLeaf | Answer | CorrectionComment | Question;
 
+interface CommentableBase extends ThingBase {
+    /** A comment for a Commentable. */
+    "coremo:comment"?: SchemaValue<Text>;
+}
+interface CommentableLeaf extends CommentableBase {
+    "@type": "coremo:Commentable";
+}
+/** A resource that can have a comment attached. */
+export type Commentable = CommentableLeaf;
+
 interface CommentActionBase extends CommunicateActionBase {
     /** A sub property of result. The Comment created or sent as a result of this action. */
     "schema:resultComment"?: SchemaValue<Comment | IdReference>;
@@ -1978,6 +2122,12 @@ interface CommentActionLeaf extends CommentActionBase {
 }
 /** The act of generating a comment about a subject. */
 export type CommentAction = CommentActionLeaf;
+
+interface CommittedSumSectionLeaf extends SectionBase {
+    "@type": "camo:CommittedSumSection";
+}
+/** A committed sum section within a contract. */
+export type CommittedSumSection = CommittedSumSectionLeaf | OtherSection | SectionOfWorks;
 
 interface CommonModelsetFoundationsMathematicsModelAreaBase extends ThingBase, ThingBase {
 }
@@ -2011,19 +2161,25 @@ interface CommunicationConceptLeaf extends ThingBase {
     "@type": "coremo:CommunicationConcept";
 }
 /** A communication concept */
-export type CommunicationConcept = CommunicationConceptLeaf | ContentConcept | PipelineConcept;
+export type CommunicationConcept = CommunicationConceptLeaf | CommunityConcept | EducationConcept | PipelineConcept | PublishingConcept;
 
 interface CommunicationModelAreaLeaf extends ThingBase {
     "@type": "coremo:CommunicationModelArea";
 }
 /** A communication model area. */
-export type CommunicationModelArea = CommunicationModelAreaLeaf | ContentModelArea | PipelineModelArea;
+export type CommunicationModelArea = CommunicationModelAreaLeaf | CommunityModelArea | EducationModelArea | PipelineModelArea | PublishingModelArea;
 
 interface CommunityConceptLeaf extends ThingBase {
     "@type": "coremo:CommunityConcept";
 }
 /** A community concept */
 export type CommunityConcept = CommunityConceptLeaf;
+
+interface CommunityModelAreaLeaf extends ThingBase {
+    "@type": "coremo:CommunityModelArea";
+}
+/** An education model area. */
+export type CommunityModelArea = CommunityModelAreaLeaf;
 
 interface CompleteDataFeedLeaf extends DataFeedBase {
     "@type": "schema:CompleteDataFeed";
@@ -2034,6 +2190,24 @@ interface CompleteDataFeedLeaf extends DataFeedBase {
  * This is the equivalent of Atom's element as defined in Feed Paging and Archiving {@link https://tools.ietf.org/html/rfc5005 RFC 5005}, For example (and as defined for Atom), when using data from a feed that represents a collection of items that varies over time (e.g. "Top Twenty Records") there is no need to have newer entries mixed in alongside older, obsolete entries. By marking this feed as a CompleteDataFeed, old entries can be safely discarded when the feed is refreshed, since we can assume the feed has provided descriptions for all current items.
  */
 export type CompleteDataFeed = CompleteDataFeedLeaf;
+
+interface ComplianceVerificationSystemLeaf extends ThingBase {
+    "@type": "camo:ComplianceVerificationSystem";
+}
+/** The ComplianceVerificationSystem. */
+export type ComplianceVerificationSystem = ComplianceVerificationSystemLeaf;
+
+interface ComponentContractConceptLeaf extends ThingBase {
+    "@type": "camo:ComponentContractConcept";
+}
+/** A component contract concept */
+export type ComponentContractConcept = ComponentContractConceptLeaf | BillOfQuantities | Contract | ContractAgreement | ContractComponent | ContractConditions | ContractData | ContractPart | ContractParties | ContractPartTable | ContractParty | ContractSchedule | ContractSpecification | ContractTender | DAABAgreement | JVUndertaking | LetterOfAcceptance | LetterOfTender | PercentagePriceSpecification | PlantAndMaterialsTable | PlantMaterialsItem | Section | SectionTable | Subsection;
+
+interface ComponentContractSemanticPoolLeaf extends ContractSemanticPoolBase {
+    "@type": "camo:ComponentContractSemanticPool";
+}
+/** A component contract semantic pool. */
+export type ComponentContractSemanticPool = ComponentContractSemanticPoolLeaf;
 
 interface CompoundPriceSpecificationBase extends PriceSpecificationBase {
     /** This property links to all {@link https://schema.org/UnitPriceSpecification UnitPriceSpecification} nodes that apply in parallel for the {@link https://schema.org/CompoundPriceSpecification CompoundPriceSpecification} node. */
@@ -2064,6 +2238,24 @@ interface ComputerStoreLeaf extends LocalBusinessBase {
 }
 /** A computer store. */
 export type ComputerStore = ComputerStoreLeaf | string;
+
+interface ConditionalOperationEnumerationLeaf extends EnumerationBase {
+    "@type": "fomo:ConditionalOperationEnumeration";
+}
+/** ConditionalOperationEnumeration is an enumeration type representing conditional op. */
+export type ConditionalOperationEnumeration = "https://clipcode.org/base/schema/fomo/AlwaysHideConditionalOp" | "fomo:AlwaysHideConditionalOp" | "https://clipcode.org/base/schema/fomo/AlwaysShowConditionalOp" | "fomo:AlwaysShowConditionalOp" | "https://clipcode.org/base/schema/fomo/EqualsConditionalOp" | "fomo:EqualsConditionalOp" | "https://clipcode.org/base/schema/fomo/EqualsOrLessConditionalOp" | "fomo:EqualsOrLessConditionalOp" | "https://clipcode.org/base/schema/fomo/EqualsOrMoreConditionalOp" | "fomo:EqualsOrMoreConditionalOp" | "https://clipcode.org/base/schema/fomo/LessConditionalOp" | "fomo:LessConditionalOp" | "https://clipcode.org/base/schema/fomo/LogicConditionalOp" | "fomo:LogicConditionalOp" | "https://clipcode.org/base/schema/fomo/MoreConditionalOp" | "fomo:MoreConditionalOp" | "https://clipcode.org/base/schema/fomo/NotEqualsConditionalOp" | "fomo:NotEqualsConditionalOp" | "https://clipcode.org/base/schema/fomo/NotEqualsNotZeroConditionalOp" | "fomo:NotEqualsNotZeroConditionalOp" | ConditionalOperationEnumerationLeaf;
+
+interface ConfigurationContractConceptLeaf extends ThingBase {
+    "@type": "camo:ConfigurationContractConcept";
+}
+/** A configuration contract concept */
+export type ConfigurationContractConcept = ConfigurationContractConceptLeaf | ContractConfiguration;
+
+interface ConfigurationContractSemanticPoolLeaf extends ContractSemanticPoolBase {
+    "@type": "camo:ConfigurationContractSemanticPool";
+}
+/** A configuration contract semantic pool. */
+export type ConfigurationContractSemanticPool = ConfigurationContractSemanticPoolLeaf;
 
 interface ConfirmActionLeaf extends InformActionBase {
     "@type": "schema:ConfirmAction";
@@ -2138,23 +2330,353 @@ interface ContactPointOptionLeaf extends EnumerationBase {
 /** Enumerated options related to a ContactPoint. */
 export type ContactPointOption = "https://schema.org/HearingImpairedSupported" | "schema:HearingImpairedSupported" | "https://schema.org/TollFree" | "schema:TollFree" | ContactPointOptionLeaf;
 
-interface ContentConceptLeaf extends ThingBase {
-    "@type": "coremo:ContentConcept";
-}
-/** A content concept */
-export type ContentConcept = ContentConceptLeaf;
-
-interface ContentModelAreaLeaf extends ThingBase {
-    "@type": "coremo:ContentModelArea";
-}
-/** A content model area. */
-export type ContentModelArea = ContentModelAreaLeaf;
-
 interface ContinentLeaf extends PlaceBase {
     "@type": "schema:Continent";
 }
 /** One of the continents (for example, Europe or Africa). */
 export type Continent = ContinentLeaf | string;
+
+interface ContractBase extends ThingBase, DescribeableBase, NumberedBase, TemplatableBase {
+}
+interface ContractLeaf extends ContractBase {
+    "@type": "camo:Contract";
+}
+/** The contract. */
+export type Contract = ContractLeaf;
+
+interface ContractAgreementLeaf extends ThingBase {
+    "@type": "camo:ContractAgreement";
+}
+/** The contract aggreement. */
+export type ContractAgreement = ContractAgreementLeaf;
+
+interface ContractClaimBase extends ThingBase, ThingBase, NumberedBase {
+}
+interface ContractClaimLeaf extends ContractClaimBase {
+    "@type": "camo:ContractClaim";
+}
+/** A ContractClaim. */
+export type ContractClaim = ContractClaimLeaf;
+
+interface ContractCommunicationLeaf extends ThingBase {
+    "@type": "camo:ContractCommunication";
+}
+/** A contract communication. */
+export type ContractCommunication = ContractCommunicationLeaf | ContractClaim | ContractNotice | ContractProgramme | ContractReview | ContractStatement | PaymentCertificate | PaymentNotification | Variation;
+
+interface ContractComponentLeaf extends ThingBase {
+    "@type": "camo:ContractComponent";
+}
+/** A component of the contract (such as contract agreement or schedules). */
+export type ContractComponent = ContractComponentLeaf;
+
+interface ContractConceptLeaf extends ThingBase {
+    "@type": "camo:ContractConcept";
+}
+/** A contract concept */
+export type ContractConcept = ContractConceptLeaf | CertificateContractConcept | ClaimContractConcept | ComponentContractConcept | ConfigurationContractConcept | ContractModel | ContractSemanticPool | DataContractConcept | DevelopmentContractConcept | DisputeContractConcept | LayoutContractConcept | NoticeContractConcept | PaymentCertificateContractConcept | PaymentNotificationContractConcept | SecuritiesContractConcept | SharedContractConcept | StatementContractConcept | TerminologyContractConcept | VariationContractConcept;
+
+interface ContractConditionsLeaf extends ThingBase {
+    "@type": "camo:ContractConditions";
+}
+/** The contract conditions. */
+export type ContractConditions = ContractConditionsLeaf;
+
+interface ContractConfigurationBase extends ThingBase, DescribeableBase, NumberedBase, TemplatableBase {
+    /** The layout table associated with this ContractConfiguration. */
+    "camo:hasContractLayoutTable"?: SchemaValue<ContractLayoutTable | URL | IdReference>;
+    /** The policy table associated with this ContractConfiguration. */
+    "camo:hasPolicyTable"?: SchemaValue<URL>;
+    /** The regional table associated with this ContractConfiguration. */
+    "camo:hasRegionalTable"?: SchemaValue<URL>;
+    /** The development to which this contract belongs. */
+    "camo:memberOfDevelopment"?: SchemaValue<URL>;
+}
+interface ContractConfigurationLeaf extends ContractConfigurationBase {
+    "@type": "camo:ContractConfiguration";
+}
+/** Configuraiton of a contract. */
+export type ContractConfiguration = ContractConfigurationLeaf;
+
+interface ContractDAABLeaf extends ThingBase {
+    "@type": "camo:ContractDAAB";
+}
+/** The Dispute Avoidance / Adjudication Board for a contract. */
+export type ContractDAAB = ContractDAABLeaf;
+
+interface ContractDataBase extends ThingBase, DescribeableBase, NumberedBase, TemplatableBase {
+    /** The Accepted Contract Amount of this contract. */
+    "camo:acceptedContractAmount"?: SchemaValue<PriceSpecification | IdReference>;
+    /** The policy table associated with this primary contract data. */
+    "camo:hasContractDateTable"?: SchemaValue<ContractDateTable | IdReference>;
+    /** Attaches a root concept to its semantic pool. */
+    "camo:hasContractPartTable"?: SchemaValue<ContractPartTable | IdReference>;
+    /** Attaches a root concept to its semantic pool. */
+    "camo:hasPlantAndMaterialsTable"?: SchemaValue<PlantAndMaterialsTable | IdReference>;
+    /** Attaches a root concept to its semantic pool. */
+    "camo:hasSectionTable"?: SchemaValue<SectionTable | IdReference>;
+    /** The stableholder table associated with this primary contract data. */
+    "camo:hasStakeholderTable"?: SchemaValue<URL>;
+}
+interface ContractDataLeaf extends ContractDataBase {
+    "@type": "camo:ContractData";
+}
+/** Represents primary contract data that does not change by variation. such as stakeholders, timing data and geo settings). */
+export type ContractData = ContractDataLeaf;
+
+interface ContractDateTableBase extends Partial<IdReference> {
+    /** The Base Date of this contract [See data extract in FIDIC 1.1]. */
+    "camo:contractBaseDate"?: SchemaValue<Date>;
+    /** The Commencement Date of this contract [See data extract in FIDIC 1.1]. */
+    "camo:contractCommencementDate"?: SchemaValue<Date>;
+    /** The Date Of Completion of this contract [See data extract in FIDIC 1.1]. */
+    "camo:contractDateOfCompletion"?: SchemaValue<Date>;
+    /** The Time For Completion of this contract, measured in days [See data extract in FIDIC 1.1]. */
+    "camo:contractTimeForCompletion"?: SchemaValue<Integer>;
+    /** The Defects Notification Period (DNP) of this contract, measured in days [See data extract in FIDIC 1.1]. */
+    "camo:defectsNotificationPeriod"?: SchemaValue<Integer>;
+}
+interface ContractDateTableLeaf extends ContractDateTableBase {
+    "@type": "camo:ContractDateTable";
+}
+/** Assortment of dates relate tot a contract. */
+export type ContractDateTable = ContractDateTableLeaf;
+
+interface ContractDocumentLeaf extends ThingBase {
+    "@type": "camo:ContractDocument";
+}
+/** A document that forms part of the contract. */
+export type ContractDocument = ContractDocumentLeaf | ContractDrawings | ContractTests;
+
+interface ContractDrawingsLeaf extends ThingBase {
+    "@type": "camo:ContractDrawings";
+}
+/** The contract drawings. */
+export type ContractDrawings = ContractDrawingsLeaf;
+
+interface ContractFinalStatementLeaf extends ContractStatementBase {
+    "@type": "camo:ContractFinalStatement";
+}
+/** A Contract Final Statement. */
+export type ContractFinalStatement = ContractFinalStatementLeaf;
+
+interface ContractLayoutTableBase extends ThingBase {
+    /** Attaches a AdvancePaymentLayoutTable to a ContractLayoutTable. */
+    "camo:hasAdvancePaymentLayoutTable"?: SchemaValue<AdvancePaymentLayoutTable | IdReference>;
+    /** The segment name to use for a variaton attachment file. */
+    "camo:hasContractTerminologyLayoutTable"?: SchemaValue<ContractTerminologyLayoutTable | IdReference>;
+    /** Attaches a CurrencyLayoutTable to a ContractLayout. */
+    "camo:hasCurrencyLayoutTable"?: SchemaValue<CurrencyLayoutTable | IdReference>;
+    /** The segment name to use for a variaton attachment file. */
+    "camo:hasFileNamingLayoutTable"?: SchemaValue<FileNamingLayoutTable | IdReference>;
+    /** Attaches a MilestoneLayoutTable to a ContractLayout. */
+    "camo:hasMilestoneLayoutTable"?: SchemaValue<MilestoneLayoutTable | IdReference>;
+    /** Attaches a NoticeLayoutTable to a ContractLayoutTable. */
+    "camo:hasNoticeLayoutTable"?: SchemaValue<NoticeLayoutTable | IdReference>;
+    /** Attaches a NumberingLayoutTable to a ContractLayoutTable. */
+    "camo:hasNumberingLayoutTable"?: SchemaValue<NumberingLayoutTable | IdReference>;
+    /** Attaches a PlantAndMaterialsLayoutTable to a ContractLayoutTable. */
+    "camo:hasPlantAndMaterialsLayoutTable"?: SchemaValue<PlantAndMaterialsLayoutTable | IdReference>;
+    /** Attaches a RetentionMoneyTable to a ContractLayoutTable. */
+    "camo:hasRetentionMoneyTable"?: SchemaValue<RetentionMoneyTable | IdReference>;
+}
+interface ContractLayoutTableLeaf extends ContractLayoutTableBase {
+    "@type": "camo:ContractLayoutTable";
+}
+/** A contract layout table. */
+export type ContractLayoutTable = ContractLayoutTableLeaf;
+
+interface ContractModelBase extends ThingBase, ThingBase {
+    /** A semantic pool within a contract model. */
+    "camo:hasContractSemanticPool"?: SchemaValue<ContractSemanticPool | IdReference>;
+}
+interface ContractModelLeaf extends ContractModelBase {
+    "@type": "camo:ContractModel";
+}
+/** A contract model */
+export type ContractModel = ContractModelLeaf;
+
+interface ContractNoticeBase extends ThingBase, ThingBase, NumberedBase {
+    /** The kind of this notice (see Contract Design). */
+    "camo:contractNoticeKind"?: SchemaValue<URL>;
+    /** The body text of the notice. */
+    "camo:noticeBodyContent"?: SchemaValue<Text | URL>;
+    /** The data behind the notice body. */
+    "camo:noticeBodyData"?: SchemaValue<URL>;
+    /** The stakeholder to which a copy of the notice is destined for. */
+    "camo:noticeCopyToStakeholder"?: SchemaValue<URL>;
+    /** The stakeholder sending the notice. */
+    "camo:noticeFromStakeholder"?: SchemaValue<URL>;
+    /** The relevant date / date range. */
+    "camo:noticeRefersToDate"?: SchemaValue<Date | DateRange | IdReference>;
+    /** The location relevant to this notice. */
+    "camo:noticeRefersToLocation"?: SchemaValue<Place | PostalAddress | Text | VirtualLocation | IdReference>;
+    /** The stakeholder to which the notice is destined for. */
+    "camo:noticeToStakeholder"?: SchemaValue<URL>;
+    /** The relevant clause/subclause from the contract. */
+    "camo:refersToContractClauseSubclause"?: SchemaValue<Text>;
+    /** The relevant part. */
+    "camo:refersToPart"?: SchemaValue<Text>;
+    /** The relevant section. */
+    "camo:refersToSection"?: SchemaValue<Text>;
+}
+interface ContractNoticeLeaf extends ContractNoticeBase {
+    "@type": "camo:ContractNotice";
+}
+/** A contract notice. */
+export type ContractNotice = ContractNoticeLeaf | NoticeOfDissastification | NoticeOfNoObjection;
+
+interface ContractorLeaf extends ThingBase {
+    "@type": "dirmo:Contractor";
+}
+/** The contractor. */
+export type Contractor = ContractorLeaf;
+
+interface ContractorRepresentativeLeaf extends ThingBase {
+    "@type": "dirmo:ContractorRepresentative";
+}
+/** The contractor's representative. */
+export type ContractorRepresentative = ContractorRepresentativeLeaf;
+
+interface ContractPartLeaf extends ThingBase {
+    "@type": "camo:ContractPart";
+}
+/** A part of a contract's Works or Section(s), as defined in FIDIC 1.1. */
+export type ContractPart = ContractPartLeaf;
+
+interface ContractPartiesLeaf extends ThingBase {
+    "@type": "camo:ContractParties";
+}
+/** The Contract Parties. */
+export type ContractParties = ContractPartiesLeaf;
+
+interface ContractPartTableBase extends ThingBase {
+    /** Attaches a contract part to its contract part table. */
+    "camo:hasContractPart"?: SchemaValue<ContractPart | IdReference>;
+}
+interface ContractPartTableLeaf extends ContractPartTableBase {
+    "@type": "camo:ContractPartTable";
+}
+/** Represents a contract part. */
+export type ContractPartTable = ContractPartTableLeaf;
+
+interface ContractPartyLeaf extends ThingBase {
+    "@type": "camo:ContractParty";
+}
+/** A Contract Party. */
+export type ContractParty = ContractPartyLeaf;
+
+interface ContractPaymentDescriptionBase extends ThingBase {
+    /** Attaches a section payment description to its contract payment description. */
+    "camo:hasContractPaymentDescriptionPart"?: SchemaValue<ContractPaymentDescriptionPart | IdReference>;
+}
+interface ContractPaymentDescriptionLeaf extends ContractPaymentDescriptionBase {
+    "@type": "camo:ContractPaymentDescription";
+}
+/** A contract payment description. */
+export type ContractPaymentDescription = ContractPaymentDescriptionLeaf;
+
+interface ContractPaymentDescriptionPartLeaf extends ThingBase {
+    "@type": "camo:ContractPaymentDescriptionPart";
+}
+/** A contract payment description part. */
+export type ContractPaymentDescriptionPart = ContractPaymentDescriptionPartLeaf | CrossCurrencyPairPaymentDescription | GeneralPaymentDescription | PlantAndMaterialsShippedDeliveredPaymentDescription | SectionPaymentDescription;
+
+interface ContractProgrammeLeaf extends ThingBase {
+    "@type": "camo:ContractProgramme";
+}
+/** A contract programme. */
+export type ContractProgramme = ContractProgrammeLeaf;
+
+interface ContractReviewLeaf extends ThingBase {
+    "@type": "camo:ContractReview";
+}
+/** A review. */
+export type ContractReview = ContractReviewLeaf;
+
+interface ContractScheduleLeaf extends ThingBase {
+    "@type": "camo:ContractSchedule";
+}
+/** The Schedules. */
+export type ContractSchedule = ContractScheduleLeaf;
+
+interface ContractSemanticPoolBase extends ThingBase, SemanticPoolBase {
+}
+interface ContractSemanticPoolLeaf extends ContractSemanticPoolBase {
+    "@type": "camo:ContractSemanticPool";
+}
+/** A contract semantic pool. */
+export type ContractSemanticPool = ContractSemanticPoolLeaf | CertificateContractSemanticPool | ClaimContractSemanticPool | ComponentContractSemanticPool | ConfigurationContractSemanticPool | DataContractSemanticPool | DevelopmentContractSemanticPool | DisputeContractSemanticPool | LayoutContractSemanticPool | NoticeContractSemanticPool | PaymentCertificateContractSemanticPool | PaymentNotificationContractSemanticPool | SecuritiesContractSemanticPool | StatementContractSemanticPool | VariationContractSemanticPool;
+
+interface ContractSpecificationLeaf extends ThingBase {
+    "@type": "camo:ContractSpecification";
+}
+/** The contract specification. */
+export type ContractSpecification = ContractSpecificationLeaf;
+
+interface ContractStatementBase extends ThingBase, ThingBase, NumberedBase {
+    /** Contract payment to use. */
+    "camo:contractPaymentToUse"?: SchemaValue<Integer | Integer>;
+    /** Most recent core contract data revision. */
+    "camo:contractstatementBasedOnCoreContractDataRevision"?: SchemaValue<Integer>;
+    /** Most recent varying contract data (Variation). */
+    "camo:contractstatementBasedOnVaryingContractData"?: SchemaValue<Text>;
+    /** The revision of most recent varying contract data (Variation). */
+    "camo:contractstatementBasedOnVaryingContractDataRevision"?: SchemaValue<Integer>;
+    /** Identifies what kind of statement this is (useful for specialist statements with custom names, maps to statement layout in Contract Layout). */
+    "camo:contractstatementKind"?: SchemaValue<URL>;
+}
+interface ContractStatementLeaf extends ContractStatementBase {
+    "@type": "camo:ContractStatement";
+}
+/** A Statement to be sent by the conteactor to the engineer (Red/Yellow Book) or employer's representative (Silver Book). */
+export type ContractStatement = ContractStatementLeaf | AdvanceStatement | ContractFinalStatement | CustomsAndImportDutiesStatement | FinalStatement | InterimStatement | TakingOverStatement;
+
+interface ContractTenderLeaf extends ThingBase {
+    "@type": "camo:ContractTender";
+}
+/** The contract tender. */
+export type ContractTender = ContractTenderLeaf;
+
+interface ContractTerminologyLayoutTableBase extends ThingBase {
+    /** The text to use in footer of a certificate attachment (section view). */
+    "camo:certificateAttachmentSectionFooter"?: SchemaValue<Text>;
+    /** The text to use in footer of a certificate attachment (subsection view). */
+    "camo:certificateAttachmentSubsectionFooter"?: SchemaValue<Text>;
+    /** The text to use in the top right corner for a certficate attachment. */
+    "camo:certificateAttachmentTopRightCorner"?: SchemaValue<Text>;
+    /** The text to use in the top right corner for a variation attachment. */
+    "camo:variationAttachmentTopRightCorner"?: SchemaValue<Text>;
+}
+interface ContractTerminologyLayoutTableLeaf extends ContractTerminologyLayoutTableBase {
+    "@type": "camo:ContractTerminologyLayoutTable";
+}
+/** Terminology for contract terms. */
+export type ContractTerminologyLayoutTable = ContractTerminologyLayoutTableLeaf;
+
+interface ContractTestsLeaf extends ThingBase {
+    "@type": "camo:ContractTests";
+}
+/** The contract tests. */
+export type ContractTests = ContractTestsLeaf | ContractTestsAfterCompletion | ContractTestsOnCompletion;
+
+interface ContractTestsAfterCompletionLeaf extends ThingBase {
+    "@type": "camo:ContractTestsAfterCompletion";
+}
+/** The contract tests after completion. */
+export type ContractTestsAfterCompletion = ContractTestsAfterCompletionLeaf;
+
+interface ContractTestsOnCompletionLeaf extends ThingBase {
+    "@type": "camo:ContractTestsOnCompletion";
+}
+/** The contract tests on completion. */
+export type ContractTestsOnCompletion = ContractTestsOnCompletionLeaf;
+
+interface ContractWorksLeaf extends ThingBase {
+    "@type": "camo:ContractWorks";
+}
+/** The Works. */
+export type ContractWorks = ContractWorksLeaf | PermanentWorks | TemporaryWorks;
 
 interface ControlActionLeaf extends ActionBase {
     "@type": "schema:ControlAction";
@@ -2192,7 +2714,7 @@ interface CoreConceptLeaf extends ThingBase {
     "@type": "coremo:CoreConcept";
 }
 /** A core concept */
-export type CoreConcept = CoreConceptLeaf | CharacteristicCoreConcept | MathematicalCoreConcept;
+export type CoreConcept = CoreConceptLeaf | ImageResource | MathematicalExpression | MathematicalFormula | MathematicalObject | MathematicalOperation | MathematicalProperty | MathematicalSequenceTerm | MathematicalVariable;
 
 interface CorporateConceptLeaf extends ThingBase {
     "@type": "coremo:CorporateConcept";
@@ -2285,6 +2807,20 @@ interface CreateActionLeaf extends ActionBase {
 }
 /** The act of deliberately creating/producing/generating/building a result out of the agent. */
 export type CreateAction = CreateActionLeaf | CookAction | DrawAction | FilmAction | PaintAction | PhotographAction | WriteAction;
+
+interface CreateDispatcherPanelBase extends ThingBase {
+    /** Lists a collection of form layout, hierarchically. */
+    "fomo:hasCollectionOfFormLayouts"?: SchemaValue<URL>;
+    /** Lists a collection of form layouts, displayed as a flat list. */
+    "fomo:hasFlattenedCollectionOfFormLayouts"?: SchemaValue<URL>;
+    /** Lists a single form layout in a CreateDispatcherPanel. */
+    "fomo:hasIndividualFormLayout"?: SchemaValue<URL>;
+}
+interface CreateDispatcherPanelLeaf extends CreateDispatcherPanelBase {
+    "@type": "fomo:CreateDispatcherPanel";
+}
+/** Arrangement of form layouts suitable for a knowledge user to select from */
+export type CreateDispatcherPanel = CreateDispatcherPanelLeaf;
 
 interface CreativeWorkBase extends ThingBase {
     /** The subject matter of the content. */
@@ -2606,7 +3142,7 @@ interface CreativeWorkSeasonLeaf extends CreativeWorkSeasonBase {
     "@type": "schema:CreativeWorkSeason";
 }
 /** A media season e.g. tv, radio, video game etc. */
-export type CreativeWorkSeason = CreativeWorkSeasonLeaf | PodcastSeason | RadioSeason | TVSeason;
+export type CreativeWorkSeason = CreativeWorkSeasonLeaf | PodcastSeason | TVSeason;
 
 interface CreativeWorkSeriesBase extends CreativeWorkBase, ThingBase {
     /** The end date and time of the item (in {@link http://en.wikipedia.org/wiki/ISO_8601 ISO 8601 date format}). */
@@ -2658,6 +3194,24 @@ interface CriticReviewLeaf extends ReviewBase {
 /** A {@link https://schema.org/CriticReview CriticReview} is a more specialized form of Review written or published by a source that is recognized for its reviewing activities. These can include online columns, travel and food guides, TV and radio shows, blogs and other independent Web sites. {@link https://schema.org/CriticReview CriticReview}s are typically more in-depth and professionally written. For simpler, casually written user/visitor/viewer/customer reviews, it is more appropriate to use the {@link https://schema.org/UserReview UserReview} type. Review aggregator sites such as Metacritic already separate out the site's user reviews from selected critic reviews that originate from third-party sources. */
 export type CriticReview = CriticReviewLeaf | ReviewNewsArticle;
 
+interface CrossCurrencyPairPaymentDescriptionBase extends ThingBase {
+    /** The exchangeRate for CrossCurrencyPairPaymentDescription. */
+    "camo:exchangeRateForCrossCurrencyPairPaymentDescription"?: SchemaValue<Number>;
+    /** The negative payment property for a CrossCurrencyPairPaymentDescription. */
+    "camo:hasNegativePaymentAmount"?: SchemaValue<MonetaryAmount | IdReference>;
+    /** The positive payment property for a CrossCurrencyPairPaymentDescription. */
+    "camo:hasPositivePaymentAmount"?: SchemaValue<MonetaryAmount | IdReference>;
+    /** The negativePaymentCurrency for a CrossCurrencyPairPaymentDescription. */
+    "camo:negativePaymentCurrency"?: SchemaValue<Text>;
+    /** The positivePaymentCurrencyy for a CrossCurrencyPairPaymentDescription. */
+    "camo:positivePaymentCurrency"?: SchemaValue<Text>;
+}
+interface CrossCurrencyPairPaymentDescriptionLeaf extends CrossCurrencyPairPaymentDescriptionBase {
+    "@type": "camo:CrossCurrencyPairPaymentDescription";
+}
+/** A payment in one currency in lieu of a payment in a different currency (represented as a positive payment in one currency and negative payment in the other) */
+export type CrossCurrencyPairPaymentDescription = CrossCurrencyPairPaymentDescriptionLeaf;
+
 /** Text representing a CSS selector. */
 export type CssSelectorType = string;
 
@@ -2666,6 +3220,114 @@ interface CurrencyConversionServiceLeaf extends FinancialProductBase {
 }
 /** A service to convert funds from one currency to another currency. */
 export type CurrencyConversionService = CurrencyConversionServiceLeaf;
+
+interface CurrencyLayoutTableBase extends ThingBase {
+    /** For a certificate that uses synthetic currencies, on payment summary, use regular currencies only and merge them with same currency. */
+    "camo:certificatePaymentSummaryUsesMergedRegularCurrencies"?: SchemaValue<Boolean>;
+    /** For a certificate that uses synthetic currencies, on payment summary, use regular currencies only, but do not merge them. */
+    "camo:certificatePaymentSummaryUsesUnmergedRegularCurrencies"?: SchemaValue<Boolean>;
+    /** Defines the foreign currency. */
+    "camo:hasForeignCurrency"?: SchemaValue<SyntheticCurrency | Text | IdReference>;
+    /** Defines a local currency. */
+    "camo:hasLocalCurrency"?: SchemaValue<SyntheticCurrency | Text | IdReference>;
+}
+interface CurrencyLayoutTableLeaf extends CurrencyLayoutTableBase {
+    "@type": "camo:CurrencyLayoutTable";
+}
+/** A currency layout table. */
+export type CurrencyLayoutTable = CurrencyLayoutTableLeaf;
+
+interface CustomCertificateLayoutBase extends ThingBase {
+    /** Which certificate type This custom certificate is based upon. */
+    "camo:customCertificateBasedOn"?: SchemaValue<URL>;
+    /** Default preamble for a custom certificate layout. */
+    "camo:defaultPreambleForCustomCertificateLayout"?: SchemaValue<Text>;
+}
+interface CustomCertificateLayoutLeaf extends CustomCertificateLayoutBase {
+    "@type": "camo:CustomCertificateLayout";
+}
+/** A custom certificate. */
+export type CustomCertificateLayout = CustomCertificateLayoutLeaf;
+
+interface CustomsAndImportDutiesEntryBase extends ThingBase {
+    /** The hasCAndIAmountReimbursable property for a CustomsAndImportDutiesEntry. */
+    "camo:hasCAndIAmountReimbursable"?: SchemaValue<MonetaryAmount | IdReference>;
+    /** The hasCAndICashReceiptNumber property for a CustomsAndImportDutiesEntry. */
+    "camo:hasCAndICashReceiptNumber"?: SchemaValue<Text>;
+    /** An optional comment field which may be added to a CustomsAndImportDutiesEntry. */
+    "camo:hasCAndIComments"?: SchemaValue<Text>;
+    /** The hasCAndIDeclarationNumber property for a CustomsAndImportDutiesEntry. */
+    "camo:hasCAndIDeclarationNumber"?: SchemaValue<Text>;
+    /** The hasCAndIDeductions property for a CustomsAndImportDutiesEntry. */
+    "camo:hasCAndIDeductions"?: SchemaValue<MonetaryAmount | IdReference>;
+    /** The hasCAndIReceiptDate property for a CustomsAndImportDutiesEntry. */
+    "camo:hasCAndIReceiptDate"?: SchemaValue<Date>;
+    /** The hasCAndITotalAmount property for a CustomsAndImportDutiesEntry. */
+    "camo:hasCAndITotalAmount"?: SchemaValue<MonetaryAmount | IdReference>;
+}
+interface CustomsAndImportDutiesEntryLeaf extends CustomsAndImportDutiesEntryBase {
+    "@type": "camo:CustomsAndImportDutiesEntry";
+}
+/** A CustomsAndImportDutiesEntry attached to a CustomsAndImportDutiesTable */
+export type CustomsAndImportDutiesEntry = CustomsAndImportDutiesEntryLeaf;
+
+interface CustomsAndImportDutiesPaymentCertificateLeaf extends PaymentCertificateBase {
+    "@type": "camo:CustomsAndImportDutiesPaymentCertificate";
+}
+/** A customs and import duties payment certificate. */
+export type CustomsAndImportDutiesPaymentCertificate = CustomsAndImportDutiesPaymentCertificateLeaf;
+
+interface CustomsAndImportDutiesPaymentNotificationLeaf extends PaymentNotificationBase {
+    "@type": "camo:CustomsAndImportDutiesPaymentNotification";
+}
+/** A customs and import duties payment notification. */
+export type CustomsAndImportDutiesPaymentNotification = CustomsAndImportDutiesPaymentNotificationLeaf;
+
+interface CustomsandImportDutiesSectionPaymentDescriptionLeaf extends SectionPaymentDescriptionBase {
+    "@type": "camo:CustomsandImportDutiesSectionPaymentDescription";
+}
+/** A C&I Duties payment that is part of a contract payment description. */
+export type CustomsandImportDutiesSectionPaymentDescription = CustomsandImportDutiesSectionPaymentDescriptionLeaf;
+
+interface CustomsAndImportDutiesStatementLeaf extends ContractStatementBase {
+    "@type": "camo:CustomsAndImportDutiesStatement";
+}
+/** A customs and import duties statement. */
+export type CustomsAndImportDutiesStatement = CustomsAndImportDutiesStatementLeaf;
+
+interface CustomsAndImportDutiesTableBase extends ThingBase {
+    /** Attaches a CustomsAndImportDutiesEntry to its CustomsAndImportDutiesTable. */
+    "camo:hasCustomsAndImportDutiesEntry"?: SchemaValue<CustomsAndImportDutiesEntry | IdReference>;
+}
+interface CustomsAndImportDutiesTableLeaf extends CustomsAndImportDutiesTableBase {
+    "@type": "camo:CustomsAndImportDutiesTable";
+}
+/** A CustomsAndImportDutiesTable attached to a SectionPaymentDescription */
+export type CustomsAndImportDutiesTable = CustomsAndImportDutiesTableLeaf;
+
+interface DAABAgreementLeaf extends ThingBase {
+    "@type": "camo:DAABAgreement";
+}
+/** The DAAB agreement. */
+export type DAABAgreement = DAABAgreementLeaf;
+
+interface DAABDecisionLeaf extends ThingBase {
+    "@type": "camo:DAABDecision";
+}
+/** A decision of the DAAB. */
+export type DAABDecision = DAABDecisionLeaf;
+
+interface DAABNotificationLeaf extends ThingBase {
+    "@type": "camo:DAABNotification";
+}
+/** A notification relates to the DAAB. */
+export type DAABNotification = DAABNotificationLeaf | DAABDecision | DAABReferral;
+
+interface DAABReferralLeaf extends ThingBase {
+    "@type": "camo:DAABReferral";
+}
+/** A referral of a dispute to the DAAB. */
+export type DAABReferral = DAABReferralLeaf;
 
 interface DanceEventLeaf extends EventBase {
     "@type": "schema:DanceEvent";
@@ -2678,12 +3340,6 @@ interface DanceGroupLeaf extends OrganizationBase {
 }
 /** A dance group—for example, the Alvin Ailey Dance Theater or Riverdance. */
 export type DanceGroup = DanceGroupLeaf | string;
-
-interface DataBlockKindEnumerationLeaf extends EnumerationBase {
-    "@type": "dstoremo:DataBlockKindEnumeration";
-}
-/** DataBlockKindEnumeration is an enumeration type representing sync status. */
-export type DataBlockKindEnumeration = "https://clipcode.org/base/concept/dstoremo/BinaryBlockKind" | "dstoremo:BinaryBlockKind" | "https://clipcode.org/base/concept/dstoremo/GraphDataBlockKind" | "dstoremo:GraphDataBlockKind" | "https://clipcode.org/base/concept/dstoremo/ObjectDataBlockKind" | "dstoremo:ObjectDataBlockKind" | "https://clipcode.org/base/concept/dstoremo/TextDataBlockKind" | "dstoremo:TextDataBlockKind" | DataBlockKindEnumerationLeaf;
 
 interface DataCatalogBase extends CreativeWorkBase {
     /** A dataset contained in this catalog. */
@@ -2704,6 +3360,18 @@ interface DataCatalogLeaf extends DataCatalogBase {
 }
 /** A collection of datasets. */
 export type DataCatalog = DataCatalogLeaf;
+
+interface DataContractConceptLeaf extends ThingBase {
+    "@type": "camo:DataContractConcept";
+}
+/** A contract data concept */
+export type DataContractConcept = DataContractConceptLeaf;
+
+interface DataContractSemanticPoolLeaf extends ContractSemanticPoolBase {
+    "@type": "camo:DataContractSemanticPool";
+}
+/** A contract data semantic pool. */
+export type DataContractSemanticPool = DataContractSemanticPoolLeaf;
 
 interface DataDownloadBase extends MediaObjectBase {
     /**
@@ -2793,32 +3461,6 @@ interface DatasetLeaf extends DatasetBase {
 /** A body of structured information describing some topic(s) of interest. */
 export type Dataset = DatasetLeaf | DataFeed;
 
-interface DatastoreConceptLeaf extends ThingBase {
-    "@type": "dstoremo:DatastoreConcept";
-}
-/** A datastore concept */
-export type DatastoreConcept = DatastoreConceptLeaf | DatastoreModel | DatastoreSemanticPool | KnowledgeContainer | KnowledgePackage | RootDatastoreConcept;
-
-interface DatastoreModelBase extends ThingBase, ThingBase, ThingBase {
-    /** A semantic pool within a datastore model. */
-    "dstoremo:hasDatastoreSemanticPool"?: SchemaValue<DatastoreSemanticPool | IdReference>;
-}
-interface DatastoreModelLeaf extends DatastoreModelBase {
-    "@type": "dstoremo:DatastoreModel";
-}
-/** A datastore model */
-export type DatastoreModel = DatastoreModelLeaf;
-
-interface DatastoreSemanticPoolBase extends SemanticPoolBase, ThingBase {
-    /** Attaches a root concept to its semantic pool. */
-    "dstoremo:hasRootDatastoreConcept"?: SchemaValue<RootDatastoreConcept | IdReference>;
-}
-interface DatastoreSemanticPoolLeaf extends DatastoreSemanticPoolBase {
-    "@type": "dstoremo:DatastoreSemanticPool";
-}
-/** A datastore semantic pool. */
-export type DatastoreSemanticPool = DatastoreSemanticPoolLeaf;
-
 interface DatedMoneySpecificationBase extends ThingBase {
     /** The amount of money. */
     "schema:amount"?: SchemaValue<MonetaryAmount | Number | IdReference>;
@@ -2842,6 +3484,18 @@ interface DatedMoneySpecificationLeaf extends DatedMoneySpecificationBase {
  * @deprecated Use MonetaryAmount instead.
  */
 export type DatedMoneySpecification = DatedMoneySpecificationLeaf;
+
+interface DateRangeBase extends ThingBase {
+    /** The end date of this DateRange. */
+    "coremo:endDate"?: SchemaValue<Date>;
+    /** The start date of this DateRange. */
+    "coremo:startDate"?: SchemaValue<Date>;
+}
+interface DateRangeLeaf extends DateRangeBase {
+    "@type": "coremo:DateRange";
+}
+/** A data range start and end date) */
+export type DateRange = DateRangeLeaf;
 
 interface DayOfWeekLeaf extends EnumerationBase {
     "@type": "schema:DayOfWeek";
@@ -2876,6 +3530,72 @@ interface DeactivateActionLeaf extends ActionBase {
 }
 /** The act of stopping or deactivating a device or application (e.g. stopping a timer or turning off a flashlight). */
 export type DeactivateAction = DeactivateActionLeaf;
+
+interface DeductionPaymentDescriptionDueEmployerDirectlyPayingNominatedSubcontractorLeaf extends DeductionPaymentDescriptionItemBase {
+    "@type": "camo:DeductionPaymentDescriptionDueEmployerDirectlyPayingNominatedSubcontractor";
+}
+/** A deduction to be added to a contract payment description. */
+export type DeductionPaymentDescriptionDueEmployerDirectlyPayingNominatedSubcontractor = DeductionPaymentDescriptionDueEmployerDirectlyPayingNominatedSubcontractorLeaf;
+
+interface DeductionPaymentDescriptionDueToEmployerPaidContractorDAABFeeLeaf extends DeductionPaymentDescriptionItemBase {
+    "@type": "camo:DeductionPaymentDescriptionDueToEmployerPaidContractorDAABFee";
+}
+/** A deduction to be added to a contract payment description. */
+export type DeductionPaymentDescriptionDueToEmployerPaidContractorDAABFee = DeductionPaymentDescriptionDueToEmployerPaidContractorDAABFeeLeaf;
+
+interface DeductionPaymentDescriptionItemBase extends ThingBase {
+    /** The amount property for a DeductionPaymentDescriptionItem. */
+    "camo:deductionPaymentDescriptionItemAmount"?: SchemaValue<MonetaryAmount | IdReference>;
+    /** Explanation for this Deduction Payment. */
+    "camo:deductionPaymentDescriptionItemDetails"?: SchemaValue<Text>;
+    /** Identifies what kind of DeductionPaymentDescriptionItem this is. */
+    "camo:deductionPaymentDescriptionItemKind"?: SchemaValue<URL>;
+}
+interface DeductionPaymentDescriptionItemLeaf extends DeductionPaymentDescriptionItemBase {
+    "@type": "camo:DeductionPaymentDescriptionItem";
+}
+/** A Deduction to be added to a DeductionsPaymentDescriptionTable. */
+export type DeductionPaymentDescriptionItem = DeductionPaymentDescriptionItemLeaf | DeductionPaymentDescriptionDueEmployerDirectlyPayingNominatedSubcontractor | DeductionPaymentDescriptionDueToEmployerPaidContractorDAABFee;
+
+interface DeductionsAppliedAndCollectedPaymentDescriptionBase extends GeneralPaymentDescriptionBase {
+    /** Attaches a DeductionsPaymentDescriptionTable to one of the DeductionsPaymentDescription types. */
+    "camo:hasDeductionsPaymentDescriptionTable"?: SchemaValue<DeductionsPaymentDescriptionTable | IdReference>;
+}
+interface DeductionsAppliedAndCollectedPaymentDescriptionLeaf extends DeductionsAppliedAndCollectedPaymentDescriptionBase {
+    "@type": "camo:DeductionsAppliedAndCollectedPaymentDescription";
+}
+/** A payment that is both applied and collected as part of a contract payment description. */
+export type DeductionsAppliedAndCollectedPaymentDescription = DeductionsAppliedAndCollectedPaymentDescriptionLeaf;
+
+interface DeductionsAppliedPaymentDescriptionBase extends GeneralPaymentDescriptionBase {
+    /** Attaches a DeductionsPaymentDescriptionTable to one of the DeductionsPaymentDescription types. */
+    "camo:hasDeductionsPaymentDescriptionTable"?: SchemaValue<DeductionsPaymentDescriptionTable | IdReference>;
+}
+interface DeductionsAppliedPaymentDescriptionLeaf extends DeductionsAppliedPaymentDescriptionBase {
+    "@type": "camo:DeductionsAppliedPaymentDescription";
+}
+/** A payment that is applied (but not collected here) as part of a contract payment description. */
+export type DeductionsAppliedPaymentDescription = DeductionsAppliedPaymentDescriptionLeaf;
+
+interface DeductionsCollectedPaymentDescriptionBase extends GeneralPaymentDescriptionBase {
+    /** Attaches a DeductionsPaymentDescriptionTable to one of the DeductionsPaymentDescription types. */
+    "camo:hasDeductionsPaymentDescriptionTable"?: SchemaValue<DeductionsPaymentDescriptionTable | IdReference>;
+}
+interface DeductionsCollectedPaymentDescriptionLeaf extends DeductionsCollectedPaymentDescriptionBase {
+    "@type": "camo:DeductionsCollectedPaymentDescription";
+}
+/** A deduction payment that is collected as part of a contract payment description. */
+export type DeductionsCollectedPaymentDescription = DeductionsCollectedPaymentDescriptionLeaf;
+
+interface DeductionsPaymentDescriptionTableBase extends ThingBase {
+    /** Attaches a DeductionPaymentDescriptionItem to a DeductionsPaymentDescriptionTable. */
+    "camo:hasDeductionPaymentDescriptionItem"?: SchemaValue<DeductionPaymentDescriptionItem | IdReference>;
+}
+interface DeductionsPaymentDescriptionTableLeaf extends DeductionsPaymentDescriptionTableBase {
+    "@type": "camo:DeductionsPaymentDescriptionTable";
+}
+/** A DeductionsPaymentDescriptionTable attached to one of the DeductionsPaymentDescription types. */
+export type DeductionsPaymentDescriptionTable = DeductionsPaymentDescriptionTableLeaf;
 
 interface DefenceEstablishmentLeaf extends CivicStructureBase {
     "@type": "schema:DefenceEstablishment";
@@ -2930,6 +3650,12 @@ interface DefinedTermSetLeaf extends DefinedTermSetBase {
 }
 /** A set of defined terms for example a set of categories or a classification scheme, a glossary, dictionary or enumeration. */
 export type DefinedTermSet = DefinedTermSetLeaf | CategoryCodeSet;
+
+interface DelayDamagesLeaf extends ThingBase {
+    "@type": "camo:DelayDamages";
+}
+/** The Delay Damages. */
+export type DelayDamages = DelayDamagesLeaf;
 
 interface DeleteActionLeaf extends UpdateActionBase {
     "@type": "schema:DeleteAction";
@@ -3121,6 +3847,42 @@ interface DepositAccountLeaf extends DepositAccountBase {
 /** A type of Bank Account with a main purpose of depositing funds to gain interest or other benefits. */
 export type DepositAccount = DepositAccountLeaf;
 
+interface DescribeableBase extends ThingBase {
+    /** A description for a describeable. */
+    "coremo:description"?: SchemaValue<Text>;
+}
+interface DescribeableLeaf extends DescribeableBase {
+    "@type": "coremo:Describeable";
+}
+/** A resource that can have a description attached. */
+export type Describeable = DescribeableLeaf | Contract | ContractConfiguration | ContractData | Development | PlantMaterialsItem;
+
+interface DevelopmentBase extends ThingBase, DescribeableBase {
+    /** The mandatory for this development. */
+    "camo:developmentMandatoryEmployer"?: SchemaValue<URL>;
+}
+interface DevelopmentLeaf extends DevelopmentBase {
+    "@type": "camo:Development";
+}
+/** A development. */
+export type Development = DevelopmentLeaf;
+
+interface DevelopmentContractConceptLeaf extends ThingBase {
+    "@type": "camo:DevelopmentContractConcept";
+}
+/** A development contract concept */
+export type DevelopmentContractConcept = DevelopmentContractConceptLeaf | Development;
+
+interface DevelopmentContractSemanticPoolBase extends ContractSemanticPoolBase {
+    /** Attaches a root concept to its semantic pool. */
+    "camo:hasDevelopment"?: SchemaValue<Development | IdReference>;
+}
+interface DevelopmentContractSemanticPoolLeaf extends DevelopmentContractSemanticPoolBase {
+    "@type": "camo:DevelopmentContractSemanticPool";
+}
+/** A development contract semantic pool. */
+export type DevelopmentContractSemanticPool = DevelopmentContractSemanticPoolLeaf;
+
 interface DevOpsModelAreaLeaf extends ThingBase {
     "@type": "coremo:DevOpsModelArea";
 }
@@ -3223,7 +3985,7 @@ interface DirectoryConceptLeaf extends ThingBase {
     "@type": "dirmo:DirectoryConcept";
 }
 /** A directory concept */
-export type DirectoryConcept = DirectoryConceptLeaf | DirectoryModel | DirectorySemanticPool | NetworkDirectoryConcept | RegionalDirectoryConcept | ResourceDirectoryConcept | StakeholderDirectoryConcept;
+export type DirectoryConcept = DirectoryConceptLeaf | AppDirectoryConcept | DirectoryModel | DirectorySemanticPool | MetaverseDirectoryConcept | RegionalDirectoryConcept | ResourceDirectoryConcept | StakeholderDirectoryConcept;
 
 interface DirectoryModelBase extends ThingBase, ThingBase, ThingBase {
     /** A semantic pool within a directory model. */
@@ -3241,7 +4003,7 @@ interface DirectorySemanticPoolLeaf extends DirectorySemanticPoolBase {
     "@type": "dirmo:DirectorySemanticPool";
 }
 /** A directory semantic pool. */
-export type DirectorySemanticPool = DirectorySemanticPoolLeaf | NetworkDirectorySemanticPool | RegionalDirectorySemanticPool | ResourceDirectorySemanticPool | StakeholderDirectorySemanticPool;
+export type DirectorySemanticPool = DirectorySemanticPoolLeaf | AppDirectorySemanticPool | MetaverseDirectorySemanticPool | RegionalDirectorySemanticPool | ResourceDirectorySemanticPool | StakeholderDirectorySemanticPool;
 
 interface DisagreeActionLeaf extends ActionBase {
     "@type": "schema:DisagreeAction";
@@ -3267,6 +4029,44 @@ interface DislikeActionLeaf extends ActionBase {
 /** The act of expressing a negative sentiment about the object. An agent dislikes an object (a proposition, topic or theme) with participants. */
 export type DislikeAction = DislikeActionLeaf;
 
+interface DispatcherFormConceptLeaf extends ThingBase {
+    "@type": "fomo:DispatcherFormConcept";
+}
+/** A dispatcher form concept. */
+export type DispatcherFormConcept = DispatcherFormConceptLeaf | RootDispatcherFormConcept;
+
+interface DispatcherFormSemanticPoolBase extends FormSemanticPoolBase {
+    /** Attaches a root concept to its semantic pool. */
+    "fomo:hasRootDispatcherFormConcept"?: SchemaValue<RootDispatcherFormConcept | IdReference>;
+}
+interface DispatcherFormSemanticPoolLeaf extends DispatcherFormSemanticPoolBase {
+    "@type": "fomo:DispatcherFormSemanticPool";
+}
+/** Dispatcher settings for a form. */
+export type DispatcherFormSemanticPool = DispatcherFormSemanticPoolLeaf;
+
+interface DisputeLeaf extends ThingBase {
+    "@type": "camo:Dispute";
+}
+/** A dispute between the parties. */
+export type Dispute = DisputeLeaf;
+
+interface DisputeContractConceptLeaf extends ThingBase {
+    "@type": "camo:DisputeContractConcept";
+}
+/** A dispute contract concept */
+export type DisputeContractConcept = DisputeContractConceptLeaf | ContractDAAB | DAABNotification | Dispute;
+
+interface DisputeContractSemanticPoolBase extends ContractSemanticPoolBase {
+    /** Attaches a root concept to its semantic pool. */
+    "camo:hasDispute"?: SchemaValue<Dispute | IdReference>;
+}
+interface DisputeContractSemanticPoolLeaf extends DisputeContractSemanticPoolBase {
+    "@type": "camo:DisputeContractSemanticPool";
+}
+/** A dispute contract semantic pool. */
+export type DisputeContractSemanticPool = DisputeContractSemanticPoolLeaf;
+
 interface DistanceLeaf extends ThingBase {
     "@type": "schema:Distance";
 }
@@ -3278,6 +4078,12 @@ interface DistilleryLeaf extends FoodEstablishmentBase {
 }
 /** A distillery. */
 export type Distillery = DistilleryLeaf | string;
+
+interface DiversionSectionPaymentDescriptionLeaf extends SectionPaymentDescriptionBase {
+    "@type": "camo:DiversionSectionPaymentDescription";
+}
+/** A diversion payment that is part of a contract payment description. */
+export type DiversionSectionPaymentDescription = DiversionSectionPaymentDescriptionLeaf;
 
 interface DonateActionBase extends TradeActionBase {
     /** A sub property of participant. The participant who is at the receiving end of the action. */
@@ -3677,11 +4483,29 @@ interface EmployeeRoleLeaf extends EmployeeRoleBase {
 /** A subclass of OrganizationRole used to describe employee relationships. */
 export type EmployeeRole = EmployeeRoleLeaf;
 
+interface EmployerLeaf extends ThingBase {
+    "@type": "dirmo:Employer";
+}
+/** The employer. */
+export type Employer = EmployerLeaf;
+
 interface EmployerAggregateRatingLeaf extends AggregateRatingBase {
     "@type": "schema:EmployerAggregateRating";
 }
 /** An aggregate rating of an Organization related to its role as an employer. */
 export type EmployerAggregateRating = EmployerAggregateRatingLeaf;
+
+interface EmployerPersonnelLeaf extends ThingBase {
+    "@type": "dirmo:EmployerPersonnel";
+}
+/** The employer's personnel. */
+export type EmployerPersonnel = EmployerPersonnelLeaf;
+
+interface EmployerRepresentativeLeaf extends ThingBase {
+    "@type": "dirmo:EmployerRepresentative";
+}
+/** The employer's representative. */
+export type EmployerRepresentative = EmployerRepresentativeLeaf;
 
 interface EmployerReviewLeaf extends ReviewBase {
     "@type": "schema:EmployerReview";
@@ -3747,11 +4571,23 @@ interface EnergyStarEnergyEfficiencyEnumerationLeaf extends EnumerationBase {
 /** Used to indicate whether a product is EnergyStar certified. */
 export type EnergyStarEnergyEfficiencyEnumeration = "https://schema.org/EnergyStarCertified" | "schema:EnergyStarCertified" | EnergyStarEnergyEfficiencyEnumerationLeaf;
 
+interface EngineerLeaf extends ThingBase {
+    "@type": "dirmo:Engineer";
+}
+/** The engineer. */
+export type Engineer = EngineerLeaf;
+
 interface EngineeringModelsetFoundationsMathematicsModelAreaLeaf extends ThingBase {
     "@type": "coremo:EngineeringModelsetFoundationsMathematicsModelArea";
 }
 /** An engineering modelset foundational mathematics model area. */
 export type EngineeringModelsetFoundationsMathematicsModelArea = EngineeringModelsetFoundationsMathematicsModelAreaLeaf;
+
+interface EngineerRepresentativeLeaf extends ThingBase {
+    "@type": "dirmo:EngineerRepresentative";
+}
+/** The engineer's representative. */
+export type EngineerRepresentative = EngineerRepresentativeLeaf;
 
 interface EngineSpecificationBase extends ThingBase {
     /**
@@ -3828,7 +4664,7 @@ interface EnumerationLeaf extends EnumerationBase {
     "@type": "schema:Enumeration";
 }
 /** Lists or enumerations—for example, a list of cuisines or music genres, etc. */
-export type Enumeration = EnumerationLeaf | AttachmentEnumeration | BoardingPolicyType | BookFormatType | BusinessEntityType | BusinessFunction | CarUsageType | ContactPointOption | DataBlockKindEnumeration | DayOfWeek | DeliveryMethod | DigitalDocumentPermissionType | EnergyEfficiencyEnumeration | EventAttendanceModeEnumeration | GamePlayMode | GenderType | GovernmentBenefitsType | HealthAspectEnumeration | ItemAvailability | ItemListOrderType | KnowledgeContainerKindEnumeration | LegalValueLevel | MapCategoryType | MeasurementTypeEnumeration | MediaManipulationRatingEnumeration | MedicalEnumeration | MerchantReturnEnumeration | MusicAlbumProductionType | MusicAlbumReleaseType | MusicReleaseFormatType | NameOrderEnumeration | NonprofitType | OfferItemCondition | OrientationEnumeration | PaymentMethod | PhysicalActivityCategory | PriceComponentTypeEnumeration | PriceTypeEnumeration | PublishableStatusEnumeration | QualitativeValue | RefundTypeEnumeration | RestrictedDiet | ReturnFeesEnumeration | ReturnLabelSourceEnumeration | ReturnMethodEnumeration | RsvpResponseType | SizeGroupEnumeration | SizeSystemEnumeration | Specialty | StatusEnumeration | WarrantyScope;
+export type Enumeration = EnumerationLeaf | AttachmentEnumeration | BoardingPolicyType | BookFormatType | BusinessEntityType | BusinessFunction | CarUsageType | ConditionalOperationEnumeration | ContactPointOption | DayOfWeek | DeliveryMethod | DigitalDocumentPermissionType | EnergyEfficiencyEnumeration | EventAttendanceModeEnumeration | GamePlayMode | GenderType | GovernmentBenefitsType | HealthAspectEnumeration | ItemAvailability | ItemListOrderType | LegalValueLevel | MapCategoryType | MeasurementTypeEnumeration | MediaManipulationRatingEnumeration | MedicalEnumeration | MerchantReturnEnumeration | MusicAlbumProductionType | MusicAlbumReleaseType | MusicReleaseFormatType | NameOrderEnumeration | NonprofitType | OfferItemCondition | OrientationEnumeration | PaymentMethod | PhysicalActivityCategory | PriceComponentTypeEnumeration | PriceTypeEnumeration | PublishableStatusEnumeration | QualitativeValue | RefundTypeEnumeration | RestrictedDiet | ReturnFeesEnumeration | ReturnLabelSourceEnumeration | ReturnMethodEnumeration | RsvpResponseType | SizeGroupEnumeration | SizeSystemEnumeration | Specialty | StatusEnumeration | WarrantyScope;
 
 interface EpisodeBase extends CreativeWorkBase {
     /** An actor, e.g. in tv, radio, movie, video games etc., or in an event. Actors can be associated with individual items or with a series, episode, clip. */
@@ -4016,6 +4852,12 @@ interface EventVenueLeaf extends CivicStructureBase {
 /** An event venue. */
 export type EventVenue = EventVenueLeaf | string;
 
+interface ExceptionalEventLeaf extends ThingBase {
+    "@type": "camo:ExceptionalEvent";
+}
+/** An Exceptional Event. */
+export type ExceptionalEvent = ExceptionalEventLeaf;
+
 interface ExchangeRateSpecificationBase extends ThingBase {
     /**
      * The currency in which the monetary amount is expressed.
@@ -4108,6 +4950,22 @@ interface ExhibitionEventLeaf extends EventBase {
 /** Event type: Exhibition event, e.g. at a museum, library, archive, tradeshow, ... */
 export type ExhibitionEvent = ExhibitionEventLeaf;
 
+interface ExplainableBase extends ThingBase {
+    /** An explanation for a Explainable. */
+    "coremo:explanation"?: SchemaValue<Text>;
+}
+interface ExplainableLeaf extends ExplainableBase {
+    "@type": "coremo:Explainable";
+}
+/** A resource to which an explanation can be attached. */
+export type Explainable = ExplainableLeaf;
+
+interface ExtensionOfTimeLeaf extends ThingBase {
+    "@type": "camo:ExtensionOfTime";
+}
+/** An Extension Of Time (EOT). */
+export type ExtensionOfTime = ExtensionOfTimeLeaf;
+
 interface FAQPageLeaf extends WebPageBase {
     "@type": "schema:FAQPage";
 }
@@ -4126,11 +4984,59 @@ interface FestivalLeaf extends EventBase {
 /** Event type: Festival. */
 export type Festival = FestivalLeaf;
 
+interface FileNamingLayoutTableBase extends ThingBase {
+    /** The segment name to use for the APG attachment file. */
+    "camo:certificateAPGAttachmentFileSegment"?: SchemaValue<Text>;
+    /** The segment name to use for a certificate attachment file. */
+    "camo:certificateAttachmentFileSegment"?: SchemaValue<Text>;
+    /** The segment name to use for a C&I Duties attachment file. */
+    "camo:certificateCAndIAttachmentFileSegment"?: SchemaValue<Text>;
+    /** The segment name to use for a certificate damages attachment file. */
+    "camo:certificateDamagesAttachmentFileSegment"?: SchemaValue<Text>;
+    /** The segment name to use for a certificate file. */
+    "camo:certificateFileSegment"?: SchemaValue<Text>;
+    /** The segment name to use for the monthly certificate progress report file. */
+    "camo:monthlyCertificateProgressReportFileSegment"?: SchemaValue<Text>;
+    /** The segment name to use for the monthly variation progress report file. */
+    "camo:monthlyVariationProgressReportFileSegment"?: SchemaValue<Text>;
+    /** The segment name to use for a variaton attachment file. */
+    "camo:variationAttachmentFileSegment"?: SchemaValue<Text>;
+}
+interface FileNamingLayoutTableLeaf extends FileNamingLayoutTableBase {
+    "@type": "camo:FileNamingLayoutTable";
+}
+/** A file naming layout table. */
+export type FileNamingLayoutTable = FileNamingLayoutTableLeaf;
+
 interface FilmActionLeaf extends ActionBase {
     "@type": "schema:FilmAction";
 }
 /** The act of capturing sound and moving images on film, video, or digitally. */
 export type FilmAction = FilmActionLeaf;
+
+interface FinalPaymentCertificateLeaf extends PaymentCertificateBase {
+    "@type": "camo:FinalPaymentCertificate";
+}
+/** A final payment certificate. */
+export type FinalPaymentCertificate = FinalPaymentCertificateLeaf;
+
+interface FinalPaymentNotificationLeaf extends PaymentNotificationBase {
+    "@type": "camo:FinalPaymentNotification";
+}
+/** A final payment notification. */
+export type FinalPaymentNotification = FinalPaymentNotificationLeaf;
+
+interface FinalSectionPaymentDescriptionLeaf extends SectionPaymentDescriptionBase {
+    "@type": "camo:FinalSectionPaymentDescription";
+}
+/** A final payment that is part of a contract payment description. */
+export type FinalSectionPaymentDescription = FinalSectionPaymentDescriptionLeaf;
+
+interface FinalStatementLeaf extends ContractStatementBase {
+    "@type": "camo:FinalStatement";
+}
+/** A final statement. */
+export type FinalStatement = FinalStatementLeaf;
 
 interface FinancialProductBase extends ServiceBase {
     /** The annual rate that is charged for borrowing (or made by investing), expressed as a single percentage number that represents the actual yearly cost of funds over the term of a loan. This includes any fees or additional costs associated with the transaction. */
@@ -4155,6 +5061,12 @@ interface FinancialServiceLeaf extends FinancialServiceBase {
 }
 /** Financial services business. */
 export type FinancialService = FinancialServiceLeaf | AccountingService | AutomatedTeller | BankOrCreditUnion | InsuranceAgency | string;
+
+interface FinancingInstituionLeaf extends ThingBase {
+    "@type": "dirmo:FinancingInstituion";
+}
+/** A financing institution. */
+export type FinancingInstituion = FinancingInstituionLeaf;
 
 interface FindActionLeaf extends ActionBase {
     "@type": "schema:FindAction";
@@ -4363,17 +5275,63 @@ interface FoodServiceLeaf extends ServiceBase {
 /** A food service, like breakfast, lunch, or dinner. */
 export type FoodService = FoodServiceLeaf;
 
+interface FormConceptLeaf extends ThingBase {
+    "@type": "fomo:FormConcept";
+}
+/** A form concept. */
+export type FormConcept = FormConceptLeaf | DispatcherFormConcept | FormModel | FormSemanticPool | LayoutFormConcept | ResponseFormConcept | RootResponseFormConcept;
+
+interface FormLayoutLeaf extends ThingBase {
+    "@type": "fomo:FormLayout";
+}
+/** A form layout (comprised of LayoutChoiceGroups (entries in dropdown lists) and LayoutQuestionGroups (groups of actual questions). */
+export type FormLayout = FormLayoutLeaf;
+
+interface FormModelBase extends ThingBase, ThingBase, ThingBase {
+    /** A semantic pool within a form model. */
+    "fomo:hasFormSemanticPool"?: SchemaValue<FormSemanticPool | IdReference>;
+}
+interface FormModelLeaf extends FormModelBase {
+    "@type": "fomo:FormModel";
+}
+/** A form model */
+export type FormModel = FormModelLeaf;
+
+interface FormResponseBase extends ThingBase {
+    /** Any additional administrativeArea details. */
+    "fomo:administrativeArea"?: SchemaValue<Text>;
+    /** The answer for a form question. */
+    "fomo:answer"?: SchemaValue<Text>;
+    /** The layout this response form is based upon. */
+    "fomo:basedOnFormLayout"?: SchemaValue<URL>;
+    /** A repeater answer for a form question. */
+    "fomo:repeaterAnswer"?: SchemaValue<Text>;
+}
+interface FormResponseLeaf extends FormResponseBase {
+    "@type": "fomo:FormResponse";
+}
+/** A form.response. */
+export type FormResponse = FormResponseLeaf;
+
+interface FormSemanticPoolBase extends SemanticPoolBase, ThingBase {
+}
+interface FormSemanticPoolLeaf extends FormSemanticPoolBase {
+    "@type": "fomo:FormSemanticPool";
+}
+/** A form semantic pool. */
+export type FormSemanticPool = FormSemanticPoolLeaf | DispatcherFormSemanticPool | LayoutFormSemanticPool | ResponseFormSemanticPool;
+
 interface FoundationsConceptLeaf extends ThingBase {
     "@type": "coremo:FoundationsConcept";
 }
 /** A foundational mathematics concept */
-export type FoundationsConcept = FoundationsConceptLeaf | CategoryConcept | CoreConcept | ModelsetConcept;
+export type FoundationsConcept = FoundationsConceptLeaf | CoreConcept | ModelsetConcept;
 
 interface FoundationsMathematicsModelAreaLeaf extends ThingBase {
     "@type": "coremo:FoundationsMathematicsModelArea";
 }
 /** A foundational mathematics model area. */
-export type FoundationsMathematicsModelArea = FoundationsMathematicsModelAreaLeaf | CategoryModel | CodeModelsetFoundationsMathematicsModelArea | CommonModelsetFoundationsMathematicsModelArea | EngineeringModelsetFoundationsMathematicsModelArea | ModelsetFoundationsMathematicsModelArea;
+export type FoundationsMathematicsModelArea = FoundationsMathematicsModelAreaLeaf | CodeModelsetFoundationsMathematicsModelArea | CommonModelsetFoundationsMathematicsModelArea | EngineeringModelsetFoundationsMathematicsModelArea | ModelsetFoundationsMathematicsModelArea;
 
 interface FundingAgencyLeaf extends OrganizationBase {
     "@type": "schema:FundingAgency";
@@ -4486,6 +5444,16 @@ interface GeneralContractorLeaf extends LocalBusinessBase {
 }
 /** A general contractor. */
 export type GeneralContractor = GeneralContractorLeaf | string;
+
+interface GeneralPaymentDescriptionBase extends ThingBase {
+    /** The amount property for a GeneralPaymentDescription. */
+    "camo:hasGeneralPaymentDescriptionAmount"?: SchemaValue<MonetaryAmount | IdReference>;
+}
+interface GeneralPaymentDescriptionLeaf extends GeneralPaymentDescriptionBase {
+    "@type": "camo:GeneralPaymentDescription";
+}
+/** A general payment description that is part of a contract payment description. */
+export type GeneralPaymentDescription = GeneralPaymentDescriptionLeaf | AdditionsPaymentDescription | DeductionsAppliedAndCollectedPaymentDescription | DeductionsAppliedPaymentDescription | DeductionsCollectedPaymentDescription | PlantMaterialShippedDeliveredPrePaymentDescription;
 
 interface GenerationalBase extends ThingBase {
     /** The generation number of this resource generation. */
@@ -5233,6 +6201,12 @@ interface InsuranceAgencyLeaf extends FinancialServiceBase {
 /** An Insurance agency. */
 export type InsuranceAgency = InsuranceAgencyLeaf | string;
 
+interface InsuranceCompanyLeaf extends ThingBase {
+    "@type": "dirmo:InsuranceCompany";
+}
+/** An InsuranceCompany. */
+export type InsuranceCompany = InsuranceCompanyLeaf;
+
 interface IntangibleLeaf extends ThingBase {
     "@type": "schema:Intangible";
 }
@@ -5240,7 +6214,7 @@ interface IntangibleLeaf extends ThingBase {
 export type Intangible = IntangibleLeaf | ActionAccessSpecification | AlignmentObject | Audience | BedDetails | Brand | BroadcastChannel | BroadcastFrequencySpecification | Class | ComputerLanguage | DataFeedItem | DefinedTerm | Demand | DigitalDocumentPermission | EducationalOccupationalProgram | EnergyConsumptionDetails | EntryPoint | Enumeration | FloorPlan | GameServer | GeospatialGeometry | Grant | HealthInsurancePlan | HealthPlanCostSharingSpecification | HealthPlanFormulary | HealthPlanNetwork | Invoice | ItemList | JobPosting | Language | ListItem | MediaSubscription | MenuItem | MerchantReturnPolicy | MerchantReturnPolicySeasonalOverride | Observation | Occupation | OccupationalExperienceRequirements | Offer | Order | OrderItem | ParcelDelivery | Permit | ProgramMembership | Property | PropertyValueSpecification | Quantity | Rating | Reservation | Role | Schedule | Seat | Series | Service | ServiceChannel | SpeakableSpecification | StatisticalPopulation | StructuredValue | Ticket | Trip | VirtualLocation;
 
 /** Data type: Integer. */
-export type Integer = NaturalNumber | number | `${number}`;
+export type Integer = number | `${number}`;
 
 interface IntegrationModelAreaLeaf extends ThingBase {
     "@type": "coremo:IntegrationModelArea";
@@ -5287,6 +6261,30 @@ interface InteractionCounterLeaf extends InteractionCounterBase {
 }
 /** A summary of how users have interacted with this CreativeWork. In most cases, authors will use a subtype to specify the specific type of interaction. */
 export type InteractionCounter = InteractionCounterLeaf;
+
+interface InterimPaymentCertificateLeaf extends PaymentCertificateBase {
+    "@type": "camo:InterimPaymentCertificate";
+}
+/** An interim payment certificate. */
+export type InterimPaymentCertificate = InterimPaymentCertificateLeaf;
+
+interface InterimPaymentNotificationLeaf extends PaymentNotificationBase {
+    "@type": "camo:InterimPaymentNotification";
+}
+/** An interim payment notification. */
+export type InterimPaymentNotification = InterimPaymentNotificationLeaf;
+
+interface InterimSectionPaymentDescriptionLeaf extends SectionPaymentDescriptionBase {
+    "@type": "camo:InterimSectionPaymentDescription";
+}
+/** An interim payment that is part of a contract payment description. */
+export type InterimSectionPaymentDescription = InterimSectionPaymentDescriptionLeaf;
+
+interface InterimStatementLeaf extends ContractStatementBase {
+    "@type": "camo:InterimStatement";
+}
+/** An interim statement. */
+export type InterimStatement = InterimStatementLeaf;
 
 interface InternetCafeLeaf extends LocalBusinessBase {
     "@type": "schema:InternetCafe";
@@ -5533,37 +6531,23 @@ interface JointLeaf extends JointBase {
 /** The anatomical location at which two or more bones make contact. */
 export type Joint = JointLeaf;
 
-interface KnowledgeContainerBase extends ThingBase {
-    /** A unique URL identifier for a knowledge container. */
-    "dstoremo:knowledgeContainerIdentifier"?: SchemaValue<URL>;
-    /** A key uniquely identifying a knowledge container. */
-    "dstoremo:knowledgeContainerKey"?: SchemaValue<Integer>;
-    /** The kind of knowledge container. */
-    "dstoremo:knowledgeContainerKind"?: SchemaValue<KnowledgeContainerKindEnumeration | IdReference>;
-    /** A key uniquely identifying a knowledge container's parent. */
-    "dstoremo:parentKnowledgeContainerKey"?: SchemaValue<Integer>;
+interface JointVentureLeaf extends ThingBase {
+    "@type": "dirmo:JointVenture";
 }
-interface KnowledgeContainerLeaf extends KnowledgeContainerBase {
-    "@type": "dstoremo:KnowledgeContainer";
-}
-/** A knowledge container in a datastore */
-export type KnowledgeContainer = KnowledgeContainerLeaf;
+/** A Joint Venture (JV). */
+export type JointVenture = JointVentureLeaf;
 
-interface KnowledgeContainerKindEnumerationLeaf extends EnumerationBase {
-    "@type": "dstoremo:KnowledgeContainerKindEnumeration";
+interface JVUndertakingLeaf extends ThingBase {
+    "@type": "camo:JVUndertaking";
 }
-/** KnowledgeContainerKindEnumeration is an enumeration type representing conitional op. */
-export type KnowledgeContainerKindEnumeration = "https://clipcode.org/base/concept/dstoremo/CollectionIdentifierKind" | "dstoremo:CollectionIdentifierKind" | "https://clipcode.org/base/concept/dstoremo/DatasetIdentifierKind" | "dstoremo:DatasetIdentifierKind" | "https://clipcode.org/base/concept/dstoremo/KnowledgePartitionIdentifierKind" | "dstoremo:KnowledgePartitionIdentifierKind" | "https://clipcode.org/base/concept/dstoremo/NetworkIdentifierKind" | "dstoremo:NetworkIdentifierKind" | "https://clipcode.org/base/concept/dstoremo/OrgIdentifierKind" | "dstoremo:OrgIdentifierKind" | "https://clipcode.org/base/concept/dstoremo/RealmIdentifierKind" | "dstoremo:RealmIdentifierKind" | KnowledgeContainerKindEnumerationLeaf;
+/** The joint venture undertaking. */
+export type JVUndertaking = JVUndertakingLeaf;
 
-interface KnowledgeContainerListBase extends ThingBase {
-    /** A knowledge container in a data container list. */
-    "dstoremo:hasKnowledgeContainer"?: SchemaValue<KnowledgeContainer | IdReference>;
+interface KeyPersonnelLeaf extends ThingBase {
+    "@type": "dirmo:KeyPersonnel";
 }
-interface KnowledgeContainerListLeaf extends KnowledgeContainerListBase {
-    "@type": "dstoremo:KnowledgeContainerList";
-}
-/** A list of knowledge containers */
-export type KnowledgeContainerList = KnowledgeContainerListLeaf;
+/** the Key Personnel. */
+export type KeyPersonnel = KeyPersonnelLeaf;
 
 interface KnowledgeGraphBase extends ThingBase {
     /** A semantic model that is contained within a knowledge graph. */
@@ -5574,54 +6558,6 @@ interface KnowledgeGraphLeaf extends KnowledgeGraphBase {
 }
 /** A knowledge graph (which acts as a data container for one or more related semantic models). */
 export type KnowledgeGraph = KnowledgeGraphLeaf;
-
-interface KnowledgePackageBase extends ThingBase {
-    /** The checkpoint for this knowledge package. */
-    "dstoremo:checkpoint"?: SchemaValue<NaturalNumber>;
-    /** The datablockEncoding for this knowledge package (json for object, jsonld for graph). */
-    "dstoremo:datablockEncoding"?: SchemaValue<Text>;
-    /** The datablockKey for this knowledge package. */
-    "dstoremo:datablockKey"?: SchemaValue<NaturalNumber>;
-    /** The datablockKind for this knowledge package. */
-    "dstoremo:datablockKind"?: SchemaValue<DataBlockKindEnumeration | IdReference>;
-    /** The generation for this knowledge package. */
-    "dstoremo:generation"?: SchemaValue<Text>;
-    /** Whether this knowledge package is archived. */
-    "dstoremo:isArchived"?: SchemaValue<Boolean>;
-    /** The isPublished of this knowledge package. */
-    "dstoremo:isPublished"?: SchemaValue<Boolean>;
-    /** The mimetype for this knowledge package. */
-    "dstoremo:mimetype"?: SchemaValue<Text>;
-    /** The mostRecentCloudVersion for this knowledge package. */
-    "dstoremo:mostRecentCloudVersion"?: SchemaValue<NaturalNumber>;
-    /** A key uniquely identifying a knowledge package. */
-    "dstoremo:packageKey"?: SchemaValue<Integer>;
-    /** A unique URL identifier for a knowledge package. */
-    "dstoremo:packagelIdentifier"?: SchemaValue<URL>;
-    /** A key uniquely identifying a knowledge package's parent. */
-    "dstoremo:packageParentKey"?: SchemaValue<Integer>;
-    /** The primary semantic model kind (if any) within this knowledge package. */
-    "dstoremo:primarySemanticModelKind"?: SchemaValue<Text>;
-    /** The revision for this knowledge package. */
-    "dstoremo:revision"?: SchemaValue<NaturalNumber>;
-    /** The savepoint for this knowledge package. */
-    "dstoremo:savepoint"?: SchemaValue<NaturalNumber>;
-}
-interface KnowledgePackageLeaf extends KnowledgePackageBase {
-    "@type": "dstoremo:KnowledgePackage";
-}
-/** A knowledge package a package. */
-export type KnowledgePackage = KnowledgePackageLeaf;
-
-interface KnowledgePackageListBase extends ThingBase {
-    /** A knowledge package within a knowledge list. */
-    "dstoremo:hasKnowledgePackage"?: SchemaValue<KnowledgePackage | IdReference>;
-}
-interface KnowledgePackageListLeaf extends KnowledgePackageListBase {
-    "@type": "dstoremo:KnowledgePackageList";
-}
-/** A list of metadata for knowledge packages. */
-export type KnowledgePackageList = KnowledgePackageListLeaf;
 
 interface LakeBodyOfWaterLeaf extends PlaceBase {
     "@type": "schema:LakeBodyOfWater";
@@ -5646,6 +6582,136 @@ interface LanguageLeaf extends ThingBase {
 }
 /** Natural languages such as Spanish, Tamil, Hindi, English, etc. Formal language code tags expressed in {@link https://en.wikipedia.org/wiki/IETF_language_tag BCP 47} can be used via the {@link https://schema.org/alternateName alternateName} property. The Language type previously also covered programming languages such as Scheme and Lisp, which are now best represented using {@link https://schema.org/ComputerLanguage ComputerLanguage}. */
 export type Language = LanguageLeaf;
+
+interface LayoutChoiceBase extends ThingBase {
+    /** Extra text for this choice */
+    "fomo:choiceExtraText"?: SchemaValue<Text>;
+    /** The index of this choice */
+    "fomo:choiceIndex"?: SchemaValue<Text>;
+    /** The title of this choice */
+    "fomo:choiceTitle"?: SchemaValue<Text>;
+}
+interface LayoutChoiceLeaf extends LayoutChoiceBase {
+    "@type": "fomo:LayoutChoice";
+}
+/** A choice that is part of a single-choice or multi-choice question */
+export type LayoutChoice = LayoutChoiceLeaf;
+
+interface LayoutChoiceGroupBase extends ThingBase {
+    /** Attaches a choice to its choice Group. */
+    "fomo:hasLayoutChoice"?: SchemaValue<LayoutChoice | IdReference>;
+}
+interface LayoutChoiceGroupLeaf extends LayoutChoiceGroupBase {
+    "@type": "fomo:LayoutChoiceGroup";
+}
+/** A group of choices within an electronic form */
+export type LayoutChoiceGroup = LayoutChoiceGroupLeaf;
+
+interface LayoutContractConceptLeaf extends ThingBase {
+    "@type": "camo:LayoutContractConcept";
+}
+/** A layout contract concept */
+export type LayoutContractConcept = LayoutContractConceptLeaf | AdvancePaymentLayoutTable | CertificateLayoutTable | ContractLayoutTable | ContractTerminologyLayoutTable | CurrencyLayoutTable | CustomCertificateLayout | FileNamingLayoutTable | Milestone | MilestoneLayoutTable | NoticeLayout | NoticeLayoutTable | NumberingLayoutTable | PlantAndMaterialsLayoutTable | RetentionMoneyTable | SyntheticCurrency;
+
+interface LayoutContractSemanticPoolBase extends ContractSemanticPoolBase {
+    /** The layout table associated with this ContractConfiguration. */
+    "camo:hasContractLayoutTable"?: SchemaValue<ContractLayoutTable | URL | IdReference>;
+}
+interface LayoutContractSemanticPoolLeaf extends LayoutContractSemanticPoolBase {
+    "@type": "camo:LayoutContractSemanticPool";
+}
+/** A layout contract semantic pool. */
+export type LayoutContractSemanticPool = LayoutContractSemanticPoolLeaf;
+
+interface LayoutFormConceptLeaf extends ThingBase {
+    "@type": "fomo:LayoutFormConcept";
+}
+/** A Layout form concept. */
+export type LayoutFormConcept = LayoutFormConceptLeaf | LayoutChoice | LayoutQuestion | RootLayoutFormConcept;
+
+interface LayoutFormSemanticPoolBase extends FormSemanticPoolBase {
+    /** Attaches a root concept to its semantic pool. */
+    "fomo:hasRootLayoutFormConcept"?: SchemaValue<RootLayoutFormConcept | IdReference>;
+}
+interface LayoutFormSemanticPoolLeaf extends LayoutFormSemanticPoolBase {
+    "@type": "fomo:LayoutFormSemanticPool";
+}
+/** A form Layout. */
+export type LayoutFormSemanticPool = LayoutFormSemanticPoolLeaf;
+
+interface LayoutQuestionBase extends ThingBase {
+    /** additional. */
+    "fomo:additional"?: SchemaValue<Text>;
+    /** answerIndex. */
+    "fomo:answerIndex"?: SchemaValue<Integer>;
+    /** autocomplete. */
+    "fomo:autocomplete"?: SchemaValue<Text>;
+    /** choices. */
+    "fomo:choices"?: SchemaValue<URL>;
+    /** datafield. */
+    "fomo:datafield"?: SchemaValue<Text>;
+    /** defaultValue. */
+    "fomo:defaultValue"?: SchemaValue<Text>;
+    /** multiIndex. */
+    "fomo:multiIndex"?: SchemaValue<Integer>;
+    /** noText. */
+    "fomo:noText"?: SchemaValue<Text>;
+    /** personalData. */
+    "fomo:personalData"?: SchemaValue<Boolean>;
+    /** postQuestionHyperlinkText. */
+    "fomo:postQuestionHyperlinkText"?: SchemaValue<Text>;
+    /** postQuestionHyperlinkUrl. */
+    "fomo:postQuestionHyperlinkUrl"?: SchemaValue<URL>;
+    /** postQuestionStaticText. */
+    "fomo:postQuestionStaticText"?: SchemaValue<Text>;
+    /** preQuestionStaticText. */
+    "fomo:preQuestionStaticText"?: SchemaValue<Text>;
+    /** pubSubStatus. */
+    "fomo:pubSubStatus"?: SchemaValue<Text>;
+    /** questionIndex. */
+    "fomo:questionIndex"?: SchemaValue<Integer>;
+    /** questionTitle. */
+    "fomo:questionTitle"?: SchemaValue<Text>;
+    /** questionType. */
+    "fomo:questionType"?: SchemaValue<Integer>;
+    /** repeaterMax. */
+    "fomo:repeaterMax"?: SchemaValue<Integer>;
+    /** repeaterMin. */
+    "fomo:repeaterMin"?: SchemaValue<Integer>;
+    /** required. */
+    "fomo:required"?: SchemaValue<Boolean>;
+    /** showConditionalOn. */
+    "fomo:showConditionalOn"?: SchemaValue<Integer>;
+    /** showConditionalOp. */
+    "fomo:showConditionalOp"?: SchemaValue<ConditionalOperationEnumeration | IdReference>;
+    /** showConditionalParam. */
+    "fomo:showConditionalParam"?: SchemaValue<Text>;
+    /** smallFont. */
+    "fomo:smallFont"?: SchemaValue<Boolean>;
+    /** yesText. */
+    "fomo:yesText"?: SchemaValue<Text>;
+}
+interface LayoutQuestionLeaf extends LayoutQuestionBase {
+    "@type": "fomo:LayoutQuestion";
+}
+/** A single question on the electronic form */
+export type LayoutQuestion = LayoutQuestionLeaf;
+
+interface LayoutQuestionGroupBase extends ThingBase {
+    /** Attaches a question to its question Group. */
+    "fomo:hasLayoutQuestion"?: SchemaValue<LayoutQuestion | IdReference>;
+    /** showConditionalOn. */
+    "fomo:showConditionalOn"?: SchemaValue<Integer>;
+    /** showConditionalOp. */
+    "fomo:showConditionalOp"?: SchemaValue<ConditionalOperationEnumeration | IdReference>;
+    /** showConditionalParam. */
+    "fomo:showConditionalParam"?: SchemaValue<Text>;
+}
+interface LayoutQuestionGroupLeaf extends LayoutQuestionGroupBase {
+    "@type": "fomo:LayoutQuestionGroup";
+}
+/** A group of questions within an electronic form */
+export type LayoutQuestionGroup = LayoutQuestionGroupLeaf;
 
 interface LearningResourceBase extends CreativeWorkBase {
     /** The item being described is intended to assess the competency or learning outcome defined by the referenced term. */
@@ -5781,6 +6847,22 @@ interface LendActionLeaf extends LendActionBase {
  * - {@link https://schema.org/BorrowAction BorrowAction}: Reciprocal of LendAction.
  */
 export type LendAction = LendActionLeaf;
+
+interface LetterOfAcceptanceBase extends ThingBase {
+    /** The Accepted Contract Amount of this contract. */
+    "camo:acceptedContractAmount"?: SchemaValue<PriceSpecification | IdReference>;
+}
+interface LetterOfAcceptanceLeaf extends LetterOfAcceptanceBase {
+    "@type": "camo:LetterOfAcceptance";
+}
+/** The Letter Of Acceptance. */
+export type LetterOfAcceptance = LetterOfAcceptanceLeaf;
+
+interface LetterOfTenderLeaf extends ThingBase {
+    "@type": "camo:LetterOfTender";
+}
+/** The Letter Of Tender. */
+export type LetterOfTender = LetterOfTenderLeaf;
 
 interface LibraryLeaf extends LocalBusinessBase {
     "@type": "schema:Library";
@@ -6017,8 +7099,6 @@ interface LymphaticVesselBase extends AnatomicalStructureBase {
     "schema:originatesFrom"?: SchemaValue<Vessel | IdReference>;
     /** The anatomical or organ system drained by this vessel; generally refers to a specific part of an organ. */
     "schema:regionDrained"?: SchemaValue<AnatomicalStructure | AnatomicalSystem | IdReference>;
-    /** The vasculature the lymphatic structure runs, or efferents, to. */
-    "schema:runsTo"?: SchemaValue<Vessel | IdReference>;
 }
 interface LymphaticVesselLeaf extends LymphaticVesselBase {
     "@type": "schema:LymphaticVessel";
@@ -6060,12 +7140,6 @@ interface MassLeaf extends ThingBase {
 /** Properties that take Mass as values are of the form '<Number> <Mass unit of measure>'. E.g., '7 kg'. */
 export type Mass = MassLeaf | string;
 
-interface MathematicalCoreConceptLeaf extends ThingBase {
-    "@type": "coremo:MathematicalCoreConcept";
-}
-/** A characteristic core concept */
-export type MathematicalCoreConcept = MathematicalCoreConceptLeaf | MathematicalExpression | MathematicalFormula | MathematicalObject | MathematicalOperation | MathematicalProperty | MathematicalSequenceTerm | MathematicalVariable;
-
 interface MathematicalExpressionLeaf extends ThingBase {
     "@type": "coremo:MathematicalExpression";
 }
@@ -6088,7 +7162,7 @@ interface MathematicalObjectLeaf extends ThingBase {
     "@type": "coremo:MathematicalObject";
 }
 /** A mathematical object */
-export type MathematicalObject = MathematicalObjectLeaf | Category | MathematicalFunction | MathematicalProof | MathematicalRelation | MathematicalStructure | MathematicalTheorem | MathematicalTheory;
+export type MathematicalObject = MathematicalObjectLeaf | MathematicalFunction | MathematicalProof | MathematicalRelation | MathematicalStructure | MathematicalTheorem | MathematicalTheory;
 
 interface MathematicalOperationLeaf extends ThingBase {
     "@type": "coremo:MathematicalOperation";
@@ -6928,11 +8002,45 @@ interface MessageLeaf extends MessageBase {
 /** A single message from a sender to one or more organizations or people. */
 export type Message = MessageLeaf | EmailMessage;
 
+interface MetaverseDirectoryConceptLeaf extends ThingBase {
+    "@type": "dirmo:MetaverseDirectoryConcept";
+}
+/** A metaverse directory concept */
+export type MetaverseDirectoryConcept = MetaverseDirectoryConceptLeaf;
+
+interface MetaverseDirectorySemanticPoolLeaf extends DirectorySemanticPoolBase {
+    "@type": "dirmo:MetaverseDirectorySemanticPool";
+}
+/** A metaverse directory */
+export type MetaverseDirectorySemanticPool = MetaverseDirectorySemanticPoolLeaf;
+
 interface MiddleSchoolLeaf extends EducationalOrganizationBase {
     "@type": "schema:MiddleSchool";
 }
 /** A middle school (typically for children aged around 11-14, although this varies somewhat). */
 export type MiddleSchool = MiddleSchoolLeaf | string;
+
+interface MilestoneBase extends ThingBase {
+    /** A milestone percentage. */
+    "camo:hasMilestonePercentage"?: SchemaValue<Number>;
+}
+interface MilestoneLeaf extends MilestoneBase {
+    "@type": "camo:Milestone";
+}
+/** A milestone. */
+export type Milestone = MilestoneLeaf;
+
+interface MilestoneLayoutTableBase extends ThingBase {
+    /** A milestone within a MilestoneLayoutTable. */
+    "camo:hasMilestone"?: SchemaValue<Milestone | IdReference>;
+    /** Milestone applies to entire works (if false, applies to a part or a section). */
+    "camo:milestonesApplyToEntireWorks"?: SchemaValue<Boolean>;
+}
+interface MilestoneLayoutTableLeaf extends MilestoneLayoutTableBase {
+    "@type": "camo:MilestoneLayoutTable";
+}
+/** A milestone layout table. */
+export type MilestoneLayoutTable = MilestoneLayoutTableLeaf;
 
 interface MobileApplicationBase extends SoftwareApplicationBase {
     /** Specifies specific carrier(s) requirements for the application (e.g. an application may only work on a specific carrier network). */
@@ -6954,7 +8062,7 @@ interface ModelConceptLeaf extends ThingBase {
     "@type": "coremo:ModelConcept";
 }
 /** A concept that appears in a semantic model */
-export type ModelConcept = ModelConceptLeaf | Abstractable | Attachable | CommunicationConcept | CommunityConcept | CorporateConcept | EducationConcept | Generational | Iconable | Inheritable | KnowledgeGraph | MathematicsConcept | Modular | OperationsConcept | Orientable | Panel | PanelHost | Prioritizable | Publishable | ResponsibleFor | Revisible | SalesConcept | SemanticModel | SemanticModelArea | SemanticPool | Sequential | ServicesConcept | TechnologyConcept | Templatable | Transform | Transformable | Versionable;
+export type ModelConcept = ModelConceptLeaf | Abstractable | Attachable | Commentable | CommunicationConcept | CorporateConcept | DateRange | Describeable | Explainable | Generational | Iconable | Inheritable | KnowledgeGraph | MathematicsConcept | Modular | OperationsConcept | Ordered | Orientable | Panel | PanelHost | Prioritizable | Publishable | ResponsibleFor | Revisible | SalesConcept | SemanticModel | SemanticModelArea | SemanticPool | Sequential | ServicesConcept | TechnologyConcept | Templatable | Transform | Transformable | Versionable;
 
 interface ModelsetConceptLeaf extends ThingBase {
     "@type": "coremo:ModelsetConcept";
@@ -7465,10 +8573,7 @@ interface NameOrderEnumerationLeaf extends EnumerationBase {
     "@type": "coremo:NameOrderEnumeration";
 }
 /** NameOrderEnumeration is an enumeration name ordering. */
-export type NameOrderEnumeration = "https://clipcode.org/base/concept/coremo/EasternNameOrder" | "coremo:EasternNameOrder" | "https://clipcode.org/base/concept/coremo/WesternNameOrder" | "coremo:WesternNameOrder" | NameOrderEnumerationLeaf;
-
-/** A numeric representation of 0, 1 or more (i.e. the non-negative integers). */
-export type NaturalNumber = number | `${number}`;
+export type NameOrderEnumeration = "https://clipcode.org/base/schema/coremo/EasternNameOrder" | "coremo:EasternNameOrder" | "https://clipcode.org/base/schema/coremo/WesternNameOrder" | "coremo:WesternNameOrder" | NameOrderEnumerationLeaf;
 
 interface NerveBase extends AnatomicalStructureBase {
     /**
@@ -7489,18 +8594,6 @@ interface NerveLeaf extends NerveBase {
 }
 /** A common pathway for the electrochemical nerve impulses that are transmitted along each of the axons. */
 export type Nerve = NerveLeaf;
-
-interface NetworkDirectoryConceptLeaf extends ThingBase {
-    "@type": "dirmo:NetworkDirectoryConcept";
-}
-/** A network directory concept */
-export type NetworkDirectoryConcept = NetworkDirectoryConceptLeaf;
-
-interface NetworkDirectorySemanticPoolLeaf extends DirectorySemanticPoolBase {
-    "@type": "dirmo:NetworkDirectorySemanticPool";
-}
-/** A network directory */
-export type NetworkDirectorySemanticPool = NetworkDirectorySemanticPoolLeaf;
 
 interface NetworkingModelAreaLeaf extends ThingBase {
     "@type": "coremo:NetworkingModelArea";
@@ -7590,6 +8683,12 @@ interface NLNonprofitTypeLeaf extends EnumerationBase {
 /** NLNonprofitType: Non-profit organization type originating from the Netherlands. */
 export type NLNonprofitType = "https://schema.org/NonprofitANBI" | "schema:NonprofitANBI" | "https://schema.org/NonprofitSBBI" | "schema:NonprofitSBBI" | NLNonprofitTypeLeaf;
 
+interface NominatedSubcontractorLeaf extends ThingBase {
+    "@type": "dirmo:NominatedSubcontractor";
+}
+/** A nominated (named) subcontractor. */
+export type NominatedSubcontractor = NominatedSubcontractorLeaf;
+
 interface NonprofitTypeLeaf extends EnumerationBase {
     "@type": "schema:NonprofitType";
 }
@@ -7607,6 +8706,84 @@ interface NoteDigitalDocumentLeaf extends DigitalDocumentBase {
 }
 /** A file containing a note, primarily for the author. */
 export type NoteDigitalDocument = NoteDigitalDocumentLeaf;
+
+interface NoticeContractConceptLeaf extends ThingBase {
+    "@type": "camo:NoticeContractConcept";
+}
+/** A notice contract concept */
+export type NoticeContractConcept = NoticeContractConceptLeaf | ContractNotice;
+
+interface NoticeContractSemanticPoolBase extends ContractSemanticPoolBase {
+    /** Attaches a root concept to its semantic pool. */
+    "camo:hasContractNotice"?: SchemaValue<ContractNotice | IdReference>;
+}
+interface NoticeContractSemanticPoolLeaf extends NoticeContractSemanticPoolBase {
+    "@type": "camo:NoticeContractSemanticPool";
+}
+/** A notice contract semantic pool. */
+export type NoticeContractSemanticPool = NoticeContractSemanticPoolLeaf;
+
+interface NoticeLayoutBase extends ThingBase {
+    /** A Notice is to be constructed from thisform layout. */
+    "camo:noticeBasedOnFormLayout"?: SchemaValue<URL>;
+}
+interface NoticeLayoutLeaf extends NoticeLayoutBase {
+    "@type": "camo:NoticeLayout";
+}
+/** A NoticeLayout, on which an actual notice will be based. */
+export type NoticeLayout = NoticeLayoutLeaf;
+
+interface NoticeLayoutTableBase extends ThingBase {
+    /** A NoticeLayout within a NoticeLayoutTable. */
+    "camo:hasNoticeLayout"?: SchemaValue<NoticeLayout | IdReference>;
+}
+interface NoticeLayoutTableLeaf extends NoticeLayoutTableBase {
+    "@type": "camo:NoticeLayoutTable";
+}
+/** A Notice layout table. */
+export type NoticeLayoutTable = NoticeLayoutTableLeaf;
+
+interface NoticeOfDissastificationLeaf extends ContractNoticeBase {
+    "@type": "camo:NoticeOfDissastification";
+}
+/** A notice of dissastification. */
+export type NoticeOfDissastification = NoticeOfDissastificationLeaf;
+
+interface NoticeOfNoObjectionLeaf extends ContractNoticeBase {
+    "@type": "camo:NoticeOfNoObjection";
+}
+/** A notice of no objection. */
+export type NoticeOfNoObjection = NoticeOfNoObjectionLeaf;
+
+interface NumberedBase extends OrderedBase {
+    /** The alphanumeric value of this resource. */
+    "coremo:alphanumericValue"?: SchemaValue<Text>;
+}
+interface NumberedLeaf extends NumberedBase {
+    "@type": "coremo:Numbered";
+}
+/** An ordered alphanumeric value attached to a resource */
+export type Numbered = NumberedLeaf | Contract | ContractClaim | ContractConfiguration | ContractData | ContractNotice | ContractStatement | PaymentCertificate | PaymentNotification | PlantMaterialsItem | SectionOfWorks | Subsection | Variation;
+
+interface NumberingLayoutTableBase extends ThingBase {
+    /** Defines the regex that a contract number structure must match. */
+    "camo:hasCertificateNumberLayout"?: SchemaValue<Text>;
+    /** Defines the regex that a contract number lot must match. */
+    "camo:hasContractLotNumberLayout"?: SchemaValue<Text>;
+    /** Defines the regex that a contract number must match. */
+    "camo:hasContractNumberLayout"?: SchemaValue<Text>;
+    /** Defines the regex that a contract number structure must match. */
+    "camo:hasContractNumberLotTerm"?: SchemaValue<Text>;
+    /** Defines the regex that a contract number structure must match. */
+    "camo:hasSectionNumberLayout"?: SchemaValue<Text>;
+    /** Defines the regex that a contract number structure must match. */
+    "camo:hasVariationNumberLayout"?: SchemaValue<Text>;
+}
+interface NumberingLayoutTableLeaf extends NumberingLayoutTableBase {
+    "@type": "camo:NumberingLayoutTable";
+}
+/** A numbering layout table. */
+export type NumberingLayoutTable = NumberingLayoutTableLeaf;
 
 interface NutritionInformationBase extends ThingBase {
     /** The number of calories. */
@@ -8030,6 +9207,16 @@ interface OrderActionLeaf extends OrderActionBase {
 /** An agent orders an object/product/service to be delivered/sent. */
 export type OrderAction = OrderActionLeaf;
 
+interface OrderedBase extends ThingBase {
+    /** The ordered index of this orderable. */
+    "coremo:orderedIndex"?: SchemaValue<Integer>;
+}
+interface OrderedLeaf extends OrderedBase {
+    "@type": "coremo:Ordered";
+}
+/** A resource that can be ordered among an assortmnet of similar resources based on an ordered index (and matchign order indicies are alphabetically sorted) */
+export type Ordered = OrderedLeaf | Numbered;
+
 interface OrderItemBase extends ThingBase {
     /** The delivery of the parcel related to this order or order item. */
     "schema:orderDelivery"?: SchemaValue<ParcelDelivery | IdReference>;
@@ -8266,7 +9453,13 @@ interface OrientationEnumerationLeaf extends EnumerationBase {
     "@type": "coremo:OrientationEnumeration";
 }
 /** OrientationEnumeration is an enumeration type representing orientation. */
-export type OrientationEnumeration = "https://clipcode.org/base/concept/coremo/HorizontalOrientation" | "coremo:HorizontalOrientation" | "https://clipcode.org/base/concept/coremo/VerticialOrientation" | "coremo:VerticialOrientation" | OrientationEnumerationLeaf;
+export type OrientationEnumeration = "https://clipcode.org/base/schema/coremo/HorizontalOrientation" | "coremo:HorizontalOrientation" | "https://clipcode.org/base/schema/coremo/VerticialOrientation" | "coremo:VerticialOrientation" | OrientationEnumerationLeaf;
+
+interface OtherSectionLeaf extends SectionBase {
+    "@type": "camo:OtherSection";
+}
+/** An other section representing other kinds of payments (example: 21.2 [last paragraph]). */
+export type OtherSection = OtherSectionLeaf;
 
 interface OutletStoreLeaf extends LocalBusinessBase {
     "@type": "schema:OutletStore";
@@ -8414,12 +9607,6 @@ interface PatientLeaf extends PatientBase {
 /** A patient is any person recipient of health care services. */
 export type Patient = PatientLeaf | string;
 
-interface PawnShopLeaf extends LocalBusinessBase {
-    "@type": "schema:PawnShop";
-}
-/** A shop that will buy, or lend money against the security of, personal possessions. */
-export type PawnShop = PawnShopLeaf | string;
-
 interface PayActionBase extends TradeActionBase {
     /** A sub property of participant. The participant who is at the receiving end of the action. */
     "schema:recipient"?: SchemaValue<Audience | ContactPoint | Organization | Person | IdReference>;
@@ -8445,6 +9632,38 @@ interface PaymentCardLeaf extends PaymentCardBase {
 }
 /** A payment method using a credit, debit, store or other card to associate the payment with an account. */
 export type PaymentCard = PaymentCardLeaf | CreditCard;
+
+interface PaymentCertificateBase extends ThingBase, ThingBase, NumberedBase {
+    /** Contract payment description to use. */
+    "camo:contractPaymentDescriptionToUse"?: SchemaValue<ContractPaymentDescription | IdReference>;
+    /** Most recent core contract data revision. */
+    "camo:paymentCertificateBasedOnContractDataRevision"?: SchemaValue<Integer>;
+    /** Identifies what kind of payment certificate this is). */
+    "camo:paymentCertificateKind"?: SchemaValue<URL>;
+}
+interface PaymentCertificateLeaf extends PaymentCertificateBase {
+    "@type": "camo:PaymentCertificate";
+}
+/** A payment certificate for a contract. */
+export type PaymentCertificate = PaymentCertificateLeaf | AdvancePaymentCertificate | CustomsAndImportDutiesPaymentCertificate | FinalPaymentCertificate | InterimPaymentCertificate | TakingOverPaymentCertificate;
+
+interface PaymentCertificateContractConceptLeaf extends ThingBase {
+    "@type": "camo:PaymentCertificateContractConcept";
+}
+/** A certificate contract concept */
+export type PaymentCertificateContractConcept = PaymentCertificateContractConceptLeaf;
+
+interface PaymentCertificateContractSemanticPoolBase extends ContractSemanticPoolBase {
+    /** Attaches a payment certificate to its semantic pool. */
+    "camo:hasPaymentCertificate"?: SchemaValue<PaymentCertificate | IdReference>;
+    /** sadasdasdasdasdasdasd. */
+    "camo:sadasdasdasdasdasdasd"?: SchemaValue<PaymentCertificate | IdReference>;
+}
+interface PaymentCertificateContractSemanticPoolLeaf extends PaymentCertificateContractSemanticPoolBase {
+    "@type": "camo:PaymentCertificateContractSemanticPool";
+}
+/** A payment certificate contract semantic pool. */
+export type PaymentCertificateContractSemanticPool = PaymentCertificateContractSemanticPoolLeaf;
 
 interface PaymentChargeSpecificationBase extends PriceSpecificationBase {
     /** The delivery method(s) to which the delivery charge or payment charge specification applies. */
@@ -8476,6 +9695,40 @@ interface PaymentMethodLeaf extends EnumerationBase {
  * - http://purl.org/goodrelations/v1#PaySwarm
  */
 export type PaymentMethod = PaymentMethodLeaf | PaymentCard;
+
+interface PaymentNotificationBase extends ThingBase, ThingBase, NumberedBase {
+    /** Contract payment to use. */
+    "camo:contractPaymentToUse"?: SchemaValue<Integer | Integer>;
+    /** Most recent core contract data revision. */
+    "camo:PaymentNotificationBasedOnPrimaryContractDataRevision"?: SchemaValue<Integer>;
+    /** Most recent varying contract data (Variation). */
+    "camo:PaymentNotificationBasedOnSectionContractData"?: SchemaValue<Text>;
+    /** The revision of most recent varying contract data (Variation). */
+    "camo:PaymentNotificationBasedOnSectionContractDataRevision"?: SchemaValue<Integer>;
+    /** Identifies what kind of payment notification this is (useful for specialist payment notifications with custom names, maps to payment notification layout in Contract Layout). */
+    "camo:PaymentNotificationKind"?: SchemaValue<URL>;
+}
+interface PaymentNotificationLeaf extends PaymentNotificationBase {
+    "@type": "camo:PaymentNotification";
+}
+/** A PaymentNotification. */
+export type PaymentNotification = PaymentNotificationLeaf | AdvancePaymentNotification | CustomsAndImportDutiesPaymentNotification | FinalPaymentNotification | InterimPaymentNotification | TakingOverPaymentNotification;
+
+interface PaymentNotificationContractConceptLeaf extends ThingBase {
+    "@type": "camo:PaymentNotificationContractConcept";
+}
+/** A notified payment contract concept */
+export type PaymentNotificationContractConcept = PaymentNotificationContractConceptLeaf | PaymentNotification;
+
+interface PaymentNotificationContractSemanticPoolBase extends ContractSemanticPoolBase {
+    /** Attaches a PaymentNotification and contract payment to its semantic pool. */
+    "camo:hasRootPaymentNotificationContractConcept"?: SchemaValue<PaymentNotification | IdReference>;
+}
+interface PaymentNotificationContractSemanticPoolLeaf extends PaymentNotificationContractSemanticPoolBase {
+    "@type": "camo:PaymentNotificationContractSemanticPool";
+}
+/** A notified payment contract semantic pool. */
+export type PaymentNotificationContractSemanticPool = PaymentNotificationContractSemanticPoolLeaf;
 
 interface PaymentServiceLeaf extends FinancialProductBase {
     "@type": "schema:PaymentService";
@@ -8515,6 +9768,18 @@ interface PeopleAudienceLeaf extends PeopleAudienceBase {
 /** A set of characteristics belonging to people, e.g. who compose an item's target audience. */
 export type PeopleAudience = PeopleAudienceLeaf | MedicalAudience | ParentAudience;
 
+interface PercentagePriceSpecificationBase extends ThingBase {
+    /** A percentage price. */
+    "camo:percentagePrice"?: SchemaValue<Number>;
+    /** A percentage price currency. */
+    "camo:percentagePriceCurrency"?: SchemaValue<Text>;
+}
+interface PercentagePriceSpecificationLeaf extends PercentagePriceSpecificationBase {
+    "@type": "camo:PercentagePriceSpecification";
+}
+/** A percentage price specification. */
+export type PercentagePriceSpecification = PercentagePriceSpecificationLeaf;
+
 interface PerformActionBase extends PlayActionBase {
     /** A sub property of location. The entertainment business where the action occurred. */
     "schema:entertainmentBusiness"?: SchemaValue<EntertainmentBusiness | IdReference>;
@@ -8525,6 +9790,12 @@ interface PerformActionLeaf extends PerformActionBase {
 /** The act of participating in performance arts. */
 export type PerformAction = PerformActionLeaf;
 
+interface PerformanceDamagesLeaf extends ThingBase {
+    "@type": "camo:PerformanceDamages";
+}
+/** The Performance Damages. */
+export type PerformanceDamages = PerformanceDamagesLeaf;
+
 interface PerformanceRoleBase extends RoleBase {
     /** The name of a character played in some acting or performing role, i.e. in a PerformanceRole. */
     "schema:characterName"?: SchemaValue<Text>;
@@ -8534,6 +9805,12 @@ interface PerformanceRoleLeaf extends PerformanceRoleBase {
 }
 /** A PerformanceRole is a Role that some entity places with regard to a theatrical performance, e.g. in a Movie, TVSeries etc. */
 export type PerformanceRole = PerformanceRoleLeaf;
+
+interface PerformanceSecurityLeaf extends ThingBase {
+    "@type": "camo:PerformanceSecurity";
+}
+/** A Performance Security. */
+export type PerformanceSecurity = PerformanceSecurityLeaf;
 
 interface PerformingArtsTheaterLeaf extends CivicStructureBase {
     "@type": "schema:PerformingArtsTheater";
@@ -8556,6 +9833,12 @@ interface PeriodicalLeaf extends CreativeWorkSeriesBase {
  * See also {@link http://blog.schema.org/2014/09/schemaorg-support-for-bibliographic_2.html blog post}.
  */
 export type Periodical = PeriodicalLeaf | ComicSeries | Newspaper;
+
+interface PermanentWorksLeaf extends ThingBase {
+    "@type": "camo:PermanentWorks";
+}
+/** The PermanentWorks. */
+export type PermanentWorks = PermanentWorksLeaf;
 
 interface PermitBase extends ThingBase {
     /** The organization issuing the ticket or permit. */
@@ -8817,13 +10100,13 @@ interface PipelineConceptLeaf extends ThingBase {
     "@type": "coremo:PipelineConcept";
 }
 /** A pipeline concept */
-export type PipelineConcept = PipelineConceptLeaf;
+export type PipelineConcept = PipelineConceptLeaf | FormConcept;
 
 interface PipelineModelAreaLeaf extends ThingBase {
     "@type": "coremo:PipelineModelArea";
 }
 /** A pipeline model area. */
-export type PipelineModelArea = PipelineModelAreaLeaf;
+export type PipelineModelArea = PipelineModelAreaLeaf | FormModel;
 
 interface PlaceBase extends ThingBase {
     /**
@@ -8972,6 +10255,78 @@ interface PlanActionLeaf extends PlanActionBase {
 }
 /** The act of planning the execution of an event/task/action/reservation/plan to a future date. */
 export type PlanAction = PlanActionLeaf | CancelAction | ReserveAction | ScheduleAction;
+
+interface PlantAndMaterialsDeliveredSectionPaymentDescriptionLeaf extends SectionPaymentDescriptionBase {
+    "@type": "camo:PlantAndMaterialsDeliveredSectionPaymentDescription";
+}
+/** PlantAndMaterialsDeliveredSectionPaymentDescription. */
+export type PlantAndMaterialsDeliveredSectionPaymentDescription = PlantAndMaterialsDeliveredSectionPaymentDescriptionLeaf;
+
+interface PlantAndMaterialsLayoutTableBase extends ThingBase {
+    /** Allow the specifying in a section of whether payment can be made when a Plant and Materials item is delivered on site. */
+    "camo:allowPlantAndMaterialsDeliveredInSections"?: SchemaValue<Boolean>;
+    /** Allow the specifying in a separate list of whether payment can be made when a Plant and Materials item is delivered on site. */
+    "camo:allowPlantAndMaterialsDeliveredInSeparateList"?: SchemaValue<Boolean>;
+    /** Allow the specifying in a subsection of whether payment can be made when a Plant and Materials item is delivered on site. */
+    "camo:allowPlantAndMaterialsDeliveredInSubsections"?: SchemaValue<Boolean>;
+    /** Allow the specifying in a section of whether payment can be made when a Plant and Materials item is shipped. */
+    "camo:allowPlantAndMaterialsShippedInSections"?: SchemaValue<Boolean>;
+    /** Allow the specifying in a separate list of whether payment can be made when a Plant and Materials item is shipped. */
+    "camo:allowPlantAndMaterialsShippedInSeparateList"?: SchemaValue<Boolean>;
+    /** Allow the specifying in a subsection of whether payment can be made when a Plant and Materials item is shipped. */
+    "camo:allowPlantAndMaterialsShippedInSubsections"?: SchemaValue<Boolean>;
+}
+interface PlantAndMaterialsLayoutTableLeaf extends PlantAndMaterialsLayoutTableBase {
+    "@type": "camo:PlantAndMaterialsLayoutTable";
+}
+/** PlantAndMaterialsLayoutTable. */
+export type PlantAndMaterialsLayoutTable = PlantAndMaterialsLayoutTableLeaf;
+
+interface PlantAndMaterialsShippedDeliveredPaymentDescriptionBase extends ThingBase {
+    /** hasPlantAndMaterialsShippedDeliveredAmount. */
+    "camo:hasPlantAndMaterialsShippedDeliveredAmount"?: SchemaValue<MonetaryAmount | IdReference>;
+    /** hasPlantAndMaterialsShippedDeliveredItem. */
+    "camo:hasPlantAndMaterialsShippedDeliveredItem"?: SchemaValue<Text>;
+}
+interface PlantAndMaterialsShippedDeliveredPaymentDescriptionLeaf extends PlantAndMaterialsShippedDeliveredPaymentDescriptionBase {
+    "@type": "camo:PlantAndMaterialsShippedDeliveredPaymentDescription";
+}
+/** A payment related to Plant and Materials Shipped and/or Delivered. */
+export type PlantAndMaterialsShippedDeliveredPaymentDescription = PlantAndMaterialsShippedDeliveredPaymentDescriptionLeaf;
+
+interface PlantAndMaterialsShippedSectionPaymentDescriptionLeaf extends SectionPaymentDescriptionBase {
+    "@type": "camo:PlantAndMaterialsShippedSectionPaymentDescription";
+}
+/** PlantAndMaterialsShippedSectionPaymentDescription. */
+export type PlantAndMaterialsShippedSectionPaymentDescription = PlantAndMaterialsShippedSectionPaymentDescriptionLeaf;
+
+interface PlantAndMaterialsTableBase extends ThingBase {
+    /** A plant and materials item that is part of a PlantAndMaterialsTable. */
+    "camo:hasPlantMaterialsItem"?: SchemaValue<PlantMaterialsItem | IdReference>;
+}
+interface PlantAndMaterialsTableLeaf extends PlantAndMaterialsTableBase {
+    "@type": "camo:PlantAndMaterialsTable";
+}
+/** Represents a PlantAndMaterialsTable. */
+export type PlantAndMaterialsTable = PlantAndMaterialsTableLeaf;
+
+interface PlantMaterialShippedDeliveredPrePaymentDescriptionLeaf extends GeneralPaymentDescriptionBase {
+    "@type": "camo:PlantMaterialShippedDeliveredPrePaymentDescription";
+}
+/** A prepayment description that is part of a contract payment description. */
+export type PlantMaterialShippedDeliveredPrePaymentDescription = PlantMaterialShippedDeliveredPrePaymentDescriptionLeaf;
+
+interface PlantMaterialsItemBase extends ThingBase, DescribeableBase, NumberedBase {
+    /** Whether to allow plant and materials payment when delivered. */
+    "camo:plantAndMaterialsPaymentWhenDelivered"?: SchemaValue<Boolean>;
+    /** Whether to allow plant and materials payment when shipped. */
+    "camo:plantAndMaterialsPaymentWhenShipped"?: SchemaValue<Boolean>;
+}
+interface PlantMaterialsItemLeaf extends PlantMaterialsItemBase {
+    "@type": "camo:PlantMaterialsItem";
+}
+/** A PlantMaterialsItem. */
+export type PlantMaterialsItem = PlantMaterialsItemLeaf;
 
 interface PlayLeaf extends CreativeWorkBase {
     "@type": "schema:Play";
@@ -9503,6 +10858,12 @@ interface ProteinLeaf extends ProteinBase {
 /** Protein is here used in its widest possible definition, as classes of amino acid based molecules. Amyloid-beta Protein in human (UniProt P05067), eukaryota (e.g. an OrthoDB group) or even a single molecule that one can point to are all of type schema:Protein. A protein can thus be a subclass of another protein, e.g. schema:Protein as a UniProt record can have multiple isoforms inside it which would also be schema:Protein. They can be imagined, synthetic, hypothetical or naturally occurring. */
 export type Protein = ProteinLeaf;
 
+interface ProvisionalSumSectionLeaf extends SectionBase {
+    "@type": "camo:ProvisionalSumSection";
+}
+/** A provisional sum section within a contract. */
+export type ProvisionalSumSection = ProvisionalSumSectionLeaf;
+
 interface PsychologicalTreatmentLeaf extends TherapeuticProcedureBase {
     "@type": "schema:PsychologicalTreatment";
 }
@@ -9595,7 +10956,19 @@ interface PublishableStatusEnumerationLeaf extends EnumerationBase {
     "@type": "coremo:PublishableStatusEnumeration";
 }
 /** PublishableStatusEnumeration is an enumeration type representing the publishable status of a resource. */
-export type PublishableStatusEnumeration = "https://clipcode.org/base/concept/coremo/ArchivedStatus" | "coremo:ArchivedStatus" | "https://clipcode.org/base/concept/coremo/DraftStatus" | "coremo:DraftStatus" | "https://clipcode.org/base/concept/coremo/PublishedStatus" | "coremo:PublishedStatus" | "https://clipcode.org/base/concept/coremo/PublishRequestedStatus" | "coremo:PublishRequestedStatus" | "https://clipcode.org/base/concept/coremo/RescindedStatus" | "coremo:RescindedStatus" | PublishableStatusEnumerationLeaf;
+export type PublishableStatusEnumeration = "https://clipcode.org/base/schema/coremo/ArchivedStatus" | "coremo:ArchivedStatus" | "https://clipcode.org/base/schema/coremo/DraftStatus" | "coremo:DraftStatus" | "https://clipcode.org/base/schema/coremo/PublishedStatus" | "coremo:PublishedStatus" | "https://clipcode.org/base/schema/coremo/PublishRequestedStatus" | "coremo:PublishRequestedStatus" | "https://clipcode.org/base/schema/coremo/RescindedStatus" | "coremo:RescindedStatus" | PublishableStatusEnumerationLeaf;
+
+interface PublishingConceptLeaf extends ThingBase {
+    "@type": "coremo:PublishingConcept";
+}
+/** A publishing concept */
+export type PublishingConcept = PublishingConceptLeaf;
+
+interface PublishingModelAreaLeaf extends ThingBase {
+    "@type": "coremo:PublishingModelArea";
+}
+/** A publishing model area. */
+export type PublishingModelArea = PublishingModelAreaLeaf;
 
 interface QAPageLeaf extends WebPageBase {
     "@type": "schema:QAPage";
@@ -9630,6 +11003,12 @@ interface QualitativeValueLeaf extends QualitativeValueBase {
 }
 /** A predefined value for a product characteristic, e.g. the power cord plug type 'US' or the garment sizes 'S', 'M', 'L', and 'XL'. */
 export type QualitativeValue = QualitativeValueLeaf | BedType | DriveWheelConfigurationValue | SizeSpecification | SteeringPositionValue;
+
+interface QualityManagementSystemLeaf extends ThingBase {
+    "@type": "camo:QualityManagementSystem";
+}
+/** The QualityManagementSystem. */
+export type QualityManagementSystem = QualityManagementSystemLeaf;
 
 interface QuantitativeValueBase extends ThingBase {
     /**
@@ -9757,7 +11136,9 @@ interface RadioEpisodeLeaf extends EpisodeBase {
 /** A radio episode which can be part of a series or season. */
 export type RadioEpisode = RadioEpisodeLeaf;
 
-interface RadioSeasonLeaf extends CreativeWorkSeasonBase {
+interface RadioSeasonBase extends Partial<IdReference> {
+}
+interface RadioSeasonLeaf extends RadioSeasonBase {
     "@type": "schema:RadioSeason";
 }
 /** Season dedicated to radio broadcast and associated online delivery. */
@@ -9947,11 +11328,29 @@ interface RecommendedDoseScheduleLeaf extends DoseScheduleBase {
 /** A recommended dosing schedule for a drug or supplement as prescribed or recommended by an authority or by the drug/supplement's manufacturer. Capture the recommending authority in the recognizingAuthority property of MedicalEntity. */
 export type RecommendedDoseSchedule = RecommendedDoseScheduleLeaf;
 
+interface RecoveryOfExcessAdvancePaymentSectionPaymentDescriptionLeaf extends SectionPaymentDescriptionBase {
+    "@type": "camo:RecoveryOfExcessAdvancePaymentSectionPaymentDescription";
+}
+/** A recovery of advance payment that is part of a contract payment description. */
+export type RecoveryOfExcessAdvancePaymentSectionPaymentDescription = RecoveryOfExcessAdvancePaymentSectionPaymentDescriptionLeaf;
+
+interface RecoveryOfExcessRegularPaymentSectionPaymentDescriptionLeaf extends SectionPaymentDescriptionBase {
+    "@type": "camo:RecoveryOfExcessRegularPaymentSectionPaymentDescription";
+}
+/** A (non-advance) recovery payment that is part of a contract payment description. */
+export type RecoveryOfExcessRegularPaymentSectionPaymentDescription = RecoveryOfExcessRegularPaymentSectionPaymentDescriptionLeaf;
+
 interface RecyclingCenterLeaf extends LocalBusinessBase {
     "@type": "schema:RecyclingCenter";
 }
 /** A recycling center. */
 export type RecyclingCenter = RecyclingCenterLeaf | string;
+
+interface ReferenceRegistryLeaf extends ThingBase {
+    "@type": "fomo:ReferenceRegistry";
+}
+/** An identifiable registry of references, which can be shared among multiple forms with the same dispatcher. */
+export type ReferenceRegistry = ReferenceRegistryLeaf;
 
 interface RefundTypeEnumerationLeaf extends EnumerationBase {
     "@type": "schema:RefundTypeEnumeration";
@@ -10243,6 +11642,22 @@ interface ResourceDirectorySemanticPoolLeaf extends DirectorySemanticPoolBase {
 /** A resource directory */
 export type ResourceDirectorySemanticPool = ResourceDirectorySemanticPoolLeaf;
 
+interface ResponseFormConceptLeaf extends ThingBase {
+    "@type": "fomo:ResponseFormConcept";
+}
+/** A response form concept. */
+export type ResponseFormConcept = ResponseFormConceptLeaf;
+
+interface ResponseFormSemanticPoolBase extends FormSemanticPoolBase {
+    /** Attaches a root concept to its semantic pool. */
+    "fomo:hasRootResponseFormConcept"?: SchemaValue<RootResponseFormConcept | IdReference>;
+}
+interface ResponseFormSemanticPoolLeaf extends ResponseFormSemanticPoolBase {
+    "@type": "fomo:ResponseFormSemanticPool";
+}
+/** A response to an electronic form. */
+export type ResponseFormSemanticPool = ResponseFormSemanticPoolLeaf;
+
 interface ResponsibleForLeaf extends ThingBase {
     "@type": "coremo:ResponsibleFor";
 }
@@ -10266,6 +11681,26 @@ interface ResumeActionLeaf extends ActionBase {
 }
 /** The act of resuming a device or application which was formerly paused (e.g. resume music playback or resume a timer). */
 export type ResumeAction = ResumeActionLeaf;
+
+interface RetentionMoneyTableBase extends ThingBase {
+    /** Allow release of retention money after receiving RetentionMoneyGuarantee. */
+    "camo:allowReleaseOfRetentionMoney"?: SchemaValue<Boolean>;
+    /** The percentage of the limit of retention money. */
+    "camo:limitOfRetentionMoney"?: SchemaValue<Number>;
+    /** After this retention limit is reached, allow release of retention money. */
+    "camo:percentageofLimitNeededBeforeReleaseOfRetentionMoney"?: SchemaValue<Number>;
+    /** What percentage of the retention money to release. */
+    "camo:portionOfRetentionAmountToRelease"?: SchemaValue<Number>;
+    /** The retention money percentage required after taking-over. */
+    "camo:retentionMoneyAfterTakingOverPercentage"?: SchemaValue<Number>;
+    /** The full retention money percentage (required prior to taking-over). */
+    "camo:retentionMoneyPercentage"?: SchemaValue<Number>;
+}
+interface RetentionMoneyTableLeaf extends RetentionMoneyTableBase {
+    "@type": "camo:RetentionMoneyTable";
+}
+/** A table representing retention money settings. */
+export type RetentionMoneyTable = RetentionMoneyTableLeaf;
 
 interface ReturnActionBase extends TransferActionBase {
     /** A sub property of participant. The participant who is at the receiving end of the action. */
@@ -10395,17 +11830,23 @@ interface RoomLeaf extends AccommodationBase {
  */
 export type Room = RoomLeaf | HotelRoom | MeetingRoom | string;
 
-interface RootCategoryConceptLeaf extends ThingBase {
-    "@type": "catmo:RootCategoryConcept";
+interface RootDispatcherFormConceptLeaf extends ThingBase {
+    "@type": "fomo:RootDispatcherFormConcept";
 }
-/** A root category concept (that can be a direct child of a category semantic pool). */
-export type RootCategoryConcept = RootCategoryConceptLeaf | Category;
+/** A root concept within a Dispatcher form semantic pool */
+export type RootDispatcherFormConcept = RootDispatcherFormConceptLeaf | CreateDispatcherPanel | ReferenceRegistry;
 
-interface RootDatastoreConceptLeaf extends ThingBase {
-    "@type": "dstoremo:RootDatastoreConcept";
+interface RootLayoutFormConceptLeaf extends ThingBase {
+    "@type": "fomo:RootLayoutFormConcept";
 }
-/** A root concept within a datastore semantic pool */
-export type RootDatastoreConcept = RootDatastoreConceptLeaf | KnowledgeContainerList | KnowledgePackageList;
+/** A root concept within a Layout form semantic pool */
+export type RootLayoutFormConcept = RootLayoutFormConceptLeaf | FormLayout | LayoutChoiceGroup | LayoutQuestionGroup;
+
+interface RootResponseFormConceptLeaf extends ThingBase {
+    "@type": "fomo:RootResponseFormConcept";
+}
+/** A root concept within a response form semantic pool */
+export type RootResponseFormConcept = RootResponseFormConceptLeaf | FormResponse;
 
 interface RsvpActionBase extends InformActionBase {
     /** If responding yes, the number of guests who will attend in addition to the invitee. */
@@ -10601,6 +12042,82 @@ interface SeatLeaf extends SeatBase {
 /** Used to describe a seat, such as a reserved seat in an event reservation. */
 export type Seat = SeatLeaf;
 
+interface SectionBase extends ThingBase {
+    /** The variation in which this (sub)section was added (0 for original contract). */
+    "camo:addedInVariation"?: SchemaValue<Text>;
+    /** A subsection that is part of a section. */
+    "camo:hasSubsection"?: SchemaValue<Subsection | IdReference>;
+    /** Defines a contract part this section/subsection is included within (for a section, applies to all of its subsubsections which themselves do not have this property defined). */
+    "camo:includedInContractPart"?: SchemaValue<ContractPart | IdReference>;
+    /** Whether to allow plant and materials payment when delivered. */
+    "camo:plantAndMaterialsPaymentWhenDelivered"?: SchemaValue<Boolean>;
+    /** Whether to allow plant and materials payment when shipped. */
+    "camo:plantAndMaterialsPaymentWhenShipped"?: SchemaValue<Boolean>;
+    /** The variation in which this (sub)section was removed. */
+    "camo:removedInVariation"?: SchemaValue<Text>;
+}
+interface SectionLeaf extends SectionBase {
+    "@type": "camo:Section";
+}
+/** A section within a contract. */
+export type Section = SectionLeaf | CommittedSumSection | ProvisionalSumSection;
+
+interface SectionOfWorksBase extends SectionBase, NumberedBase {
+    /** The delay damages percenages for this section of works. */
+    "camo:sectionOfWorksDelayDamagesPercentage"?: SchemaValue<Number>;
+    /** The number of days for time for completion for this section works. */
+    "camo:sectionOfWorksTimeForCompletion"?: SchemaValue<Number>;
+}
+interface SectionOfWorksLeaf extends SectionOfWorksBase {
+    "@type": "camo:SectionOfWorks";
+}
+/** A section of works. */
+export type SectionOfWorks = SectionOfWorksLeaf;
+
+interface SectionPaymentDescriptionBase extends ThingBase {
+    /** Attaches a CustomsAndImportDutiesTable to its section payment description. */
+    "camo:hasCustomsAndImportDutiesTable"?: SchemaValue<CustomsAndImportDutiesTable | IdReference>;
+    /** Attaches a subsection payment description description to its section payment description. */
+    "camo:hasSubsectionPaymentDescriptionDescription"?: SchemaValue<SubsectionPaymentDescriptionDescription | IdReference>;
+    /** The payment percentage, can be attached to a SectionPaymentDescription or a SubsectionPaymentDescriptionDescription). */
+    "camo:paymentPercentage"?: SchemaValue<Number>;
+    /** The section number related to a payment. */
+    "camo:sectionNumber"?: SchemaValue<Text>;
+    /** Identifies what kind of SectionPaymentDescription this is (useful for specialist SectionPaymentDescription, maps to layout in Contract Layout). */
+    "camo:sectionPaymentDescriptionKind"?: SchemaValue<URL>;
+}
+interface SectionPaymentDescriptionLeaf extends SectionPaymentDescriptionBase {
+    "@type": "camo:SectionPaymentDescription";
+}
+/** A payment that is directly related to a specific section of a contract payment description. */
+export type SectionPaymentDescription = SectionPaymentDescriptionLeaf | AdvanceSectionPaymentDescription | ApplyAndCollectDamagesSectionPaymentDescription | ApplyDamagesSectionPaymentDescription | CollectDamagesSectionPaymentDescription | CustomsandImportDutiesSectionPaymentDescription | DiversionSectionPaymentDescription | FinalSectionPaymentDescription | InterimSectionPaymentDescription | PlantAndMaterialsDeliveredSectionPaymentDescription | PlantAndMaterialsShippedSectionPaymentDescription | RecoveryOfExcessAdvancePaymentSectionPaymentDescription | RecoveryOfExcessRegularPaymentSectionPaymentDescription | TakingOverSectionPaymentDescription;
+
+interface SectionTableBase extends ThingBase {
+    /** The amount and currency for this Contract Price. */
+    "camo:hasContractPrice"?: SchemaValue<PriceSpecification | IdReference>;
+    /** A section that is part of a contract. */
+    "camo:hasSection"?: SchemaValue<Section | IdReference>;
+    /** Most recent core contract data revision. */
+    "camo:SectionTableBasedOnPrimaryRevision"?: SchemaValue<Integer>;
+}
+interface SectionTableLeaf extends SectionTableBase {
+    "@type": "camo:SectionTable";
+}
+/** Represents section contract data. */
+export type SectionTable = SectionTableLeaf;
+
+interface SecuritiesContractConceptLeaf extends ThingBase {
+    "@type": "camo:SecuritiesContractConcept";
+}
+/** A securitites contract concept */
+export type SecuritiesContractConcept = SecuritiesContractConceptLeaf | AdvancePaymentGuarantee | PerformanceSecurity;
+
+interface SecuritiesContractSemanticPoolLeaf extends ContractSemanticPoolBase {
+    "@type": "camo:SecuritiesContractSemanticPool";
+}
+/** A securities contract semantic pool. */
+export type SecuritiesContractSemanticPool = SecuritiesContractSemanticPoolLeaf;
+
 interface SeekToActionBase extends ActionBase {
     /** The start time of the clip expressed as the number of seconds from the beginning of the work. */
     "schema:startOffset"?: SchemaValue<HyperTocEntry | Number | IdReference>;
@@ -10637,13 +12154,13 @@ interface SemanticModelLeaf extends ThingBase {
     "@type": "coremo:SemanticModel";
 }
 /** A semantic model. */
-export type SemanticModel = SemanticModelLeaf | CategoryModel | DatastoreModel | DirectoryModel;
+export type SemanticModel = SemanticModelLeaf | ContractModel | DirectoryModel | FormModel;
 
 interface SemanticModelAreaLeaf extends ThingBase {
     "@type": "coremo:SemanticModelArea";
 }
 /** A semantic model area (which may contain more specialist semantic model areas and semantic models). */
-export type SemanticModelArea = SemanticModelAreaLeaf | CommunicationModelArea | CorporateModelArea | EducationModelArea | MathematicsModelArea | OperationsModelArea | SalesModelArea | ServicesModelArea | TechnologyModelArea;
+export type SemanticModelArea = SemanticModelAreaLeaf | CommunicationModelArea | CorporateModelArea | MathematicsModelArea | OperationsModelArea | SalesModelArea | ServicesModelArea | TechnologyModelArea;
 
 interface SemanticPoolBase extends ThingBase {
     /** This pool is consider primary (at a knowledge graph level). */
@@ -10655,7 +12172,7 @@ interface SemanticPoolLeaf extends SemanticPoolBase {
     "@type": "coremo:SemanticPool";
 }
 /** A pool of semantic resources that manages a somewhat self-contained representation of an area of interest. */
-export type SemanticPool = SemanticPoolLeaf | CategorySemanticPool | DatastoreSemanticPool | DirectorySemanticPool;
+export type SemanticPool = SemanticPoolLeaf | ContractSemanticPool | DirectorySemanticPool | FormSemanticPool;
 
 interface SendActionBase extends TransferActionBase {
     /** A sub property of instrument. The method of delivery. */
@@ -10675,11 +12192,11 @@ export type SendAction = SendActionLeaf;
 
 interface SequentialBase extends ThingBase {
     /** This resource comes after the specified property value. */
-    "coremo:sequentialAfter"?: SchemaValue<NaturalNumber>;
+    "coremo:sequentialAfter"?: SchemaValue<Integer>;
     /** This resource comes before the specified property value. */
-    "coremo:sequentialBefore"?: SchemaValue<NaturalNumber>;
+    "coremo:sequentialBefore"?: SchemaValue<Integer>;
     /** The sequential rank (index) of this sequential. */
-    "coremo:sequentialRank"?: SchemaValue<NaturalNumber>;
+    "coremo:sequentialRank"?: SchemaValue<Integer>;
 }
 interface SequentialLeaf extends SequentialBase {
     "@type": "coremo:Sequential";
@@ -10802,6 +12319,12 @@ interface ShareActionLeaf extends CommunicateActionBase {
 }
 /** The act of distributing content to people for their amusement or edification. */
 export type ShareAction = ShareActionLeaf;
+
+interface SharedContractConceptLeaf extends ThingBase {
+    "@type": "camo:SharedContractConcept";
+}
+/** A shared contract concept */
+export type SharedContractConcept = SharedContractConceptLeaf | AdditionContractPaymentDescriptionItem | AdditionsPaymentDescriptionTable | ContractPaymentDescription | ContractPaymentDescriptionPart | CustomsAndImportDutiesEntry | CustomsAndImportDutiesTable | DeductionPaymentDescriptionItem | DeductionsPaymentDescriptionTable | SubsectionPaymentDescriptionDescription;
 
 interface SheetMusicLeaf extends CreativeWorkBase {
     "@type": "schema:SheetMusic";
@@ -11213,7 +12736,7 @@ interface StakeholderDirectoryConceptLeaf extends ThingBase {
     "@type": "dirmo:StakeholderDirectoryConcept";
 }
 /** A stakeholder directory concept */
-export type StakeholderDirectoryConcept = StakeholderDirectoryConceptLeaf | OrganizationProfile;
+export type StakeholderDirectoryConcept = StakeholderDirectoryConceptLeaf | Bank | Contractor | ContractorRepresentative | Employer | EmployerPersonnel | EmployerRepresentative | Engineer | EngineerRepresentative | FinancingInstituion | InsuranceCompany | JointVenture | KeyPersonnel | OrganizationProfile | Subcontractor;
 
 interface StakeholderDirectorySemanticPoolBase extends DirectorySemanticPoolBase {
     /** Attaches a root organization profile to its semantic pool. */
@@ -11236,6 +12759,22 @@ interface StatementLeaf extends CreativeWorkBase {
 }
 /** A statement about something, for example a fun or interesting fact. If known, the main entity this statement is about, can be indicated using mainEntity. For more formal claims (e.g. in Fact Checking), consider using {@link https://schema.org/Claim Claim} instead. Use the {@link https://schema.org/text text} property to capture the text of the statement. */
 export type Statement = StatementLeaf;
+
+interface StatementContractConceptLeaf extends ThingBase {
+    "@type": "camo:StatementContractConcept";
+}
+/** A statement contract concept */
+export type StatementContractConcept = StatementContractConceptLeaf | ContractStatement;
+
+interface StatementContractSemanticPoolBase extends ContractSemanticPoolBase {
+    /** Attaches a Statement and contract payment to its semantic pool. */
+    "camo:hasRootStatementContractConcept"?: SchemaValue<ContractStatement | IdReference>;
+}
+interface StatementContractSemanticPoolLeaf extends StatementContractSemanticPoolBase {
+    "@type": "camo:StatementContractSemanticPool";
+}
+/** A statement contract semantic pool. */
+export type StatementContractSemanticPool = StatementContractSemanticPoolLeaf;
 
 interface StatisticalPopulationBase extends ThingBase {
     /** Indicates a property used as a constraint to define a {@link https://schema.org/StatisticalPopulation StatisticalPopulation} with respect to the set of entities corresponding to an indicated type (via {@link https://schema.org/populationType populationType}). */
@@ -11267,19 +12806,19 @@ interface StorageConceptLeaf extends ThingBase {
     "@type": "coremo:StorageConcept";
 }
 /** A storage concept */
-export type StorageConcept = StorageConceptLeaf | DatastoreConcept;
+export type StorageConcept = StorageConceptLeaf;
 
 interface StorageModelAreaLeaf extends ThingBase {
     "@type": "coremo:StorageModelArea";
 }
 /** A storage model area. */
-export type StorageModelArea = StorageModelAreaLeaf | DatastoreModel;
+export type StorageModelArea = StorageModelAreaLeaf;
 
 interface StoreLeaf extends LocalBusinessBase {
     "@type": "schema:Store";
 }
 /** A retail good store. */
-export type Store = StoreLeaf | AutoPartsStore | BikeStore | BookStore | ClothingStore | ComputerStore | ConvenienceStore | DepartmentStore | ElectronicsStore | Florist | FurnitureStore | GardenStore | GroceryStore | HardwareStore | HobbyShop | HomeGoodsStore | JewelryStore | LiquorStore | MensClothingStore | MobilePhoneStore | MovieRentalStore | MusicStore | OfficeEquipmentStore | OutletStore | PawnShop | PetStore | ShoeStore | SportingGoodsStore | TireShop | ToyStore | WholesaleStore | string;
+export type Store = StoreLeaf | AutoPartsStore | BikeStore | BookStore | ClothingStore | ComputerStore | ConvenienceStore | DepartmentStore | ElectronicsStore | Florist | FurnitureStore | GardenStore | GroceryStore | HardwareStore | HobbyShop | HomeGoodsStore | JewelryStore | LiquorStore | MensClothingStore | MobilePhoneStore | MovieRentalStore | MusicStore | OfficeEquipmentStore | OutletStore | PetStore | ShoeStore | SportingGoodsStore | TireShop | ToyStore | WholesaleStore | string;
 
 interface StructureConceptLeaf extends ThingBase {
     "@type": "coremo:StructureConcept";
@@ -11299,6 +12838,12 @@ interface StructureMathematicsModelAreaLeaf extends ThingBase {
 /** A structure mathematics model area. */
 export type StructureMathematicsModelArea = StructureMathematicsModelAreaLeaf;
 
+interface SubcontractorLeaf extends ThingBase {
+    "@type": "dirmo:Subcontractor";
+}
+/** A subcontractor. */
+export type Subcontractor = SubcontractorLeaf | NominatedSubcontractor;
+
 interface SubscribeActionLeaf extends ActionBase {
     "@type": "schema:SubscribeAction";
 }
@@ -11311,6 +12856,48 @@ interface SubscribeActionLeaf extends ActionBase {
  * - {@link https://schema.org/JoinAction JoinAction}: Unlike JoinAction, SubscribeAction implies that the agent is interested in continuing receiving updates from the object.
  */
 export type SubscribeAction = SubscribeActionLeaf;
+
+interface SubsectionBase extends ThingBase, NumberedBase {
+    /** The variation in which this (sub)section was added (0 for original contract). */
+    "camo:addedInVariation"?: SchemaValue<Text>;
+    /** The PercentagePriceSpecification associated with a subsection. */
+    "camo:hasPercentagePriceSpecification"?: SchemaValue<Text>;
+    /** Defines a contract part this section/subsection is included within (for a section, applies to all of its subsubsections which themselves do not have this property defined). */
+    "camo:includedInContractPart"?: SchemaValue<ContractPart | IdReference>;
+    /** The amount and currency for this plantAndMaterialsItem. */
+    "camo:plantAndMaterialsItemPrice"?: SchemaValue<PriceSpecification | IdReference>;
+    /** Whether to allow plant and materials payment when delivered. */
+    "camo:plantAndMaterialsPaymentWhenDelivered"?: SchemaValue<Boolean>;
+    /** Whether to allow plant and materials payment when shipped. */
+    "camo:plantAndMaterialsPaymentWhenShipped"?: SchemaValue<Boolean>;
+    /** The variation in which this (sub)section was removed. */
+    "camo:removedInVariation"?: SchemaValue<Text>;
+    /** The amount and currency for this Contract Price. */
+    "camo:subsectionPrice"?: SchemaValue<PercentagePriceSpecification | PriceSpecification | IdReference>;
+}
+interface SubsectionLeaf extends SubsectionBase {
+    "@type": "camo:Subsection";
+}
+/** A Subsection */
+export type Subsection = SubsectionLeaf;
+
+interface SubsectionPaymentDescriptionDescriptionBase extends ThingBase {
+    /** The currency symbol for this payment. */
+    "camo:PaymentCurrency"?: SchemaValue<Text>;
+    /** The payment percentage, can be attached to a SectionPaymentDescription or a SubsectionPaymentDescriptionDescription). */
+    "camo:paymentPercentage"?: SchemaValue<Number>;
+    /** The subsection number. */
+    "camo:SubsectionNumber"?: SchemaValue<Text>;
+    /** The payment due for a subsection. */
+    "camo:SubsectionPaymentDescriptionDescriptionDue"?: SchemaValue<Number>;
+    /** The work completed for a subsection. */
+    "camo:SubsectionWorkCompleted"?: SchemaValue<Number>;
+}
+interface SubsectionPaymentDescriptionDescriptionLeaf extends SubsectionPaymentDescriptionDescriptionBase {
+    "@type": "camo:SubsectionPaymentDescriptionDescription";
+}
+/** A subsection payment description description that is part of a SectionPaymentDescription */
+export type SubsectionPaymentDescriptionDescription = SubsectionPaymentDescriptionDescriptionLeaf;
 
 interface SubstanceBase extends MedicalEntityBase {
     /** An active ingredient, typically chemical compounds and/or biologic substances. */
@@ -11384,6 +12971,18 @@ interface SynagogueLeaf extends CivicStructureBase {
 /** A synagogue. */
 export type Synagogue = SynagogueLeaf | string;
 
+interface SyntheticCurrencyBase extends ThingBase {
+    /** The regular currency upon which a synthetic currency is based. */
+    "camo:basedOnRegularCurrency"?: SchemaValue<Text>;
+    /** The name of a synthetic currency. */
+    "camo:hasSyntheticCurrencyName"?: SchemaValue<Text>;
+}
+interface SyntheticCurrencyLeaf extends SyntheticCurrencyBase {
+    "@type": "camo:SyntheticCurrency";
+}
+/** A synthetic currency (a custom currency based on regular currency). */
+export type SyntheticCurrency = SyntheticCurrencyLeaf;
+
 interface TableLeaf extends WebPageElementBase {
     "@type": "schema:Table";
 }
@@ -11401,6 +13000,48 @@ interface TakeActionLeaf extends TransferActionBase {
  * - {@link https://schema.org/ReceiveAction ReceiveAction}: Unlike ReceiveAction, TakeAction implies that ownership has been transfered.
  */
 export type TakeAction = TakeActionLeaf;
+
+interface TakingOverPaymentCertificateBase extends PaymentCertificateBase {
+    /** The taking over cert this is based upon (to discover withheld amounts). */
+    "camo:takingOverPaymentCertificateBasedOnTakingOverCertificate"?: SchemaValue<Text>;
+    /** The revision of the taking over cert to use. */
+    "camo:takingOverPaymentCertificateBasedOnTakingOverRevision"?: SchemaValue<Integer>;
+}
+interface TakingOverPaymentCertificateLeaf extends TakingOverPaymentCertificateBase {
+    "@type": "camo:TakingOverPaymentCertificate";
+}
+/** A taking-over payment certificate (specifically for payment of the taking-over portion of the retention money)). */
+export type TakingOverPaymentCertificate = TakingOverPaymentCertificateLeaf;
+
+interface TakingOverPaymentNotificationBase extends PaymentNotificationBase {
+    /** The taking over cert this is based upon (to discover withheld amounts). */
+    "camo:takingOverPaymentNotificationBasedOnTakingOverCertificate"?: SchemaValue<Text>;
+    /** The revision of the taking over cert to use. */
+    "camo:takingOverPaymentNotificationBasedOnTakingOverCertificateRevision"?: SchemaValue<Integer>;
+}
+interface TakingOverPaymentNotificationLeaf extends TakingOverPaymentNotificationBase {
+    "@type": "camo:TakingOverPaymentNotification";
+}
+/** A taking-over payment notification (specifically for payment of the taking-over portion of the retention money)). */
+export type TakingOverPaymentNotification = TakingOverPaymentNotificationLeaf;
+
+interface TakingOverSectionPaymentDescriptionLeaf extends SectionPaymentDescriptionBase {
+    "@type": "camo:TakingOverSectionPaymentDescription";
+}
+/** taking over payment that is part of a contract payment description. */
+export type TakingOverSectionPaymentDescription = TakingOverSectionPaymentDescriptionLeaf;
+
+interface TakingOverStatementBase extends ContractStatementBase {
+    /** The taking over cert this is based upon (to discover withheld amounts). */
+    "camo:takingOverStatementBasedOnTakingOverCertificate"?: SchemaValue<Text>;
+    /** The revision of the taking over cert to use. */
+    "camo:takingOverStatementBasedOnTakingOverCertificateRevision"?: SchemaValue<Integer>;
+}
+interface TakingOverStatementLeaf extends TakingOverStatementBase {
+    "@type": "camo:TakingOverStatement";
+}
+/** A taking-over statement (specifically for payment of the taking-over portion of the retention money)). */
+export type TakingOverStatement = TakingOverStatementLeaf;
 
 interface TattooParlorLeaf extends LocalBusinessBase {
     "@type": "schema:TattooParlor";
@@ -11510,13 +13151,25 @@ interface TemplatableLeaf extends TemplatableBase {
     "@type": "coremo:Templatable";
 }
 /** A concept which may be part of a template relationahip */
-export type Templatable = TemplatableLeaf;
+export type Templatable = TemplatableLeaf | Contract | ContractConfiguration | ContractData;
+
+interface TemporaryWorksLeaf extends ThingBase {
+    "@type": "camo:TemporaryWorks";
+}
+/** The Temporary Works. */
+export type TemporaryWorks = TemporaryWorksLeaf;
 
 interface TennisComplexLeaf extends LocalBusinessBase {
     "@type": "schema:TennisComplex";
 }
 /** A tennis complex. */
 export type TennisComplex = TennisComplexLeaf | string;
+
+interface TerminologyContractConceptLeaf extends ThingBase {
+    "@type": "camo:TerminologyContractConcept";
+}
+/** A terminology contract concept */
+export type TerminologyContractConcept = TerminologyContractConceptLeaf | ComplianceVerificationSystem | ContractCommunication | ContractDocument | ContractWorks | DelayDamages | ExceptionalEvent | ExtensionOfTime | PerformanceDamages | QualityManagementSystem;
 
 interface TextDigitalDocumentLeaf extends DigitalDocumentBase {
     "@type": "schema:TextDigitalDocument";
@@ -12190,6 +13843,32 @@ interface USNonprofitTypeLeaf extends EnumerationBase {
 }
 /** USNonprofitType: Non-profit organization type originating from the United States. */
 export type USNonprofitType = "https://schema.org/Nonprofit501a" | "schema:Nonprofit501a" | "https://schema.org/Nonprofit501c1" | "schema:Nonprofit501c1" | "https://schema.org/Nonprofit501c10" | "schema:Nonprofit501c10" | "https://schema.org/Nonprofit501c11" | "schema:Nonprofit501c11" | "https://schema.org/Nonprofit501c12" | "schema:Nonprofit501c12" | "https://schema.org/Nonprofit501c13" | "schema:Nonprofit501c13" | "https://schema.org/Nonprofit501c14" | "schema:Nonprofit501c14" | "https://schema.org/Nonprofit501c15" | "schema:Nonprofit501c15" | "https://schema.org/Nonprofit501c16" | "schema:Nonprofit501c16" | "https://schema.org/Nonprofit501c17" | "schema:Nonprofit501c17" | "https://schema.org/Nonprofit501c18" | "schema:Nonprofit501c18" | "https://schema.org/Nonprofit501c19" | "schema:Nonprofit501c19" | "https://schema.org/Nonprofit501c2" | "schema:Nonprofit501c2" | "https://schema.org/Nonprofit501c20" | "schema:Nonprofit501c20" | "https://schema.org/Nonprofit501c21" | "schema:Nonprofit501c21" | "https://schema.org/Nonprofit501c22" | "schema:Nonprofit501c22" | "https://schema.org/Nonprofit501c23" | "schema:Nonprofit501c23" | "https://schema.org/Nonprofit501c24" | "schema:Nonprofit501c24" | "https://schema.org/Nonprofit501c25" | "schema:Nonprofit501c25" | "https://schema.org/Nonprofit501c26" | "schema:Nonprofit501c26" | "https://schema.org/Nonprofit501c27" | "schema:Nonprofit501c27" | "https://schema.org/Nonprofit501c28" | "schema:Nonprofit501c28" | "https://schema.org/Nonprofit501c3" | "schema:Nonprofit501c3" | "https://schema.org/Nonprofit501c4" | "schema:Nonprofit501c4" | "https://schema.org/Nonprofit501c5" | "schema:Nonprofit501c5" | "https://schema.org/Nonprofit501c6" | "schema:Nonprofit501c6" | "https://schema.org/Nonprofit501c7" | "schema:Nonprofit501c7" | "https://schema.org/Nonprofit501c8" | "schema:Nonprofit501c8" | "https://schema.org/Nonprofit501c9" | "schema:Nonprofit501c9" | "https://schema.org/Nonprofit501d" | "schema:Nonprofit501d" | "https://schema.org/Nonprofit501e" | "schema:Nonprofit501e" | "https://schema.org/Nonprofit501f" | "schema:Nonprofit501f" | "https://schema.org/Nonprofit501k" | "schema:Nonprofit501k" | "https://schema.org/Nonprofit501n" | "schema:Nonprofit501n" | "https://schema.org/Nonprofit501q" | "schema:Nonprofit501q" | "https://schema.org/Nonprofit527" | "schema:Nonprofit527" | USNonprofitTypeLeaf;
+
+interface VariationBase extends ThingBase, VariationContractConceptBase, NumberedBase {
+    /** A topic (textual explanation) for this variation. */
+    "camo:variationTopic"?: SchemaValue<Text>;
+}
+interface VariationLeaf extends VariationBase {
+    "@type": "camo:Variation";
+}
+/** A variation. */
+export type Variation = VariationLeaf;
+
+interface VariationContractConceptBase extends ThingBase {
+    /** Attaches a root concept to its semantic pool. */
+    "camo:hasVariation"?: SchemaValue<Variation | IdReference>;
+}
+interface VariationContractConceptLeaf extends VariationContractConceptBase {
+    "@type": "camo:VariationContractConcept";
+}
+/** A Variation contract concept */
+export type VariationContractConcept = VariationContractConceptLeaf | Variation;
+
+interface VariationContractSemanticPoolLeaf extends ContractSemanticPoolBase {
+    "@type": "camo:VariationContractSemanticPool";
+}
+/** A variation contract semantic pool. */
+export type VariationContractSemanticPool = VariationContractSemanticPoolLeaf;
 
 interface VehicleBase extends ProductBase {
     /**
