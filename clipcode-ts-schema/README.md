@@ -52,13 +52,13 @@ It produces this output:
         ... 
 ````
 ## Code Completion
-A hugely useful feature of this API is that it support code-completion, thus the software developer 
-sees a list of acceptable terms at each point. For example, when creating a payment certificate, 
+A hugely useful feature of this API is that it supports code-completion, thus the software developer 
+sees a dropdown list of acceptable terms at each point. For example, when creating a payment certificate, 
 only the payment certificate types are provided, thus avoiding a potential error situation: 
 
 ![schema-code-completion](schema-code-completion.png "schema-code-completion")
 
-Note that Advance, Interim and Final are standard FIDIC payment certificates and Taking-Over Payment Certificates and Custom And Import Duties Payment certificates are additional cert types added by the 
+Note that Advance, Interim and Final are standard FIDIC payment certificates and Taking-Over Payment Certificates and Custom And Import Duties Payment Certificates are additional cert types added by the 
 [Semantic Contract Model](https://clipcode.org/assets/standards/camo.pdf). 
 
 
