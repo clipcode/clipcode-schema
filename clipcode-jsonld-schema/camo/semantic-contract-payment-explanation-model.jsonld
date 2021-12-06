@@ -15,17 +15,16 @@
       "rdfs:comment": "A payment explanation providing details of what a payment represents.",
       "rdfs:label": "PaymentExplanation",
       "rdfs:subClassOf": [
-        { "@id": "camo:PaymentExplanationContractConcept" },
-        { "@id": "coremo:Numbered" },
-        { "@id": "camo:ContractCommunication" }
+        { "@id": "camo:ContractPaymentExplanationEntity" },
+        { "@id": "coremo:Numbered" }
       ]
     },
     {
-      "@id": "camo:hasRootPaymentExplanationContractConcept",
+      "@id": "camo:hasRootContractPaymentExplanationEntity",
       "@type": "rdf:Property",
       "rdfs:comment": "Attaches a PaymentExplanation to its semantic pool.",
-      "rdfs:label": "hasRootCertificateContractConcept",
-      "schema:domainIncludes": { "@id": "camo:PaymentExplanationContractSemanticPool" },
+      "rdfs:label": "hasRootCertificateContractEntity",
+      "schema:domainIncludes": { "@id": "camo:ContractPaymentExplanationSemanticPool" },
       "schema:rangeIncludes":  { "@id": "camo:PaymentExplanation" }
     },
     {

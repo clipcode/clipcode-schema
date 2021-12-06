@@ -15,17 +15,16 @@
       "rdfs:comment": "A variation.",
       "rdfs:label": "Variation",
       "rdfs:subClassOf": [
-        { "@id": "camo:VariationContractConcept" },
-        { "@id": "coremo:Numbered" },
-        { "@id": "camo:ContractCommunication" }       
+        { "@id": "camo:ContractVariationEntity" },
+        { "@id": "coremo:Numbered" }       
       ] 
     }, 
     {
       "@id": "camo:hasVariation",
       "@type": "rdf:Property",
-      "rdfs:comment": "Attaches a root concept to its semantic pool.",
+      "rdfs:comment": "Attaches a root entity to its semantic pool.",
       "rdfs:label": "hasVariation",
-      "schema:domainIncludes": { "@id": "camo:VariationContractConcept" },
+      "schema:domainIncludes": { "@id": "camo:ContractVariationSemanticPool" },
       "schema:rangeIncludes":  { "@id": "camo:Variation" }
     },
     {

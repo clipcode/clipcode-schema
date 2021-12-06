@@ -15,9 +15,8 @@
       "rdfs:comment": "A Statement to be sent by the conteactor to the engineer (Red/Yellow Book) or employer's representative (Silver Book).",
       "rdfs:label": "Statement",
       "rdfs:subClassOf": [
-        { "@id": "camo:StatementContractConcept" },
-        { "@id": "coremo:Numbered" },
-        { "@id": "camo:ContractCommunication" }
+        { "@id": "camo:ContractStatementEntity" },
+        { "@id": "coremo:Numbered" }
       ]
     },
     {
@@ -29,11 +28,11 @@
     },
 
     {
-      "@id": "camo:hasRootStatementContractConcept",
+      "@id": "camo:hasRootContractStatementEntity",
       "@type": "rdf:Property",
       "rdfs:comment": "Attaches a Statement and contract payment to its semantic pool.",
-      "rdfs:label": "hasRootCertificateContractConcept",
-      "schema:domainIncludes": { "@id": "camo:StatementContractSemanticPool" },
+      "rdfs:label": "hasRootCertificateContractEntity",
+      "schema:domainIncludes": { "@id": "camo:ContractStatementSemanticPool" },
       "schema:rangeIncludes":  { "@id": "camo:ContractStatement" }
     },
     {

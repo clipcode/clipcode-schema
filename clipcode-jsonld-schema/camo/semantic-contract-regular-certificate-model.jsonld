@@ -14,14 +14,14 @@
       "@type": "rdfs:Class",
       "rdfs:comment": "A regular certificate for a contract.",
       "rdfs:label": "RegularCertificate",
-      "rdfs:subClassOf": { "@id": "camo:RegularCertificateContractConcept" }
+      "rdfs:subClassOf": { "@id": "camo:ContractRegularCertificateEntity" }
     },
     {
       "@id": "camo:hasRegularCertificate",
       "@type": "rdf:Property",
       "rdfs:comment": "Attaches a regular certificate to its semantic pool.",
       "rdfs:label": "hasRegularCertificate",
-      "schema:domainIncludes": { "@id": "camo:RegularCertificateContractSemanticPool" },
+      "schema:domainIncludes": { "@id": "camo:ContractRegularCertificateSemanticPool" },
       "schema:rangeIncludes":  { "@id": "camo:RegularCertificate" }
     },  
     {
@@ -45,6 +45,14 @@
       "rdfs:comment": "A taking-over certificate for a contract.",
       "rdfs:label": "TakingOverCertificate",
       "rdfs:subClassOf": { "@id": "camo:RegularCertificate" }
+    },
+    {
+      "@id": "camo:contractDateOfCompletion",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The Date Of Completion for this taking-over cert [See definition in FIDIC 1.1].",
+      "rdfs:label": "contractDateOfCompletion",
+      "schema:domainIncludes": { "@id": "camo:TakingOverCertificate" },
+      "schema:rangeIncludes":  { "@id": "schema:Date" }
     },
     {
       "@id": "camo:MilestoneCertificate",

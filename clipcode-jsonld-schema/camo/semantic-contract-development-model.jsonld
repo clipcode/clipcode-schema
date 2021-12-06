@@ -14,15 +14,12 @@
       "@type": "rdfs:Class",
       "rdfs:comment": "A development.",
       "rdfs:label": "Development",
-      "rdfs:subClassOf": [
-        { "@id": "camo:DevelopmentContractConcept" },             
-        { "@id": "coremo:Describeable" }             
-      ] 
+      "rdfs:subClassOf": { "@id": "camo:DevelopmentContractEntity" }
     }, 
     {
       "@id": "camo:hasDevelopment",
       "@type": "rdf:Property",
-      "rdfs:comment": "Attaches a root concept to its semantic pool.",
+      "rdfs:comment": "Attaches a root entity to its semantic pool.",
       "rdfs:label": "hasDevelopment",
       "schema:domainIncludes": { "@id": "camo:DevelopmentContractSemanticPool" },
       "schema:rangeIncludes":  { "@id": "camo:Development" }

@@ -1,0 +1,55 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/schema/coremo/"
+  },
+  "@graph": [
+    {
+      "@id": "coremo:InformationContainer",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A container of information.",
+      "rdfs:label": "InformationContainer",
+      "rdfs:subClassOf": { "@id": "schema:CreativeWork" }
+    }, 
+    {
+      "@id": "coremo:KnowledgeGraph",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A knowledge graph (which acts as a data container for one or more related semantic models).",
+      "rdfs:label": "KnowledgeGraph",
+      "rdfs:subClassOf": { "@id": "coremo:InformationContainer" }
+    },
+    {
+      "@id": "coremo:SemanticModel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A semantic model.",
+      "rdfs:label": "SemanticModel",
+      "rdfs:subClassOf": { "@id": "coremo:InformationContainer" }
+    },
+    {
+      "@id": "coremo:hasSemanticModel",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A semantic model that is contained within a knowledge graph.",
+      "rdfs:label": "hasSemanticModel",
+      "schema:domainIncludes": { "@id": "coremo:KnowledgeGraph" },
+      "schema:rangeIncludes":  { "@id": "coremo:SemanticModel" }
+    },
+    {
+      "@id": "coremo:SemanticPool",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A pool of semantic resources that manages a somewhat self-contained representation of an area of interest.",
+      "rdfs:label": "SemanticPool",
+      "rdfs:subClassOf": { "@id": "coremo:InformationContainer" }      
+    },
+    {
+      "@id": "coremo:SemanticRoot",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A resource that can act as a root (directly attached to a semantic pool)",
+      "rdfs:label": "SemanticRoot",
+      "rdfs:subClassOf": { "@id": "coremo:InformationContainer" }      
+    }
+  ]
+}

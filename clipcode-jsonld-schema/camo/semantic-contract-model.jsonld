@@ -10,12 +10,12 @@
   },
   "@graph": [
 	  {
-      "@id": "camo:ContractConcept",
+      "@id": "camo:ContractEntity",
       "@type": "rdfs:Class", 
-      "rdfs:comment": "A contract concept",
-      "rdfs:label": "ContractConcept",
+      "rdfs:comment": "A contract entity",
+      "rdfs:label": "ContractEntity",
       "rdfs:subClassOf": {
-        "@id": "coremo:ActivityModelArea"
+        "@id": "coremo:ActivityCorporateEntity"
       }
     },
 	  {
@@ -25,142 +25,142 @@
       "rdfs:label": "ContractModel",
       "rdfs:subClassOf": [
         { "@id": "coremo:SemanticModel"     },
-        { "@id": "camo:ContractConcept"     }
+        { "@id": "camo:ContractEntity"     }
       ]
     },
     {
-      "@id": "camo:TerminologyContractConcept",
+      "@id": "camo:ContractTerminologyEntity",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A terminology contract concept",
-      "rdfs:label": "TerminologyContractConcept",
+      "rdfs:comment": "A terminology contract entity",
+      "rdfs:label": "ContractTerminologyEntity",
       "rdfs:subClassOf": {
-        "@id": "camo:ContractConcept"
+        "@id": "camo:ContractEntity"
       }
     },
     {
-      "@id": "camo:SharedContractConcept",
+      "@id": "camo:ContractSharedEntity",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A shared contract concept",
-      "rdfs:label": "SharedContractConcept",
+      "rdfs:comment": "A contract shared entity",
+      "rdfs:label": "ContractSharedEntity",
       "rdfs:subClassOf": {
-        "@id": "camo:ContractConcept"
+        "@id": "camo:ContractEntity"
       }
     },
     {
-      "@id": "camo:LayoutContractConcept",
+      "@id": "camo:ContractLayoutEntity",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A layout contract concept",
-      "rdfs:label": "LayoutContractConcept",
+      "rdfs:comment": "A contract layout entity",
+      "rdfs:label": "ContractLayoutEntity",
       "rdfs:subClassOf": {
-        "@id": "camo:ContractConcept"
+        "@id": "camo:ContractEntity"
       }
     },
     {
-      "@id": "camo:DevelopmentContractConcept",
+      "@id": "camo:ContractDevelopmentEntity",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A development contract concept",
-      "rdfs:label": "DevelopmentContractConcept",
+      "rdfs:comment": "A contract development entity",
+      "rdfs:label": "ContractDevelopmentEntity",
       "rdfs:subClassOf": {
-        "@id": "camo:ContractConcept"
+        "@id": "camo:ContractEntity"
       }
     },
     {
-      "@id": "camo:ConfigurationContractConcept",
+      "@id": "camo:ContractConfigurationEntity",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A configuration contract concept",
-      "rdfs:label": "ConfigurationContractConcept",
+      "rdfs:comment": "A contract configuration entity",
+      "rdfs:label": "ContractConfigurationEntity",
       "rdfs:subClassOf": {
-        "@id": "camo:ContractConcept"
+        "@id": "camo:ContractEntity"
       }
     },
     {
-      "@id": "camo:ComponentContractConcept",
+      "@id": "camo:ContractComponentEntity",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A component contract concept",
-      "rdfs:label": "ComponentContractConcept",
+      "rdfs:comment": "A contract component entity",
+      "rdfs:label": "ContractComponentEntity",
       "rdfs:subClassOf": {
-        "@id": "camo:ContractConcept"
+        "@id": "camo:ContractEntity"
       }
     },
     {
-      "@id": "camo:DataContractConcept",
+      "@id": "camo:ContractDataEntity",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A contract data concept",
-      "rdfs:label": "DataContractConcept",
+      "rdfs:comment": "A contract data entity",
+      "rdfs:label": "ContractDataEntity",
       "rdfs:subClassOf": {
-        "@id": "camo:ContractConcept"
+        "@id": "camo:ContractEntity"
       }
     },
     {
-      "@id": "camo:VariationContractConcept",
+      "@id": "camo:ContractVariationEntity",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A Variation contract concept",
-      "rdfs:label": "VariationContractConcept",
+      "rdfs:comment": "A contract variation entity.",
+      "rdfs:label": "ContractVariationEntity",
       "rdfs:subClassOf": {
-        "@id": "camo:ContractConcept"
+        "@id": "camo:ContractEntity"
       }
     },
     {
-      "@id": "camo:StatementContractConcept",
+      "@id": "camo:ContractStatementEntity",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A statement contract concept",
-      "rdfs:label": "StatementContractConcept",
+      "rdfs:comment": "A contract statement entity.",
+      "rdfs:label": "ContractStatementEntity",
       "rdfs:subClassOf": {
-        "@id": "camo:ContractConcept"
+        "@id": "camo:ContractEntity"
       }
     },
     {
-      "@id": "camo:PaymentCertificateContractConcept",
+      "@id": "camo:ContractPaymentCertificateEntity",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A certificate contract concept",
-      "rdfs:label": "CertificateContractConcept",
+      "rdfs:comment": "A contract payment certificate entity.",
+      "rdfs:label": "ContractPaymentCertificateEntity",
       "rdfs:subClassOf": {
-        "@id": "camo:ContractConcept"
+        "@id": "camo:ContractEntity"
       }
     },
     {
-      "@id": "camo:PaymentExplanationContractConcept",
+      "@id": "camo:ContractPaymentExplanationEntity",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A notified payment contract concept",
-      "rdfs:label": "PaymentExplanationContractConcept",
+      "rdfs:comment": "A contract payment explanation entity",
+      "rdfs:label": "ContractPaymentExplanationEntity",
       "rdfs:subClassOf": {
-        "@id": "camo:ContractConcept"
+        "@id": "camo:ContractEntity"
       }
     },
     {
-      "@id": "camo:RegularCertificateContractConcept",
+      "@id": "camo:ContractRegularCertificateEntity",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A regular certificate contract concept",
-      "rdfs:label": "",
+      "rdfs:comment": "A contract regular certificate entity",
+      "rdfs:label": "ContractRegularCertificateEntity",
       "rdfs:subClassOf": {
-        "@id": "camo:ContractConcept"
+        "@id": "camo:ContractEntity"
       }
     },
     {
-      "@id": "camo:NoticeContractConcept",
+      "@id": "camo:ContractNoticeEntity",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A notice contract concept",
-      "rdfs:label": "NoticeContractConcept",
+      "rdfs:comment": "A contract notice entity.",
+      "rdfs:label": "ContractNoticeEntity",
       "rdfs:subClassOf": {
-        "@id": "camo:ContractConcept"
+        "@id": "camo:ContractEntity"
       }
     },
     {
-      "@id": "camo:ClaimContractConcept",
+      "@id": "camo:ContractClaimEntity",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A claim contract concept",
-      "rdfs:label": "ClaimContractConcept",
+      "rdfs:comment": "A contract claim entity.",
+      "rdfs:label": "ContractClaimEntity",
       "rdfs:subClassOf": {
-        "@id": "camo:ContractConcept"
+        "@id": "camo:ContractEntity"
       }
     },
     {
-      "@id": "camo:DisputeContractConcept",
+      "@id": "camo:ContractDisputeEntity",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A dispute contract concept",
-      "rdfs:label": "DisputeContractConcept",
+      "rdfs:comment": "A contract dispute entity.",
+      "rdfs:label": "ContractDisputeEntity",
       "rdfs:subClassOf": {
-        "@id": "camo:ContractConcept"
+        "@id": "camo:ContractEntity"
       }
     },
     {
@@ -169,7 +169,7 @@
       "rdfs:comment": "A contract semantic pool.",
       "rdfs:label": "ContractSemanticPool",
       "rdfs:subClassOf": [
-        { "@id": "camo:ContractConcept" },
+        { "@id": "camo:ContractEntity" },
         { "@id": "coremo:SemanticPool"  }
     ]},
     {
@@ -181,94 +181,94 @@
       "schema:rangeIncludes": { "@id": "camo:ContractSemanticPool" }
     },
     {
-      "@id": "camo:LayoutContractSemanticPool",
+      "@id": "camo:ContractLayoutSemanticPool",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A layout contract semantic pool.",
-      "rdfs:label": "LayoutContractSemanticPool",
+      "rdfs:comment": "A contract layout semantic pool.",
+      "rdfs:label": "ContractLayoutSemanticPool",
       "rdfs:subClassOf": { "@id": "camo:ContractSemanticPool" }
     },
     {
-      "@id": "camo:DevelopmentContractSemanticPool",
+      "@id": "camo:ContractDevelopmentSemanticPool",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A development contract semantic pool.",
-      "rdfs:label": "DevelopmentContractSemanticPool",
+      "rdfs:comment": "A contract development semantic pool.",
+      "rdfs:label": "ContractDevelopmentSemanticPool",
       "rdfs:subClassOf": { "@id": "camo:ContractSemanticPool" }
     },
     {
-      "@id": "camo:ConfigurationContractSemanticPool",
+      "@id": "camo:ContractConfigurationSemanticPool",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A configuration contract semantic pool.",
-      "rdfs:label": "ConfigurationContractSemanticPool",
+      "rdfs:comment": "A contract configuration semantic pool.",
+      "rdfs:label": "ContractConfigurationSemanticPool",
       "rdfs:subClassOf": { "@id": "camo:ContractSemanticPool" }
     },
     {
       "@id": "camo:ComponentContractSemanticPool",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A component contract semantic pool.",
+      "rdfs:comment": "A contract component semantic pool.",
       "rdfs:label": "ComponentContractSemanticPool",
       "rdfs:subClassOf": { "@id": "camo:ContractSemanticPool" }
     },
     {
-      "@id": "camo:DataContractSemanticPool",
+      "@id": "camo:ContractDataSemanticPool",
       "@type": "rdfs:Class",
       "rdfs:comment": "A contract data semantic pool.",
-      "rdfs:label": "DataContractSemanticPool",
+      "rdfs:label": "ContractDataSemanticPool",
       "rdfs:subClassOf": { "@id": "camo:ContractSemanticPool" }
     },
     {
-      "@id": "camo:VariationContractSemanticPool",
+      "@id": "camo:ContractVariationSemanticPool",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A variation contract semantic pool.",
-      "rdfs:label": "VariationContractSemanticPool",
+      "rdfs:comment": "A contract variation semantic pool.",
+      "rdfs:label": "ContractVariationSemanticPool",
       "rdfs:subClassOf": { "@id": "camo:ContractSemanticPool" }
     },
     {
-      "@id": "camo:StatementContractSemanticPool",
+      "@id": "camo:ContractStatementSemanticPool",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A statement contract semantic pool.",
-      "rdfs:label": "StatementContractSemanticPool",
+      "rdfs:comment": "A contract statement semantic pool.",
+      "rdfs:label": "ContractStatementSemanticPool",
       "rdfs:subClassOf": { "@id": "camo:ContractSemanticPool" }
     },
     {
-      "@id": "camo:PaymentCertificateContractSemanticPool",
+      "@id": "camo:ContractPaymentCertificateSemanticPool",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A payment certificate contract semantic pool.",
-      "rdfs:label": "PaymentCertificateContractSemanticPool",
+      "rdfs:comment": "A contract payment certificate semantic pool.",
+      "rdfs:label": "ContractPaymentCertificateSemanticPool",
       "rdfs:subClassOf": { "@id": "camo:ContractSemanticPool" }
     },
     {
-      "@id": "camo:PaymentExplanationContractSemanticPool",
+      "@id": "camo:ContractPaymentExplanationSemanticPool",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A notified payment contract semantic pool.",
-      "rdfs:label": "PaymentExplanationContractSemanticPool",
+      "rdfs:comment": "A contract payment explanation semantic pool.",
+      "rdfs:label": "ContractPaymentExplanationSemanticPool",
       "rdfs:subClassOf": { "@id": "camo:ContractSemanticPool" }
     },
     {
-      "@id": "camo:RegularCertificateContractSemanticPool",
+      "@id": "camo:ContractRegularCertificateSemanticPool",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A regular certificate contract semantic pool.",
-      "rdfs:label": "RegularCertificateContractSemanticPool",
+      "rdfs:comment": "A contract regular certificate semantic pool.",
+      "rdfs:label": "ContractRegularCertificateSemanticPool",
       "rdfs:subClassOf": { "@id": "camo:ContractSemanticPool" }
     },
     {
-      "@id": "camo:NoticeContractSemanticPool",
+      "@id": "camo:ContractNoticeSemanticPool",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A notice contract semantic pool.",
-      "rdfs:label": "NoticeContractSemanticPool",
+      "rdfs:comment": "A contract notice semantic pool.",
+      "rdfs:label": "ContractNoticeSemanticPool",
       "rdfs:subClassOf": { "@id": "camo:ContractSemanticPool" }
     },
     {
-      "@id": "camo:ClaimContractSemanticPool",
+      "@id": "camo:ContractClaimSemanticPool",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A claim contract semantic pool.",
-      "rdfs:label": "ClaimContractSemanticPool",
+      "rdfs:comment": "A contract claim semantic pool.",
+      "rdfs:label": "ContractClaimSemanticPool",
       "rdfs:subClassOf": { "@id": "camo:ContractSemanticPool" }
     },
     {
-      "@id": "camo:DisputeContractSemanticPool",
+      "@id": "camo:ContractDisputeSemanticPool",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A dispute contract semantic pool.",
-      "rdfs:label": "DisputeContractSemanticPool",
+      "rdfs:comment": "A contract dispute semantic pool.",
+      "rdfs:label": "ContractDisputeSemanticPool",
       "rdfs:subClassOf": { "@id": "camo:ContractSemanticPool" }
     }
   ]

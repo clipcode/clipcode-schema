@@ -15,17 +15,16 @@
       "rdfs:comment": "A contract notice.",
       "rdfs:label": "ContractNotice",
       "rdfs:subClassOf": [
-        { "@id": "camo:NoticeContractConcept" },
-        { "@id": "coremo:Numbered" },
-        { "@id": "camo:ContractCommunication" }
+        { "@id": "camo:ContractNoticeEntity" },
+        { "@id": "coremo:Numbered" }
       ]
     },
     {
       "@id": "camo:hasContractNotice",
       "@type": "rdf:Property",
-      "rdfs:comment": "Attaches a root concept to its semantic pool.",
+      "rdfs:comment": "Attaches a root entity to its semantic pool.",
       "rdfs:label": "hasContractNotice",
-      "schema:domainIncludes": { "@id": "camo:NoticeContractSemanticPool" },
+      "schema:domainIncludes": { "@id": "camo:ContractNoticeSemanticPool" },
       "schema:rangeIncludes":  { "@id": "camo:ContractNotice" }
     },
     {
@@ -82,7 +81,7 @@
       "schema:domainIncludes": { "@id": "camo:ContractNotice" },
       "schema:rangeIncludes":  [
         { "@id": "schema:Date" },
-        { "@id": "coremo:DateRange" }        
+        { "@id": "coremo:DateStampRange" }        
       ]
     },
     {
@@ -100,26 +99,26 @@
       ]
     },
     {
-      "@id": "camo:noticeFromStakeholder",
+      "@id": "camo:noticeFromActor",
       "@type": "rdf:Property",
-      "rdfs:comment": "The stakeholder sending the notice.",
-      "rdfs:label": "noticeFromStakeholder",
+      "rdfs:comment": "The actor sending the notice.",
+      "rdfs:label": "noticeFromActor",
       "schema:domainIncludes": { "@id": "camo:ContractNotice" },
       "schema:rangeIncludes":  { "@id": "schema:URL" }
     },
     {
-      "@id": "camo:noticeToStakeholder",
+      "@id": "camo:noticeToActor",
       "@type": "rdf:Property",
-      "rdfs:comment": "The stakeholder to which the notice is destined for.",
-      "rdfs:label": "noticeToStakeholder",
+      "rdfs:comment": "The actor to which the notice is destined for.",
+      "rdfs:label": "noticeToActor",
       "schema:domainIncludes": { "@id": "camo:ContractNotice" },
       "schema:rangeIncludes":  { "@id": "schema:URL" }
     },
     {
-      "@id": "camo:noticeCopyToStakeholder",
+      "@id": "camo:noticeCopyToActor",
       "@type": "rdf:Property",
-      "rdfs:comment": "The stakeholder to which a copy of the notice is destined for.",
-      "rdfs:label": "noticeCopyToStakeholder",
+      "rdfs:comment": "The actor to which a copy of the notice is destined for.",
+      "rdfs:label": "noticeCopyToActor",
       "schema:domainIncludes": { "@id": "camo:ContractNotice" },
       "schema:rangeIncludes":  { "@id": "schema:URL" }
     },

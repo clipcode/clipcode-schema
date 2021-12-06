@@ -14,14 +14,14 @@
       "@type": "rdfs:Class",
       "rdfs:comment": "A contract layout table.",
       "rdfs:label": "ContractLayoutTable",
-      "rdfs:subClassOf": { "@id": "camo:LayoutContractConcept" }
+      "rdfs:subClassOf": { "@id": "camo:ContractLayoutEntity" }
     },
     {
       "@id": "camo:hasContractLayoutTable",
       "@type": "rdf:Property",
-      "rdfs:comment": "Attaches a root concept to its semantic pool.",
+      "rdfs:comment": "Attaches a root entity to its semantic pool.",
       "rdfs:label": "hasContractLayoutTable",
-      "schema:domainIncludes": { "@id": "camo:LayoutContractSemanticPool" },
+      "schema:domainIncludes": { "@id": "camo:ContractLayoutSemanticPool" },
       "schema:rangeIncludes":  { "@id": "camo:ContractLayoutTable" }
     },
     {
@@ -29,7 +29,7 @@
       "@type": "rdfs:Class",
       "rdfs:comment": "A certificate layout table.",
       "rdfs:label": "CertificateLayoutTable",
-      "rdfs:subClassOf": { "@id": "camo:LayoutContractConcept" }
+      "rdfs:subClassOf": { "@id": "camo:ContractLayoutEntity" }
     },
     {
       "@id": "camo:hasCertificateLayoutTable ",
@@ -173,7 +173,7 @@
       "@type": "rdfs:Class",
       "rdfs:comment": "A custom certificate.",
       "rdfs:label": "CustomCertificate",
-      "rdfs:subClassOf": { "@id": "camo:LayoutContractConcept" }
+      "rdfs:subClassOf": { "@id": "camo:ContractLayoutEntity" }
     },
     {
       "@id": "camo:hasCustomCertificateLayout",
@@ -204,7 +204,7 @@
       "@type": "rdfs:Class",
       "rdfs:comment": "A numbering layout table.",
       "rdfs:label": "NumberingLayoutTable",
-      "rdfs:subClassOf": { "@id": "camo:LayoutContractConcept" }
+      "rdfs:subClassOf": { "@id": "camo:ContractLayoutEntity" }
     },
     {
       "@id": "camo:hasNumberingLayoutTable",
@@ -267,7 +267,7 @@
       "@type": "rdfs:Class",
       "rdfs:comment": "A table representing retention money settings.",
       "rdfs:label": "RetentionMoneyTable",
-      "rdfs:subClassOf": { "@id": "camo:LayoutContractConcept" }
+      "rdfs:subClassOf": { "@id": "camo:ContractLayoutEntity" }
     },
     {
       "@id": "camo:hasRetentionMoneyTable",
@@ -333,7 +333,7 @@
       "@type": "rdfs:Class",
       "rdfs:comment": "Advance payment layout table.",
       "rdfs:label": "AdvancePaymentLayoutTable",
-      "rdfs:subClassOf": { "@id": "camo:LayoutContractConcept" }
+      "rdfs:subClassOf": { "@id": "camo:ContractLayoutEntity" }
     },
     {
       "@id": "camo:hasAdvancePaymentLayoutTable",
@@ -356,7 +356,7 @@
       "@type": "rdfs:Class",
       "rdfs:comment": "PlantAndMaterialsLayoutTable.",
       "rdfs:label": "PlantAndMaterialsLayoutTable",
-      "rdfs:subClassOf": { "@id": "camo:LayoutContractConcept" }
+      "rdfs:subClassOf": { "@id": "camo:ContractLayoutEntity" }
     },
     {
       "@id": "camo:hasPlantAndMaterialsLayoutTable",
@@ -419,7 +419,7 @@
       "@type": "rdfs:Class",
       "rdfs:comment": "A synthetic currency (a custom currency based on regular currency).",
       "rdfs:label": "SyntheticCurrency",
-      "rdfs:subClassOf": { "@id": "camo:LayoutContractConcept" }
+      "rdfs:subClassOf": { "@id": "camo:ContractLayoutEntity" }
     },
     {
       "@id": "camo:hasSyntheticCurrencyName",
@@ -442,7 +442,7 @@
       "@type": "rdfs:Class",
       "rdfs:comment": "A currency layout table.",
       "rdfs:label": "CurrencyLayoutTable",
-      "rdfs:subClassOf": { "@id": "camo:LayoutContractConcept" }
+      "rdfs:subClassOf": { "@id": "camo:ContractLayoutEntity" }
     },
     {
       "@id": "camo:hasCurrencyLayoutTable",
@@ -490,58 +490,13 @@
       "schema:domainIncludes": { "@id": "camo:CurrencyLayoutTable" },
       "schema:rangeIncludes":  { "@id": "schema:Boolean" }
     },   
-    {
-      "@id": "camo:MilestoneLayoutTable",
-      "@type": "rdfs:Class",
-      "rdfs:comment": "A milestone layout table.",
-      "rdfs:label": "MilestoneLayoutTable",
-      "rdfs:subClassOf": { "@id": "camo:LayoutContractConcept" }
-    },
-    {
-      "@id": "camo:hasMilestoneLayoutTable",
-      "@type": "rdf:Property",
-      "rdfs:comment": "Attaches a MilestoneLayoutTable to a ContractLayout.",
-      "rdfs:label": "hasMilestoneLayoutTable",
-      "schema:domainIncludes": { "@id": "camo:ContractLayoutTable" },
-      "schema:rangeIncludes":  { "@id": "camo:MilestoneLayoutTable" }
-    },
-    {
-      "@id": "camo:milestonesApplyToEntireWorks",
-      "@type": "rdf:Property",
-      "rdfs:comment": "Milestone applies to entire works (if false, applies to a part or a section).",
-      "rdfs:label": "hasForeignCurrency",
-      "schema:domainIncludes": { "@id": "camo:MilestoneLayoutTable" },
-      "schema:rangeIncludes":  { "@id": "schema:Boolean" }
-    },    
-    {
-      "@id": "camo:Milestone",
-      "@type": "rdfs:Class",
-      "rdfs:comment": "A milestone.",
-      "rdfs:label": "Milestone",
-      "rdfs:subClassOf": { "@id": "camo:LayoutContractConcept" }
-    },
-    {
-      "@id": "camo:hasMilestone",
-      "@type": "rdf:Property",
-      "rdfs:comment": "A milestone within a MilestoneLayoutTable.",
-      "rdfs:label": "hasMilestone",
-      "schema:domainIncludes": { "@id": "camo:MilestoneLayoutTable" },
-      "schema:rangeIncludes":  { "@id": "camo:Milestone" }
-    },
-    {
-      "@id": "camo:hasMilestonePercentage",
-      "@type": "rdf:Property",
-      "rdfs:comment": "A milestone percentage.",
-      "rdfs:label": "hasForeignCurrency",
-      "schema:domainIncludes": { "@id": "camo:Milestone" },
-      "schema:rangeIncludes":  { "@id": "schema:Number" }
-    },
+
     {
       "@id": "camo:NoticeLayoutTable",
       "@type": "rdfs:Class",
       "rdfs:comment": "A Notice layout table.",
       "rdfs:label": "NoticeLayoutTable",
-      "rdfs:subClassOf": { "@id": "camo:LayoutContractConcept" }
+      "rdfs:subClassOf": { "@id": "camo:ContractLayoutEntity" }
     },
     {
       "@id": "camo:hasNoticeLayoutTable",
@@ -556,7 +511,7 @@
       "@type": "rdfs:Class",
       "rdfs:comment": "A NoticeLayout, on which an actual notice will be based.",
       "rdfs:label": "NoticeLayout",
-      "rdfs:subClassOf": { "@id": "camo:LayoutContractConcept" }
+      "rdfs:subClassOf": { "@id": "camo:ContractLayoutEntity" }
     },
     {
       "@id": "camo:hasNoticeLayout",
@@ -579,7 +534,7 @@
       "@type": "rdfs:Class",
       "rdfs:comment": "A file naming layout table.",
       "rdfs:label": "FileNamingLayoutTable",
-      "rdfs:subClassOf": { "@id": "camo:LayoutContractConcept" }
+      "rdfs:subClassOf": { "@id": "camo:ContractLayoutEntity" }
     },
     {
       "@id": "camo:hasFileNamingLayoutTable",
@@ -658,7 +613,7 @@
       "@type": "rdfs:Class",
       "rdfs:comment": "Terminology for contract terms.",
       "rdfs:label": "ContractTerminologyLayoutTable",
-      "rdfs:subClassOf": { "@id": "camo:LayoutContractConcept" }
+      "rdfs:subClassOf": { "@id": "camo:ContractLayoutEntity" }
     },
     {
       "@id": "camo:hasContractTerminologyLayoutTable",

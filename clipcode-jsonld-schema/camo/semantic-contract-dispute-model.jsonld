@@ -14,14 +14,14 @@
       "@type": "rdfs:Class",
       "rdfs:comment": "A dispute between the parties.",
       "rdfs:label": "Dispute",
-      "rdfs:subClassOf": { "@id": "camo:DisputeContractConcept" }
+      "rdfs:subClassOf": { "@id": "camo:ContractDisputeEntity" }
     },
     {
       "@id": "camo:hasDispute",
       "@type": "rdf:Property",
-      "rdfs:comment": "Attaches a root concept to its semantic pool.",
+      "rdfs:comment": "Attaches a root entity to its semantic pool.",
       "rdfs:label": "hasVariation",
-      "schema:domainIncludes": { "@id": "camo:DisputeContractSemanticPool" },
+      "schema:domainIncludes": { "@id": "camo:ContractDisputeSemanticPool" },
       "schema:rangeIncludes":  { "@id": "camo:Dispute" }
     },  
     {
@@ -29,7 +29,7 @@
       "@type": "rdfs:Class",
       "rdfs:comment": "A notification relates to the DAAB.",
       "rdfs:label": "DisputeBNotification",
-      "rdfs:subClassOf": { "@id": "camo:DisputeContractConcept" }
+      "rdfs:subClassOf": { "@id": "camo:ContractDisputeEntity" }
     },
     {
       "@id": "camo:DisputeReferral",
@@ -50,7 +50,7 @@
       "@type": "rdfs:Class",
       "rdfs:comment": "The Dispute Avoidance / Adjudication Board for a contract.",
       "rdfs:label": "ContractDAAB",
-      "rdfs:subClassOf": { "@id": "camo:DisputeContractConcept" }
+      "rdfs:subClassOf": { "@id": "camo:ContractDisputeEntity" }
     }    
   ]
 }

@@ -13,16 +13,14 @@
       "@type": "rdfs:Class",
       "rdfs:comment": "A resource whose properties can be transformed via add/remove/clear transforms.",
       "rdfs:label": "Transformable",
-      "rdfs:subClassOf": {
-        "@id": "coremo:ModelConcept"
-      }
+      "rdfs:subClassOf": { "@id": "coremo:Concept" }
     },  
     {
       "@id": "coremo:Transform",
       "@type": "rdfs:Class",
       "rdfs:comment": "A transform for a Transformable.",
       "rdfs:label": "Transform",
-      "rdfs:subClassOf": { "@id": "coremo:ModelConcept" }      
+      "rdfs:subClassOf": { "@id": "coremo:CoreMathematicalEntity" }      
     },
     {
       "@id": "coremo:hasTransform",
@@ -68,6 +66,46 @@
       "rdfs:comment": "A ClearTransform for a Transformable (clears child elements, but does not remove parent element).",
       "rdfs:label": "ClearTransform",
       "rdfs:subClassOf": { "@id": "coremo:Transform" }
+    },
+    {
+      "@id": "coremo:transformGraphInput",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A knowledge graph to be transformed.",
+      "rdfs:label": "transformGraphInput",
+      "schema:domainIncludes": { "@id": "schema:URL" },
+      "schema:rangeIncludes":  { "@id": "schema:Thing" }
+    },
+    {
+      "@id": "coremo:transformGraphOutput",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The resulting knowledge graph after a transform.",
+      "rdfs:label": "transformGraphOutput",
+      "schema:domainIncludes": { "@id": "schema:URL" },
+      "schema:rangeIncludes":  { "@id": "schema:Thing" }
+    },
+    {
+      "@id": "coremo:graphIsAbstract",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A knowledge graph is not to be used directly (may be the input for a further transform).",
+      "rdfs:label": "graphIsAbstract",
+      "schema:domainIncludes": { "@id": "schema:Thing"  },
+      "schema:rangeIncludes":  { "@id": "schema:Boolean" }
+    },
+    {
+      "@id": "coremo:transformParent",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The thing to be changed.",
+      "rdfs:label": "transformParent",
+      "schema:domainIncludes": { "@id": "coremo:Transform" },
+      "schema:rangeIncludes":  { "@id": "schema:Thing" }
+    },
+    {
+      "@id": "coremo:transformSource",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The thing to use as input to the transform.",
+      "rdfs:label": "transformSource",
+      "schema:domainIncludes": { "@id": "coremo:Transform" },
+      "schema:rangeIncludes":  { "@id": "schema:Thing" }
     }
   ]
 }

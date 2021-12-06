@@ -12,18 +12,17 @@
     {
       "@id": "camo:ContractConfiguration",
       "@type": "rdfs:Class",
-      "rdfs:comment": "Configuraiton of a contract.",
+      "rdfs:comment": "Configuration of a contract.",
       "rdfs:label": "ContractConfiguration",
       "rdfs:subClassOf": [       
-        { "@id": "coremo:Describeable" },   
         { "@id": "coremo:Templatable" },
         { "@id": "coremo:Numbered"    },     
-        { "@id": "camo:ConfigurationContractConcept" }   
+        { "@id": "camo:ContractConfigurationEntity" }   
     ]}, 
     {
       "@id": "camo:hasContractConfiguration",
       "@type": "rdf:Property",
-      "rdfs:comment": "Attaches a root concept to its semantic pool.",
+      "rdfs:comment": "Attaches a root entity to its semantic pool.",
       "rdfs:label": "hasContractConfiguration",
       "schema:domainIncludes": { "@id": "camo:Data ConfigurationContractSemanticPool" },
       "schema:rangeIncludes":  { "@id": "camo:ContractConfiguration" }

@@ -15,9 +15,8 @@
       "rdfs:comment": "A payment certificate for a contract.",
       "rdfs:label": "PaymentCertificate",
       "rdfs:subClassOf": [
-        { "@id": "camo:CertificateContractConcept" },
-        { "@id": "coremo:Numbered" },
-        { "@id": "camo:ContractCommunication" }
+        { "@id": "camo:ContractPaymentCertificateEntity" },
+        { "@id": "coremo:Numbered" }
       ]
     },
     {
@@ -25,7 +24,7 @@
       "@type": "rdf:Property",
       "rdfs:comment": "Attaches a payment certificate to its semantic pool.",
       "rdfs:label": "hasPaymentCertificate",
-      "schema:domainIncludes": { "@id": "camo:PaymentCertificateContractSemanticPool" },
+      "schema:domainIncludes": { "@id": "camo:ContractPaymentCertificateSemanticPool" },
       "schema:rangeIncludes":  { "@id": "camo:PaymentCertificate" }
     },
     {

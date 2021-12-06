@@ -1,0 +1,291 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/schema/coremo/"
+  },
+  "@graph": [
+    {
+      "@id": "coremo:SemanticModelArea",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A semantic model area (from which more specialist semantic model areas may be derived) - semantic models are associated with model areas.",
+      "rdfs:label": "SemanticModelArea",
+      "rdfs:subClassOf": {
+        "@id": "coremo:CoreMathematicalEntity"
+      }
+    }, 
+    {
+      "@id": "coremo:MathematicalModelArea",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A mathematical model area.",
+      "rdfs:label": "MathematicalModelArea",
+      "rdfs:subClassOf": {
+        "@id": "coremo:SemanticModelArea"
+      }
+    },
+    {
+      "@id": "coremo:AppliedMathematicalModelArea",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An applied mathematical model area.",
+      "rdfs:label": "AppliedMathematicalModelArea",
+      "rdfs:subClassOf": {
+        "@id": "coremo:MathematicalModelArea"
+      }
+    },
+    {
+      "@id": "coremo:ChangeMathematicalModelArea",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A change mathematical model area.",
+      "rdfs:label": "ChangeMathematicalModelArea",
+      "rdfs:subClassOf": {
+        "@id": "coremo:MathematicalModelArea"
+      }
+    },
+    {
+      "@id": "coremo:FoundationsMathematicalModelArea",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A foundational mathematical model area.",
+      "rdfs:label": "FoundationsMathematicalModelArea",
+      "rdfs:subClassOf": {
+        "@id": "coremo:MathematicalModelArea"
+      }
+    },
+    {
+      "@id": "coremo:ModelsetModelArea",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A modelset model area.",
+      "rdfs:label": "ModelsetModelArea",
+      "rdfs:subClassOf": {
+        "@id": "coremo:FoundationsMathematicalModelArea"
+      }
+    },
+    {
+      "@id": "coremo:CommonModelsetModelArea",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A common modelset model area.",
+      "rdfs:label": "CommonModelsetModelArea",
+      "rdfs:subClassOf": {
+        "@id": "coremo:ModelsetModelArea"
+      }
+    },
+    {
+      "@id": "coremo:CodeModelsetModelArea",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A code modelset model area.",
+      "rdfs:label": "CodeModelsetModelArea",
+      "rdfs:subClassOf": {
+        "@id": "coremo:ModelsetModelArea"
+      }
+    },
+    {
+      "@id": "coremo:EngineeringModelsetModelArea",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An engineering modelset model area.",
+      "rdfs:label": "EngineeringModelsetModelArea",
+      "rdfs:subClassOf": {
+        "@id": "coremo:ModelsetModelArea"
+      }
+    },
+    {
+      "@id": "coremo:SpaceMathematicalModelArea",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A space mathematical model area.",
+      "rdfs:label": "SpaceMathematicalModelArea",
+      "rdfs:subClassOf": {
+        "@id": "coremo:MathematicalModelArea"
+      }
+    },
+    {
+      "@id": "coremo:StructureMathematicalModelArea",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A structure mathematical model area.",
+      "rdfs:label": "StructureMathematicalModelArea",
+      "rdfs:subClassOf": {
+        "@id": "coremo:MathematicalModelArea"
+      }
+    },
+    {
+      "@id": "coremo:TechnologyModelArea",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A technology model area.",
+      "rdfs:label": "TechnologyModelArea",
+      "rdfs:subClassOf": {
+        "@id": "coremo:SemanticModelArea"
+      }
+    },
+    {
+      "@id": "coremo:CodeTechnologyModelArea",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A code model area.",
+      "rdfs:label": "CodeTechnologyModelArea",
+      "rdfs:subClassOf": {
+        "@id": "coremo:TechnologyModelArea"
+      }
+    },
+    {
+      "@id": "coremo:ComputeTechnologyModelArea",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A compute model area.",
+      "rdfs:label": "ComputeTechnologyModelArea",
+      "rdfs:subClassOf": {
+        "@id": "coremo:TechnologyModelArea"
+      }
+    },
+    {
+      "@id": "coremo:StorageTechnologyModelArea",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A storage model area.",
+      "rdfs:label": "StorageTechnologyModelArea",
+      "rdfs:subClassOf": {
+        "@id": "coremo:TechnologyModelArea"
+      }
+    },
+    {
+      "@id": "coremo:NetworkingTechnologyModelArea",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A networking model area.",
+      "rdfs:label": "NetworkingTechnologyModelArea",
+      "rdfs:subClassOf": {
+        "@id": "coremo:TechnologyModelArea"
+      }
+    },
+    {
+      "@id": "coremo:IntelligenceTechnologyModelArea",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An intelligence model area.",
+      "rdfs:label": "IntelligenceTechnologyModelArea",
+      "rdfs:subClassOf": {
+        "@id": "coremo:TechnologyModelArea"
+      }
+    },
+    {
+      "@id": "coremo:OperationsModelArea",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An operations model area.",
+      "rdfs:label": "OperationsModelArea",
+      "rdfs:subClassOf": {
+        "@id": "coremo:SemanticModelArea"
+      }
+    },
+    {
+      "@id": "coremo:IdentityOperationsModelArea",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An identity model area.",
+      "rdfs:label": "IdentityOperationsModelArea",
+      "rdfs:subClassOf": {
+        "@id": "coremo:OperationsModelArea"
+      }
+    },
+    {
+      "@id": "coremo:CloudOperationsModelArea",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A cloud model area.",
+      "rdfs:label": "CloudOperationsModelArea",
+      "rdfs:subClassOf": {
+        "@id": "coremo:OperationsModelArea"
+      }
+    },
+    {
+      "@id": "coremo:DevOpsOperationsModelArea",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A DevOps model area.",
+      "rdfs:label": "DevOpsOperationsModelArea",
+      "rdfs:subClassOf": {
+        "@id": "coremo:OperationsModelArea"
+      }
+    },
+    {
+      "@id": "coremo:IntegrationOperationsModelArea",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An integration model area.",
+      "rdfs:label": "IntegrationOperationsModelArea",
+      "rdfs:subClassOf": {
+        "@id": "coremo:OperationsModelArea"
+      }
+    },
+    {
+      "@id": "coremo:CommunicationModelArea",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A communication model area.",
+      "rdfs:label": "CommunicationModelArea",
+      "rdfs:subClassOf": {
+        "@id": "coremo:SemanticModelArea"
+      }
+    },
+    {
+      "@id": "coremo:PipelineCommunicationModelArea",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A pipeline model area.",
+      "rdfs:label": "PipelineCommunicationModelArea",
+      "rdfs:subClassOf": {
+        "@id": "coremo:CommunicationModelArea"
+      }
+    },
+    {
+      "@id": "coremo:PublishingCommunicationModelArea",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A publishing model area.",
+      "rdfs:label": "PublishingCommunicationModelArea",
+      "rdfs:subClassOf": {
+        "@id": "coremo:CommunicationModelArea"
+      }
+    },
+    {
+      "@id": "coremo:EducationCommunicationModelArea",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An education model area.",
+      "rdfs:label": "EducationCommunicationModelArea",
+      "rdfs:subClassOf": {
+        "@id": "coremo:CommunicationModelArea"
+      }
+    },
+    {
+      "@id": "coremo:CommunityCommunicationModelArea",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A community model area.",
+      "rdfs:label": "CommunityCommunicationModelArea",
+      "rdfs:subClassOf": {
+        "@id": "coremo:CommunicationModelArea"
+      }
+    },
+    {
+      "@id": "coremo:CorporateModelArea",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A corporate model area.",
+      "rdfs:label": "CorporateModelArea",
+      "rdfs:subClassOf": {
+        "@id": "coremo:SemanticModelArea"
+      }
+    },
+    {
+      "@id": "coremo:ActivityCorporateModelArea",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An activity model area.",
+      "rdfs:label": "ActivityCorporateModelArea",
+      "rdfs:subClassOf": {
+        "@id": "coremo:CorporateModelArea"
+      }
+    },
+    {
+      "@id": "coremo:ServicesModelArea",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A services model area.",
+      "rdfs:label": "ServicesModelArea",
+      "rdfs:subClassOf": {
+        "@id": "coremo:SemanticModelArea"
+      }
+    },
+    {
+      "@id": "coremo:SalesModelArea",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A sales model area.",
+      "rdfs:label": "SalesModelArea",
+      "rdfs:subClassOf": {
+        "@id": "coremo:SemanticModelArea"
+      }
+    }
+  ]
+}

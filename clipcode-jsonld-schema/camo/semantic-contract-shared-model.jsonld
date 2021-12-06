@@ -14,14 +14,14 @@
       "@type": "rdfs:Class",
       "rdfs:comment": "A contract payment description.",
       "rdfs:label": "ContractPaymentDescription",
-      "rdfs:subClassOf": { "@id": "camo:SharedContractConcept" } 
+      "rdfs:subClassOf": { "@id": "camo:ContractSharedEntity" } 
     },
     {
       "@id": "camo:ContractPaymentDescriptionPart",
       "@type": "rdfs:Class",
       "rdfs:comment": "A contract payment description part.",
       "rdfs:label": "ContractPaymentDescriptionPart",
-      "rdfs:subClassOf": { "@id": "camo:SharedContractConcept" } 
+      "rdfs:subClassOf": { "@id": "camo:ContractSharedEntity" } 
     },
     {
       "@id": "camo:hasContractPaymentDescriptionPart",
@@ -261,7 +261,7 @@
       "@type": "rdfs:Class",
       "rdfs:comment": "A subsection payment description description that is part of a SectionPaymentDescription",
       "rdfs:label": "SubsectionPaymentDescriptionDescription",
-      "rdfs:subClassOf": { "@id": "camo:SharedContractConcept" } 
+      "rdfs:subClassOf": { "@id": "camo:ContractSharedEntity" } 
     },
     {
       "@id": "camo:paymentPercentage",
@@ -319,7 +319,7 @@
       "@type": "rdfs:Class",
       "rdfs:comment": "A CustomsAndImportDutiesTable attached to a SectionPaymentDescription",
       "rdfs:label": "CustomsAndImportDutiesTable",
-      "rdfs:subClassOf": { "@id": "camo:SharedContractConcept" } 
+      "rdfs:subClassOf": { "@id": "camo:ContractSharedEntity" } 
     },
     {
       "@id": "camo:hasCustomsAndImportDutiesTable",
@@ -334,7 +334,7 @@
       "@type": "rdfs:Class",
       "rdfs:comment": "A CustomsAndImportDutiesEntry attached to a CustomsAndImportDutiesTable",
       "rdfs:label": "CustomsAndImportDutiesEntry",
-      "rdfs:subClassOf": { "@id": "camo:SharedContractConcept" } 
+      "rdfs:subClassOf": { "@id": "camo:ContractSharedEntity" } 
     },
     {
       "@id": "camo:hasCustomsAndImportDutiesEntry",
@@ -405,7 +405,7 @@
       "@type": "rdfs:Class",
       "rdfs:comment": "An AdditionsPaymentDescriptionTable attached to an AdditionsPaymentDescription.",
       "rdfs:label": "ContractPaymentDescriptionAdditionsTable",
-      "rdfs:subClassOf": { "@id": "camo:SharedContractConcept" } 
+      "rdfs:subClassOf": { "@id": "camo:ContractSharedEntity" } 
     },
     {
       "@id": "camo:hasAdditionContractPaymentDescriptionTable",
@@ -420,7 +420,7 @@
       "@type": "rdfs:Class",
       "rdfs:comment": "An addition to be added to an AdditionsPaymentDescriptionTable.",
       "rdfs:label": "AdditionContractPaymentDescriptionItem",
-      "rdfs:subClassOf": { "@id": "camo:SharedContractConcept" } 
+      "rdfs:subClassOf": { "@id": "camo:ContractSharedEntity" } 
     },
     {
       "@id": "camo:hasAdditionContractPaymentDescriptionItem",
@@ -480,7 +480,7 @@
       "@type": "rdfs:Class",
       "rdfs:comment": "A DeductionsPaymentDescriptionTable attached to one of the DeductionsPaymentDescription types.",
       "rdfs:label": "DeductionsPaymentDescriptionTable",
-      "rdfs:subClassOf": { "@id": "camo:SharedContractConcept" } 
+      "rdfs:subClassOf": { "@id": "camo:ContractSharedEntity" } 
     },
     {
       "@id": "camo:hasDeductionsPaymentDescriptionTable",
@@ -499,7 +499,7 @@
       "@type": "rdfs:Class",
       "rdfs:comment": "A Deduction to be added to a DeductionsPaymentDescriptionTable.",
       "rdfs:label": "DeductionPaymentDescriptionItem",
-      "rdfs:subClassOf": { "@id": "camo:SharedContractConcept" } 
+      "rdfs:subClassOf": { "@id": "camo:ContractSharedEntity" } 
     },
     {
       "@id": "camo:hasDeductionPaymentDescriptionItem",
