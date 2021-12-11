@@ -10,22 +10,66 @@
   },
   "@graph": [
     {
+      "@id": "camo:Certificate",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A certificate for a contract.",
+      "rdfs:label": "Certificate",
+      "rdfs:subClassOf": [
+        { "@id": "camo:ContractCertificateEntity" },
+        { "@id": "coremo:Numbered" }
+      ]     
+    },
+    {
+      "@id": "camo:hasCertificate",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a certificate to its semantic pool.",
+      "rdfs:label": "hasCertificate",
+      "schema:domainIncludes": { "@id": "camo:ContractCertificateSemanticPool" },
+      "schema:rangeIncludes":  { "@id": "camo:Certificate" }
+    },  
+    {
+      "@id": "camo:contractCertificateKind",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Identifies what kind of certificate this is.",
+      "rdfs:label": "contractCertificateKind",
+      "schema:domainIncludes": { "@id": "camo:Certificate" },
+      "schema:rangeIncludes":  { "@id": "schema:URL" }
+    },
+    {
+      "@id": "camo:PerformanceCertificate",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A performance certificate for a contract.",
+      "rdfs:label": "PerformanceCertificate",
+      "rdfs:subClassOf": { "@id": "camo:Certificate" }
+    },
+    {
+      "@id": "camo:TakingOverCertificate",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A taking-over certificate for a contract.",
+      "rdfs:label": "TakingOverCertificate",
+      "rdfs:subClassOf": { "@id": "camo:Certificate" }
+    },
+    {
+      "@id": "camo:contractDateOfCompletion",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The Date Of Completion for this taking-over cert [See definition in FIDIC 1.1].",
+      "rdfs:label": "contractDateOfCompletion",
+      "schema:domainIncludes": { "@id": "camo:TakingOverCertificate" },
+      "schema:rangeIncludes":  { "@id": "schema:Date" }
+    },
+    {
+      "@id": "camo:MilestoneCertificate",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A milestone certificate for a contract.",
+      "rdfs:label": "MilestoneCertificate",
+      "rdfs:subClassOf": { "@id": "camo:Certificate" }
+    },
+    {
       "@id": "camo:PaymentCertificate",
       "@type": "rdfs:Class",
       "rdfs:comment": "A payment certificate for a contract.",
       "rdfs:label": "PaymentCertificate",
-      "rdfs:subClassOf": [
-        { "@id": "camo:ContractPaymentCertificateEntity" },
-        { "@id": "coremo:Numbered" }
-      ]
-    },
-    {
-      "@id": "camo:hasPaymentCertificate",
-      "@type": "rdf:Property",
-      "rdfs:comment": "Attaches a payment certificate to its semantic pool.",
-      "rdfs:label": "hasPaymentCertificate",
-      "schema:domainIncludes": { "@id": "camo:ContractPaymentCertificateSemanticPool" },
-      "schema:rangeIncludes":  { "@id": "camo:PaymentCertificate" }
+      "rdfs:subClassOf": { "@id": "camo:Certificate" }
     },
     {
       "@id": "camo:AdvancePaymentCertificate",

@@ -10,96 +10,96 @@
   },
   "@graph": [
     {
-      "@id": "camo:PaymentExplanation",
+      "@id": "camo:Payment",
       "@type": "rdfs:Class",
       "rdfs:comment": "A payment explanation providing details of what a payment represents.",
-      "rdfs:label": "PaymentExplanation",
+      "rdfs:label": "Payment",
       "rdfs:subClassOf": [
-        { "@id": "camo:ContractPaymentExplanationEntity" },
+        { "@id": "camo:ContractPaymentEntity" },
         { "@id": "coremo:Numbered" }
       ]
     },
     {
-      "@id": "camo:hasRootContractPaymentExplanationEntity",
+      "@id": "camo:hasRootContractPaymentEntity",
       "@type": "rdf:Property",
-      "rdfs:comment": "Attaches a PaymentExplanation to its semantic pool.",
-      "rdfs:label": "hasRootCertificateContractEntity",
-      "schema:domainIncludes": { "@id": "camo:ContractPaymentExplanationSemanticPool" },
-      "schema:rangeIncludes":  { "@id": "camo:PaymentExplanation" }
+      "rdfs:comment": "Attaches a Payment to its semantic pool.",
+      "rdfs:label": "hasRootContractPaymentEntity",
+      "schema:domainIncludes": { "@id": "camo:ContractPaymentSemanticPool" },
+      "schema:rangeIncludes":  { "@id": "camo:Payment" }
     },
     {
-      "@id": "camo:AdvancePaymentExplanation",
+      "@id": "camo:AdvancePayment",
       "@type": "rdfs:Class",
       "rdfs:comment": "An advance payment Explanation.",
-      "rdfs:label": "AdvancePaymentExplanation",
-      "rdfs:subClassOf": { "@id": "camo:PaymentExplanation" }
+      "rdfs:label": "AdvancePayment",
+      "rdfs:subClassOf": { "@id": "camo:Payment" }
     },
     {
-      "@id": "camo:InterimPaymentExplanation",
+      "@id": "camo:InterimPayment",
       "@type": "rdfs:Class",
       "rdfs:comment": "An interim payment Explanation.",
-      "rdfs:label": "InterimPaymentExplanation",
-      "rdfs:subClassOf": { "@id": "camo:PaymentExplanation" }
+      "rdfs:label": "InterimPayment",
+      "rdfs:subClassOf": { "@id": "camo:Payment" }
     },
     {
-      "@id": "camo:FinalPaymentExplanation",
+      "@id": "camo:FinalPayment",
       "@type": "rdfs:Class",
       "rdfs:comment": "A final payment Explanation.",
-      "rdfs:label": "FinalPaymentExplanation",
-      "rdfs:subClassOf": { "@id": "camo:PaymentExplanation" }
+      "rdfs:label": "FinalPayment",
+      "rdfs:subClassOf": { "@id": "camo:Payment" }
     },
     {
-      "@id": "camo:TakingOverPaymentExplanation",
+      "@id": "camo:TakingOverPayment",
       "@type": "rdfs:Class",
       "rdfs:comment": "A taking-over payment Explanation (specifically for payment of the taking-over portion of the retention money)).",
-      "rdfs:label": "TakingOverPaymentExplanation",
-      "rdfs:subClassOf": { "@id": "camo:PaymentExplanation" }
+      "rdfs:label": "TakingOverPayment",
+      "rdfs:subClassOf": { "@id": "camo:Payment" }
     },
     {
-      "@id": "camo:CustomsAndImportDutiesPaymentExplanation",
+      "@id": "camo:CustomsAndImportDutiesPayment",
       "@type": "rdfs:Class",
       "rdfs:comment": "A customs and import duties payment Explanation.",
-      "rdfs:label": "CustomsAndImportDutiesPaymentExplanation",
-      "rdfs:subClassOf": { "@id": "camo:PaymentExplanation" }
+      "rdfs:label": "CustomsAndImportDutiesPayment",
+      "rdfs:subClassOf": { "@id": "camo:Payment" }
     },
     {
-      "@id": "camo:PaymentExplanationKind",
+      "@id": "camo:PaymentKind",
       "@type": "rdf:Property",
       "rdfs:comment": "Identifies what kind of payment Explanation this is (useful for specialist payment Explanations with custom names, maps to payment Explanation layout in Contract Layout).",
-      "rdfs:label": "PaymentExplanationKind",
-      "schema:domainIncludes": { "@id": "camo:PaymentExplanation" },
+      "rdfs:label": "PaymentKind",
+      "schema:domainIncludes": { "@id": "camo:Payment" },
       "schema:rangeIncludes":  { "@id": "schema:URL" }
     },
     {
-      "@id": "camo:PaymentExplanationBasedOnContractDataRevision",
+      "@id": "camo:PaymentBasedOnContractDataRevision",
       "@type": "rdf:Property",
       "rdfs:comment": "Most recent core contract data revision.",
-      "rdfs:label": "PaymentExplanationBasedOnPrimaryContractDataRevision",
-      "schema:domainIncludes": { "@id": "camo:PaymentExplanation" },
+      "rdfs:label": "PaymentBasedOnPrimaryContractDataRevision",
+      "schema:domainIncludes": { "@id": "camo:Payment" },
       "schema:rangeIncludes":  { "@id": "schema:Integer" }
     },
     {
-      "@id": "camo:PaymentExplanationBasedOnSectionContractDataRevision",
+      "@id": "camo:PaymentBasedOnSectionContractDataRevision",
       "@type": "rdf:Property",
       "rdfs:comment": "The revision of most recent varying contract data (Variation).",
-      "rdfs:label": "PaymentExplanationBasedOnSectionContractDataRevision",
-      "schema:domainIncludes": { "@id": "camo:PaymentExplanation" },
+      "rdfs:label": "PaymentBasedOnSectionContractDataRevision",
+      "schema:domainIncludes": { "@id": "camo:Payment" },
       "schema:rangeIncludes":  { "@id": "schema:Integer" }
     },
     {
-      "@id": "camo:takingOverPaymentExplanationBasedOnTakingOverCertificate",
+      "@id": "camo:takingOverPaymentBasedOnTakingOverCertificate",
       "@type": "rdf:Property",
       "rdfs:comment": "The taking over cert this is based upon (to discover withheld amounts).",
-      "rdfs:label": "takingOverPaymentExplanationBasedOnTakingOverCertificate",
-      "schema:domainIncludes": { "@id": "camo:TakingOverPaymentExplanation" },
+      "rdfs:label": "takingOverPaymentBasedOnTakingOverCertificate",
+      "schema:domainIncludes": { "@id": "camo:TakingOverPayment" },
       "schema:rangeIncludes":  { "@id": "schema:Text" }
     },
     {
-      "@id": "camo:takingOverPaymentExplanationBasedOnTakingOverCertificateRevision",
+      "@id": "camo:takingOverPaymentBasedOnTakingOverCertificateRevision",
       "@type": "rdf:Property",
       "rdfs:comment": "The revision of the taking over cert to use.",
-      "rdfs:label": "takingOverPaymentExplanationBasedOnTakingOverCertificateRevision",
-      "schema:domainIncludes": { "@id": "camo:TakingOverPaymentExplanation" },
+      "rdfs:label": "takingOverPaymentBasedOnTakingOverCertificateRevision",
+      "schema:domainIncludes": { "@id": "camo:TakingOverPayment" },
       "schema:rangeIncludes":  { "@id": "schema:Integer" }
     },
     {
@@ -107,7 +107,7 @@
       "@type": "rdf:Property",
       "rdfs:comment": "Contract payment to use.",
       "rdfs:label": "contractPaymentToUse",
-      "schema:domainIncludes": { "@id": "camo:PaymentExplanation" },
+      "schema:domainIncludes": { "@id": "camo:Payment" },
       "schema:rangeIncludes":  { "@id": "schema:Integer" }
     }
   ]

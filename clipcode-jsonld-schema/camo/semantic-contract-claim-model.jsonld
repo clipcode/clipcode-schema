@@ -1,0 +1,30 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/schema/coremo/",
+    "camo":   "https://clipcode.org/base/schema/camo/"
+  },
+  "@graph": [
+    {
+      "@id": "camo:ContractClaim",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A ContractClaim.",
+      "rdfs:label": "ContractClaim",
+      "rdfs:subClassOf": [
+        { "@id": "camo:ContractClaimEntity" }       
+      ] 
+    },
+    {
+      "@id": "camo:hasContractClaim",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a root entity to its semantic pool.",
+      "rdfs:label": "hasContractClaim",
+      "schema:domainIncludes": { "@id": "camo:ContractClaimSemanticPool" },
+      "schema:rangeIncludes":  { "@id": "camo:ContractClaim" }
+    }
+  ]
+}

@@ -135,15 +135,6 @@
       "rdfs:subClassOf": { "@id": "camo:ContractTerminologyEntity" }
     },
     {
-      "@id": "camo:ContractClaim",
-      "@type": "rdfs:Class",
-      "rdfs:comment": "A ContractClaim.",
-      "rdfs:label": "ContractClaim",
-      "rdfs:subClassOf": [
-        { "@id": "camo:ContractTerminologyEntity" }       
-      ] 
-    }, 
-    {
       "@id": "camo:AdvancePaymentGuarantee",
       "@type": "rdfs:Class",
       "rdfs:comment": "An Advance Payment Guarantee.",

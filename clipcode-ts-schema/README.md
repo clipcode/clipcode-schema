@@ -18,8 +18,8 @@ export function createAdvancePaymentCert(): string {
           "@type": "camo:ContractModel",
           "camo:hasContractSemanticPool": [            
             {
-              "@type": "camo:PaymentCertificateContractSemanticPool",
-              "camo:hasPaymentCertificate" : {
+              "@type": "camo:ContractCertificateSemanticPool",
+              "camo:hasCertificate" : {
                 "@type": "camo:AdvancePaymentCertificate",
                 "camo:contractPaymentDescriptionToUse": {
                   "@type": "camo:ContractPaymentDescription"               
@@ -44,8 +44,8 @@ It produces this output:
   "coremo:hasSemanticModel": [ 
   { "@type": "camo:ContractModel", 
     "camo:hasContractSemanticPool": [ 
-	  { "@type": "camo:PaymentCertificateContractSemanticPool", 
-	    "camo:hasPaymentCertificate": 
+	  { "@type": "camo:ContractCertificateSemanticPool", 
+	    "camo:hasCertificate": 
 		  { "@type": "camo:AdvancePaymentCertificate", 
 		    "camo:contractPaymentDescriptionToUse": { 
 		    "@type": "camo:ContractPaymentDescription"

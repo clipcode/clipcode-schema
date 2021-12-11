@@ -1,0 +1,31 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/schema/coremo/",
+    "camo":   "https://clipcode.org/base/schema/camo/"
+  },
+  "@graph": [
+    {
+      "@id": "camo:ContractRequest",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A request related to a contract.",
+      "rdfs:label": "ContractRequest",
+      "rdfs:subClassOf": [
+        { "@id": "camo:ContractRequestEntity" },
+        { "@id": "coremo:Numbered" }
+      ]
+    },
+    {
+      "@id": "camo:hasRequest",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a request to its semantic pool.",
+      "rdfs:label": "hasRequest",
+      "schema:domainIncludes": { "@id": "camo:ContractRequestSemanticPool" },
+      "schema:rangeIncludes":  { "@id": "camo:ContractRequest" }
+    }
+  ]
+}

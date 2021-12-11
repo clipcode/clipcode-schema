@@ -1,0 +1,30 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/schema/coremo/",
+    "camo":   "https://clipcode.org/base/schema/camo/"
+  },
+  "@graph": [
+    {
+      "@id": "camo:ContractInstruction ",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A ContractInstruction.",
+      "rdfs:label": "ContractInstruction",
+      "rdfs:subClassOf": [
+        { "@id": "camo:ContractInstructionEntity" }       
+      ] 
+    },
+    {
+      "@id": "camo:hasContractInstruction",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a root entity to its semantic pool.",
+      "rdfs:label": "hasContractInstruction",
+      "schema:domainIncludes": { "@id": "camo:ContractInstructionSemanticPool" },
+      "schema:rangeIncludes":  { "@id": "camo:ContractInstruction " }
+    }
+  ]
+}

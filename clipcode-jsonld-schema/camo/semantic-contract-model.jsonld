@@ -110,28 +110,28 @@
       }
     },
     {
-      "@id": "camo:ContractPaymentCertificateEntity",
+      "@id": "camo:ContractCertificateEntity",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A contract payment certificate entity.",
-      "rdfs:label": "ContractPaymentCertificateEntity",
+      "rdfs:comment": "A contract certificate entity.",
+      "rdfs:label": "ContractCertificateEntity",
       "rdfs:subClassOf": {
         "@id": "camo:ContractEntity"
       }
     },
     {
-      "@id": "camo:ContractPaymentExplanationEntity",
+      "@id": "camo:ContractPaymentEntity",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A contract payment explanation entity",
-      "rdfs:label": "ContractPaymentExplanationEntity",
+      "rdfs:comment": "A contract payment entity",
+      "rdfs:label": "ContractPaymentEntity",
       "rdfs:subClassOf": {
         "@id": "camo:ContractEntity"
       }
     },
     {
-      "@id": "camo:ContractRegularCertificateEntity",
+      "@id": "camo:ContractRequestEntity",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A contract regular certificate entity",
-      "rdfs:label": "ContractRegularCertificateEntity",
+      "rdfs:comment": "A contract request entity",
+      "rdfs:label": "ContractRequestEntity",
       "rdfs:subClassOf": {
         "@id": "camo:ContractEntity"
       }
@@ -141,6 +141,15 @@
       "@type": "rdfs:Class",
       "rdfs:comment": "A contract notice entity.",
       "rdfs:label": "ContractNoticeEntity",
+      "rdfs:subClassOf": {
+        "@id": "camo:ContractEntity"
+      }
+    },
+    {
+      "@id": "camo:ContractInstructionEntity",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A contract instruction entity.",
+      "rdfs:label": "ContractInstructionEntity",
       "rdfs:subClassOf": {
         "@id": "camo:ContractEntity"
       }
@@ -230,24 +239,24 @@
       "rdfs:subClassOf": { "@id": "camo:ContractSemanticPool" }
     },
     {
-      "@id": "camo:ContractPaymentCertificateSemanticPool",
+      "@id": "camo:ContractCertificateSemanticPool",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A contract payment certificate semantic pool.",
-      "rdfs:label": "ContractPaymentCertificateSemanticPool",
+      "rdfs:comment": "A contract certificate semantic pool.",
+      "rdfs:label": "ContractCertificateSemanticPool",
       "rdfs:subClassOf": { "@id": "camo:ContractSemanticPool" }
     },
     {
-      "@id": "camo:ContractPaymentExplanationSemanticPool",
+      "@id": "camo:ContractPaymentSemanticPool",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A contract payment explanation semantic pool.",
-      "rdfs:label": "ContractPaymentExplanationSemanticPool",
+      "rdfs:comment": "A contract payment semantic pool (to explain in detail what a payment represents).",
+      "rdfs:label": "ContractPaymentSemanticPool",
       "rdfs:subClassOf": { "@id": "camo:ContractSemanticPool" }
     },
     {
-      "@id": "camo:ContractRegularCertificateSemanticPool",
+      "@id": "camo:ContractRequestSemanticPool",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A contract regular certificate semantic pool.",
-      "rdfs:label": "ContractRegularCertificateSemanticPool",
+      "rdfs:comment": "A contract request semantic pool.",
+      "rdfs:label": "ContractRequestSemanticPool",
       "rdfs:subClassOf": { "@id": "camo:ContractSemanticPool" }
     },
     {
@@ -255,6 +264,13 @@
       "@type": "rdfs:Class",
       "rdfs:comment": "A contract notice semantic pool.",
       "rdfs:label": "ContractNoticeSemanticPool",
+      "rdfs:subClassOf": { "@id": "camo:ContractSemanticPool" }
+    },
+    {
+      "@id": "camo:ContractInstructionSemanticPool",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A contract instruction semantic pool.",
+      "rdfs:label": "ContractInstructionSemanticPool",
       "rdfs:subClassOf": { "@id": "camo:ContractSemanticPool" }
     },
     {

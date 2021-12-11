@@ -340,17 +340,17 @@ interface AdultEntertainmentLeaf extends LocalBusinessBase {
 /** An adult entertainment establishment. */
 export type AdultEntertainment = AdultEntertainmentLeaf | string;
 
+interface AdvancePaymentLeaf extends PaymentBase {
+    "@type": "camo:AdvancePayment";
+}
+/** An advance payment Explanation. */
+export type AdvancePayment = AdvancePaymentLeaf;
+
 interface AdvancePaymentCertificateLeaf extends PaymentCertificateBase {
     "@type": "camo:AdvancePaymentCertificate";
 }
 /** An advance payment certificate. */
 export type AdvancePaymentCertificate = AdvancePaymentCertificateLeaf;
-
-interface AdvancePaymentExplanationLeaf extends PaymentExplanationBase {
-    "@type": "camo:AdvancePaymentExplanation";
-}
-/** An advance payment Explanation. */
-export type AdvancePaymentExplanation = AdvancePaymentExplanationLeaf;
 
 interface AdvancePaymentGuaranteeLeaf extends ThingBase {
     "@type": "camo:AdvancePaymentGuarantee";
@@ -1635,6 +1635,16 @@ interface CemeteryLeaf extends CivicStructureBase {
 /** A graveyard. */
 export type Cemetery = CemeteryLeaf | string;
 
+interface CertificateBase extends ThingBase, NumberedBase {
+    /** Identifies what kind of certificate this is. */
+    "camo:contractCertificateKind"?: SchemaValue<URL | IdReference>;
+}
+interface CertificateLeaf extends CertificateBase {
+    "@type": "camo:Certificate";
+}
+/** A certificate for a contract. */
+export type Certificate = CertificateLeaf | MilestoneCertificate | PaymentCertificate | PerformanceCertificate | TakingOverCertificate;
+
 interface CertificateLayoutTableBase extends ThingBase {
     /** Default preamble for advance payment certificates. */
     "camo:defaultPreambleForAdvancePaymentCertificate"?: SchemaValue<Text>;
@@ -2268,6 +2278,22 @@ interface ContractAgreementLeaf extends ThingBase {
 /** The contract aggreement. */
 export type ContractAgreement = ContractAgreementLeaf;
 
+interface ContractCertificateEntityLeaf extends ThingBase {
+    "@type": "camo:ContractCertificateEntity";
+}
+/** A contract certificate entity. */
+export type ContractCertificateEntity = ContractCertificateEntityLeaf | Certificate;
+
+interface ContractCertificateSemanticPoolBase extends ContractSemanticPoolBase {
+    /** Attaches a certificate to its semantic pool. */
+    "camo:hasCertificate"?: SchemaValue<Certificate | IdReference>;
+}
+interface ContractCertificateSemanticPoolLeaf extends ContractCertificateSemanticPoolBase {
+    "@type": "camo:ContractCertificateSemanticPool";
+}
+/** A contract certificate semantic pool. */
+export type ContractCertificateSemanticPool = ContractCertificateSemanticPoolLeaf;
+
 interface ContractClaimLeaf extends ThingBase {
     "@type": "camo:ContractClaim";
 }
@@ -2278,9 +2304,13 @@ interface ContractClaimEntityLeaf extends ThingBase {
     "@type": "camo:ContractClaimEntity";
 }
 /** A contract claim entity. */
-export type ContractClaimEntity = ContractClaimEntityLeaf;
+export type ContractClaimEntity = ContractClaimEntityLeaf | ContractClaim;
 
-interface ContractClaimSemanticPoolLeaf extends ContractSemanticPoolBase {
+interface ContractClaimSemanticPoolBase extends ContractSemanticPoolBase {
+    /** Attaches a root entity to its semantic pool. */
+    "camo:hasContractClaim"?: SchemaValue<ContractClaim | IdReference>;
+}
+interface ContractClaimSemanticPoolLeaf extends ContractClaimSemanticPoolBase {
     "@type": "camo:ContractClaimSemanticPool";
 }
 /** A contract claim semantic pool. */
@@ -2412,13 +2442,29 @@ interface ContractEntityLeaf extends ThingBase {
     "@type": "camo:ContractEntity";
 }
 /** A contract entity */
-export type ContractEntity = ContractEntityLeaf | ContractClaimEntity | ContractComponentEntity | ContractConfigurationEntity | ContractDataEntity | ContractDevelopmentEntity | ContractDisputeEntity | ContractLayoutEntity | ContractModel | ContractNoticeEntity | ContractPaymentCertificateEntity | ContractPaymentExplanationEntity | ContractRegularCertificateEntity | ContractSemanticPool | ContractSharedEntity | ContractStatementEntity | ContractTerminologyEntity | ContractVariationEntity;
+export type ContractEntity = ContractEntityLeaf | ContractCertificateEntity | ContractClaimEntity | ContractComponentEntity | ContractConfigurationEntity | ContractDataEntity | ContractDevelopmentEntity | ContractDisputeEntity | ContractInstructionEntity | ContractLayoutEntity | ContractModel | ContractNoticeEntity | ContractPaymentEntity | ContractRequestEntity | ContractSemanticPool | ContractSharedEntity | ContractStatementEntity | ContractTerminologyEntity | ContractVariationEntity;
 
 interface ContractFinalStatementLeaf extends ContractStatementBase {
     "@type": "camo:ContractFinalStatement";
 }
 /** A Contract Final Statement. */
 export type ContractFinalStatement = ContractFinalStatementLeaf;
+
+interface ContractInstructionEntityLeaf extends ThingBase {
+    "@type": "camo:ContractInstructionEntity";
+}
+/** A contract instruction entity. */
+export type ContractInstructionEntity = ContractInstructionEntityLeaf;
+
+interface ContractInstructionSemanticPoolBase extends ContractSemanticPoolBase {
+    /** Attaches a root entity to its semantic pool. */
+    "camo:hasContractInstruction"?: SchemaValue<never>;
+}
+interface ContractInstructionSemanticPoolLeaf extends ContractInstructionSemanticPoolBase {
+    "@type": "camo:ContractInstructionSemanticPool";
+}
+/** A contract instruction semantic pool. */
+export type ContractInstructionSemanticPool = ContractInstructionSemanticPoolLeaf;
 
 interface ContractLayoutEntityLeaf extends ThingBase {
     "@type": "camo:ContractLayoutEntity";
@@ -2544,22 +2590,6 @@ interface ContractPartyLeaf extends ThingBase {
 /** A Contract Party. */
 export type ContractParty = ContractPartyLeaf;
 
-interface ContractPaymentCertificateEntityLeaf extends ThingBase {
-    "@type": "camo:ContractPaymentCertificateEntity";
-}
-/** A contract payment certificate entity. */
-export type ContractPaymentCertificateEntity = ContractPaymentCertificateEntityLeaf | PaymentCertificate;
-
-interface ContractPaymentCertificateSemanticPoolBase extends ContractSemanticPoolBase {
-    /** Attaches a payment certificate to its semantic pool. */
-    "camo:hasPaymentCertificate"?: SchemaValue<PaymentCertificate | IdReference>;
-}
-interface ContractPaymentCertificateSemanticPoolLeaf extends ContractPaymentCertificateSemanticPoolBase {
-    "@type": "camo:ContractPaymentCertificateSemanticPool";
-}
-/** A contract payment certificate semantic pool. */
-export type ContractPaymentCertificateSemanticPool = ContractPaymentCertificateSemanticPoolLeaf;
-
 interface ContractPaymentDescriptionBase extends ThingBase {
     /** Attaches a section payment description to its contract payment description. */
     "camo:hasContractPaymentDescriptionPart"?: SchemaValue<ContractPaymentDescriptionPart | IdReference>;
@@ -2576,21 +2606,21 @@ interface ContractPaymentDescriptionPartLeaf extends ThingBase {
 /** A contract payment description part. */
 export type ContractPaymentDescriptionPart = ContractPaymentDescriptionPartLeaf | CrossCurrencyPairPaymentDescription | GeneralPaymentDescription | PlantAndMaterialsShippedDeliveredPaymentDescription | SectionPaymentDescription;
 
-interface ContractPaymentExplanationEntityLeaf extends ThingBase {
-    "@type": "camo:ContractPaymentExplanationEntity";
+interface ContractPaymentEntityLeaf extends ThingBase {
+    "@type": "camo:ContractPaymentEntity";
 }
-/** A contract payment explanation entity */
-export type ContractPaymentExplanationEntity = ContractPaymentExplanationEntityLeaf | PaymentExplanation;
+/** A contract payment entity */
+export type ContractPaymentEntity = ContractPaymentEntityLeaf | Payment;
 
-interface ContractPaymentExplanationSemanticPoolBase extends ContractSemanticPoolBase {
-    /** Attaches a PaymentExplanation to its semantic pool. */
-    "camo:hasRootContractPaymentExplanationEntity"?: SchemaValue<PaymentExplanation | IdReference>;
+interface ContractPaymentSemanticPoolBase extends ContractSemanticPoolBase {
+    /** Attaches a Payment to its semantic pool. */
+    "camo:hasRootContractPaymentEntity"?: SchemaValue<Payment | IdReference>;
 }
-interface ContractPaymentExplanationSemanticPoolLeaf extends ContractPaymentExplanationSemanticPoolBase {
-    "@type": "camo:ContractPaymentExplanationSemanticPool";
+interface ContractPaymentSemanticPoolLeaf extends ContractPaymentSemanticPoolBase {
+    "@type": "camo:ContractPaymentSemanticPool";
 }
-/** A contract payment explanation semantic pool. */
-export type ContractPaymentExplanationSemanticPool = ContractPaymentExplanationSemanticPoolLeaf;
+/** A contract payment semantic pool (to explain in detail what a payment represents). */
+export type ContractPaymentSemanticPool = ContractPaymentSemanticPoolLeaf;
 
 interface ContractProgrammeLeaf extends ThingBase {
     "@type": "camo:ContractProgramme";
@@ -2598,21 +2628,29 @@ interface ContractProgrammeLeaf extends ThingBase {
 /** A contract programme. */
 export type ContractProgramme = ContractProgrammeLeaf;
 
-interface ContractRegularCertificateEntityLeaf extends ThingBase {
-    "@type": "camo:ContractRegularCertificateEntity";
+interface ContractRequestBase extends ThingBase, NumberedBase {
 }
-/** A contract regular certificate entity */
-export type ContractRegularCertificateEntity = ContractRegularCertificateEntityLeaf | RegularCertificate;
+interface ContractRequestLeaf extends ContractRequestBase {
+    "@type": "camo:ContractRequest";
+}
+/** A request related to a contract. */
+export type ContractRequest = ContractRequestLeaf;
 
-interface ContractRegularCertificateSemanticPoolBase extends ContractSemanticPoolBase {
-    /** Attaches a regular certificate to its semantic pool. */
-    "camo:hasRegularCertificate"?: SchemaValue<RegularCertificate | IdReference>;
+interface ContractRequestEntityLeaf extends ThingBase {
+    "@type": "camo:ContractRequestEntity";
 }
-interface ContractRegularCertificateSemanticPoolLeaf extends ContractRegularCertificateSemanticPoolBase {
-    "@type": "camo:ContractRegularCertificateSemanticPool";
+/** A contract request entity */
+export type ContractRequestEntity = ContractRequestEntityLeaf | ContractRequest;
+
+interface ContractRequestSemanticPoolBase extends ContractSemanticPoolBase {
+    /** Attaches a request to its semantic pool. */
+    "camo:hasRequest"?: SchemaValue<ContractRequest | IdReference>;
 }
-/** A contract regular certificate semantic pool. */
-export type ContractRegularCertificateSemanticPool = ContractRegularCertificateSemanticPoolLeaf;
+interface ContractRequestSemanticPoolLeaf extends ContractRequestSemanticPoolBase {
+    "@type": "camo:ContractRequestSemanticPool";
+}
+/** A contract request semantic pool. */
+export type ContractRequestSemanticPool = ContractRequestSemanticPoolLeaf;
 
 interface ContractReviewLeaf extends ThingBase {
     "@type": "camo:ContractReview";
@@ -2632,7 +2670,7 @@ interface ContractSemanticPoolLeaf extends ContractSemanticPoolBase {
     "@type": "camo:ContractSemanticPool";
 }
 /** A contract semantic pool. */
-export type ContractSemanticPool = ContractSemanticPoolLeaf | ComponentContractSemanticPool | ContractClaimSemanticPool | ContractConfigurationSemanticPool | ContractDataSemanticPool | ContractDevelopmentSemanticPool | ContractDisputeSemanticPool | ContractLayoutSemanticPool | ContractNoticeSemanticPool | ContractPaymentCertificateSemanticPool | ContractPaymentExplanationSemanticPool | ContractRegularCertificateSemanticPool | ContractStatementSemanticPool | ContractVariationSemanticPool;
+export type ContractSemanticPool = ContractSemanticPoolLeaf | ComponentContractSemanticPool | ContractCertificateSemanticPool | ContractClaimSemanticPool | ContractConfigurationSemanticPool | ContractDataSemanticPool | ContractDevelopmentSemanticPool | ContractDisputeSemanticPool | ContractInstructionSemanticPool | ContractLayoutSemanticPool | ContractNoticeSemanticPool | ContractPaymentSemanticPool | ContractRequestSemanticPool | ContractStatementSemanticPool | ContractVariationSemanticPool;
 
 interface ContractSharedEntityLeaf extends ThingBase {
     "@type": "camo:ContractSharedEntity";
@@ -2690,7 +2728,7 @@ interface ContractTerminologyEntityLeaf extends ThingBase {
     "@type": "camo:ContractTerminologyEntity";
 }
 /** A terminology contract entity */
-export type ContractTerminologyEntity = ContractTerminologyEntityLeaf | AdvancePaymentGuarantee | ComplianceVerificationSystem | ContractClaim | ContractDocument | ContractProgramme | ContractReview | ContractWorks | DelayDamages | ExceptionalEvent | ExtensionOfTime | PerformanceDamages | PerformanceSecurity | QualityManagementSystem;
+export type ContractTerminologyEntity = ContractTerminologyEntityLeaf | AdvancePaymentGuarantee | ComplianceVerificationSystem | ContractDocument | ContractProgramme | ContractReview | ContractWorks | DelayDamages | ExceptionalEvent | ExtensionOfTime | PerformanceDamages | PerformanceSecurity | QualityManagementSystem;
 
 interface ContractTerminologyLayoutTableBase extends ThingBase {
     /** The text to use in footer of a certificate attachment (section view). */
@@ -3327,17 +3365,17 @@ interface CustomsAndImportDutiesEntryLeaf extends CustomsAndImportDutiesEntryBas
 /** A CustomsAndImportDutiesEntry attached to a CustomsAndImportDutiesTable */
 export type CustomsAndImportDutiesEntry = CustomsAndImportDutiesEntryLeaf;
 
+interface CustomsAndImportDutiesPaymentLeaf extends PaymentBase {
+    "@type": "camo:CustomsAndImportDutiesPayment";
+}
+/** A customs and import duties payment Explanation. */
+export type CustomsAndImportDutiesPayment = CustomsAndImportDutiesPaymentLeaf;
+
 interface CustomsAndImportDutiesPaymentCertificateLeaf extends PaymentCertificateBase {
     "@type": "camo:CustomsAndImportDutiesPaymentCertificate";
 }
 /** A customs and import duties payment certificate. */
 export type CustomsAndImportDutiesPaymentCertificate = CustomsAndImportDutiesPaymentCertificateLeaf;
-
-interface CustomsAndImportDutiesPaymentExplanationLeaf extends PaymentExplanationBase {
-    "@type": "camo:CustomsAndImportDutiesPaymentExplanation";
-}
-/** A customs and import duties payment Explanation. */
-export type CustomsAndImportDutiesPaymentExplanation = CustomsAndImportDutiesPaymentExplanationLeaf;
 
 interface CustomsandImportDutiesSectionPaymentDescriptionLeaf extends SectionPaymentDescriptionBase {
     "@type": "camo:CustomsandImportDutiesSectionPaymentDescription";
@@ -4950,17 +4988,17 @@ interface FilmActionLeaf extends ActionBase {
 /** The act of capturing sound and moving images on film, video, or digitally. */
 export type FilmAction = FilmActionLeaf;
 
+interface FinalPaymentLeaf extends PaymentBase {
+    "@type": "camo:FinalPayment";
+}
+/** A final payment Explanation. */
+export type FinalPayment = FinalPaymentLeaf;
+
 interface FinalPaymentCertificateLeaf extends PaymentCertificateBase {
     "@type": "camo:FinalPaymentCertificate";
 }
 /** A final payment certificate. */
 export type FinalPaymentCertificate = FinalPaymentCertificateLeaf;
-
-interface FinalPaymentExplanationLeaf extends PaymentExplanationBase {
-    "@type": "camo:FinalPaymentExplanation";
-}
-/** A final payment Explanation. */
-export type FinalPaymentExplanation = FinalPaymentExplanationLeaf;
 
 interface FinalSectionPaymentDescriptionLeaf extends SectionPaymentDescriptionBase {
     "@type": "camo:FinalSectionPaymentDescription";
@@ -6082,17 +6120,17 @@ interface InteractionCounterLeaf extends InteractionCounterBase {
 /** A summary of how users have interacted with this CreativeWork. In most cases, authors will use a subtype to specify the specific type of interaction. */
 export type InteractionCounter = InteractionCounterLeaf;
 
+interface InterimPaymentLeaf extends PaymentBase {
+    "@type": "camo:InterimPayment";
+}
+/** An interim payment Explanation. */
+export type InterimPayment = InterimPaymentLeaf;
+
 interface InterimPaymentCertificateLeaf extends PaymentCertificateBase {
     "@type": "camo:InterimPaymentCertificate";
 }
 /** An interim payment certificate. */
 export type InterimPaymentCertificate = InterimPaymentCertificateLeaf;
-
-interface InterimPaymentExplanationLeaf extends PaymentExplanationBase {
-    "@type": "camo:InterimPaymentExplanation";
-}
-/** An interim payment Explanation. */
-export type InterimPaymentExplanation = InterimPaymentExplanationLeaf;
 
 interface InterimSectionPaymentDescriptionLeaf extends SectionPaymentDescriptionBase {
     "@type": "camo:InterimSectionPaymentDescription";
@@ -7698,7 +7736,7 @@ interface MilestoneLeaf extends MilestoneBase {
 /** A milestone. */
 export type Milestone = MilestoneLeaf;
 
-interface MilestoneCertificateLeaf extends RegularCertificateBase {
+interface MilestoneCertificateLeaf extends CertificateBase {
     "@type": "camo:MilestoneCertificate";
 }
 /** A milestone certificate for a contract. */
@@ -8389,7 +8427,7 @@ interface NumberedLeaf extends NumberedBase {
     "@type": "coremo:Numbered";
 }
 /** An ordered alphanumeric value attached to a resource */
-export type Numbered = NumberedLeaf | Contract | ContractConfiguration | ContractNotice | ContractStatement | PaymentCertificate | PaymentExplanation | PlantMaterialsItem | Section | Subsection | Variation;
+export type Numbered = NumberedLeaf | Certificate | Contract | ContractConfiguration | ContractNotice | ContractRequest | ContractStatement | Payment | PlantMaterialsItem | Section | Subsection | Variation;
 
 interface NumberingLayoutTableBase extends ThingBase {
     /** Defines the regex that a contract number structure must match. */
@@ -9189,6 +9227,22 @@ interface PayActionLeaf extends PayActionBase {
 /** An agent pays a price to a participant. */
 export type PayAction = PayActionLeaf;
 
+interface PaymentBase extends ThingBase, NumberedBase {
+    /** Contract payment to use. */
+    "camo:contractPaymentToUse"?: SchemaValue<Integer | Integer>;
+    /** Most recent core contract data revision. */
+    "camo:PaymentBasedOnContractDataRevision"?: SchemaValue<Integer>;
+    /** The revision of most recent varying contract data (Variation). */
+    "camo:PaymentBasedOnSectionContractDataRevision"?: SchemaValue<Integer>;
+    /** Identifies what kind of payment Explanation this is (useful for specialist payment Explanations with custom names, maps to payment Explanation layout in Contract Layout). */
+    "camo:PaymentKind"?: SchemaValue<URL | IdReference>;
+}
+interface PaymentLeaf extends PaymentBase {
+    "@type": "camo:Payment";
+}
+/** A payment explanation providing details of what a payment represents. */
+export type Payment = PaymentLeaf | AdvancePayment | CustomsAndImportDutiesPayment | FinalPayment | InterimPayment | TakingOverPayment;
+
 interface PaymentCardBase extends FinancialProductBase, EnumerationBase {
     /** A cardholder benefit that pays the cardholder a small percentage of their net expenditures. */
     "schema:cashBack"?: SchemaValue<Boolean | Number>;
@@ -9205,7 +9259,7 @@ interface PaymentCardLeaf extends PaymentCardBase {
 /** A payment method using a credit, debit, store or other card to associate the payment with an account. */
 export type PaymentCard = PaymentCardLeaf | CreditCard;
 
-interface PaymentCertificateBase extends ThingBase, NumberedBase {
+interface PaymentCertificateBase extends CertificateBase {
     /** Contract payment description to use. */
     "camo:contractPaymentDescriptionToUse"?: SchemaValue<ContractPaymentDescription | IdReference>;
     /** Most recent core contract data revision. */
@@ -9230,22 +9284,6 @@ interface PaymentChargeSpecificationLeaf extends PaymentChargeSpecificationBase 
 }
 /** The costs of settling the payment using a particular payment method. */
 export type PaymentChargeSpecification = PaymentChargeSpecificationLeaf;
-
-interface PaymentExplanationBase extends ThingBase, NumberedBase {
-    /** Contract payment to use. */
-    "camo:contractPaymentToUse"?: SchemaValue<Integer | Integer>;
-    /** Most recent core contract data revision. */
-    "camo:PaymentExplanationBasedOnContractDataRevision"?: SchemaValue<Integer>;
-    /** The revision of most recent varying contract data (Variation). */
-    "camo:PaymentExplanationBasedOnSectionContractDataRevision"?: SchemaValue<Integer>;
-    /** Identifies what kind of payment Explanation this is (useful for specialist payment Explanations with custom names, maps to payment Explanation layout in Contract Layout). */
-    "camo:PaymentExplanationKind"?: SchemaValue<URL | IdReference>;
-}
-interface PaymentExplanationLeaf extends PaymentExplanationBase {
-    "@type": "camo:PaymentExplanation";
-}
-/** A payment explanation providing details of what a payment represents. */
-export type PaymentExplanation = PaymentExplanationLeaf | AdvancePaymentExplanation | CustomsAndImportDutiesPaymentExplanation | FinalPaymentExplanation | InterimPaymentExplanation | TakingOverPaymentExplanation;
 
 interface PaymentMethodLeaf extends EnumerationBase {
     "@type": "schema:PaymentMethod";
@@ -9354,7 +9392,7 @@ interface PerformActionLeaf extends PerformActionBase {
 /** The act of participating in performance arts. */
 export type PerformAction = PerformActionLeaf;
 
-interface PerformanceCertificateLeaf extends RegularCertificateBase {
+interface PerformanceCertificateLeaf extends CertificateBase {
     "@type": "camo:PerformanceCertificate";
 }
 /** A performance certificate for a contract. */
@@ -10915,16 +10953,6 @@ interface RegisterActionLeaf extends ActionBase {
  */
 export type RegisterAction = RegisterActionLeaf;
 
-interface RegularCertificateBase extends ThingBase {
-    /** Identifies what kind of certificate this is. */
-    "camo:contractRegularCertificateKind"?: SchemaValue<URL | IdReference>;
-}
-interface RegularCertificateLeaf extends RegularCertificateBase {
-    "@type": "camo:RegularCertificate";
-}
-/** A regular certificate for a contract. */
-export type RegularCertificate = RegularCertificateLeaf | MilestoneCertificate | PerformanceCertificate | TakingOverCertificate;
-
 interface RejectActionLeaf extends ActionBase {
     "@type": "schema:RejectAction";
 }
@@ -12417,7 +12445,7 @@ interface TakeActionLeaf extends TransferActionBase {
  */
 export type TakeAction = TakeActionLeaf;
 
-interface TakingOverCertificateBase extends RegularCertificateBase {
+interface TakingOverCertificateBase extends CertificateBase {
     /** The Date Of Completion for this taking-over cert [See definition in FIDIC 1.1]. */
     "camo:contractDateOfCompletion"?: SchemaValue<Date>;
 }
@@ -12426,6 +12454,18 @@ interface TakingOverCertificateLeaf extends TakingOverCertificateBase {
 }
 /** A taking-over certificate for a contract. */
 export type TakingOverCertificate = TakingOverCertificateLeaf;
+
+interface TakingOverPaymentBase extends PaymentBase {
+    /** The taking over cert this is based upon (to discover withheld amounts). */
+    "camo:takingOverPaymentBasedOnTakingOverCertificate"?: SchemaValue<Text>;
+    /** The revision of the taking over cert to use. */
+    "camo:takingOverPaymentBasedOnTakingOverCertificateRevision"?: SchemaValue<Integer>;
+}
+interface TakingOverPaymentLeaf extends TakingOverPaymentBase {
+    "@type": "camo:TakingOverPayment";
+}
+/** A taking-over payment Explanation (specifically for payment of the taking-over portion of the retention money)). */
+export type TakingOverPayment = TakingOverPaymentLeaf;
 
 interface TakingOverPaymentCertificateBase extends PaymentCertificateBase {
     /** The taking over cert this is based upon (to discover withheld amounts). */
@@ -12438,18 +12478,6 @@ interface TakingOverPaymentCertificateLeaf extends TakingOverPaymentCertificateB
 }
 /** A taking-over payment certificate (specifically for payment of the taking-over portion of the retention money)). */
 export type TakingOverPaymentCertificate = TakingOverPaymentCertificateLeaf;
-
-interface TakingOverPaymentExplanationBase extends PaymentExplanationBase {
-    /** The taking over cert this is based upon (to discover withheld amounts). */
-    "camo:takingOverPaymentExplanationBasedOnTakingOverCertificate"?: SchemaValue<Text>;
-    /** The revision of the taking over cert to use. */
-    "camo:takingOverPaymentExplanationBasedOnTakingOverCertificateRevision"?: SchemaValue<Integer>;
-}
-interface TakingOverPaymentExplanationLeaf extends TakingOverPaymentExplanationBase {
-    "@type": "camo:TakingOverPaymentExplanation";
-}
-/** A taking-over payment Explanation (specifically for payment of the taking-over portion of the retention money)). */
-export type TakingOverPaymentExplanation = TakingOverPaymentExplanationLeaf;
 
 interface TakingOverSectionPaymentDescriptionLeaf extends SectionPaymentDescriptionBase {
     "@type": "camo:TakingOverSectionPaymentDescription";
