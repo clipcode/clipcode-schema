@@ -97,7 +97,7 @@ interface AbstractableLeaf extends AbstractableBase {
     "@type": "coremo:Abstractable";
 }
 /** A resource capable of being marked as abstract (so cannot be used directly; may be used as part of hierarhcy). */
-export type Abstractable = AbstractableLeaf;
+export type Abstractable = AbstractableLeaf | OrganizationProfile;
 
 interface AcceptActionLeaf extends ActionBase {
     "@type": "schema:AcceptAction";
@@ -624,6 +624,18 @@ interface APIReferenceLeaf extends APIReferenceBase {
 /** Reference documentation for application programming interfaces (APIs). */
 export type APIReference = APIReferenceLeaf;
 
+interface AppDirectoryEntityLeaf extends ThingBase {
+    "@type": "dirmo:AppDirectoryEntity";
+}
+/** An app directory entity */
+export type AppDirectoryEntity = AppDirectoryEntityLeaf;
+
+interface AppDirectorySemanticPoolLeaf extends DirectorySemanticPoolBase {
+    "@type": "dirmo:AppDirectorySemanticPool";
+}
+/** An app directory */
+export type AppDirectorySemanticPool = AppDirectorySemanticPoolLeaf;
+
 interface AppendActionLeaf extends InsertActionBase {
     "@type": "schema:AppendAction";
 }
@@ -927,6 +939,12 @@ interface BakeryLeaf extends FoodEstablishmentBase {
 }
 /** A bakery. */
 export type Bakery = BakeryLeaf | string;
+
+interface BankLeaf extends ThingBase {
+    "@type": "dirmo:Bank";
+}
+/** A bank. */
+export type Bank = BankLeaf;
 
 interface BankAccountBase extends FinancialProductBase {
     /** A minimum amount that has to be paid in every month. */
@@ -2562,6 +2580,18 @@ interface ContractNoticeSemanticPoolLeaf extends ContractNoticeSemanticPoolBase 
 /** A contract notice semantic pool. */
 export type ContractNoticeSemanticPool = ContractNoticeSemanticPoolLeaf;
 
+interface ContractorLeaf extends ThingBase {
+    "@type": "dirmo:Contractor";
+}
+/** The contractor. */
+export type Contractor = ContractorLeaf;
+
+interface ContractorRepresentativeLeaf extends ThingBase {
+    "@type": "dirmo:ContractorRepresentative";
+}
+/** The contractor's representative. */
+export type ContractorRepresentative = ContractorRepresentativeLeaf;
+
 interface ContractPartLeaf extends RootContractDataEntityBase {
     "@type": "camo:ContractPart";
 }
@@ -4023,6 +4053,30 @@ interface DigitalDocumentPermissionTypeLeaf extends EnumerationBase {
 /** A type of permission which can be granted for accessing a digital document. */
 export type DigitalDocumentPermissionType = "https://schema.org/CommentPermission" | "schema:CommentPermission" | "https://schema.org/ReadPermission" | "schema:ReadPermission" | "https://schema.org/WritePermission" | "schema:WritePermission" | DigitalDocumentPermissionTypeLeaf;
 
+interface DirectoryEntityLeaf extends ThingBase {
+    "@type": "dirmo:DirectoryEntity";
+}
+/** A directory entity */
+export type DirectoryEntity = DirectoryEntityLeaf | AppDirectoryEntity | DirectoryModel | DirectorySemanticPool | MetaverseDirectoryEntity | RegionalDirectoryEntity | ResourceDirectoryEntity | StakeholderDirectoryEntity;
+
+interface DirectoryModelBase extends ThingBase, CreativeWorkBase, ThingBase {
+    /** A semantic pool within a directory model. */
+    "dirmo:hasDirectorySemanticPool"?: SchemaValue<DirectorySemanticPool | IdReference>;
+}
+interface DirectoryModelLeaf extends DirectoryModelBase {
+    "@type": "dirmo:DirectoryModel";
+}
+/** A directory model */
+export type DirectoryModel = DirectoryModelLeaf;
+
+interface DirectorySemanticPoolBase extends CreativeWorkBase, ThingBase {
+}
+interface DirectorySemanticPoolLeaf extends DirectorySemanticPoolBase {
+    "@type": "dirmo:DirectorySemanticPool";
+}
+/** A directory semantic pool. */
+export type DirectorySemanticPool = DirectorySemanticPoolLeaf | AppDirectorySemanticPool | MetaverseDirectorySemanticPool | RegionalDirectorySemanticPool | ResourceDirectorySemanticPool | StakeholderDirectorySemanticPool;
+
 interface DisagreeActionLeaf extends ActionBase {
     "@type": "schema:DisagreeAction";
 }
@@ -4487,11 +4541,29 @@ interface EmployeeRoleLeaf extends EmployeeRoleBase {
 /** A subclass of OrganizationRole used to describe employee relationships. */
 export type EmployeeRole = EmployeeRoleLeaf;
 
+interface EmployerLeaf extends ThingBase {
+    "@type": "dirmo:Employer";
+}
+/** The employer. */
+export type Employer = EmployerLeaf;
+
 interface EmployerAggregateRatingLeaf extends AggregateRatingBase {
     "@type": "schema:EmployerAggregateRating";
 }
 /** An aggregate rating of an Organization related to its role as an employer. */
 export type EmployerAggregateRating = EmployerAggregateRatingLeaf;
+
+interface EmployerPersonnelLeaf extends ThingBase {
+    "@type": "dirmo:EmployerPersonnel";
+}
+/** The employer's personnel. */
+export type EmployerPersonnel = EmployerPersonnelLeaf;
+
+interface EmployerRepresentativeLeaf extends ThingBase {
+    "@type": "dirmo:EmployerRepresentative";
+}
+/** The employer's representative. */
+export type EmployerRepresentative = EmployerRepresentativeLeaf;
 
 interface EmployerReviewLeaf extends ReviewBase {
     "@type": "schema:EmployerReview";
@@ -4567,11 +4639,23 @@ interface EnergyStarEnergyEfficiencyEnumerationLeaf extends EnumerationBase {
 /** Used to indicate whether a product is EnergyStar certified. */
 export type EnergyStarEnergyEfficiencyEnumeration = "https://schema.org/EnergyStarCertified" | "schema:EnergyStarCertified" | EnergyStarEnergyEfficiencyEnumerationLeaf;
 
+interface EngineerLeaf extends ThingBase {
+    "@type": "dirmo:Engineer";
+}
+/** The engineer. */
+export type Engineer = EngineerLeaf;
+
 interface EngineeringModelsetModelAreaLeaf extends ThingBase {
     "@type": "coremo:EngineeringModelsetModelArea";
 }
 /** An engineering modelset model area. */
 export type EngineeringModelsetModelArea = EngineeringModelsetModelAreaLeaf;
+
+interface EngineerRepresentativeLeaf extends ThingBase {
+    "@type": "dirmo:EngineerRepresentative";
+}
+/** The engineer's representative. */
+export type EngineerRepresentative = EngineerRepresentativeLeaf;
 
 interface EngineSpecificationBase extends ThingBase {
     /**
@@ -5035,6 +5119,12 @@ interface FinancialServiceLeaf extends FinancialServiceBase {
 }
 /** Financial services business. */
 export type FinancialService = FinancialServiceLeaf | AccountingService | AutomatedTeller | BankOrCreditUnion | InsuranceAgency | string;
+
+interface FinancingInstituionLeaf extends ThingBase {
+    "@type": "dirmo:FinancingInstituion";
+}
+/** A financing institution. */
+export type FinancingInstituion = FinancingInstituionLeaf;
 
 interface FindActionLeaf extends ActionBase {
     "@type": "schema:FindAction";
@@ -5933,13 +6023,13 @@ interface IdentityOperationsEntityLeaf extends ThingBase {
     "@type": "coremo:IdentityOperationsEntity";
 }
 /** An identity entity. */
-export type IdentityOperationsEntity = IdentityOperationsEntityLeaf;
+export type IdentityOperationsEntity = IdentityOperationsEntityLeaf | DirectoryEntity;
 
 interface IdentityOperationsModelAreaLeaf extends ThingBase {
     "@type": "coremo:IdentityOperationsModelArea";
 }
 /** An identity model area. */
-export type IdentityOperationsModelArea = IdentityOperationsModelAreaLeaf;
+export type IdentityOperationsModelArea = IdentityOperationsModelAreaLeaf | DirectoryModel;
 
 interface IgnoreActionLeaf extends ActionBase {
     "@type": "schema:IgnoreAction";
@@ -6064,6 +6154,12 @@ interface InsuranceAgencyLeaf extends FinancialServiceBase {
 }
 /** An Insurance agency. */
 export type InsuranceAgency = InsuranceAgencyLeaf | string;
+
+interface InsuranceCompanyLeaf extends ThingBase {
+    "@type": "dirmo:InsuranceCompany";
+}
+/** An InsuranceCompany. */
+export type InsuranceCompany = InsuranceCompanyLeaf;
 
 interface IntangibleLeaf extends ThingBase {
     "@type": "schema:Intangible";
@@ -6389,11 +6485,23 @@ interface JointLeaf extends JointBase {
 /** The anatomical location at which two or more bones make contact. */
 export type Joint = JointLeaf;
 
+interface JointVentureLeaf extends ThingBase {
+    "@type": "dirmo:JointVenture";
+}
+/** A Joint Venture (JV). */
+export type JointVenture = JointVentureLeaf;
+
 interface JVUndertakingLeaf extends ThingBase {
     "@type": "camo:JVUndertaking";
 }
 /** The joint venture undertaking. */
 export type JVUndertaking = JVUndertakingLeaf;
+
+interface KeyPersonnelLeaf extends ThingBase {
+    "@type": "dirmo:KeyPersonnel";
+}
+/** the Key Personnel. */
+export type KeyPersonnel = KeyPersonnelLeaf;
 
 interface KnowledgeGraphBase extends CreativeWorkBase {
     /** A semantic model that is contained within a knowledge graph. */
@@ -7718,6 +7826,18 @@ interface MessageLeaf extends MessageBase {
 /** A single message from a sender to one or more organizations or people. */
 export type Message = MessageLeaf | EmailMessage;
 
+interface MetaverseDirectoryEntityLeaf extends ThingBase {
+    "@type": "dirmo:MetaverseDirectoryEntity";
+}
+/** A metaverse directory entity */
+export type MetaverseDirectoryEntity = MetaverseDirectoryEntityLeaf;
+
+interface MetaverseDirectorySemanticPoolLeaf extends DirectorySemanticPoolBase {
+    "@type": "dirmo:MetaverseDirectorySemanticPool";
+}
+/** A metaverse directory */
+export type MetaverseDirectorySemanticPool = MetaverseDirectorySemanticPoolLeaf;
+
 interface MiddleSchoolLeaf extends EducationalOrganizationBase {
     "@type": "schema:MiddleSchool";
 }
@@ -8368,6 +8488,12 @@ interface NLNonprofitTypeLeaf extends EnumerationBase {
 }
 /** NLNonprofitType: Non-profit organization type originating from the Netherlands. */
 export type NLNonprofitType = "https://schema.org/NonprofitANBI" | "schema:NonprofitANBI" | "https://schema.org/NonprofitSBBI" | "schema:NonprofitSBBI" | NLNonprofitTypeLeaf;
+
+interface NominatedSubcontractorLeaf extends ThingBase {
+    "@type": "dirmo:NominatedSubcontractor";
+}
+/** A nominated (named) subcontractor. */
+export type NominatedSubcontractor = NominatedSubcontractorLeaf;
 
 interface NonprofitTypeLeaf extends EnumerationBase {
     "@type": "schema:NonprofitType";
@@ -9074,6 +9200,18 @@ interface OrganizationLeaf extends OrganizationBase {
 }
 /** An organization such as a school, NGO, corporation, club, etc. */
 export type Organization = OrganizationLeaf | Airline | Consortium | Corporation | EducationalOrganization | FundingScheme | GovernmentOrganization | LibrarySystem | LocalBusiness | MedicalOrganization | NewsMediaOrganization | NGO | PerformingGroup | Project | ResearchOrganization | SportsOrganization | WorkersUnion | string;
+
+interface OrganizationProfileBase extends AbstractableBase, TransformableBase, ThingBase {
+    /** A child profile of an OrganizationProfile. */
+    "dirmo:childOrganizationProfile"?: SchemaValue<OrganizationProfile | IdReference>;
+    /** The OrganizationProfile's effective organization details. */
+    "dirmo:effectiveOrganization"?: SchemaValue<Organization | IdReference>;
+}
+interface OrganizationProfileLeaf extends OrganizationProfileBase {
+    "@type": "dirmo:OrganizationProfile";
+}
+/** An organization's profile */
+export type OrganizationProfile = OrganizationProfileLeaf;
 
 interface OrganizationRoleBase extends RoleBase {
     /** A number associated with a role in an organization, for example, the number on an athlete's jersey. */
@@ -10940,6 +11078,18 @@ interface RefundTypeEnumerationLeaf extends EnumerationBase {
 /** Enumerates several kinds of product return refund types. */
 export type RefundTypeEnumeration = "https://schema.org/ExchangeRefund" | "schema:ExchangeRefund" | "https://schema.org/FullRefund" | "schema:FullRefund" | "https://schema.org/StoreCreditRefund" | "schema:StoreCreditRefund" | RefundTypeEnumerationLeaf;
 
+interface RegionalDirectoryEntityLeaf extends ThingBase {
+    "@type": "dirmo:RegionalDirectoryEntity";
+}
+/** A regional directory entity */
+export type RegionalDirectoryEntity = RegionalDirectoryEntityLeaf;
+
+interface RegionalDirectorySemanticPoolLeaf extends DirectorySemanticPoolBase {
+    "@type": "dirmo:RegionalDirectorySemanticPool";
+}
+/** A regional directory */
+export type RegionalDirectorySemanticPool = RegionalDirectorySemanticPoolLeaf;
+
 interface RegisterActionLeaf extends ActionBase {
     "@type": "schema:RegisterAction";
 }
@@ -11199,6 +11349,18 @@ interface ResortLeaf extends LodgingBusinessBase {
  * See also the {@link /docs/hotels.html dedicated document on the use of schema.org for marking up hotels and other forms of accommodations}.
  */
 export type Resort = ResortLeaf | SkiResort | string;
+
+interface ResourceDirectoryEntityLeaf extends ThingBase {
+    "@type": "dirmo:ResourceDirectoryEntity";
+}
+/** A resource directory entity */
+export type ResourceDirectoryEntity = ResourceDirectoryEntityLeaf;
+
+interface ResourceDirectorySemanticPoolLeaf extends DirectorySemanticPoolBase {
+    "@type": "dirmo:ResourceDirectorySemanticPool";
+}
+/** A resource directory */
+export type ResourceDirectorySemanticPool = ResourceDirectorySemanticPoolLeaf;
 
 interface ResponsibleBase extends ThingBase {
     /** A responsibility for a Responsible resource. */
@@ -11656,7 +11818,7 @@ interface SemanticModelLeaf extends CreativeWorkBase {
     "@type": "coremo:SemanticModel";
 }
 /** A semantic model. */
-export type SemanticModel = SemanticModelLeaf | ContractModel;
+export type SemanticModel = SemanticModelLeaf | ContractModel | DirectoryModel;
 
 interface SemanticModelAreaLeaf extends ThingBase {
     "@type": "coremo:SemanticModelArea";
@@ -11668,7 +11830,7 @@ interface SemanticPoolLeaf extends CreativeWorkBase {
     "@type": "coremo:SemanticPool";
 }
 /** A pool of semantic resources that manages a somewhat self-contained representation of an area of interest. */
-export type SemanticPool = SemanticPoolLeaf | ContractSemanticPool;
+export type SemanticPool = SemanticPoolLeaf | ContractSemanticPool | DirectorySemanticPool;
 
 interface SemanticRootLeaf extends CreativeWorkBase {
     "@type": "coremo:SemanticRoot";
@@ -12214,6 +12376,22 @@ interface StadiumOrArenaLeaf extends StadiumOrArenaBase {
 /** A stadium. */
 export type StadiumOrArena = StadiumOrArenaLeaf | string;
 
+interface StakeholderDirectoryEntityLeaf extends ThingBase {
+    "@type": "dirmo:StakeholderDirectoryEntity";
+}
+/** A stakeholder directory entity */
+export type StakeholderDirectoryEntity = StakeholderDirectoryEntityLeaf | Bank | Contractor | ContractorRepresentative | Employer | EmployerPersonnel | EmployerRepresentative | Engineer | EngineerRepresentative | FinancingInstituion | InsuranceCompany | JointVenture | KeyPersonnel | OrganizationProfile | Subcontractor;
+
+interface StakeholderDirectorySemanticPoolBase extends DirectorySemanticPoolBase {
+    /** Attaches a root organization profile to its semantic pool. */
+    "dirmo:rootOrganizationProfile"?: SchemaValue<OrganizationProfile | IdReference>;
+}
+interface StakeholderDirectorySemanticPoolLeaf extends StakeholderDirectorySemanticPoolBase {
+    "@type": "dirmo:StakeholderDirectorySemanticPool";
+}
+/** A stakeholder directory */
+export type StakeholderDirectorySemanticPool = StakeholderDirectorySemanticPoolLeaf;
+
 interface StateLeaf extends PlaceBase {
     "@type": "schema:State";
 }
@@ -12287,6 +12465,12 @@ interface StructureMathematicalModelAreaLeaf extends ThingBase {
 }
 /** A structure mathematical model area. */
 export type StructureMathematicalModelArea = StructureMathematicalModelAreaLeaf;
+
+interface SubcontractorLeaf extends ThingBase {
+    "@type": "dirmo:Subcontractor";
+}
+/** A subcontractor. */
+export type Subcontractor = SubcontractorLeaf | NominatedSubcontractor;
 
 interface SubscribeActionLeaf extends ActionBase {
     "@type": "schema:SubscribeAction";
@@ -12911,7 +13095,7 @@ interface TransformableLeaf extends TransformableBase {
     "@type": "coremo:Transformable";
 }
 /** A resource whose properties can be transformed via add/remove/clear transforms. */
-export type Transformable = TransformableLeaf;
+export type Transformable = TransformableLeaf | OrganizationProfile;
 
 interface TravelActionBase extends MoveActionBase {
     /** The distance travelled, e.g. exercising or travelling. */
