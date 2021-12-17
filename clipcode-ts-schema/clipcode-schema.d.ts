@@ -2390,7 +2390,7 @@ interface ContractDataEntityLeaf extends ThingBase {
     "@type": "camo:ContractDataEntity";
 }
 /** A contract data entity */
-export type ContractDataEntity = ContractDataEntityLeaf | CommittedSum | Milestone | PaymentStep | ProvisionalSum | RootContractDataEntity | SectionTable;
+export type ContractDataEntity = ContractDataEntityLeaf | CommittedSum | Milestone | ProvisionalSum | RootContractDataEntity | SectionTable | StagePayment;
 
 interface ContractDataSemanticPoolBase extends ContractSemanticPoolBase {
     /** Attaches a root entity to its semantic pool. */
@@ -4732,7 +4732,7 @@ interface EnumerationLeaf extends EnumerationBase {
     "@type": "schema:Enumeration";
 }
 /** Lists or enumerations—for example, a list of cuisines or music genres, etc. */
-export type Enumeration = EnumerationLeaf | BoardingPolicyType | BookFormatType | BusinessEntityType | BusinessFunction | CarUsageType | ContactPointOption | DayOfWeek | DeliveryMethod | DigitalDocumentPermissionType | EnergyEfficiencyEnumeration | EventAttendanceModeEnumeration | GamePlayMode | GenderType | GovernmentBenefitsType | HealthAspectEnumeration | ItemAvailability | ItemListOrderType | LegalValueLevel | MapCategoryType | MeasurementTypeEnumeration | MediaManipulationRatingEnumeration | MedicalEnumeration | MerchantReturnEnumeration | MusicAlbumProductionType | MusicAlbumReleaseType | MusicReleaseFormatType | NonprofitType | OfferItemCondition | PaymentMethod | PaymentStepKindEnumeration | PhysicalActivityCategory | PriceComponentTypeEnumeration | PriceTypeEnumeration | QualitativeValue | RefundTypeEnumeration | RestrictedDiet | ReturnFeesEnumeration | ReturnLabelSourceEnumeration | ReturnMethodEnumeration | RsvpResponseType | SizeGroupEnumeration | SizeSystemEnumeration | Specialty | StatusEnumeration | WarrantyScope;
+export type Enumeration = EnumerationLeaf | BoardingPolicyType | BookFormatType | BusinessEntityType | BusinessFunction | CarUsageType | ContactPointOption | DayOfWeek | DeliveryMethod | DigitalDocumentPermissionType | EnergyEfficiencyEnumeration | EventAttendanceModeEnumeration | GamePlayMode | GenderType | GovernmentBenefitsType | HealthAspectEnumeration | ItemAvailability | ItemListOrderType | LegalValueLevel | MapCategoryType | MeasurementTypeEnumeration | MediaManipulationRatingEnumeration | MedicalEnumeration | MerchantReturnEnumeration | MusicAlbumProductionType | MusicAlbumReleaseType | MusicReleaseFormatType | NonprofitType | OfferItemCondition | PaymentMethod | PhysicalActivityCategory | PriceComponentTypeEnumeration | PriceTypeEnumeration | QualitativeValue | RefundTypeEnumeration | RestrictedDiet | ReturnFeesEnumeration | ReturnLabelSourceEnumeration | ReturnMethodEnumeration | RsvpResponseType | SizeGroupEnumeration | SizeSystemEnumeration | Specialty | StagePaymentKindEnumeration | StatusEnumeration | WarrantyScope;
 
 interface EpisodeBase extends CreativeWorkBase {
     /** An actor, e.g. in tv, radio, movie, video games etc., or in an event. Actors can be associated with individual items or with a series, episode, clip. */
@@ -9454,34 +9454,6 @@ interface PaymentStatusTypeLeaf extends EnumerationBase {
 /** A specific payment status. For example, PaymentDue, PaymentComplete, etc. */
 export type PaymentStatusType = "https://schema.org/PaymentAutomaticallyApplied" | "schema:PaymentAutomaticallyApplied" | "https://schema.org/PaymentComplete" | "schema:PaymentComplete" | "https://schema.org/PaymentDeclined" | "schema:PaymentDeclined" | "https://schema.org/PaymentDue" | "schema:PaymentDue" | "https://schema.org/PaymentPastDue" | "schema:PaymentPastDue" | PaymentStatusTypeLeaf;
 
-interface PaymentStepBase extends ThingBase {
-    /** A PaymentStep percentage. */
-    "camo:hasPaymentStepPercentage"?: SchemaValue<Number>;
-}
-interface PaymentStepLeaf extends PaymentStepBase {
-    "@type": "camo:PaymentStep";
-}
-/** A PaymentStep. */
-export type PaymentStep = PaymentStepLeaf;
-
-interface PaymentStepKindEnumerationLeaf extends EnumerationBase {
-    "@type": "camo:PaymentStepKindEnumeration";
-}
-/** An enumeration representing the kind of PaymentStep). */
-export type PaymentStepKindEnumeration = "https://clipcode.org/base/schema/camo/ParallelPercentagePaymentStepKind" | "camo:ParallelPercentagePaymentStepKind" | "https://clipcode.org/base/schema/camo/PartBasedPaymentStepKind" | "camo:PartBasedPaymentStepKind" | "https://clipcode.org/base/schema/camo/SequentialPercentagePaymentStepKind" | "camo:SequentialPercentagePaymentStepKind" | PaymentStepKindEnumerationLeaf;
-
-interface PaymentStepTableBase extends RootContractDataEntityBase {
-    /** A PaymentStep within a PaymentStepTable. */
-    "camo:hasPaymentStep"?: SchemaValue<PaymentStep | IdReference>;
-    /** The kind of payment step to use. */
-    "camo:hasPaymentStepKind"?: SchemaValue<PaymentStepKindEnumeration | IdReference>;
-}
-interface PaymentStepTableLeaf extends PaymentStepTableBase {
-    "@type": "camo:PaymentStepTable";
-}
-/** A payment step table. */
-export type PaymentStepTable = PaymentStepTableLeaf;
-
 interface PeopleAudienceBase extends AudienceBase {
     /** Specifying the health condition(s) of a patient, medical study, or other target audience. */
     "schema:healthCondition"?: SchemaValue<MedicalCondition | IdReference>;
@@ -11534,7 +11506,7 @@ interface RootContractDataEntityLeaf extends RootContractDataEntityBase {
     "@type": "camo:RootContractDataEntity";
 }
 /** A root entity within a contract data semantic pool */
-export type RootContractDataEntity = RootContractDataEntityLeaf | ContractActorTable | ContractDateTable | ContractPart | ContractPartTable | MilestoneTable | PaymentStepTable | PercentagePriceSpecification | PlantAndMaterialsTable | PlantMaterialsItem | Subsection;
+export type RootContractDataEntity = RootContractDataEntityLeaf | ContractActorTable | ContractDateTable | ContractPart | ContractPartTable | MilestoneTable | PercentagePriceSpecification | PlantAndMaterialsTable | PlantMaterialsItem | StagePaymentTable | Subsection;
 
 interface RsvpActionBase extends InformActionBase {
     /** If responding yes, the number of guests who will attend in addition to the invitee. */
@@ -12375,6 +12347,34 @@ interface StadiumOrArenaLeaf extends StadiumOrArenaBase {
 }
 /** A stadium. */
 export type StadiumOrArena = StadiumOrArenaLeaf | string;
+
+interface StagePaymentBase extends ThingBase {
+    /** A StagePayment percentage. */
+    "camo:hasStagePaymentPercentage"?: SchemaValue<Number>;
+}
+interface StagePaymentLeaf extends StagePaymentBase {
+    "@type": "camo:StagePayment";
+}
+/** A StagePayment. */
+export type StagePayment = StagePaymentLeaf;
+
+interface StagePaymentKindEnumerationLeaf extends EnumerationBase {
+    "@type": "camo:StagePaymentKindEnumeration";
+}
+/** An enumeration representing the kind of StagePayment). */
+export type StagePaymentKindEnumeration = "https://clipcode.org/base/schema/camo/ParallelPercentageStagePaymentKind" | "camo:ParallelPercentageStagePaymentKind" | "https://clipcode.org/base/schema/camo/PartBasedStagePaymentKind" | "camo:PartBasedStagePaymentKind" | "https://clipcode.org/base/schema/camo/SequentialPercentageStagePaymentKind" | "camo:SequentialPercentageStagePaymentKind" | StagePaymentKindEnumerationLeaf;
+
+interface StagePaymentTableBase extends RootContractDataEntityBase {
+    /** A StagePayment within a StagePaymentTable. */
+    "camo:hasStagePayment"?: SchemaValue<StagePayment | IdReference>;
+    /** The kind of stage payment to use. */
+    "camo:hasStagePaymentKind"?: SchemaValue<StagePaymentKindEnumeration | IdReference>;
+}
+interface StagePaymentTableLeaf extends StagePaymentTableBase {
+    "@type": "camo:StagePaymentTable";
+}
+/** A stage payment table. */
+export type StagePaymentTable = StagePaymentTableLeaf;
 
 interface StakeholderDirectoryEntityLeaf extends ThingBase {
     "@type": "dirmo:StakeholderDirectoryEntity";

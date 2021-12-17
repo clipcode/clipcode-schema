@@ -278,68 +278,68 @@
       "schema:rangeIncludes":  { "@id": "schema:Number" }
     },
     {
-      "@id": "camo:PaymentStepKindEnumeration",
+      "@id": "camo:StagePaymentKindEnumeration",
       "@type": "rdfs:Class",
-      "rdfs:comment": "An enumeration representing the kind of PaymentStep).",
-      "rdfs:label": "PaymentStepKindEnumeration",
+      "rdfs:comment": "An enumeration representing the kind of StagePayment).",
+      "rdfs:label": "StagePaymentKindEnumeration",
        "rdfs:subClassOf": { "@id": "schema:Enumeration" }
     },
     {
-      "@id": "camo:PartBasedPaymentStepKind",
-      "@type": "camo:PaymentStepKindEnumeration",
-      "rdfs:comment": "A PaymentStep table where PaymentSteps are based on parts.",
-      "rdfs:label": "PartBasedPaymentStepKind"
+      "@id": "camo:PartBasedStagePaymentKind",
+      "@type": "camo:StagePaymentKindEnumeration",
+      "rdfs:comment": "A StagePayment table where StagePayments are based on parts.",
+      "rdfs:label": "PartBasedStagePaymentKind"
     },
     {
-      "@id": "camo:SequentialPercentagePaymentStepKind",
-      "@type": "camo:PaymentStepKindEnumeration",
-      "rdfs:comment": "A PaymentStep table where percentage payments must be sequential - a PaymentStep must be complete before paying from the next.",
-      "rdfs:label": "SequentialPercentagePaymentStepKind"
+      "@id": "camo:SequentialPercentageStagePaymentKind",
+      "@type": "camo:StagePaymentKindEnumeration",
+      "rdfs:comment": "A StagePayment table where percentage payments must be sequential - a StagePayment must be complete before paying from the next.",
+      "rdfs:label": "SequentialPercentageStagePaymentKind"
     },
     {
-      "@id": "camo:ParallelPercentagePaymentStepKind",
-      "@type": "camo:PaymentStepKindEnumeration",
-      "rdfs:comment": "A PaymentStep table where percentage payments can proceed in parallel.",
-      "rdfs:label": "ParallelPercentagePaymentStepKind"
+      "@id": "camo:ParallelPercentageStagePaymentKind",
+      "@type": "camo:StagePaymentKindEnumeration",
+      "rdfs:comment": "A StagePayment table where percentage payments can proceed in parallel.",
+      "rdfs:label": "ParallelPercentageStagePaymentKind"
     },
     {
-      "@id": "camo:PaymentStepTable",
+      "@id": "camo:StagePaymentTable",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A payment step table.",
-      "rdfs:label": "PaymentStepTable",
+      "rdfs:comment": "A stage payment table.",
+      "rdfs:label": "StagePaymentTable",
       "rdfs:subClassOf": { "@id": "camo:RootContractDataEntity" }
     },  
     {
-      "@id": "camo:hasPaymentStepKind",
+      "@id": "camo:hasStagePaymentKind",
       "@type": "rdf:Property",
-      "rdfs:comment": "The kind of payment step to use.",
-      "rdfs:label": "hasPaymentStepKind",
-      "schema:domainIncludes": { "@id": "camo:PaymentStepTable" },
-      "schema:rangeIncludes":  { "@id": "camo:PaymentStepKindEnumeration" }
+      "rdfs:comment": "The kind of stage payment to use.",
+      "rdfs:label": "hasStagePaymentKind",
+      "schema:domainIncludes": { "@id": "camo:StagePaymentTable" },
+      "schema:rangeIncludes":  { "@id": "camo:StagePaymentKindEnumeration" }
     },   
     {
-      "@id": "camo:PaymentStep",
+      "@id": "camo:StagePayment",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A PaymentStep.",
-      "rdfs:label": "PaymentStep",
+      "rdfs:comment": "A StagePayment.",
+      "rdfs:label": "StagePayment",
       "rdfs:subClassOf": [
         { "@id": "camo:ContractDataEntity" }
       ]
     },
     {
-      "@id": "camo:hasPaymentStep",
+      "@id": "camo:hasStagePayment",
       "@type": "rdf:Property",
-      "rdfs:comment": "A PaymentStep within a PaymentStepTable.",
-      "rdfs:label": "hasPaymentStep",
-      "schema:domainIncludes": { "@id": "camo:PaymentStepTable" },
-      "schema:rangeIncludes":  { "@id": "camo:PaymentStep" }
+      "rdfs:comment": "A StagePayment within a StagePaymentTable.",
+      "rdfs:label": "hasStagePayment",
+      "schema:domainIncludes": { "@id": "camo:StagePaymentTable" },
+      "schema:rangeIncludes":  { "@id": "camo:StagePayment" }
     },
     {
-      "@id": "camo:hasPaymentStepPercentage",
+      "@id": "camo:hasStagePaymentPercentage",
       "@type": "rdf:Property",
-      "rdfs:comment": "A PaymentStep percentage.",
+      "rdfs:comment": "A StagePayment percentage.",
       "rdfs:label": "hasForeignCurrency",
-      "schema:domainIncludes": { "@id": "camo:PaymentStep" },
+      "schema:domainIncludes": { "@id": "camo:StagePayment" },
       "schema:rangeIncludes":  { "@id": "schema:Number" }
     },
     {
