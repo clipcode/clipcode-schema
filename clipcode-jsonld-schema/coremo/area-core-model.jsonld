@@ -14,7 +14,7 @@
       "rdfs:comment": "A semantic model area (from which more specialist semantic model areas may be derived) - semantic models are associated with model areas.",
       "rdfs:label": "SemanticModelArea",
       "rdfs:subClassOf": {
-        "@id": "coremo:CoreMathematicalEntity"
+        "@id": "coremo:CoreMathematicsConcept"
       }
     }, 
     {

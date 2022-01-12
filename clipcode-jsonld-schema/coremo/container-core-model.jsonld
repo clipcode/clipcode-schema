@@ -13,7 +13,10 @@
       "@type": "rdfs:Class",
       "rdfs:comment": "A container of information.",
       "rdfs:label": "InformationContainer",
-      "rdfs:subClassOf": { "@id": "schema:CreativeWork" }
+      "rdfs:subClassOf": [
+        { "@id": "coremo:SemanticConcept" },
+        { "@id": "schema:CreativeWork" }
+      ]
     }, 
     {
       "@id": "coremo:KnowledgeGraph",
@@ -40,14 +43,14 @@
     {
       "@id": "coremo:SemanticPool",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A pool of semantic resources that manages a somewhat self-contained representation of an area of interest.",
+      "rdfs:comment": "A pool of semantic concepts that manages a somewhat self-contained representation of an area of interest.",
       "rdfs:label": "SemanticPool",
       "rdfs:subClassOf": { "@id": "coremo:InformationContainer" }      
     },
     {
       "@id": "coremo:SemanticRoot",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A resource that can act as a root (directly attached to a semantic pool)",
+      "rdfs:comment": "A concept that can act as a root (directly attached to a semantic pool; each pool allows its own root types, so define hasSemanticRoot as part of each pool definition).",
       "rdfs:label": "SemanticRoot",
       "rdfs:subClassOf": { "@id": "coremo:InformationContainer" }      
     }

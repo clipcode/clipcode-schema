@@ -73,7 +73,7 @@
     {
       "@id": "repmo:dataRowTable",
       "@type": "rdf:Property",
-      "rdfs:comment": "the table to whcih this row belongs.",
+      "rdfs:comment": "the table to which this row belongs.",
       "rdfs:label": "dataRowTable",
       "schema:domainIncludes": { "@id": "repmo:ReportDataRow" },
       "schema:rangeIncludes":  { "@id": "repmo:ReportDataTable" }

@@ -7,185 +7,153 @@
 
     "coremo": "https://clipcode.org/base/schema/coremo/"
   },
-  "@graph": [
-       {
-      "@id": "coremo:Concept",
+  "@graph": [   
+    {
+      "@id": "coremo:SemanticConcept",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A resource with a characteristic.",
-      "rdfs:label": "Characteristic",
+      "rdfs:comment": "A semantic concept.",
+      "rdfs:label": "SemanticConcept",
       "rdfs:subClassOf": { "@id": "schema:Thing" }
-    },
+    },     
     {
-      "@id": "coremo:Abstractable",
+      "@id": "coremo:MathematicsConcept",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A resource capable of being marked as abstract (so cannot be used directly; may be used as part of hierarhcy).",
-      "rdfs:label": "Abstractable",
-      "rdfs:subClassOf": { "@id": "coremo:Concept" }
+      "rdfs:comment": "A mathematics concept.",
+      "rdfs:label": "MathematicsConcept",
+      "rdfs:subClassOf": { "@id": "coremo:SemanticConcept" }
     },
     {
-      "@id": "coremo:isAbstract",
-      "@type": "rdf:Property",
-      "rdfs:comment": "Whether this Abstractable is abstract (if not specified, default to False).",
-      "rdfs:label": "isAbstract",
-      "schema:domainIncludes": { "@id": "coremo:Abstractable" },
-      "schema:rangeIncludes":  { "@id": "schema:Boolean" }        
-    },  
-    {
-      "@id": "coremo:Responsible",
+      "@id": "coremo:FoundationsMathematicsConcept",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A responsibility of this resource",
-      "rdfs:label": "Responsible",
-      "rdfs:subClassOf": { "@id": "coremo:Concept" }
+      "rdfs:comment": "A foundational mathematics concept.",
+      "rdfs:label": "FoundationsMathematicsConcept",
+      "rdfs:subClassOf": { "@id": "coremo:MathematicsConcept" }
     },
     {
-      "@id": "coremo:responsibility",
-      "@type": "rdf:Property",
-      "rdfs:comment": "A responsibility for a Responsible resource.",
-      "rdfs:label": "responsibility",
-      "schema:domainIncludes": { "@id": "coremo:Responsible" },
-      "schema:rangeIncludes":  { "@id": "schema:Text" }        
-    },
-    {
-      "@id": "coremo:Prioritizable",
+      "@id": "coremo:CoreMathematicsConcept",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A resource which can have a description associated with it",
-      "rdfs:label": "Prioritizable",
-      "rdfs:subClassOf": { "@id": "coremo:Concept" }
+      "rdfs:comment": "A core concept.",
+      "rdfs:label": "CoreMathematicsConcept",
+      "rdfs:subClassOf": { "@id": "coremo:FoundationsMathematicsConcept" }
     },
     {
-      "@id": "coremo:priority",
-      "@type": "rdf:Property",
-      "rdfs:comment": "The priority number of this resource.",
-      "rdfs:label": "priority",
-      "schema:domainIncludes": { "@id": "coremo:Prioritizable" },
-      "schema:rangeIncludes":  { "@id": "schema:Number" }
-    },
-    {
-      "@id": "coremo:Enableable",
+      "@id": "coremo:AppliedMathematicsConcept",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A resource that can be enabled.",
-      "rdfs:label": "Enableable",
-      "rdfs:subClassOf": { "@id": "coremo:Concept" }
+      "rdfs:comment": "An applied mathematics concept.",
+      "rdfs:label": "AppliedMathematicsConcept",
+      "rdfs:subClassOf": { "@id": "coremo:MathematicsConcept" }
     },
     {
-      "@id": "coremo:isEnabled",
-      "@type": "rdf:Property",
-      "rdfs:comment": "The enabled state of a Enableable entity.",
-      "rdfs:label": "isEnabled",
-      "schema:domainIncludes": { "@id": "coremo:Enableable" },
-      "schema:rangeIncludes":  { "@id": "schema:Boolean" }        
-    },
-    {
-      "@id": "coremo:Inheritable",
+      "@id": "coremo:ChangeMathematicsConcept",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A resource which can be derived from another resource of the same type (with any property values not specified in child inherited from parent)",
-      "rdfs:label": "Inheritable",
-      "rdfs:subClassOf": { "@id": "coremo:Concept" }
-    },  
+      "rdfs:comment": "A change mathematics concept.",
+      "rdfs:label": "ChangeMathematicsConcept",
+      "rdfs:subClassOf": { "@id": "coremo:MathematicsConcept" }
+    },
     {
-      "@id": "coremo:inheritFrom",
-      "@type": "rdf:Property",
-      "rdfs:comment": "The parent of a derived resource.",
-      "rdfs:label": "revision",
-      "schema:domainIncludes": { "@id": "coremo:Inheritable" },
-      "schema:rangeIncludes":  { "@id": "schema:Thing" }
-    }, 
-    {
-      "@id": "coremo:Templatable",
+      "@id": "coremo:SpaceMathematicsConcept",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A entity which may be part of a template relationship",
-      "rdfs:label": "Templatable",
-      "rdfs:subClassOf": { "@id": "coremo:Concept" }
+      "rdfs:comment": "A mathematics space concept.",
+      "rdfs:label": "SpaceMathematicsConcept",
+      "rdfs:subClassOf": { "@id": "coremo:MathematicsConcept" }
     },
     {
-      "@id": "coremo:isTemplate",
-      "@type": "rdf:Property",
-      "rdfs:comment": "Indicates whether this resource is a template.",
-      "rdfs:label": "isTemplate",
-      "schema:domainIncludes": { "@id": "coremo:Templatable" },
-      "schema:rangeIncludes":  { "@id": "schema:Boolean" }
+      "@id": "coremo:StructureMathematicsConcept",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A mathematics structure concept.",
+      "rdfs:label": "StructureMathematicsConcept",
+      "rdfs:subClassOf": { "@id": "coremo:MathematicsConcept" }
     },
     {
-      "@id": "coremo:basedOnTemplate",
-      "@type": "rdf:Property",
-      "rdfs:comment": "The template which this entity is based upon.",
-      "rdfs:label": "basedOnTemplate",
-      "schema:domainIncludes": { "@id": "coremo:Templatable" },
-      "schema:rangeIncludes":  { "@id": "coremo:Templatable" }
+      "@id": "coremo:TechnologyConcept",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A technology concept.",
+      "rdfs:label": "TechnologyConcept",
+      "rdfs:subClassOf": { "@id": "coremo:SemanticConcept" }
+    },
+    {
+      "@id": "coremo:StorageTechnologyConcept",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A storage concept.",
+      "rdfs:label": "StorageTechnologyConcept",
+      "rdfs:subClassOf": { "@id": "coremo:TechnologyConcept" }
+    },
+    {
+      "@id": "coremo:OperationsConcept",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An operations concept.",
+      "rdfs:label": "OperationsConcept",
+      "rdfs:subClassOf": { "@id": "coremo:SemanticConcept" }
+    },
+    {
+      "@id": "coremo:IdentityOperationsConcept",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An identity concept.",
+      "rdfs:label": "IdentityOperationsConcept",
+      "rdfs:subClassOf": { "@id": "coremo:OperationsConcept" }
+    },
+    {
+      "@id": "coremo:CommunicationConcept",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A communication concept",
+      "rdfs:label": "CommunicationConcept",
+      "rdfs:subClassOf": { "@id": "coremo:SemanticConcept" }
+    },
+    {
+      "@id": "coremo:PipelineCommunicationConcept",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A pipeline concept",
+      "rdfs:label": "PipelineCommunicationConcept",
+      "rdfs:subClassOf": { "@id": "coremo:CommunicationConcept" }
+    },
+    {
+      "@id": "coremo:PublishingCommunicationConcept",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A publishing concept.",
+      "rdfs:label": "PublishingCommunicationConcept",
+      "rdfs:subClassOf": { "@id": "coremo:CommunicationConcept" }
+    },
+    {
+      "@id": "coremo:EducationCommunicationConcept",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An education concept.",
+      "rdfs:label": "EducationCommunicationConcept",
+      "rdfs:subClassOf": { "@id": "coremo:CommunicationConcept" }
+    },
+    {
+      "@id": "coremo:CommunityCommunicationConcept",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A community concept",
+      "rdfs:label": "CommunityCommunicationConcept",
+      "rdfs:subClassOf": { "@id": "coremo:CommunicationConcept" }
+    },
+    {
+      "@id": "coremo:CorporateConcept",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A corporate concept",
+      "rdfs:label": "CorporateConcept",
+      "rdfs:subClassOf": { "@id": "coremo:SemanticConcept" }
+    },
+    {
+      "@id": "coremo:ActivityCorporateConcept",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A corporate activity concept.",
+      "rdfs:label": "ActivityCorporateConcept",
+      "rdfs:subClassOf": { "@id": "coremo:CorporateConcept" }
+    },
+    {
+      "@id": "coremo:ServicesConcept",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A services concept.",
+      "rdfs:label": "ServicesConcept",
+      "rdfs:subClassOf": { "@id": "coremo:SemanticConcept" }
     },    
     {
-      "@id": "coremo:Ordered",
+      "@id": "coremo:SalesConcept",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A resource that can be ordered among an assortment of similar resources based on an ordered index (and matching order indicies are alphabetically sorted)",
-      "rdfs:label": "Ordered",
-      "rdfs:subClassOf": { "@id": "coremo:Concept" }
-    }, 
-    {
-      "@id": "coremo:orderedIndex",
-      "@type": "rdf:Property",
-      "rdfs:comment": "The ordered index of this orderable.",
-      "rdfs:label": "orderedIndex",
-      "schema:domainIncludes": { "@id": "coremo:Ordered" },
-      "schema:rangeIncludes":  { "@id": "schema:Integer" }
-    },   
-    {
-      "@id": "coremo:Numbered",
-      "@type": "rdfs:Class",
-      "rdfs:comment": "An ordered alphanumeric value attached to a resource",
-      "rdfs:label": "Numbered",
-      "rdfs:subClassOf": { "@id": "coremo:Ordered" }
-    },
-    {
-      "@id": "coremo:alphanumericValue",
-      "@type": "rdf:Property",
-      "rdfs:comment": "The alphanumeric value of this resource.",
-      "rdfs:label": "alphanumericValue",
-      "schema:domainIncludes": { "@id": "coremo:Numbered" },
-      "schema:rangeIncludes":  { "@id": "schema:Text" }
-    },
-    {
-      "@id": "coremo:DateStampable",
-      "@type": "rdfs:Class",
-      "rdfs:comment": "A resource that has a date (and optionally Time) attached",
-      "rdfs:label": "DateStampable",
-      "rdfs:subClassOf": { "@id": "coremo:Concept" }
-    },
-    {
-      "@id": "coremo:DateStampRange",
-      "@type": "rdfs:Class",
-      "rdfs:comment": "A date stamp range with a startOfDateStamp and endOfDateStamp (multiple ranges may describe a DateStampable",
-      "rdfs:label": "DateStampRange",
-      "rdfs:subClassOf": { "@id": "coremo:Concept" }
-    },
-    {
-      "@id": "coremo:hasDateStampRange",
-      "@type": "rdf:Property",
-      "rdfs:comment": "A DateStampRange for a DateStampable.",
-      "rdfs:label": "hasDateStampRange",
-      "schema:domainIncludes": { "@id": "coremo:DateStampable" },
-      "schema:rangeIncludes":  { "@id": "coremo:DateStampRange" }
-    },
-    {
-      "@id": "coremo:startOfDateStamp",
-      "@type": "rdf:Property",
-      "rdfs:comment": "The start date.",
-      "rdfs:label": "startOfDateStamp",
-      "schema:domainIncludes": [
-        { "@id": "coremo:DateStampable" },
-        { "@id": "coremo:DateStampRange" }
-      ],
-      "schema:rangeIncludes":  { "@id": "schema:Date" }
-    },
-    {
-      "@id": "coremo:endOfDateStamp",
-      "@type": "rdf:Property",
-      "rdfs:comment": "The end date.",
-      "rdfs:label": "endOfDateStamp",
-      "schema:domainIncludes": [
-        { "@id": "coremo:DateStampable" },
-        { "@id": "coremo:DateStampRange" }
-      ],
-      "schema:rangeIncludes":  { "@id": "schema:Date" }
+      "rdfs:comment": "A sales concept.",
+      "rdfs:label": "SalesConcept",
+      "rdfs:subClassOf": { "@id": "coremo:SemanticConcept" }
     }
   ]
 }

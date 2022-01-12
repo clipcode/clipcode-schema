@@ -41,7 +41,7 @@ Note schema.org does not use XSD types - which is a somewhat complicated datatyp
 For datetime, it includes three datatypes, Date, Time and DateTime. Note these are schema.org types separate from any particular programming language that you might be using. The Date representation used is the ISO 8601 date format. Numbers are either integer or float. It you need finer grain control over numeric representation, you will need to add additional properties (e.g. if you an integer that must be positive, or if you need a float with a maximum number of subunits - such as when representing a currency).
 
 ### Enumerations
-In schema.org, enumerations derive from sche.:Enumeration, which actually drives from schema:Intangible (whcih derives from schema:thing) but we like to sonsider the Enumeration hierarchy separate from teh more general schema:Thing types. 
+In schema.org, enumerations derive from sche.:Enumeration, which actually drives from schema:Intangible (which derives from schema:thing) but we like to sonsider the Enumeration hierarchy separate from teh more general schema:Thing types. 
 
 schema:Enumeration is defined as:
 

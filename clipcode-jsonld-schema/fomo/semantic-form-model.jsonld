@@ -5,20 +5,16 @@
     "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
     "schema": "https://schema.org/",
 
-    "coremo": "https://clipcode.org/base/concept/coremo/",
-    "polmo":  "https://clipcode.org/base/concept/polmo/",
-    "dirmo":  "https://clipcode.org/base/concept/dirmo/",
-    "fomo":   "https://clipcode.org/base/concept/fomo/"
+    "coremo": "https://clipcode.org/base/schema/coremo/",
+    "fomo":   "https://clipcode.org/base/schema/fomo/"
   },
   "@graph": [
 	  {
       "@id": "fomo:FormConcept",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A form concept",
+      "rdfs:comment": "A form concept.",
       "rdfs:label": "FormConcept",
-      "rdfs:subClassOf": {
-        "@id": "coremo:PipelineConcept"
-      }
+      "rdfs:subClassOf": { "@id": "coremo:PipelineCommunicationConcept" }
     },
 	  {
       "@id": "fomo:FormModel",
@@ -26,79 +22,81 @@
       "rdfs:comment": "A form model",
       "rdfs:label": "FormModel",
       "rdfs:subClassOf": [
-        {
-          "@id": "coremo:PipelineModel"
-        },
-        {
-          "@id": "fomo:FormConcept"
-        }
-      ]
+        { "@id": "coremo:SemanticModel" },
+        { "@id": "fomo:FormConcept" }]
     },
     {
-      "@id": "fomo:DesignFormConcept",
+      "@id": "fomo:FormTemplateConcept",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A design form concept",
-      "rdfs:label": "DesignFormConcept",
-      "rdfs:subClassOf": {
-        "@id": "fomo:FormConcept"
-      }
+      "rdfs:comment": "A template form concept.",
+      "rdfs:label": "FormTemplateConcept",
+      "rdfs:subClassOf": { "@id": "fomo:FormConcept" }
     },
     {
-      "@id": "fomo:ResponseFormConcept",
+      "@id": "fomo:FormSelectorConcept",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A response form concept",
-      "rdfs:label": "ResponseFormConcept",
-      "rdfs:subClassOf": {
-        "@id": "fomo:FormConcept"
-      }
+      "rdfs:comment": "A selector form concept (how a selection from an assortment of form templates is made).",
+      "rdfs:label": "FormSelectorConcept",
+      "rdfs:subClassOf": { "@id": "fomo:FormConcept" }
     },
     {
-      "@id": "fomo:AdminFormConcept",
+      "@id": "fomo:FormResponseConcept",
       "@type": "rdfs:Class",
-      "rdfs:comment": "An admin form concept",
-      "rdfs:label": "AdminFormConcept",
-      "rdfs:subClassOf": {
-        "@id": "fomo:FormConcept"
-      }
+      "rdfs:comment": "A response form concept.",
+      "rdfs:label": "FormResponseConcept",
+      "rdfs:subClassOf": { "@id": "fomo:FormConcept" }
     },
     {
-      "@id": "fomo:DesignFormSemanticPool",
+      "@id": "fomo:FormProcessorConcept",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A form design",
-      "rdfs:label": "DesignFormSemanticPool",
+      "rdfs:comment": "A processing form concept (what happens after a form has been competed and submitted).",
+      "rdfs:label": "FormProcessorConcept",
+      "rdfs:subClassOf": { "@id": "fomo:FormConcept" }
+    },
+    {
+      "@id": "fomo:FormSemanticPool",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A form semantic pool.",
+      "rdfs:label": "FormSemanticPool",
       "rdfs:subClassOf": [
-        {
-          "@id": "coremo:SemanticPool"
-        },
-        {
-          "@id": "fomo:DesignFormConcept"
-      }]
+        { "@id": "fomo:FormConcept" },
+        { "@id": "coremo:SemanticPool" }
+    ]},
+    {
+      "@id": "fomo:hasFormSemanticPool",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A semantic pool within a form model.",
+      "rdfs:label": "hasFormSemanticPool",
+      "schema:domainIncludes": { "@id": "fomo:FormModel" },
+      "schema:rangeIncludes":  { "@id": "fomo:FormSemanticPool" }
     },
     {
-      "@id": "fomo:ResponseFormSemanticPool",
+      "@id": "fomo:FormTemplateSemanticPool",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A response to an electronic form",
-      "rdfs:label": "ResponseFormSemanticPool",
-      "rdfs:subClassOf": [
-      {
-        "@id": "coremo:SemanticPool"
-      },
-      {
-        "@id": "fomo:ResponseFormConcept"
-      }]
+      "rdfs:comment": "A template for an electronic form.",
+      "rdfs:label": "FormTemplateSemanticPool",
+      "rdfs:subClassOf": { "@id": "fomo:FormSemanticPool" }
     },
     {
-      "@id": "fomo:AdminFormSemanticPool",
+      "@id": "fomo:FormSelectorSemanticPool",
       "@type": "rdfs:Class",
-      "rdfs:comment": "Admin settings for a form",
-      "rdfs:label": "AdminFormSemanticPool",
-      "rdfs:subClassOf": [
-      {
-        "@id": "coremo:SemanticPool"
-      },
-      {
-        "@id": "fomo:AdminFormConcept"
-      }]
+      "rdfs:comment": "A pool of form selector entities.",
+      "rdfs:label": "FormSelectorSemanticPool",
+      "rdfs:subClassOf": { "@id": "fomo:FormSemanticPool" }
+    },
+    {
+      "@id": "fomo:FormResponseSemanticPool",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A response to an electronic form.",
+      "rdfs:label": "FormResponseSemanticPool",
+      "rdfs:subClassOf": { "@id": "fomo:FormSemanticPool" }
+    },
+    {
+      "@id": "fomo:FormProcessorSemanticPool",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A pool of processor entities for forms.",
+      "rdfs:label": "FormSelectorSemanticPool",
+      "rdfs:subClassOf": { "@id": "fomo:FormSemanticPool" }
     }
   ]
 }

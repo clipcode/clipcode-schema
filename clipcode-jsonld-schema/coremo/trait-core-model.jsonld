@@ -1,0 +1,191 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/schema/coremo/"
+  },
+  "@graph": [
+       {
+      "@id": "coremo:Trait",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A resource with a characteristic.",
+      "rdfs:label": "Characteristic",
+      "rdfs:subClassOf": { "@id": "schema:Thing" }
+    },
+    {
+      "@id": "coremo:Abstractable",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A resource capable of being marked as abstract (so cannot be used directly; may be used as part of hierarhcy).",
+      "rdfs:label": "Abstractable",
+      "rdfs:subClassOf": { "@id": "coremo:Trait" }
+    },
+    {
+      "@id": "coremo:isAbstract",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Whether this Abstractable is abstract (if not specified, default to False).",
+      "rdfs:label": "isAbstract",
+      "schema:domainIncludes": { "@id": "coremo:Abstractable" },
+      "schema:rangeIncludes":  { "@id": "schema:Boolean" }        
+    },  
+    {
+      "@id": "coremo:Responsible",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A responsibility of this resource",
+      "rdfs:label": "Responsible",
+      "rdfs:subClassOf": { "@id": "coremo:Trait" }
+    },
+    {
+      "@id": "coremo:responsibility",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A responsibility for a Responsible resource.",
+      "rdfs:label": "responsibility",
+      "schema:domainIncludes": { "@id": "coremo:Responsible" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }        
+    },
+    {
+      "@id": "coremo:Prioritizable",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A resource which can have a description associated with it",
+      "rdfs:label": "Prioritizable",
+      "rdfs:subClassOf": { "@id": "coremo:Trait" }
+    },
+    {
+      "@id": "coremo:priority",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The priority number of this resource.",
+      "rdfs:label": "priority",
+      "schema:domainIncludes": { "@id": "coremo:Prioritizable" },
+      "schema:rangeIncludes":  { "@id": "schema:Number" }
+    },
+    {
+      "@id": "coremo:Enableable",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A resource that can be enabled.",
+      "rdfs:label": "Enableable",
+      "rdfs:subClassOf": { "@id": "coremo:Trait" }
+    },
+    {
+      "@id": "coremo:isEnabled",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The enabled state of a Enableable concept.",
+      "rdfs:label": "isEnabled",
+      "schema:domainIncludes": { "@id": "coremo:Enableable" },
+      "schema:rangeIncludes":  { "@id": "schema:Boolean" }        
+    },
+    {
+      "@id": "coremo:Inheritable",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A resource which can be derived from another resource of the same type (with any property values not specified in child inherited from parent)",
+      "rdfs:label": "Inheritable",
+      "rdfs:subClassOf": { "@id": "coremo:Trait" }
+    },  
+    {
+      "@id": "coremo:inheritFrom",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The parent of a derived resource.",
+      "rdfs:label": "revision",
+      "schema:domainIncludes": { "@id": "coremo:Inheritable" },
+      "schema:rangeIncludes":  { "@id": "schema:Thing" }
+    }, 
+    {
+      "@id": "coremo:Templatable",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A concept which may be part of a template relationship",
+      "rdfs:label": "Templatable",
+      "rdfs:subClassOf": { "@id": "coremo:Trait" }
+    },
+    {
+      "@id": "coremo:isTemplate",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Indicates whether this resource is a template.",
+      "rdfs:label": "isTemplate",
+      "schema:domainIncludes": { "@id": "coremo:Templatable" },
+      "schema:rangeIncludes":  { "@id": "schema:Boolean" }
+    },
+    {
+      "@id": "coremo:basedOnTemplate",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The template which this concept is based upon.",
+      "rdfs:label": "basedOnTemplate",
+      "schema:domainIncludes": { "@id": "coremo:Templatable" },
+      "schema:rangeIncludes":  { "@id": "coremo:Templatable" }
+    },    
+    {
+      "@id": "coremo:Ordered",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A resource that can be ordered among an assortment of similar resources based on an ordered index (and matching order indicies are alphabetically sorted)",
+      "rdfs:label": "Ordered",
+      "rdfs:subClassOf": { "@id": "coremo:Trait" }
+    }, 
+    {
+      "@id": "coremo:orderedIndex",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The ordered index of this orderable.",
+      "rdfs:label": "orderedIndex",
+      "schema:domainIncludes": { "@id": "coremo:Ordered" },
+      "schema:rangeIncludes":  { "@id": "schema:Integer" }
+    },   
+    {
+      "@id": "coremo:Numbered",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An ordered alphanumeric value attached to a resource",
+      "rdfs:label": "Numbered",
+      "rdfs:subClassOf": { "@id": "coremo:Ordered" }
+    },
+    {
+      "@id": "coremo:alphanumericValue",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The alphanumeric value of this resource.",
+      "rdfs:label": "alphanumericValue",
+      "schema:domainIncludes": { "@id": "coremo:Numbered" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "coremo:DateStampable",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A resource that has a date (and optionally Time) attached",
+      "rdfs:label": "DateStampable",
+      "rdfs:subClassOf": { "@id": "coremo:Trait" }
+    },
+    {
+      "@id": "coremo:DateStampRange",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A date stamp range with a startOfDateStamp and endOfDateStamp (multiple ranges may describe a DateStampable",
+      "rdfs:label": "DateStampRange",
+      "rdfs:subClassOf": { "@id": "coremo:Trait" }
+    },
+    {
+      "@id": "coremo:hasDateStampRange",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A DateStampRange for a DateStampable.",
+      "rdfs:label": "hasDateStampRange",
+      "schema:domainIncludes": { "@id": "coremo:DateStampable" },
+      "schema:rangeIncludes":  { "@id": "coremo:DateStampRange" }
+    },
+    {
+      "@id": "coremo:startOfDateStamp",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The start date.",
+      "rdfs:label": "startOfDateStamp",
+      "schema:domainIncludes": [
+        { "@id": "coremo:DateStampable" },
+        { "@id": "coremo:DateStampRange" }
+      ],
+      "schema:rangeIncludes":  { "@id": "schema:Date" }
+    },
+    {
+      "@id": "coremo:endOfDateStamp",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The end date.",
+      "rdfs:label": "endOfDateStamp",
+      "schema:domainIncludes": [
+        { "@id": "coremo:DateStampable" },
+        { "@id": "coremo:DateStampRange" }
+      ],
+      "schema:rangeIncludes":  { "@id": "schema:Date" }
+    }
+  ]
+}

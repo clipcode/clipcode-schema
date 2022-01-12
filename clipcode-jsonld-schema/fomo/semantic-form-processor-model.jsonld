@@ -1,0 +1,69 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/schema/coremo/",
+    "fomo":   "https://clipcode.org/base/schema/fomo/"
+  },
+  "@graph": [
+    {
+      "@id": "fomo:FormProcessor",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A root concept within a Processor form semantic pool",
+      "rdfs:label": "FormProcessorSemanticRoot",
+      "rdfs:subClassOf": [
+        { "@id": "fomo:FormProcessorConcept" },
+        { "@id": "coremo:SemanticRoot" }             
+      ]
+    },
+    {
+      "@id": "fomo:hasFormProcessor",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a root concept to its semantic pool.",
+      "rdfs:label": "hasFormProcessorSemanticRoot",
+      "schema:domainIncludes": { "@id": "fomo:FormProcessorSemanticPool" },
+      "schema:rangeIncludes":  { "@id": "fomo:FormProcessor" }
+    },
+    {
+      "@id": "fomo:ReferenceRegistry",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An identifiable registry of references, which can be shared among multiple forms with the same Processor.",
+      "rdfs:label": "ReferenceRegistry",
+      "rdfs:subClassOf": { "@id": "fomo:FormProcessor" }
+    },
+    {
+      "@id": "fomo:CreateProcessorPanel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "Arrangement of form templates suitable for a knowledge user to select from",
+      "rdfs:label": "CreateProcessorPanel",
+      "rdfs:subClassOf": { "@id": "fomo:FormProcessor" }
+    },
+    {
+      "@id": "fomo:hasIndividualFormTemplate",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Lists a single form template in a CreateProcessorPanel.",
+      "rdfs:label": "hasIndividualFormTemplate",
+      "schema:domainIncludes": { "@id": "fomo:CreateProcessorPanel" },
+      "schema:rangeIncludes":  { "@id": "schema:URL" }
+    },
+    {
+      "@id": "fomo:hasCollectionOfFormTemplates",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Lists a collection of form template, hierarchically.",
+      "rdfs:label": "hasCollectionOfFormTemplates",
+      "schema:domainIncludes": { "@id": "fomo:CreateProcessorPanel" },
+      "schema:rangeIncludes":  { "@id": "schema:URL" }
+    },
+    {
+      "@id": "fomo:hasFlattenedCollectionOfFormTemplates",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Lists a collection of form templates, displayed as a flat list.",
+      "rdfs:label": "hasFlattenedCollectionOfFormTemplates",
+      "schema:domainIncludes": { "@id": "fomo:CreateProcessorPanel" },
+      "schema:rangeIncludes":  { "@id": "schema:URL" }
+    }
+  ]
+}

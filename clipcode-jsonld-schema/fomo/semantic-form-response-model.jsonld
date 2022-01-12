@@ -1,0 +1,63 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/schema/coremo/",
+    "fomo":   "https://clipcode.org/base/schema/fomo/"
+  },
+  "@graph": [
+    {
+      "@id": "fomo:FormResponse",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A root concept within a response form semantic pool",
+      "rdfs:label": "RootFormResponseConcept",
+      "rdfs:subClassOf": [
+        { "@id": "fomo:FormResponseConcept" },
+        { "@id": "coremo:SemanticRoot" }             
+      ]
+    },
+    {
+      "@id": "fomo:hasFormResponse",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a root concept to its semantic pool.",
+      "rdfs:label": "hasFormResponse",
+      "schema:domainIncludes": { "@id": "fomo:FormResponseSemanticPool" },
+      "schema:rangeIncludes":  { "@id": "fomo:FormResponse" }
+    },
+    {
+      "@id": "fomo:basedOnFormTemplate",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The template this response form is based upon.",
+      "rdfs:label": "basedOnFormTemplate",
+      "schema:domainIncludes": { "@id": "fomo:FormResponse" },
+      "schema:rangeIncludes":  { "@id": "schema:URL" }
+    },
+    {
+      "@id": "fomo:answer",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The answer for a form question.",
+      "rdfs:label": "answer",
+      "schema:domainIncludes": { "@id": "fomo:FormResponse" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "fomo:repeaterAnswer",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A repeater answer for a form question.",
+      "rdfs:label": "repeaterAnswer",
+      "schema:domainIncludes": { "@id": "fomo:FormResponse" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    },
+    {
+      "@id": "fomo:administrativeArea",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Any additional administrativeArea details.",
+      "rdfs:label": "administrativeArea",
+      "schema:domainIncludes": { "@id": "fomo:FormResponse" },
+      "schema:rangeIncludes":  { "@id": "schema:Text" }
+    }
+  ]
+}

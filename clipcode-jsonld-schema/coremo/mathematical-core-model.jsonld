@@ -13,14 +13,14 @@
       "@type": "rdfs:Class",
       "rdfs:comment": "A mathematical expression",
       "rdfs:label": "MathematicalExpression",
-      "rdfs:subClassOf": { "@id": "coremo:CoreMathematicalEntity" }
+      "rdfs:subClassOf": { "@id": "coremo:CoreMathematicsConcept" }
     },
     {
       "@id": "coremo:MathematicalObject",
       "@type": "rdfs:Class",
       "rdfs:comment": "A mathematical object",
       "rdfs:label": "MathematicalObject",
-      "rdfs:subClassOf": { "@id": "coremo:CoreMathematicalEntity" }
+      "rdfs:subClassOf": { "@id": "coremo:CoreMathematicsConcept" }
     },
     {
       "@id": "coremo:MathematicalFunction",
@@ -96,28 +96,28 @@
       "@type": "rdfs:Class",
       "rdfs:comment": "A mathematical operation",
       "rdfs:label": "MathematicalOperation",
-      "rdfs:subClassOf": { "@id": "coremo:CoreMathematicalEntity" }
+      "rdfs:subClassOf": { "@id": "coremo:CoreMathematicsConcept" }
     },
     {
       "@id": "coremo:MathematicalProperty",
       "@type": "rdfs:Class",
       "rdfs:comment": "A mathematical property",
       "rdfs:label": "MathematicalProperty",
-      "rdfs:subClassOf": { "@id": "coremo:CoreMathematicalEntity" }
+      "rdfs:subClassOf": { "@id": "coremo:CoreMathematicsConcept" }
     },
     {
       "@id": "coremo:MathematicalVariable",
       "@type": "rdfs:Class",
       "rdfs:comment": "A mathematical variable",
       "rdfs:label": "MathematicalVariable",
-      "rdfs:subClassOf": { "@id": "coremo:CoreMathematicalEntity" }
+      "rdfs:subClassOf": { "@id": "coremo:CoreMathematicsConcept" }
     },
     {
       "@id": "coremo:MathematicalFormula",
       "@type": "rdfs:Class",
       "rdfs:comment": "A mathematical formula",
       "rdfs:label": "MathematicalFormula",
-      "rdfs:subClassOf": { "@id": "coremo:CoreMathematicalEntity" }
+      "rdfs:subClassOf": { "@id": "coremo:CoreMathematicsConcept" }
     }
   ]
 }

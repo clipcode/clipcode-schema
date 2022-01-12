@@ -202,7 +202,7 @@ key = 1
 ````
 It should be note that JSON does not directly supported the JavaScript Date object, but Date does supply a toJSON method, which returns the result of a call to `Date.toISOString()`. There is no `fromJSON()` method. 
 
-The space parameter to `stringify()` controls whitepace insertion. It can be not provided or null, in which case no whitepace is inserted; it can be a stirng, in whcih case that string is inserted, or it can be a number, in which case that number of spaces is inserted. So this code:
+The space parameter to `stringify()` controls whitepace insertion. It can be not provided or null, in which case no whitepace is inserted; it can be a stirng, in which case that string is inserted, or it can be a number, in which case that number of spaces is inserted. So this code:
 ````
     const hello10 = new MultiHelloObject(
       new HelloTest('hello', 'world'),
@@ -289,7 +289,7 @@ myReplacerExcludeNumber called; key = 0; value = hello
 myReplacerExcludeNumber called; key = 1; value = world
 ["hello","world"]
 ````
-The alternative `replacer` signature is to supply an array, in whcih case only the properties whose names appear in the array are included in the JSON text. This code:
+The alternative `replacer` signature is to supply an array, in which case only the properties whose names appear in the array are included in the JSON text. This code:
 ````
 const hello12 = new MultiHelloObject(
   new HelloTest('first-hello', 'first-world'),

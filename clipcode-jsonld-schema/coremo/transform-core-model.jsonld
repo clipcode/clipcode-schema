@@ -13,14 +13,14 @@
       "@type": "rdfs:Class",
       "rdfs:comment": "A resource whose properties can be transformed via add/remove/clear transforms.",
       "rdfs:label": "Transformable",
-      "rdfs:subClassOf": { "@id": "coremo:Concept" }
+      "rdfs:subClassOf": { "@id": "coremo:Trait" }
     },  
     {
       "@id": "coremo:Transform",
       "@type": "rdfs:Class",
       "rdfs:comment": "A transform for a Transformable.",
       "rdfs:label": "Transform",
-      "rdfs:subClassOf": { "@id": "coremo:CoreMathematicalEntity" }      
+      "rdfs:subClassOf": { "@id": "coremo:CoreMathematicsConcept" }      
     },
     {
       "@id": "coremo:hasTransform",

@@ -1,0 +1,136 @@
+{
+  "@context": {
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+
+    "coremo": "https://clipcode.org/base/schema/coremo/",
+    "appmo":  "https://clipcode.org/base/schema/appmo/",
+    "fomo":   "https://clipcode.org/base/schema/fomo/"
+  },
+  "@graph": [
+    {
+      "@id": "fomo:FormSelector",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A root concept within a selector form semantic pool",
+      "rdfs:label": "RootFormSelectorConcept",
+      "rdfs:subClassOf": [
+        { "@id": "fomo:FormSelectorConcept" },
+        { "@id": "coremo:SemanticRoot" }             
+      ]
+    },
+    {
+      "@id": "fomo:hasFormSelector",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a root concept to its semantic pool.",
+      "rdfs:label": "hasRootFormSelectorConcept",
+      "schema:domainIncludes": { "@id": "fomo:FormSelectorSemanticPool" },
+      "schema:rangeIncludes":  { "@id": "fomo:FormSelector" }
+    },
+    {
+      "@id": "fomo:SelectorPanel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "Arrangement of form templates, suitable for a knowledge user to select one from",
+      "rdfs:label": "SelectorPanel",
+      "rdfs:subClassOf": [
+        { "@id": "fomo:RootFormSelectorConcept" },
+        { "@id": "coremo:Enableable" },
+        { "@id": "appmo:AppPanel" }]      
+    },
+    {
+      "@id": "fomo:LocalFormTemplateCollection",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A locally defined collection of form templates (not directly built from actual form template collections)",
+      "rdfs:label": "FormSelectorTemplateCollection",
+      "rdfs:subClassOf": [
+        { "@id": "fomo:FormSelectorConcept" },
+        { "@id": "appmo:AppPanelItem" },
+        { "@id": "coremo:Enableable" }      
+      ]
+    },
+    {
+      "@id": "fomo:hasLocalFormTemplateCollection",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a LocalFormTemplateCollection to its parent.",
+      "rdfs:label": "hasLocalFormTemplateCollection",
+      "schema:domainIncludes": [
+        { "@id": "fomo:SelectorPanel" },
+        { "@id": "fomo:LocalFormTemplateCollection" }
+      ],
+      "schema:rangeIncludes": { "@id": "fomo:LocalFormTemplateCollection" }            
+    },
+    {
+      "@id": "fomo:LocalFormTemplate",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A locally defined form template (possibly with local name, icon, tooltip).",
+      "rdfs:label": "LocalFormTemplate",
+      "rdfs:subClassOf": [
+        { "@id": "fomo:FormSelectorConcept" },
+        { "@id": "appmo:AppPanelItem" },
+        { "@id": "coremo:Enableable" }      
+      ]
+    },
+    {
+      "@id": "fomo:hasLocalFormTemplate",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Attaches a LocalFormTemplate to its parent.",
+      "rdfs:label": "hasLocalFormTemplate",
+      "schema:domainIncludes": [
+        { "@id": "fomo:SelectorPanel" },
+        { "@id": "fomo:LocalFormTemplateCollection" }
+      ],
+      "schema:rangeIncludes": { "@id": "fomo:LocalFormTemplate" }            
+    },
+    {
+      "@id": "fomo:includeRemoteFormTemplate",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Adds a remote single form template to its parent.",
+      "rdfs:label": "includeRemoteFormTemplate",
+      "schema:domainIncludes": [
+        { "@id": "fomo:SelectorPanel" },
+        { "@id": "fomo:LocalFormTemplateCollection" },
+        { "@id": "fomo:LocalFormTemplate" }
+      ],
+      "schema:rangeIncludes":  { "@id": "schema:URL" }
+    },
+    {
+      "@id": "fomo:includeRemoteFormTemplateCollection",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Adds a remote collection of form templates, displayed hierarchically.",
+      "rdfs:label": "includeRemoteFormTemplateCollection",
+      "schema:domainIncludes": { "@id": "fomo:SelectorPanel" },
+      "schema:rangeIncludes":  { "@id": "schema:URL" }
+    },
+    {
+      "@id": "fomo:includeRemoteFlattenedFormTemplateCollection",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Adds a remote collection of form templates, displayed as a flat list.",
+      "rdfs:label": "includeRemoteFlattenedFormTemplateCollection",
+      "schema:domainIncludes": { "@id": "fomo:SelectorPanel" },
+      "schema:rangeIncludes":  { "@id": "schema:URL" }
+    },
+    {
+      "@id": "fomo:excludeRemoteFormTemplate",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Excludes a single form template from a parent.",
+      "rdfs:label": "excludeRemoteFormTemplate",
+      "schema:domainIncludes": [
+        { "@id": "fomo:SelectorPanel" },
+        { "@id": "schema:URL" }
+      ],
+      "schema:rangeIncludes":  { "@id": "schema:URL" }
+    },
+    {
+      "@id": "fomo:excludeRemoteFormTemplateCollection",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Excludes a collection of form templates from a parent.",
+      "rdfs:label": "excludeRemoteFormTemplateCollection",
+      "schema:domainIncludes": [
+        { "@id": "fomo:SelectorPanel" },
+        { "@id": "schema:URL" }
+      ],
+      "schema:rangeIncludes":  { "@id": "schema:URL" }
+    }
+  ]
+}

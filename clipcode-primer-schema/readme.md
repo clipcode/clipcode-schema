@@ -1,8 +1,6 @@
 # Clipcode Primer Schema
 This primer reviews the technologies our semantic models are layered upon - JSON, RDF, JSON-LD and [schema.org](https://schema.org/). 
 
-Note [Clipcode Mentoring](https://www.clipcode.net/mentoring) offers technical support and mentoring to enterprise dev teams working with these technologies - it is ideal for teams who need to quickly get up to speed with them.
-
 ## Overview
 JSON is a widely used and very simple (text-based) data interchange format, supported by pretty much every programming language in use today. Hence it is ideal for describing data that needs to move between different computing hosts in a seamless way. It provides a simple object notation for representing numbers, strings, values, objects and arrays, along with flexible combinations of these. 
 
